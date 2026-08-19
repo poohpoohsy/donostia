@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tonight in San Sebastián — our pintxos crawl</title>
+<meta name="description" content="Eight stops across Donostia. Where to be, when, and what to order.">
+<meta property="og:title" content="Tonight in San Sebastián">
+<meta property="og:description" content="Eight stops. Meet 16:25 at Elkano Kalea 1.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#0E1B20;
+    --raise:#15272D;
+    --chalk:#ECE7DC;
+    --dim:#7E9298;
+    --pink:#E8547C;
+    --sea:#78B3A9;
+    --gold:#E9B44C;
+    --alarm:#C4523E;
+    --rule:rgba(236,231,220,.13);
+    --pad:clamp(18px,5.5vw,40px);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;background:var(--ground);color:var(--chalk);
+    font-family:'Archivo',system-ui,-apple-system,sans-serif;
+    font-size:16.5px;line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:620px;margin:0 auto;padding:0 var(--pad) 64px;}
+
+  /* header */
+  .top{padding:clamp(34px,9vw,60px) 0 0;}
+  .kicker{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:600;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--pink);margin:0 0 14px;
+  }
+  h1{
+    font-family:'Syne','Archivo',sans-serif;font-weight:800;
+    font-size:clamp(36px,10.5vw,58px);line-height:.95;letter-spacing:-.025em;margin:0;
+  }
+  .meet{
+    margin-top:26px;background:var(--raise);border:1px solid var(--rule);
+    border-left:3px solid var(--pink);border-radius:3px;padding:18px 20px;
+  }
+  .meet .lbl{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:0 0 6px;
+  }
+  .meet .big{
+    font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:29px;
+    letter-spacing:-.02em;line-height:1.1;margin:0 0 4px;
+  }
+  .meet p{margin:0;font-size:15px;color:var(--dim);}
+  .meet p b{color:var(--chalk);font-weight:600;}
+
+  /* rules */
+  .rules{margin-top:30px;padding-top:26px;border-top:1px solid var(--rule);}
+  .rules h2{
+    font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:18px;
+    letter-spacing:-.01em;margin:0 0 14px;
+  }
+  .rules ul{list-style:none;padding:0;margin:0;}
+  .rules li{
+    display:flex;gap:12px;padding:9px 0;font-size:15.5px;color:var(--dim);
+    align-items:baseline;
+  }
+  .rules li span{
+    flex:0 0 auto;width:7px;height:7px;border-radius:50%;background:var(--sea);
+    transform:translateY(-2px);
+  }
+  .rules li b{color:var(--chalk);font-weight:600;}
+
+  /* chart */
+  .clockbox{margin-top:34px;padding-top:26px;border-top:1px solid var(--rule);}
+  .clockbox h2{
+    font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:18px;
+    letter-spacing:-.01em;margin:0 0 8px;
+  }
+  .clockbox .why{margin:0 0 18px;font-size:15px;color:var(--dim);}
+  .chart{
+    background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+    padding:18px 14px 12px;overflow-x:auto;-webkit-overflow-scrolling:touch;
+  }
+  .chart-inner{min-width:430px;}
+  .axis{
+    display:grid;grid-template-columns:repeat(7,1fr);margin-left:92px;
+    padding-bottom:7px;border-bottom:1px solid var(--rule);
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;color:var(--dim);
+  }
+  .row{display:flex;align-items:center;height:30px;}
+  .row-name{
+    width:92px;flex:0 0 92px;padding-right:11px;text-align:right;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;color:var(--dim);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .track{position:relative;flex:1;height:100%;}
+  .track::before{
+    content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(90deg,var(--rule) 0 1px,transparent 1px calc(100%/7));
+  }
+  .open{
+    position:absolute;top:11px;height:8px;border-radius:1px;
+    background:var(--sea);opacity:.4;transform-origin:left center;
+  }
+  .open.tight{background:var(--alarm);opacity:.72;}
+  .hit{position:absolute;top:5px;width:4px;height:20px;background:var(--gold);border-radius:1px;}
+  .hit::after{
+    content:attr(data-n);position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;color:var(--gold);
+  }
+  .legend{
+    display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:14px;padding-top:11px;
+    border-top:1px solid var(--rule);
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;color:var(--dim);
+  }
+  .legend i{display:inline-block;width:15px;height:7px;margin-right:6px;vertical-align:middle;border-radius:1px;}
+  .sw-open{background:var(--sea);opacity:.4;}
+  .sw-tight{background:var(--alarm);opacity:.72;}
+  .sw-hit{background:var(--gold);width:4px;height:13px;}
+  .crunch{margin:14px 0 0;font-size:14.5px;color:var(--dim);}
+  .crunch b{color:var(--gold);font-weight:600;}
+  @media (prefers-reduced-motion:no-preference){
+    .open{animation:grow .45s cubic-bezier(.2,.7,.3,1) backwards;}
+    @keyframes grow{from{transform:scaleX(0);opacity:0;}to{transform:scaleX(1);}}
+    .hit{animation:pop .4s cubic-bezier(.2,.7,.3,1) backwards;}
+    @keyframes pop{from{transform:scaleY(0);opacity:0;}to{transform:scaleY(1);}}
+  }
+
+  /* stops */
+  .stops{margin-top:38px;}
+  .stops-h{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--dim);
+    margin:0 0 4px;padding-bottom:14px;border-bottom:1px solid var(--rule);
+  }
+  .stop{padding:22px 0;border-bottom:1px solid var(--rule);position:relative;}
+  .clock{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;
+    font-size:15px;color:var(--pink);letter-spacing:.02em;margin:0 0 5px;
+    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  }
+  .walk{color:var(--dim);font-weight:500;font-size:11.5px;letter-spacing:.05em;}
+  .stop h3{
+    font-family:'Syne','Archivo',sans-serif;font-weight:800;
+    font-size:clamp(22px,5.6vw,27px);letter-spacing:-.02em;line-height:1.1;margin:0 0 3px;
+  }
+  .addr{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;
+    color:var(--dim);margin:0 0 12px;
+  }
+  .order{
+    background:var(--raise);border-radius:3px;padding:13px 15px;margin:0 0 10px;
+    font-size:15.5px;
+  }
+  .order .tag{
+    display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--sea);margin-bottom:5px;
+  }
+  .note{margin:0;font-size:14.5px;color:var(--dim);}
+  .warn{
+    display:inline-block;margin-top:9px;padding:5px 10px;border-radius:2px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
+    letter-spacing:.04em;background:rgba(232,84,124,.13);color:#F2809F;
+    border:1px solid rgba(232,84,124,.3);
+  }
+
+  /* live "now" state */
+  .stop.now{background:rgba(232,84,124,.05);margin:0 calc(var(--pad) * -.5);padding-left:calc(var(--pad) * .5);padding-right:calc(var(--pad) * .5);border-radius:3px;}
+  .stop.now::before{
+    content:"NOW";position:absolute;top:22px;right:calc(var(--pad) * .5);
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.18em;color:var(--pink);
+  }
+
+  /* footer strip */
+  .money{
+    margin-top:34px;background:var(--raise);border:1px solid var(--rule);
+    border-radius:3px;padding:20px;
+  }
+  .money h2{
+    font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:18px;margin:0 0 12px;
+  }
+  .money p{margin:0 0 9px;font-size:15px;color:var(--dim);}
+  .money p:last-child{margin:0;}
+  .money b{color:var(--chalk);font-weight:600;}
+
+  footer{
+    margin-top:30px;text-align:center;font-size:13.5px;color:var(--dim);
+  }
+  a{color:var(--pink);text-decoration:none;border-bottom:1px solid rgba(232,84,124,.35);}
+  a:focus-visible{outline:2px solid var(--pink);outline-offset:3px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <p class="kicker">Friday · Donostia</p>
+    <h1>Eight stops,<br>one evening.</h1>
+
+    <div class="meet">
+      <p class="lbl">Meet here</p>
+      <p class="big">16:25 — Elkano Kalea 1</p>
+      <p>Outside the cheese shop, <b>Elkano 1 Gaztagune</b>. It opens at 16:30 on the dot and we start there.</p>
+    </div>
+  </header>
+
+  <section class="rules">
+    <h2>Three things before we start</h2>
+    <ul>
+      <li><span></span><div>Come hungry, and <b>don't fill up at stop one</b>. There are eight.</div></li>
+      <li><span></span><div>One bite and one drink per stop, standing, then we move. <b>Three places shut at 20:00</b> and they will not wait for us.</div></li>
+      <li><span></span><div>Some of these are tiny shops. <b>We'll go in two groups of three</b> — I'll tell you when.</div></li>
+    </ul>
+  </section>
+
+  <section class="clockbox">
+    <h2>Why we're moving fast</h2>
+    <p class="why">Each bar is how long a place stays open. The gold marks are when we arrive. The red ones shut at eight — that's the squeeze.</p>
+
+    <div class="chart">
+      <div class="chart-inner">
+        <div class="axis" aria-hidden="true">
+          <span>16:00</span><span>17:00</span><span>18:00</span><span>19:00</span><span>20:00</span><span>21:00</span><span>22:00</span>
+        </div>
+
+        <div class="row"><div class="row-name">Elkano 1</div><div class="track">
+          <div class="open" style="left:7.1%;width:50%;animation-delay:.05s"></div>
+          <div class="hit" data-n="1" style="left:7.1%;animation-delay:.4s"></div></div></div>
+
+        <div class="row"><div class="row-name">Lurka</div><div class="track">
+          <div class="open" style="left:0;width:57.1%;animation-delay:.1s"></div>
+          <div class="hit" data-n="2" style="left:15.5%;animation-delay:.45s"></div></div></div>
+
+        <div class="row"><div class="row-name">San Martín</div><div class="track">
+          <div class="open" style="left:0;width:100%;animation-delay:.15s"></div>
+          <div class="hit" data-n="3" style="left:23.8%;animation-delay:.5s"></div></div></div>
+
+        <div class="row"><div class="row-name">Antonio</div><div class="track">
+          <div class="open" style="left:0;width:100%;animation-delay:.2s"></div>
+          <div class="hit" data-n="4" style="left:28.6%;animation-delay:.55s"></div></div></div>
+
+        <div class="row"><div class="row-name">Bouiboui</div><div class="track">
+          <div class="open tight" style="left:0;width:57.1%;animation-delay:.25s"></div>
+          <div class="hit" data-n="5" style="left:45.2%;animation-delay:.6s"></div></div></div>
+
+        <div class="row"><div class="row-name">Klandestina</div><div class="track">
+          <div class="open tight" style="left:14.3%;width:42.8%;animation-delay:.3s"></div>
+          <div class="hit" data-n="6" style="left:51.2%;animation-delay:.65s"></div></div></div>
+
+        <div class="row"><div class="row-name">Manojo</div><div class="track">
+          <div class="open" style="left:14.3%;width:85.7%;animation-delay:.35s"></div>
+          <div class="hit" data-n="7" style="left:60.7%;animation-delay:.7s"></div></div></div>
+
+        <div class="row"><div class="row-name">SUA.MUKA</div><div class="track">
+          <div class="open" style="left:0;width:100%;animation-delay:.4s"></div>
+          <div class="hit" data-n="8" style="left:82.1%;animation-delay:.75s"></div></div></div>
+
+        <div class="legend">
+          <span><i class="sw-open"></i>Open</span>
+          <span><i class="sw-tight"></i>Shuts at 20:00</span>
+          <span><i class="sw-hit"></i>We arrive</span>
+        </div>
+      </div>
+    </div>
+    <p class="crunch">Stops <b>5 and 6</b> are the tight ones. Everything earlier is paced to get us there in time, which is why stop four ends when it ends.</p>
+  </section>
+
+  <section class="stops">
+    <p class="stops-h">The route</p>
+
+    <article class="stop" data-start="16:30" data-end="17:05">
+      <p class="clock">16:30</p>
+      <h3>Elkano 1 Gaztagune</h3>
+      <p class="addr">Elkano Kalea 1 · cheese</p>
+      <p class="order"><span class="tag">Order this</span>The Teyedu, with an Idiazabal to compare.</p>
+      <p class="note">A cheese shop that looks well past the Basque country for what it stocks. Good place to start while everyone's still sober enough to taste properly.</p>
+    </article>
+
+    <article class="stop" data-start="17:05" data-end="17:40">
+      <p class="clock">17:05 <span class="walk">2 MIN WALK</span></p>
+      <h3>Lurka Chocolate</h3>
+      <p class="addr">Bengoetxea Kalea 1 · chocolate</p>
+      <p class="order"><span class="tag">Order this</span>A cup of the drinking chocolate.</p>
+      <p class="note">Mexican bean-to-bar, made here by a Mexican of Basque descent reviving a trade route that once ran between this port and his home country. Buy a tablet to take home — they travel well.</p>
+    </article>
+
+    <article class="stop" data-start="17:40" data-end="18:00">
+      <p class="clock">17:40 <span class="walk">6 MIN WALK</span></p>
+      <h3>San Martín Market</h3>
+      <p class="addr">Urbieta Kalea 9 · market</p>
+      <p class="order"><span class="tag">Look for</span>Kokotxas at the fish counters.</p>
+      <p class="note">Ten minutes, nothing to buy. Kokotxas are cod and hake throats — chefs and grandmothers queue for them in the same line. This is where the food you'll eat tonight comes from.</p>
+    </article>
+
+    <article class="stop" data-start="18:00" data-end="19:10">
+      <p class="clock">18:00 <span class="walk">4 MIN WALK</span></p>
+      <h3>Antonio Taberna</h3>
+      <p class="addr">Bergara Kalea 3 · tortilla</p>
+      <p class="order"><span class="tag">Order this</span>Tortilla de patata and a house vermouth.</p>
+      <p class="note">The best tortilla in the city, and the reason we're here at six rather than seven. A fresh one comes out around 18:30 and it sells out. I'll queue — you hold standing room at the bar.</p>
+      <span class="warn">We leave at 18:55 sharp</span>
+    </article>
+
+    <article class="stop" data-start="19:10" data-end="19:35">
+      <p class="clock">19:10 <span class="walk">12 MIN — OVER THE BRIDGE</span></p>
+      <h3>Bouiboui</h3>
+      <p class="addr">Calle Trueba 4 · cider</p>
+      <p class="order"><span class="tag">Order this</span>Cider, and whatever the fish of the day is.</p>
+      <p class="note">We cross the Kursaal bridge into Gros, where the newer places are. This one's small — three of us at a time.</p>
+      <span class="warn">Closes 20:00 · we have 20 minutes</span>
+    </article>
+
+    <article class="stop" data-start="19:35" data-end="20:15">
+      <p class="clock">19:35 <span class="walk">2 MIN WALK</span></p>
+      <h3>Bodega Klandestina</h3>
+      <p class="addr">Kale Berria 18 · natural wine</p>
+      <p class="order"><span class="tag">Order this</span>Tell the owner what you've liked so far and let him choose.</p>
+      <p class="note">He's very good at this. If you want to bring wine home, buy it here rather than at the airport.</p>
+      <span class="warn">Closes 20:00 · quick one</span>
+    </article>
+
+    <article class="stop" data-start="20:15" data-end="21:45">
+      <p class="clock">20:15 <span class="walk">6 MIN WALK</span></p>
+      <h3>Manojo</h3>
+      <p class="addr">José Arana Kalea 13 · dinner</p>
+      <p class="order"><span class="tag">Order this</span>Navajas — razor clams — and share three or four plates.</p>
+      <p class="note">Booked, so we can finally sit down and stop rushing. The menu is short and changes on whatever came into the market that morning.</p>
+    </article>
+
+    <article class="stop" data-start="21:45" data-end="23:00">
+      <p class="clock">21:45 <span class="walk">10 MIN WALK · OPTIONAL</span></p>
+      <h3>SUA.MUKA</h3>
+      <p class="addr">Zurriola Hiribidea 1 · last drink</p>
+      <p class="order"><span class="tag">Order this</span>A txakoli, standing at the bar.</p>
+      <p class="note">Right where the river meets the sea. Anyone still going, come. Anyone done, Gros is full of taxis and the old town is a fifteen-minute walk.</p>
+    </article>
+  </section>
+
+  <div class="money">
+    <h2>Practical</h2>
+    <p><b>Budget €60–90 each</b> for the whole evening, food and drink included.</p>
+    <p><b>Bring cash.</b> Most of these won't split a bill six ways. I'll pay at each stop and we'll settle up at Manojo.</p>
+    <p><b>About 3km of walking</b>, all flat, but you're on your feet for five hours. Wear accordingly.</p>
+  </div>
+
+  <footer>
+    <p>Message me if you're running late — don't try to catch us up at stop four.</p>
+  </footer>
+
+</div>
+
+<script>
+  // Highlight whichever stop we should be at, if the page is opened during the crawl.
+  (function () {
+    var mins = function (t) { var p = t.split(':'); return +p[0] * 60 + +p[1]; };
+    var now = new Date();
+    var nowMins = now.getHours() * 60 + now.getMinutes();
+    document.querySelectorAll('.stop').forEach(function (el) {
+      var s = mins(el.dataset.start), e = mins(el.dataset.end);
+      if (nowMins >= s && nowMins < e) el.classList.add('now');
+    });
+  })();
+</script>
+</body>
+</html>
