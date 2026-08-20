@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Switzerland — Lauterbrunnen &amp; Grindelwald</title>
+<meta name="description" content="Four days in the Jungfrau region. Waterfalls, two mountains, and the Top of Europe.">
+<meta property="og:title" content="Switzerland — Lauterbrunnen &amp; Grindelwald">
+<meta property="og:description" content="Four days in the Jungfrau region. Every day climbs higher than the last.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#0B141C;
+    --raise:#122130;
+    --raise2:#16293A;
+    --chalk:#E9EFF3;
+    --dim:#7A93A4;
+    --ice:#8ECDEC;
+    --snow:#FFFFFF;
+    --amber:#F0A93B;
+    --grey:#5E7484;
+    --rule:rgba(233,239,243,.13);
+    --pad:clamp(18px,5.5vw,40px);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;background:var(--ground);color:var(--chalk);
+    font-family:'Archivo',system-ui,-apple-system,sans-serif;
+    font-size:16.5px;line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:640px;margin:0 auto;padding:0 var(--pad) 70px;}
+
+  /* header */
+  .top{padding:clamp(34px,9vw,60px) 0 0;}
+  .kicker{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:600;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--ice);margin:0 0 14px;
+  }
+  h1{
+    font-family:'Syne','Archivo',sans-serif;font-weight:800;
+    font-size:clamp(34px,9.5vw,54px);line-height:.96;letter-spacing:-.025em;margin:0 0 16px;
+  }
+  .intro{margin:0;color:var(--dim);font-size:15.5px;max-width:48ch;}
+  .intro b{color:var(--chalk);font-weight:600;}
+
+  /* elevation signature */
+  .elev{margin-top:34px;padding-top:26px;border-top:1px solid var(--rule);}
+  .sechead{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:0 0 16px;
+  }
+  .bars{
+    display:flex;align-items:flex-end;gap:10px;height:190px;
+    background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+    padding:16px 14px 0;
+  }
+  .bar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;height:100%;text-align:center;}
+  .bar .amt{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+    color:var(--ice);margin-bottom:5px;letter-spacing:.02em;
+  }
+  .bar .col{
+    background:linear-gradient(180deg,var(--ice),rgba(142,205,236,.25));
+    border-radius:2px 2px 0 0;transform-origin:bottom center;
+  }
+  .bar.peak .col{background:linear-gradient(180deg,var(--snow),rgba(142,205,236,.35));}
+  .bar.peak .amt{color:var(--snow);font-weight:600;}
+  .barlabels{display:flex;gap:10px;padding:0 14px;margin-top:8px;}
+  .barlabels div{
+    flex:1;text-align:center;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    color:var(--dim);letter-spacing:.06em;line-height:1.35;
+  }
+  .elevnote{margin:16px 0 0;font-size:14.5px;color:var(--dim);}
+  .elevnote b{color:var(--chalk);font-weight:600;}
+
+  /* orientation map */
+  .geo{margin-top:34px;padding-top:26px;border-top:1px solid var(--rule);}
+  .geobox{
+    background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:14px 12px 10px;
+  }
+  .geobox svg{display:block;width:100%;height:auto;}
+  .geokey{
+    display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:12px;padding-top:11px;
+    border-top:1px solid var(--rule);
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;color:var(--dim);
+  }
+  .geokey i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle;}
+  .geonote{margin:16px 0 0;font-size:14.5px;color:var(--dim);}
+  .geonote b{color:var(--chalk);font-weight:600;}
+
+  /* tomorrow banner */
+  .verdict{
+    margin:22px 0 0;border-radius:4px;padding:18px 20px;
+    border:1px solid var(--rule);background:var(--raise);
+    border-left:4px solid var(--grey);
+  }
+  .verdict .stamp{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:0 0 8px;
+  }
+  .verdict .call{
+    font-family:'Syne','Archivo',sans-serif;font-weight:800;
+    font-size:clamp(24px,6.5vw,32px);letter-spacing:-.02em;line-height:1.05;
+    margin:0 0 8px;color:var(--dim);
+  }
+  .verdict p.detail{margin:0;font-size:15px;color:var(--dim);}
+  .verdict.go{border-left-color:#6FCF97;background:rgba(111,207,151,.07);}
+  .verdict.go .call{color:#6FCF97;}
+  .verdict.changed{border-left-color:var(--amber);background:rgba(240,169,59,.08);}
+  .verdict.changed .call{color:var(--amber);}
+  .verdict.off{border-left-color:#E05A45;background:rgba(224,90,69,.08);}
+  .verdict.off .call{color:#E05A45;}
+
+  /* RAG status */
+  .dot{
+    display:inline-block;width:11px;height:11px;border-radius:50%;
+    flex:0 0 auto;background:var(--grey);
+  }
+  .dot.green{background:#6FCF97;box-shadow:0 0 0 3px rgba(111,207,151,.16);}
+  .dot.amber{background:#F0A93B;box-shadow:0 0 0 3px rgba(240,169,59,.16);}
+  .dot.red{background:#E05A45;box-shadow:0 0 0 3px rgba(224,90,69,.16);}
+  .dot.grey{background:#5E7484;}
+
+  /* status board */
+  .board{margin-top:34px;padding-top:26px;border-top:1px solid var(--rule);}
+  .boardbox{background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:6px 16px;}
+  .brow{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--rule);}
+  .brow:last-child{border-bottom:0;}
+  .bday{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+    color:var(--chalk);letter-spacing:.06em;flex:0 0 66px;
+  }
+  .bwhat{font-size:14px;color:var(--dim);flex:1;}
+  .rag{
+    display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:14px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;color:var(--dim);
+  }
+  .rag span{display:flex;align-items:center;gap:6px;}
+
+  /* when-to-check schedule */
+  .sched{margin-top:18px;}
+  .sched .row{
+    display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--rule);
+  }
+  .sched .row:last-child{border-bottom:0;}
+  .sched .w{
+    flex:0 0 92px;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);
+    padding-top:2px;line-height:1.5;
+  }
+  .sched .d{flex:1;font-size:14.5px;color:var(--dim);}
+  .sched .d b{color:var(--chalk);font-weight:600;}
+
+
+  /* ---- live weather ---- */
+  .wx{background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+    padding:15px 16px;margin:0 0 14px;}
+  .wxtop{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+  .wxst{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--dim);}
+  .wxgrid{display:grid;gap:9px;}
+  .wxcell{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+    padding-bottom:9px;border-bottom:1px solid var(--rule);}
+  .wxcell:last-child{border-bottom:0;padding-bottom:0;}
+  .wxl{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
+    color:var(--dim);letter-spacing:.04em;}
+  .wxl b{display:block;color:var(--chalk);font-size:12px;letter-spacing:0;
+    font-family:'Archivo',sans-serif;font-weight:600;margin-bottom:2px;}
+  .wxv{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;
+    color:var(--chalk);text-align:right;white-space:nowrap;}
+  .wxv small{display:block;color:var(--dim);font-size:10px;margin-top:2px;}
+  .wxnote{margin:12px 0 0;font-size:13px;color:var(--dim);line-height:1.5;}
+  .wxnote b{color:var(--chalk);font-weight:600;}
+  .wxcred{margin:9px 0 0;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:9px;letter-spacing:.06em;color:var(--dim);opacity:.65;}
+  .wxcred a{color:inherit;}
+
+  /* per-day check block */
+  .check{
+    background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+    padding:14px 16px;margin:0 0 20px;
+  }
+  .checktop{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .checktop .st{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--dim);
+  }
+  .check p{margin:0 0 10px;font-size:14px;color:var(--dim);}
+  .tier{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.14em;text-transform:uppercase;margin:16px 0 6px;}
+  .tier.now{color:var(--amber);}
+  .tier.later{color:var(--dim);}
+  .check .tier:first-of-type{margin-top:0;}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;}
+  .chip{
+    display:inline-block;padding:5px 10px;border-radius:2px;text-decoration:none;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.06em;color:var(--ice);border:1px solid rgba(142,205,236,.3);
+    background:rgba(142,205,236,.06);
+  }
+  .chip:hover{background:rgba(142,205,236,.14);}
+
+  /* route button */
+  .route{
+    display:block;text-align:center;text-decoration:none;
+    background:rgba(142,205,236,.1);border:1px solid rgba(142,205,236,.35);
+    border-radius:3px;padding:11px 14px;margin:0 0 20px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--ice);
+  }
+  .route:hover{background:rgba(142,205,236,.17);}
+
+  /* brief boxes */
+  .brief{margin-top:34px;padding-top:26px;border-top:1px solid var(--rule);}
+  .brief h2, .sugg h2, .pack h2{
+    font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:19px;
+    letter-spacing:-.01em;margin:0 0 14px;
+  }
+  ul.plain{list-style:none;padding:0;margin:0;}
+  ul.plain li{
+    display:flex;gap:12px;align-items:baseline;padding:9px 0;
+    font-size:15.5px;color:var(--dim);border-bottom:1px solid var(--rule);
+  }
+  ul.plain li:last-child{border-bottom:0;}
+  ul.plain li span.dot{
+    flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:var(--ice);
+    transform:translateY(-2px);
+  }
+  ul.plain b{color:var(--chalk);font-weight:600;}
+
+  /* day sections */
+  .day{margin-top:38px;padding-top:26px;border-top:1px solid var(--rule);}
+  .daytop{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:6px;}
+  .dnum{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--ice);
+  }
+  .dsleep{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
+    color:var(--dim);letter-spacing:.06em;
+  }
+  .day h2{
+    font-family:'Syne','Archivo',sans-serif;font-weight:800;
+    font-size:clamp(24px,6.2vw,31px);letter-spacing:-.025em;line-height:1.08;margin:0 0 10px;
+  }
+  .dlede{margin:0 0 20px;color:var(--dim);font-size:15px;}
+
+  /* fixed departure callout */
+  .fixed{
+    background:rgba(240,169,59,.09);border:1px solid rgba(240,169,59,.28);
+    border-left:3px solid var(--amber);border-radius:3px;
+    padding:14px 16px;margin:0 0 20px;
+  }
+  .fixed .lbl{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--amber);margin:0 0 6px;
+  }
+  .fixed p{margin:0;font-size:14.5px;color:var(--chalk);}
+  .fixed p + p{margin-top:6px;}
+
+  /* stop rows */
+  .stop{padding:16px 0;border-top:1px solid var(--rule);}
+  .stop:first-of-type{border-top:0;padding-top:0;}
+  .clock{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;
+    font-size:13.5px;color:var(--ice);letter-spacing:.03em;margin:0 0 4px;
+  }
+  .stop h3{
+    font-family:'Syne','Archivo',sans-serif;font-weight:700;
+    font-size:18.5px;letter-spacing:-.01em;line-height:1.2;margin:0 0 5px;
+  }
+  .stop p{margin:0;font-size:14.5px;color:var(--dim);}
+  .stop p + p{margin-top:7px;}
+  .maplink{
+    display:inline-block;margin-top:8px;padding:3px 9px;border-radius:2px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ice);border:1px solid rgba(142,205,236,.35);
+    text-decoration:none;white-space:nowrap;
+  }
+  .maplink:hover{background:rgba(142,205,236,.1);}
+  .cost{
+    display:inline-block;margin-left:7px;padding:2px 7px;border-radius:2px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    background:rgba(233,239,243,.07);color:var(--dim);
+  }
+  .free{color:var(--ice);}
+
+  /* option / alt */
+  .alt{
+    background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+    padding:15px 16px;margin-top:16px;
+  }
+  .alt h4{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:0 0 7px;
+  }
+  .alt p{margin:0;font-size:14.5px;color:var(--dim);}
+  .alt b{color:var(--chalk);font-weight:600;}
+
+  /* walking path inside a site */
+  .path{list-style:none;padding:0;margin:10px 0 0;}
+  .path li{
+    position:relative;padding:0 0 14px 26px;font-size:14.5px;color:var(--dim);
+    border-left:1px solid rgba(255,255,255,.18);margin-left:7px;
+  }
+  .path li:last-child{border-left-color:transparent;padding-bottom:0;}
+  .path li::before{
+    content:"";position:absolute;left:-5px;top:6px;width:9px;height:9px;
+    border-radius:50%;background:var(--snow);
+  }
+  .path b{color:var(--chalk);font-weight:600;}
+  .path em{font-style:normal;color:var(--snow);font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.06em;}
+
+  /* reference links */
+  .refs{margin-top:40px;padding-top:26px;border-top:1px solid var(--rule);}
+  .refs h2{
+    font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:19px;
+    letter-spacing:-.01em;margin:0 0 8px;
+  }
+  .refs .lede{margin:0 0 20px;font-size:15px;color:var(--dim);}
+  .reflist{list-style:none;padding:0;margin:0 0 22px;}
+  .reflist li{padding:12px 0;border-bottom:1px solid var(--rule);}
+  .reflist li:last-child{border-bottom:0;}
+  .reflist a{
+    font-family:'Syne','Archivo',sans-serif;font-weight:700;font-size:16px;
+    text-decoration:none;letter-spacing:-.01em;
+  }
+  .reflist a:hover{text-decoration:underline;}
+  .reflist p{margin:3px 0 0;font-size:14px;color:var(--dim);}
+  .when{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--amber);
+    display:block;margin-bottom:4px;
+  }
+
+  /* suggestions */
+  .sugg{margin-top:40px;padding-top:26px;border-top:1px solid var(--rule);}
+  .card{
+    background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+    padding:18px;margin-bottom:12px;
+  }
+  .card h3{
+    font-family:'Syne','Archivo',sans-serif;font-weight:700;font-size:17px;
+    letter-spacing:-.01em;margin:0 0 7px;
+  }
+  .card p{margin:0;font-size:14.5px;color:var(--dim);}
+  .card p + p{margin-top:8px;}
+  .card b{color:var(--chalk);font-weight:600;}
+
+  footer{
+    margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);
+    font-size:14px;color:var(--dim);
+  }
+  footer b{color:var(--chalk);font-weight:600;}
+  a{color:var(--ice);}
+  a:focus-visible{outline:2px solid var(--ice);outline-offset:3px;}
+
+  @media (prefers-reduced-motion:no-preference){
+    .bar .col{animation:rise .7s cubic-bezier(.2,.75,.3,1) backwards;}
+    @keyframes rise{from{transform:scaleY(0);opacity:0;}to{transform:scaleY(1);}}
+  }
+
+  /* ---- today: live feed check ---- */
+  .today{background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+    padding:15px 17px;margin:24px 0 0;display:flex;align-items:center;gap:14px;}
+  .tdot{flex:0 0 auto;width:10px;height:10px;border-radius:50%;background:#5E7484;
+    transition:background .3s;}
+  .tdot.green{background:#6FCF97;box-shadow:0 0 0 3px rgba(111,207,151,.15);}
+  .tdot.amber{background:#E0A93B;box-shadow:0 0 0 3px rgba(224,169,59,.15);}
+  .tdot.red{background:#D9634E;box-shadow:0 0 0 3px rgba(217,99,78,.15);}
+  .tbody{flex:1;min-width:0;}
+  .tlbl{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:4px;}
+  .tval{margin:0;font-family:'Archivo',sans-serif;font-weight:600;font-size:15.5px;
+    color:var(--chalk);line-height:1.35;}
+  .tnote{margin:4px 0 0;font-size:12.5px;color:var(--dim);line-height:1.45;}
+  .sig{margin-top:22px;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:13px;color:var(--dim);opacity:.35;letter-spacing:.04em;user-select:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <p class="kicker">1–5 October · Bernese Oberland</p>
+    <h1>Four days<br>going up.</h1>
+    <p class="intro">Lauterbrunnen, then Grindelwald. Waterfalls, two mountains, and the Top of Europe. <b>Every day climbs higher than the one before it</b> — which is the single most useful thing to know when you're packing.</p>
+
+      <div class="today">
+      <span class="tdot" id="tdot"></span>
+      <div class="tbody">
+        <span class="tlbl" id="tlbl">Live now · Lauterbrunnen</span>
+        <p class="tval" id="tval">Checking the feed…</p>
+        <p class="tnote" id="tnote">A reading here means the live weather feed is working. If it stalls, the day panels below won't fill either.</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="elev">
+    <p class="sechead">How high we get each day</p>
+    <div class="bars">
+      <div class="bar"><span class="amt">795m</span><div class="col" style="height:22.7%;animation-delay:.1s"></div></div>
+      <div class="bar"><span class="amt">1638m</span><div class="col" style="height:46.8%;animation-delay:.25s"></div></div>
+      <div class="bar"><span class="amt">2343m</span><div class="col" style="height:66.9%;animation-delay:.4s"></div></div>
+      <div class="bar peak"><span class="amt">3454m</span><div class="col" style="height:98.7%;animation-delay:.55s"></div></div>
+    </div>
+    <div class="barlabels">
+      <div>DAY 1<br>valley</div>
+      <div>DAY 2<br>Mürren</div>
+      <div>DAY 3<br>Männlichen</div>
+      <div>DAY 4<br>Jungfraujoch</div>
+    </div>
+    <p class="elevnote">Day 4 tops out at <b>3,454m</b> — about eleven thousand feet. It can be well below freezing up there in October while the valley is mild and green. <b>Pack for the top, not for the village.</b></p>
+  </section>
+
+
+  <section class="geo">
+    <p class="sechead">Where we actually are</p>
+    <div class="geobox">
+      <svg viewBox="-26 -14 452 350" role="img" aria-label="Schematic map of the Lauterbrunnen and Grindelwald valleys">
+        <!-- valley floors -->
+        <path d="M19 19 L96 203 L83 290" fill="none" stroke="rgba(233,239,243,.16)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19 19 L348 152" fill="none" stroke="rgba(233,239,243,.16)" stroke-width="7" stroke-linecap="round"/>
+        <!-- high ridge -->
+        <path d="M162 174 L202 230 L249 243 L244 305" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round"/>
+        <path d="M69 281 L62 207" fill="none" stroke="rgba(255,255,255,.22)" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round"/>
+
+        <g font-family="IBM Plex Mono, monospace" font-size="12" fill="#7A93A4">
+          <!-- day 1 -->
+          <circle cx="19" cy="19" r="5" fill="#7A93A4"/><text x="30" y="23">Interlaken Ost</text>
+          <circle cx="96" cy="203" r="6" fill="#7A93A4"/><text x="106" y="200" fill="#E9EFF3">Lauterbrunnen</text>
+          <!-- day 2 -->
+          <circle cx="91" cy="221" r="4.5" fill="#8ECDEC"/><text x="101" y="225" fill="#8ECDEC">Staubbach</text>
+          <circle cx="108" cy="261" r="4.5" fill="#8ECDEC"/><text x="118" y="265" fill="#8ECDEC">Trümmelbach</text>
+          <circle cx="83" cy="290" r="4.5" fill="#8ECDEC"/><text x="93" y="303" fill="#8ECDEC">Stechelberg</text>
+          <circle cx="69" cy="281" r="5" fill="#8ECDEC"/><text x="6" y="271" fill="#8ECDEC">Mürren</text>
+          <circle cx="62" cy="207" r="4.5" fill="#8ECDEC"/><text x="-24" y="199" fill="#8ECDEC">Grütschalp</text>
+          <!-- day 3 -->
+          <circle cx="348" cy="152" r="6" fill="#A8E0B4"/><text x="316" y="170" fill="#E9EFF3">Grindelwald</text>
+          <circle cx="387" cy="79" r="4.5" fill="#A8E0B4"/><text x="356" y="70" fill="#A8E0B4">First</text>
+          <circle cx="327" cy="61" r="4.5" fill="#A8E0B4"/><text x="255" y="52" fill="#A8E0B4">Bachalpsee</text>
+          <circle cx="162" cy="174" r="5" fill="#A8E0B4"/><text x="118" y="165" fill="#A8E0B4">Männlichen</text>
+          <circle cx="202" cy="230" r="5" fill="#A8E0B4"/><text x="212" y="226" fill="#A8E0B4">Kl. Scheidegg</text>
+          <!-- day 4 -->
+          <circle cx="318" cy="151" r="4" fill="#FFFFFF"/>
+          <circle cx="249" cy="243" r="4" fill="#FFFFFF"/><text x="259" y="256" fill="#FFFFFF">Eigergletscher</text>
+          <circle cx="244" cy="305" r="6.5" fill="#FFFFFF"/><text x="256" y="309" fill="#FFFFFF">Jungfraujoch</text>
+        </g>
+      </svg>
+      <div class="geokey">
+        <span><i style="background:#7A93A4"></i>Day 1 · arriving</span>
+        <span><i style="background:#8ECDEC"></i>Day 2 · Lauterbrunnen valley</span>
+        <span><i style="background:#A8E0B4"></i>Day 3 · Grindelwald</span>
+        <span><i style="background:#FFFFFF"></i>Day 4 · the summit</span>
+      </div>
+    </div>
+    <p class="geonote">Two valleys meeting at Interlaken. We spend two nights down the <b>left</b> one, cross to the <b>right</b> one on Saturday, then go up the dotted ridge between them — that's the Panorama Trail on Day 3 and the tunnel through the Eiger on Day 4.</p>
+    <a class="route" href="https://www.google.com/maps/dir/46.6906,7.8697/46.5984,7.9081/46.5597,7.8943/46.6242,8.0341/46.5851,7.9608/46.5475,7.9821" target="_blank" rel="noopener">Open the whole region in Google Maps ↗</a>
+  </section>
+
+
+  <section class="board">
+    <p class="sechead">Day status — updated as we get closer</p>
+    <div class="boardbox">
+      <!-- LEAD: change the dot class on each row (grey / green / amber / red) as you check. -->
+      <div class="brow"><span class="dot green"></span><span class="bday">DAY 1</span><span class="bwhat">Nothing to arrange — tickets bought on the day</span></div>
+      <div class="brow"><span class="dot grey"></span><span class="bday">DAY 2</span><span class="bwhat">Weather only — nothing to arrange</span></div>
+      <div class="brow"><span class="dot amber"></span><span class="bday">DAY 3</span><span class="bwhat">Lift dates and dinner — the only advance jobs</span></div>
+      <div class="brow"><span class="dot grey"></span><span class="bday">DAY 4</span><span class="bwhat">Booked — clear sky or we swap to Monday</span></div>
+      <div class="brow"><span class="dot green"></span><span class="bday">DAY 5</span><span class="bwhat">Transfer confirmed and paid</span></div>
+    </div>
+    <div class="rag">
+      <span><i class="dot green"></i>Going ahead</span>
+      <span><i class="dot amber"></i>Something uncertain</span>
+      <span><i class="dot red"></i>Changing the plan</span>
+      <span><i class="dot grey"></i>Can't be known yet</span>
+    </div>
+    <p class="geonote"><b>Amber means there is something I can go and find out today</b> — a lift closure, a timetable, a booking. Those turn green as I close them off; none of them need waiting for.</p>
+    <p class="geonote"><b>Grey means genuinely unknowable yet.</b> Mountain forecasts aren't worth reading beyond about five days, so weather checking starts around <b>27 September</b> and the firm calls get made the night before — never over breakfast.</p>
+
+    <div class="sched">
+      <div class="row">
+        <div class="w">~1 week out<br>24 Sept</div>
+        <div class="d"><b>Are the lifts running.</b> Early October sits at the edge of shoulder season, when maintenance closures start. Three lifts carry Day 3 — First, Grindelwald–Männlichen and Lauterbrunnen–Grütschalp — and the operating-info page lists their dates. A week is enough to swap Day 3 for the Schilthorn or a valley day if one is shut.</div>
+      </div>
+      <div class="row">
+        <div class="w">~5 days out<br>27 Sept</div>
+        <div class="d"><b>Weather starts to mean something.</b> Mountain forecasts aren't worth much beyond this. Watch Day 4 in particular — it's the one with somewhere to move to.</div>
+      </div>
+      <div class="row">
+        <div class="w">Night before<br>each evening</div>
+        <div class="d"><b>The call.</b> Webcams for cloud, operating info for anything that's changed, SBB for exact times. Decided the night before, not over breakfast.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="brief">
+    <h2>Four things before we go</h2>
+    <ul class="plain">
+      <li><span class="dot"></span><div><b>The Jungfrau Travel Pass covers almost everything</b> — trains, gondolas, cable cars, the postbus. When in doubt, just show it. The two exceptions are below.</div></li>
+      <li><span class="dot"></span><div><b>Jungfraujoch costs extra:</b> CHF 79 supplement plus CHF 10 seat reservation. Already booked for the 08:13 train on Day 4.</div></li>
+      <li><span class="dot"></span><div><b>Download your tickets before you fly.</b> Signal on the mountains is unreliable and you'll want them in your phone wallet, not in your email.</div></li>
+      <li><span class="dot"></span><div><b>A few departures are fixed and won't wait</b> — they're marked in amber on each day. Everything else is flexible.</div></li>
+    </ul>
+  </section>
+
+  <!-- ================= DAY 1 ================= -->
+  <section class="day">
+    <div class="daytop">
+      <span class="dnum">Day 1 · Thursday 1 October</span>
+      <span class="dsleep">Sleep: Lauterbrunnen</span>
+    </div>
+    <h2>Getting to the valley</h2>
+    <p class="dlede">Land at Zürich early, then about four hours across the country by train. Nothing planned once we arrive — the point of today is to arrive.</p>
+
+    <a class="route" href="https://www.google.com/maps/dir/47.4515,8.5646/46.6906,7.8697/46.5984,7.9081" target="_blank" rel="noopener">Day 1 route in Google Maps ↗</a>
+
+    <div class="wx" data-wx="sd1">
+      <div class="wxtop"><span class="dot grey"></span><span class="wxst">Loading…</span></div>
+      <div class="wxgrid">
+        <div class="wxcell"><span class="wxl"><b>Lauterbrunnen</b>795 m · where we sleep</span><span class="wxv">—</span></div>
+      </div>
+      <p class="wxnote">Checking…</p>
+      <p class="wxcred">Live · weather data by <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a></p>
+    </div>
+
+    <div class="check">
+      <div class="checktop"><span class="dot green"></span><span class="st">Nothing to arrange</span></div>
+      <p><b>Buy a Zürich Flughafen → Interlaken Ost ticket at the airport station when we land.</b> The Jungfrau pass doesn't cover this leg — it starts at Interlaken Ost. Walk-up, no booking needed.</p>
+      <div class="chips"><a class="chip" href="https://www.sbb.ch/en" target="_blank" rel="noopener">SBB app ↗</a><a class="chip" href="https://www.jungfrau.ch/en-gb/jungfrau-travel-pass/" target="_blank" rel="noopener">What the pass covers ↗</a></div>
+    </div>
+
+    <div class="stop">
+      <p class="clock">07:10</p>
+      <h3>Land at Zürich</h3>
+      <p>Straight down to the station beneath the terminal. Buy the travel pass here if you haven't already.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">Train · ~2 hrs <span class="cost free">PASS</span></p>
+      <h3>Zürich Flughafen → Interlaken Ost</h3>
+      <p>Direct on the IC81. Sit on the right after Bern for the lake.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">Change · ~20 mins <span class="cost free">PASS</span></p>
+      <h3>Interlaken Ost → Lauterbrunnen</h3>
+      <p>The last stretch, up into the valley. Waterfalls come off the cliffs on both sides of this village — it's what the valley is known for.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Lauterbrunnen%20station&query_place_id=ChIJr_xuBLehj0cRF1G9OEzFvWw" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="alt">
+      <h4>Rest of the day</h4>
+      <p>Deliberately empty. It's a red-eye and tomorrow starts at quarter to eight. Walk the village, look up, eat early.</p>
+    </div>
+  </section>
+
+  <!-- ================= DAY 2 ================= -->
+  <section class="day">
+    <div class="daytop">
+      <span class="dnum">Day 2 · Friday 2 October</span>
+      <span class="dsleep">Sleep: Lauterbrunnen</span>
+    </div>
+    <h2>Waterfalls, then Mürren</h2>
+    <p class="dlede">Three waterfalls in the morning while the light is low, then up the cliff to Mürren for lunch and a cliff-edge walk with the Eiger, Mönch and Jungfrau straight ahead.</p>
+
+    <a class="route" href="https://www.google.com/maps/dir/46.5984,7.9081/46.5896,7.9053/46.5555,7.8957/46.5695,7.9142/46.5551,7.9017/46.5597,7.8943/46.5965,7.8909/46.5984,7.9081" target="_blank" rel="noopener">Day 2 route in Google Maps ↗</a>
+
+    <div class="wx" data-wx="sd2">
+      <div class="wxtop"><span class="dot grey"></span><span class="wxst">Loading…</span></div>
+      <div class="wxgrid">
+        <div class="wxcell"><span class="wxl"><b>Lauterbrunnen</b>795 m · where we sleep</span><span class="wxv">—</span></div>
+        <div class="wxcell"><span class="wxl"><b>Mürren cliff walk</b>1,638 m · where we go</span><span class="wxv">—</span></div>
+      </div>
+      <p class="wxnote">Checking…</p>
+      <p class="wxcred">Live · weather data by <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a></p>
+    </div>
+
+    <div class="check">
+      <div class="checktop"><span class="dot grey"></span><span class="st">Weather only — checked the night before</span></div>
+      <p><b>Cloud on the cliff walk.</b> In low cloud you get a hedge instead of three mountains, and we'd take the train back instead of walking. The waterfalls are fine either way.</p>
+      <p>Also worth a look: that Trümmelbach is open on the day, and the exact Postbus 141 times.</p>
+      <div class="chips"><a class="chip" href="https://www.jungfrau.ch/en-gb/live/webcams/" target="_blank" rel="noopener">Mürren webcam ↗</a><a class="chip" href="https://truemmelbachfaelle.ch/en/" target="_blank" rel="noopener">Trümmelbach ↗</a><a class="chip" href="https://www.sbb.ch/en" target="_blank" rel="noopener">Postbus 141 ↗</a></div>
+    </div>
+
+    <div class="fixed">
+      <p class="lbl">Fixed departure</p>
+      <p><b>09:00 · Postbus 141 to Stechelberg.</b> Be at the stop by 08:50. The whole morning is built around this one.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">07:45</p>
+      <h3>Out the door</h3>
+      <p>Twelve minutes on foot to the first waterfall.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">08:00 · ~38 mins</p>
+      <h3>Staubbachfall</h3>
+      <p>Stand on the main street looking north at eight — that's the shot, before the sun comes over the cliff.</p>
+      <p><b>You will get wet</b> climbing the staircase up behind the fall. Bring the jacket, not just for the cold.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Staubbach%20Falls&query_place_id=ChIJX0OtFkugj0cRhocu2FtBoRI" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">09:20 <span class="cost free">PASS</span></p>
+      <h3>Mürrenbachfall</h3>
+      <p>We ride the bus to the end of the valley, then walk back north. A long single drop off the cliff above Stechelberg. Ten minutes, no climbing.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=M%C3%BCrrenbachfall&query_place_id=ChIJIe0m20egj0cRm92KK0-JKCc" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">10:00 · ~1 hr <span class="cost">CHF 16</span></p>
+      <h3>Trümmelbach Falls</h3>
+      <p>Ten glacier waterfalls carved <b>inside</b> the mountain — a lift takes you up and you walk down through the rock beside them. The loudest, coldest, strangest hour of the trip.</p>
+      <p>Opens 08:30. Cold and wet inside; jacket and shoes with grip.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Tr%C3%BCmmelbach%20Falls&query_place_id=ChIJU6KVvT2gj0cR0kS03Ayzf80" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">11:15 → 11:45 <span class="cost free">PASS</span></p>
+      <h3>Postbus, then cable car up to Mürren</h3>
+      <p>We pick the bus up at Trümmelbach rather than walking back to the village — saves an hour of doubling back. Then the cable car climbs almost vertically out of the valley.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Schilthornbahn%20Stechelberg&query_place_id=ChIJRymAdXahj0cRRsJaaVdPeIA" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">12:00</p>
+      <h3>Lunch in Mürren — Eiger Stübli</h3>
+      <p>Booked. Fondue, terrace, and the local Schwarz Mönch beer. It's the best-rated place in the village and a small room, which is why it's booked rather than walked into.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Eiger%20St%C3%BCbli%20M%C3%BCrren&query_place_id=ChIJhVaWp8Ghj0cRezVYt_1_aDI" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">14:00 → 14:20 <span class="cost free">PASS</span></p>
+      <h3>Train to Grütschalp</h3>
+      <p>Fourteen minutes along the cliff, then we turn round and walk back. Going this direction means the three big mountains are in front of you the entire way rather than over your shoulder.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Gr%C3%BCtschalp&query_place_id=ChIJpRhP0auhj0cRmj-pfa1fvjU" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">14:20 → 15:50 · 3.5 km, gentle</p>
+      <h3>The cliff walk back to Mürren</h3>
+      <p>An hour and a half, almost flat, along the lip of the valley. Eiger, Mönch and Jungfrau across the gap the whole way. This is the walk people remember.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">16:10 → 16:40 <span class="cost free">PASS</span></p>
+      <h3>Train, cable car, home</h3>
+      <p>Back to Grütschalp, then the cable car drops straight into Lauterbrunnen village.</p>
+    </div>
+
+    <div class="alt">
+      <h4>If your legs have had enough</h4>
+      <p><b>Winteregg</b> station sits halfway along the trail and has a restaurant — hop on the train there instead of finishing the walk. Say so and we'll split; nobody needs to tough it out.</p>
+      <p>Or skip the walk entirely: cable car down from Mürren to Stechelberg and the postbus home.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Winteregg&query_place_id=ChIJQ-xTWEWgj0cRBlXNtlw_4YE" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+  </section>
+
+  <!-- ================= DAY 3 ================= -->
+  <section class="day">
+    <div class="daytop">
+      <span class="dnum">Day 3 · Saturday 3 October</span>
+      <span class="dsleep">Sleep: Grindelwald</span>
+    </div>
+    <h2>Two mountains, one day</h2>
+    <p class="dlede">We change valleys first thing, then climb First for an alpine lake in the morning and Männlichen for a ridge walk in the afternoon. The longest day of the trip, and the best one.</p>
+
+    <a class="route" href="https://www.google.com/maps/dir/46.5984,7.9081/46.6906,7.8697/46.6242,8.0341/46.6606,8.0536/46.6694,8.0233/46.6247,8.0190/46.6131,7.9410/46.5851,7.9608/46.6242,8.0341" target="_blank" rel="noopener">Day 3 route in Google Maps ↗</a>
+
+    <div class="wx" data-wx="sd3">
+      <div class="wxtop"><span class="dot grey"></span><span class="wxst">Loading…</span></div>
+      <div class="wxgrid">
+        <div class="wxcell"><span class="wxl"><b>Grindelwald</b>1,034 m · where we sleep</span><span class="wxv">—</span></div>
+        <div class="wxcell"><span class="wxl"><b>Männlichen ridge</b>2,343 m · where we go</span><span class="wxv">—</span></div>
+      </div>
+      <p class="wxnote">Checking…</p>
+      <p class="wxcred">Live · weather data by <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a></p>
+    </div>
+
+    <div class="check">
+      <div class="checktop"><span class="dot amber"></span><span class="st">The day most exposed to a lift closure</span></div>
+      <p class="tier now">A week out</p>
+      <p>Three lifts carry this day: <b>First Cable Car</b>, <b>Grindelwald–Männlichen Cableway</b> and <b>Lauterbrunnen–Grütschalp</b>. All three are listed on the operating-info page with their dates. Unlike Day 4 this one can't be pushed to Monday, so if something is shut we swap it for the Schilthorn or a valley day.</p>
+      <div class="chips"><a class="chip" href="https://www.jungfrau.ch/en-gb/live/operating-info/" target="_blank" rel="noopener">Lift operating dates ↗</a><a class="chip" href="https://www.schilthorn.ch/en" target="_blank" rel="noopener">Schilthorn ↗</a></div>
+      <p class="tier later">The night before</p>
+      <p>Cloud on the ridge. The Panorama Trail in fog is just a walk.</p>
+      <div class="chips"><a class="chip" href="https://www.jungfrau.ch/en-gb/live/webcams/" target="_blank" rel="noopener">Männlichen &amp; First webcams ↗</a></div>
+    </div>
+
+    <div class="fixed">
+      <p class="lbl">Fixed departures</p>
+      <p><b>07:00 check out · 07:15 train.</b> Bags packed the night before.</p>
+      <p><b>14:00 Männlichen gondola.</b> Everything after it is a chain — if this slips, the ridge walk ends in the dark.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">07:15 → 08:30 <span class="cost free">PASS</span></p>
+      <h3>Lauterbrunnen → Interlaken Ost → Grindelwald</h3>
+      <p>Twenty minutes, change, thirty-five minutes. Bags dropped by half eight and we go straight back out.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">09:15 → 09:40 <span class="cost free">PASS</span></p>
+      <h3>Gondola up to First · 2,168m</h3>
+      <p>The Eiger sits in the window on the way up. At the top: the <b>Cliff Walk</b>, a walkway bolted to the rock face, and a 360° view over the Eiger, Mönch, Jungfrau and both valleys.</p>
+      <p>Group photo here — best backdrop we'll get all week.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Grindelwald-First&query_place_id=ChIJaWvNeUGbj0cRU8XxBO_HIuo" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">10:00 → 11:45 · 3 km return</p>
+      <h3>Bachalpsee</h3>
+      <p>An hour out to a mountain lake that mirrors the Schreckhorn and Wetterhorn on a still morning. Flat-ish, and the payoff is immediate.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bachalpsee&query_place_id=ChIJVX-12qKZj0cRYYSzm0ZM5C8" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">12:30 → 13:00</p>
+      <h3>Gondola down, lunch</h3>
+      <p>An hour to sit down. <b>Two more of us arrive at half twelve</b> and join us here, so lunch is the first time all six of us are in the same place.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">14:00 → 14:30 <span class="cost free">PASS</span></p>
+      <h3>Gondola to Männlichen · 2,343m</h3>
+      <p>From Grindelwald Terminal. A kilometre's walk from the top station to the summit itself.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Grindelwald%20Terminal&query_place_id=ChIJyU0eeUyZj0cRPREZY9VFiF0" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">15:30 → 16:45 · 4.5 km, flat</p>
+      <h3>The Panorama Trail to Kleine Scheidegg</h3>
+      <p>An hour and a half along a ridge with three giants in view the whole way. Gentle — it's a stroll, not a climb.</p>
+      <p><b>At about 2 km</b> the trail curves round Mt Tschuggen. That's the clearest unobstructed view of the Eiger North Face on the entire walk — stop there.</p>
+      <p>Cows and cowbells all the way along. Very Swiss, very good photos.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=M%C3%A4nnlichen&query_place_id=ChIJTUumzlifj0cRUBY_q2pB7Yk" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">16:30 · brief stop</p>
+      <h3>Grindelwaldblick lookout tower</h3>
+      <p>Just before Kleine Scheidegg. There's a tower with a perfect view of the Eiger Nordwand, worth the detour even if nobody's hungry.</p>
+      <p><b>It shuts at 17:00</b> and we reach it around half four — so it's a thirty-minute window, and it closes if the walk runs slow. If we're behind at the halfway point we'll skip it rather than rush the ridge.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Berggasthaus%20St%C3%B6cki-Grindelwaldblick&query_place_id=ChIJAyT215-fj0cRvuAL0qj9s-U" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">16:45 → 17:30</p>
+      <h3>Kleine Scheidegg · coffee and golden hour</h3>
+      <p>Terrace facing the Eiger North Face. Coffee or hot chocolate, sit still, let the light go. Then the cogwheel train down.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Kleine%20Scheidegg&query_place_id=ChIJcWsa1qCfj0cRpwOYuoVn7Tw" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">19:00</p>
+      <h3>Dinner in Grindelwald village</h3>
+      <p>Sit-down, all six of us, first proper meal together. <b>Still to be booked</b> — Saturday night for six in October wants a table reserved rather than found.</p>
+    </div>
+
+    <div class="alt">
+      <h4>Joining us today?</h4>
+      <p>Two of us come in from Zürich and land at Grindelwald around <b>12:30</b> — roughly two hours to Interlaken Ost on the IC81, change, then thirty-five minutes up the valley.</p>
+      <p><b>Your afternoon:</b> drop the checked bags at the hotel, then find us for lunch. Ninety minutes before the gondola, so there's no rush — but don't linger over coffee either.</p>
+      <p><b>Have boots and a warm layer where you can reach them.</b> You'll go from a train to a 2,343m ridge inside two hours, and there's nowhere to repack in between.</p>
+      <p>If a connection slips, don't panic. The gondola runs continuously — take the next one and catch us on the trail, which is flat and easy walking. The only time that genuinely matters is being on the ridge by half three.</p>
+    </div>
+
+    <div class="alt">
+      <h4>If the weather turns</h4>
+      <p>Clear and bright: Schilthorn and the Bird Thrill Walk is the stronger day, if construction allows.</p>
+      <p>Low cloud: Allmendhubel alpine loop or a slow walk round Mürren village instead. No point paying for a view of the inside of a cloud.</p>
+    </div>
+  </section>
+
+  <!-- ================= DAY 4 ================= -->
+  <section class="day">
+    <div class="daytop">
+      <span class="dnum">Day 4 · Sunday 4 October</span>
+      <span class="dsleep">Sleep: Grindelwald</span>
+    </div>
+    <h2>Top of Europe</h2>
+    <p class="dlede">Jungfraujoch — 3,454m, the highest railway station in Europe, reached through a tunnel bored inside the Eiger. The one day everything else bends around.</p>
+
+    <a class="route" href="https://www.google.com/maps/dir/46.6247,8.0190/46.5787,7.9847/46.5475,7.9821/46.6134,8.0465" target="_blank" rel="noopener">Day 4 route in Google Maps ↗</a>
+
+    <div class="wx" data-wx="sd4">
+      <div class="wxtop"><span class="dot grey"></span><span class="wxst">Loading…</span></div>
+      <div class="wxgrid">
+        <div class="wxcell"><span class="wxl"><b>Grindelwald</b>1,034 m · where we sleep</span><span class="wxv">—</span></div>
+        <div class="wxcell"><span class="wxl"><b>Jungfraujoch</b>3,454 m · where we go</span><span class="wxv">—</span></div>
+      </div>
+      <p class="wxnote">Checking…</p>
+      <p class="wxcred">Live · weather data by <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a></p>
+    </div>
+
+    <div class="check">
+      <div class="checktop"><span class="dot grey"></span><span class="st">Booked — waiting on weather</span></div>
+      <p class="tier now">Before we go</p>
+      <p>Seats are reserved and paid for the 08:13. Worth confirming the <b>Eiger Express and Jungfraubahn operating dates</b>, and screenshotting the visitor map — there's no signal inside the mountain.</p>
+      <div class="chips"><a class="chip" href="https://www.jungfrau.ch/en-gb/live/operating-info/" target="_blank" rel="noopener">Operating dates ↗</a><a class="chip" href="https://www.jungfrau.ch/en-gb/jungfraujoch-top-of-europe/" target="_blank" rel="noopener">Opening times & map ↗</a></div>
+      <p class="tier later">From 27 Sept · firm call the night before</p>
+      <p><b>The big call.</b> Look at the glacier-plateau webcam, not the forecast — you can see actual cloud on the actual mountain. Clear means go; cloud means we swap to Monday morning and drop the gorge. This is the one day worth watching from five days out, because we have somewhere to move it to.</p>
+      <div class="chips"><a class="chip" href="https://www.jungfrau.ch/en-gb/live/webcams/" target="_blank" rel="noopener">Jungfraujoch webcam ↗</a></div>
+    </div>
+
+    <div class="fixed">
+      <p class="lbl">Fixed departure · booked seats</p>
+      <p><b>08:13 · Jungfrau Railway from Eigergletscher.</b> Seats are reserved and paid. Walk to the Terminal at 07:30 for the 07:45 Eiger Express.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">07:30</p>
+      <h3>Walk to Grindelwald Terminal</h3>
+      <p>About fifteen minutes on foot. Layers on before you leave — there's nowhere to repack once you're moving.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">07:45 → 08:00 <span class="cost free">PASS</span></p>
+      <h3>Eiger Express to Eigergletscher</h3>
+      <p>Fifteen minutes hanging off the side of the mountain.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Grindelwald%20Terminal&query_place_id=ChIJyU0eeUyZj0cRPREZY9VFiF0" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">08:13 → 08:41 <span class="cost">CHF 89</span></p>
+      <h3>Up through the Eiger</h3>
+      <p>Twenty-five minutes, most of it in a tunnel cut through solid rock over a century ago.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">08:41 → 11:15 · about 1.5 hrs up there</p>
+      <h3>Jungfraujoch · 3,454m</h3>
+      <p>It's all indoors and connected by tunnels and lifts — you never go outside except at the two viewpoints. Follow this order and we'll be ahead of the Interlaken crowds, who arrive mid-morning and queue for the Sphinx lift.</p>
+
+      <ol class="path">
+        <li><em>OFF THE TRAIN</em><br>Follow signs for the <b>Jungfrau Panorama</b> — a short 360° film, a few minutes, and a good place to let your body settle before the lifts.</li>
+        <li><em>LIFT UP</em><br><b>Sphinx Hall</b>, then a second lift to the <b>Sphinx Terrace</b>, higher again. Outdoors, fenced, and the big one: Aletsch Glacier on one side, half of Europe on the other. There's a short snowy slope up to the platform, so watch your footing.</li>
+        <li><em>BACK DOWN, THEN OUT</em><br><b>Glacier Plateau</b> — about ten minutes from the station and the only place you actually stand on the ice. Do it while the weather is holding; it closes in faster than the trains change.</li>
+        <li><em>250M CORRIDOR</em><br><b>Alpine Sensation</b> is the tunnel that connects Sphinx Hall to the Ice Palace — you walk through it rather than to it. Memorial plaques to the miners who cut the railway, and a giant snow globe at the end.</li>
+        <li><em>AT THE END OF IT</em><br><b>Ice Palace</b> — tunnels cut inside the glacier, sculptures in the alcoves. <b>Genuinely slippery.</b> Shoes with grip, and hold the rail.</li>
+        <li><em>BACK THE WAY YOU CAME</em><br>The corridor is a there-and-back, so you'll re-walk it to reach the station. Allow ten minutes to get to the platform.</li>
+      </ol>
+
+      <p><b>Altitude is real up here.</b> Walk slowly, drink water, don't run up the stairs. If you feel light-headed or headachy, sit down and say so — it passes, but it's better managed early.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Jungfraujoch%20Top%20of%20Europe&query_place_id=ChIJJ7nLTSeej0cR2W4949rfTfc" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">11:41 → 12:30</p>
+      <h3>Back down, lunch</h3>
+    </div>
+
+    <div class="stop">
+      <p class="clock">18:00</p>
+      <h3>Dinner</h3>
+      <p>Booked. Last proper evening in Switzerland.</p>
+    </div>
+
+    <div class="alt">
+      <h4>Optional afternoon — Glacier Gorge</h4>
+      <p>A canyon cut by the glacier, with a net strung out over the meltwater that you can walk onto. About an hour inside — you don't need to go all the way to the far end, the net is the point.</p>
+      <p><b>Getting there:</b> bus 122 from the village, ten minutes to the last stop, which is the entrance. Covered by the pass, just show it.</p>
+      <p><b>Getting back:</b> 30 minutes downhill on foot, or the last bus 122 at 18:30. Suggestion — bus up, walk down. No timing risk and the valley is in front of you the whole way.</p>
+      <p><b>CHF 20 each to get in.</b> The pass covers the bus, not the entrance — the one thing this week you pay for at the door.</p>
+      <p>Cold and damp inside even when the village is warm. Bring the jacket.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Glacier%20Canyon%20Grindelwald&query_place_id=ChIJLdRfEg-cj0cR_zyNASudVUA" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="alt">
+      <h4>The weather rule</h4>
+      <p>Jungfraujoch is a <b>clear-sky day or it isn't worth it</b>. If Sunday looks bad and Monday morning looks better, we swap. Decision gets made Saturday night, not over breakfast.</p>
+    </div>
+  </section>
+
+  <!-- ================= DAY 5 ================= -->
+  <section class="day">
+    <div class="daytop">
+      <span class="dnum">Day 5 · Monday 5 October</span>
+      <span class="dsleep">On to Chamonix</span>
+    </div>
+    <h2>Out through the mountains</h2>
+
+    <a class="route" href="https://www.google.com/maps/dir/46.6242,8.0341/45.9237,6.8694" target="_blank" rel="noopener">Day 5 route in Google Maps ↗</a>
+
+    <div class="wx" data-wx="sd5">
+      <div class="wxtop"><span class="dot grey"></span><span class="wxst">Loading…</span></div>
+      <div class="wxgrid">
+        <div class="wxcell"><span class="wxl"><b>Grindelwald</b>1,034 m · where we sleep</span><span class="wxv">—</span></div>
+      </div>
+      <p class="wxnote">Checking…</p>
+      <p class="wxcred">Live · weather data by <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a></p>
+    </div>
+
+    <div class="check">
+      <div class="checktop"><span class="dot green"></span><span class="st">Confirmed and paid</span></div>
+      <p>Private transfer booked — six passengers, eight bags, 14:00 pickup. By road, so weather barely matters. <b>The only thing that changes this day</b> is if Day 4 moves here; then the morning is Jungfraujoch and we must be back down and packed by 13:45.</p>
+      <div class="chips"><a class="chip" href="https://www.jungfrau.ch/en-gb/live/webcams/" target="_blank" rel="noopener">Webcams, only if we swapped ↗</a></div>
+    </div>
+
+    <div class="fixed">
+      <p class="lbl">Fixed departure</p>
+      <p><b>14:00 · private transfer to Chamonix.</b> Six of us, eight bags, about 3.5 hrs by road. Bags down and ready by quarter to.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">Morning</p>
+      <h3>Free</h3>
+      <p>Nothing booked. Sleep in, walk the village, or take the gondola up for one last look if it's clear.</p>
+    </div>
+  </section>
+
+  <!-- ================= SUGGESTIONS ================= -->
+
+  <section class="refs">
+    <h2>The sources, explained</h2>
+    <p class="lede">These are the links behind the day-by-day checks above — what each one is actually good for.</p>
+
+    <ul class="reflist">
+      <li>
+        <span class="when">Every night · the weather call</span>
+        <a href="https://www.jungfrau.ch/en-gb/live/webcams/" target="_blank" rel="noopener">Jungfrau Region live webcams ↗</a>
+        <p>Cameras on the Jungfraujoch glacier plateau, Kleine Scheidegg, Männlichen and First. Far more useful than a forecast — you can see the actual cloud sitting on the actual mountain. This is how the Day 4 go/no-go gets made.</p>
+      </li>
+      <li>
+        <span class="when">Every night · are the lifts running</span>
+        <a href="https://www.jungfrau.ch/en-gb/live/operating-info/" target="_blank" rel="noopener">Jungfrau operating info ↗</a>
+        <p>Live status of every train, gondola and cable car in the region. Early October is shoulder season and lifts start closing for maintenance — this page is where that shows up first.</p>
+      </li>
+      <li>
+        <span class="when">Every night · trains</span>
+        <a href="https://www.sbb.ch/en" target="_blank" rel="noopener">SBB timetable ↗</a>
+        <p>Every train, postbus and cable car in the country, including the 09:00 Postbus 141 and the last cogwheel down from Kleine Scheidegg. Download the app before you fly.</p>
+      </li>
+      <li>
+        <span class="when">Before the trip</span>
+        <a href="https://www.jungfrau.ch/en-gb/live/weather/" target="_blank" rel="noopener">Jungfrau Region weather ↗</a>
+        <p>Forecasts and temperatures broken out by altitude — Jungfraujoch reads very differently from the valley floor. Useful for packing, not for deciding.</p>
+      </li>
+      <li>
+        <span class="when">Before the trip</span>
+        <a href="https://www.jungfrau.ch/en-gb/jungfrau-travel-pass/" target="_blank" rel="noopener">Jungfrau Travel Pass — area of validity ↗</a>
+        <p>The map of exactly what the pass does and doesn't cover. Worth two minutes so nobody's arguing with a conductor. <b>Note:</b> it starts at Interlaken Ost — the train in from Zürich is a separate ticket.</p>
+      </li>
+      <li>
+        <span class="when">Before the trip</span>
+        <a href="https://www.jungfrau.ch/en-gb/jungfraujoch-top-of-europe/" target="_blank" rel="noopener">Jungfraujoch — official site ↗</a>
+        <p>Opening times for the Sphinx and Ice Palace, and the visitor map. <b>Screenshot the map before you go up</b> — signal is patchy inside the mountain and the route loops through lifts and tunnels.</p>
+      </li>
+      <li>
+        <span class="when">Before Day 3</span>
+        <a href="https://www.schilthorn.ch/en" target="_blank" rel="noopener">Schilthorn ↗</a>
+        <p>Only needed if we swap Day 3 for the Schilthorn and Bird Thrill Walk. There's construction up there — check it's open before we commit.</p>
+      </li>
+      <li>
+        <span class="when">Before Day 2</span>
+        <a href="https://truemmelbachfaelle.ch/en/" target="_blank" rel="noopener">Trümmelbach Falls ↗</a>
+        <p>Seasonal opening — confirm the date and the CHF 16 entry before the day.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="sugg">
+    <h2>A few suggestions</h2>
+
+    <div class="card">
+      <h3>Say something early, not late</h3>
+      <p>There's a walk on Day 2 and two on Day 3. Every one of them has a bail-out — a station halfway, a train instead of a trail. <b>Nobody has to finish anything.</b> The only thing that spoils it is someone quietly struggling for an hour before mentioning it.</p>
+    </div>
+
+    <div class="card">
+      <h3>Boots, and one warm layer you actually trust</h3>
+      <p>Three of the four days have a hike. Trainers will do on the flat, but the Panorama Trail and Bachalpsee are proper mountain paths and October ground can be wet.</p>
+      <p>Layers beat one thick coat. You'll be warm walking at 2,000m and cold standing still at 3,454m.</p>
+    </div>
+
+    <div class="card">
+      <h3>Sunglasses and sunscreen — seriously</h3>
+      <p>Glare off snow and ice at altitude is far stronger than it looks, and October sun sits low. The Glacier Plateau on Day 4 is open ice.</p>
+    </div>
+
+    <div class="card">
+      <h3>Cash for the small stuff</h3>
+      <p>Cards work almost everywhere, but mountain huts and small kiosks can be awkward. A little cash saves a queue.</p>
+    </div>
+
+    <div class="card">
+      <h3>Water bottle</h3>
+      <p>Swiss tap water is excellent and there are fountains everywhere. Buying bottled water at 2,000m is its own kind of expensive.</p>
+    </div>
+
+    <div class="card">
+      <h3>Don't over-photograph the first viewpoint</h3>
+      <p>The instinct on Day 3 is to spend twenty minutes at the Cliff Walk. The better view is an hour later at the lake, and the best is on the ridge that afternoon. Pace it.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Plans shift with the weather — <b>Day 4 especially</b>. If something changes I'll say so the night before, never on the morning.</p>
+    <p>Anything you want to add, or anything that looks like too much: tell me now rather than on the day.</p>
+      <p class="sig">¯\_(ツ)_/¯</p>
+  </footer>
+
+</div>
+
+<script>
+/* Live summit/valley weather -> RAG dot.
+   Open-Meteo: no API key, CORS enabled, free for non-commercial use. */
+(function () {
+  var DAYS = [{"id": "sd1", "date": "2026-10-01", "base": {"name": "Lauterbrunnen", "lat": 46.5984, "lon": 7.9081, "alt": 795}, "peak": null}, {"id": "sd2", "date": "2026-10-02", "base": {"name": "Lauterbrunnen", "lat": 46.5984, "lon": 7.9081, "alt": 795}, "peak": {"name": "M\u00fcrren cliff walk", "lat": 46.5597, "lon": 7.8943, "alt": 1638, "level": "850hPa"}, "swap": "The waterfalls still work \u2014 we would take the train back instead of walking the cliff."}, {"id": "sd3", "date": "2026-10-03", "base": {"name": "Grindelwald", "lat": 46.6242, "lon": 8.0341, "alt": 1034}, "peak": {"name": "M\u00e4nnlichen ridge", "lat": 46.6131, "lon": 7.941, "alt": 2343, "level": "800hPa"}, "swap": "We swap to the Schilthorn or a valley day. This one cannot move to Monday."}, {"id": "sd4", "date": "2026-10-04", "base": {"name": "Grindelwald", "lat": 46.6242, "lon": 8.0341, "alt": 1034}, "peak": {"name": "Jungfraujoch", "lat": 46.5475, "lon": 7.9821, "alt": 3454, "level": "700hPa"}, "to": 12, "swap": "We move Jungfraujoch to Monday morning and drop the gorge.", "from": 7}, {"id": "sd5", "date": "2026-10-05", "base": {"name": "Grindelwald", "lat": 46.6242, "lon": 8.0341, "alt": 1034}, "peak": null}];
+
+  var LEVEL_M = { '850hPa': 1500, '800hPa': 1900, '700hPa': 3000, '600hPa': 4200 };
+
+  function el(id){ return document.querySelector('[data-wx="'+id+'"]'); }
+  function setDot(node, cls){ var d = node.querySelector('.dot'); d.className = 'dot ' + cls; }
+
+  // collect unique coordinates
+  var pts = [], key = {};
+  DAYS.forEach(function (d) {
+    [d.base, d.peak].forEach(function (p) {
+      if (!p) return;
+      var k = p.lat + ',' + p.lon;
+      if (!(k in key)) { key[k] = pts.length; pts.push(p); }
+      p.idx = key[k];
+    });
+  });
+
+  var horizonOK = DAYS.some(function (d) {
+    var diff = (new Date(d.date + 'T12:00:00') - new Date()) / 86400000;
+    return diff >= -1 && diff <= 15;
+  });
+
+  if (!horizonOK) {
+    DAYS.forEach(function (d) {
+      var n = el(d.id); if (!n) return;
+      var first = new Date(DAYS[0].date + 'T12:00:00');
+      var opens = new Date(first.getTime() - 14 * 86400000);
+      n.querySelector('.wxst').textContent = 'Forecast opens ' +
+        opens.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
+      setDot(n, 'grey');
+      n.querySelector('.wxnote').innerHTML =
+        '<b>Too far out to forecast.</b> Mountain weather beyond about two weeks is noise. ' +
+        'This panel fills in by itself once we are inside the window — until then, nothing to check.';
+    });
+    return;
+  }
+
+  var vars = ['temperature_2m','precipitation_probability','wind_speed_10m','cloud_cover',
+              'cloud_cover_850hPa','cloud_cover_800hPa','cloud_cover_700hPa','cloud_cover_600hPa'];
+  var url = 'https://api.open-meteo.com/v1/forecast'
+    + '?latitude=' + pts.map(function(p){return p.lat;}).join(',')
+    + '&longitude=' + pts.map(function(p){return p.lon;}).join(',')
+    + '&hourly=' + vars.join(',')
+    + '&start_date=' + DAYS[0].date + '&end_date=' + DAYS[DAYS.length-1].date
+    + '&timezone=' + encodeURIComponent("Europe/Zurich");
+
+  function avg(arr){ var v = arr.filter(function(x){return x!==null&&x!==undefined;});
+    return v.length ? v.reduce(function(a,b){return a+b;},0)/v.length : null; }
+
+  function slice(series, times, date, from, to) {
+    var out = [];
+    for (var i = 0; i < times.length; i++) {
+      if (times[i].slice(0,10) !== date) continue;
+      var h = +times[i].slice(11,13);
+      if (h >= from && h <= to) out.push(series[i]);
+    }
+    return out;
+  }
+
+  fetch(url).then(function(r){ return r.json(); }).then(function(data){
+    var sets = Array.isArray(data) ? data : [data];
+
+    DAYS.forEach(function (d) {
+      var n = el(d.id); if (!n) return;
+      var cells = n.querySelectorAll('.wxv');
+
+      var bs = sets[d.base.idx].hourly, bt = bs.time;
+      var bTemp = avg(slice(bs.temperature_2m, bt, d.date, 8, 20));
+      var bRain = Math.max.apply(null, slice(bs.precipitation_probability, bt, d.date, 8, 20).concat([0]));
+      if (cells[0]) cells[0].innerHTML = (bTemp==null?'—':Math.round(bTemp)+'°C') +
+        '<small>' + Math.round(bRain) + '% rain</small>';
+
+      var verdict = 'grey', note = '';
+
+      if (d.peak) {
+        var ps = sets[d.peak.idx].hourly, pt = ps.time;
+        var lvl = 'cloud_cover_' + d.peak.level;
+        var cloud = avg(slice(ps[lvl], pt, d.date, d.from||9, d.to||16));
+        var rain  = Math.max.apply(null, slice(ps.precipitation_probability, pt, d.date, d.from||9, d.to||16).concat([0]));
+        var wind  = avg(slice(ps.wind_speed_10m, pt, d.date, d.from||9, d.to||16));
+
+        if (cells[1]) cells[1].innerHTML = (cloud==null?'—':Math.round(cloud)+'% cloud') +
+          '<small>' + Math.round(rain) + '% rain · ' + Math.round(wind) + ' km/h</small>';
+
+        if (cloud == null) { verdict = 'grey'; note = 'No data for this level yet.'; }
+        else if (cloud <= 30 && rain <= 30) { verdict = 'green';
+          note = '<b>Clear at summit height.</b> Going as planned.'; }
+        else if (cloud <= 70 && rain <= 60) { verdict = 'amber';
+          note = '<b>Broken cloud at summit height.</b> Could go either way — check the webcams and decide the night before.'; }
+        else { verdict = 'red';
+          note = '<b>Summit likely in cloud.</b> ' + (d.swap || 'Worth moving this one if we can.'); }
+
+        note += ' Cloud is measured at <b>' + LEVEL_M[d.peak.level] + 'm</b>, the nearest level to ' +
+          d.peak.name + ' at ' + d.peak.alt.toLocaleString() + 'm — not valley cloud.';
+      } else {
+        verdict = (bRain > 60) ? 'amber' : 'green';
+        note = 'Valley only today — nothing here depends on summit visibility.';
+      }
+
+      setDot(n, verdict);
+      n.querySelector('.wxst').textContent =
+        { green:'Looks good', amber:'Marginal', red:'Poor', grey:'No data' }[verdict];
+      n.querySelector('.wxnote').innerHTML = note +
+        ' <b>Still check the webcams the night before</b> — cloud sits below summits in ways a forecast cannot see.';
+    });
+  }).catch(function(){
+    DAYS.forEach(function(d){
+      var n = el(d.id); if(!n) return;
+      n.querySelector('.wxst').textContent = 'Could not load';
+      n.querySelector('.wxnote').innerHTML = 'Live forecast unavailable — use the links below instead.';
+    });
+  });
+})();
+</script>
+
+
+<script>
+/* Today, here. Doubles as a health check on the Open-Meteo feed. */
+(function(){
+  var LAT=46.5984, LON=7.9081, TZ="Europe/Zurich", PLACE="Lauterbrunnen";
+  var W={0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Overcast',45:'Fog',48:'Freezing fog',
+    51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',56:'Freezing drizzle',57:'Freezing drizzle',
+    61:'Light rain',63:'Rain',65:'Heavy rain',66:'Freezing rain',67:'Freezing rain',
+    71:'Light snow',73:'Snow',75:'Heavy snow',77:'Snow grains',
+    80:'Rain showers',81:'Rain showers',82:'Heavy showers',85:'Snow showers',86:'Snow showers',
+    95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'};
+  var dot=document.getElementById('tdot'), val=document.getElementById('tval'),
+      note=document.getElementById('tnote'), lbl=document.getElementById('tlbl');
+  var u='https://api.open-meteo.com/v1/forecast?latitude='+LAT+'&longitude='+LON
+      +'&current=temperature_2m,precipitation,weather_code,wind_speed_10m'
+      +'&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max'
+      +'&forecast_days=1&timezone='+encodeURIComponent(TZ);
+  fetch(u).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(d){
+    var c=d.current, dy=d.daily, code=c.weather_code;
+    var desc=W[code]||'—';
+    var rain=dy&&dy.precipitation_probability_max?dy.precipitation_probability_max[0]:0;
+    var hi=dy&&dy.temperature_2m_max?Math.round(dy.temperature_2m_max[0]):null;
+    var lo=dy&&dy.temperature_2m_min?Math.round(dy.temperature_2m_min[0]):null;
+    var cls = (code<=2 && rain<=30) ? 'green' : (code<=48 || rain<=60) ? 'amber' : 'red';
+    dot.className='tdot '+cls;
+    lbl.textContent='Live now · '+PLACE+' · '+new Date().toLocaleDateString('en-GB',
+      {weekday:'short',day:'numeric',month:'short'});
+    val.textContent=Math.round(c.temperature_2m)+'°C, '+desc.toLowerCase()
+      +(hi!==null?'  ·  '+lo+'–'+hi+'°C today':'')+'  ·  '+Math.round(rain)+'% rain';
+    note.innerHTML='Feed is live. <b>This is today, not the trip</b> — the day panels below stay grey until we are inside the forecast window.';
+  }).catch(function(){
+    dot.className='tdot red';
+    val.textContent='Feed unavailable';
+    note.textContent='The live weather feed is not responding. Use the webcam and forecast links instead.';
+  });
+})();
+</script>
+
+</body>
+</html>

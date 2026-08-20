@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chamonix — Mont Blanc, three ways</title>
+<meta name="description" content="Four days in the Chamonix valley. Stand on Mont Blanc, walk across it, look at it.">
+<meta property="og:title" content="Chamonix — Mont Blanc, three ways">
+<meta property="og:description" content="Stand on it. Walk across it. Look at it from the other side.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#0F1113; --raise:#181B1F; --raise2:#20252A;
+    --chalk:#E8E6E2; --dim:#8A8F94;
+    --ice:#9FD4E8; --larch:#D9A441; --stop:#D96B5A; --go:#7FB98A;
+    --rule:rgba(232,230,226,.13);
+    --pad:clamp(18px,5.5vw,40px);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--ground);color:var(--chalk);
+    font-family:'Archivo',system-ui,-apple-system,sans-serif;font-size:16.5px;
+    line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:640px;margin:0 auto;padding:0 var(--pad) 70px;}
+
+  .top{padding:clamp(32px,9vw,58px) 0 0;}
+  .kicker{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:600;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--larch);margin:0 0 14px;}
+  h1{font-family:'Syne','Archivo',sans-serif;font-weight:800;
+    font-size:clamp(33px,9.5vw,54px);line-height:.97;letter-spacing:-.025em;margin:0 0 16px;}
+  .intro{margin:0;color:var(--dim);font-size:15.5px;max-width:48ch;}
+  .intro b{color:var(--chalk);font-weight:600;}
+
+  section{margin-top:36px;padding-top:26px;border-top:1px solid var(--rule);}
+  .sechead{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:0 0 14px;}
+  h2{font-family:'Syne','Archivo',sans-serif;font-weight:800;
+    font-size:clamp(22px,5.6vw,29px);letter-spacing:-.02em;line-height:1.1;margin:0 0 8px;}
+
+  /* ---- valley cross-section ---- */
+  .valley{background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:14px 12px 8px;}
+  .valley svg{display:block;width:100%;height:auto;}
+  .vkey{display:flex;flex-wrap:wrap;gap:7px 18px;margin-top:12px;padding-top:11px;
+    border-top:1px solid var(--rule);
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;color:var(--dim);}
+  .vkey i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle;}
+  .vnote{margin:16px 0 0;font-size:14.5px;color:var(--dim);}
+  .vnote b{color:var(--chalk);font-weight:600;}
+
+  /* ---- closures ---- */
+  .closed{background:rgba(217,107,90,.07);border:1px solid rgba(217,107,90,.26);
+    border-left:3px solid var(--stop);border-radius:3px;padding:18px;}
+  .closed h3{font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:18px;
+    margin:0 0 10px;color:#E8917F;}
+  .closed p{margin:0 0 10px;font-size:14.5px;color:var(--dim);}
+  .closed p:last-child{margin:0;}
+  .closed b{color:var(--chalk);font-weight:600;}
+  .ctable{width:100%;border-collapse:collapse;margin:12px 0;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;}
+  .ctable td{padding:7px 4px;border-bottom:1px solid var(--rule);color:var(--dim);vertical-align:top;}
+  .ctable tr:last-child td{border-bottom:0;}
+  .ctable td.n{color:var(--chalk);font-weight:600;}
+  .ctable td.y{color:var(--go);text-align:right;white-space:nowrap;}
+  .ctable td.x{color:#E8917F;text-align:right;white-space:nowrap;}
+
+  /* ---- day ---- */
+  .daytop{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+    flex-wrap:wrap;margin-bottom:6px;}
+  .dnum{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--larch);}
+  .dalt{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;color:var(--dim);}
+  .dlede{margin:0 0 20px;color:var(--dim);font-size:15px;}
+
+  .route{display:block;text-align:center;text-decoration:none;
+    background:rgba(159,212,232,.08);border:1px solid rgba(159,212,232,.3);
+    border-radius:3px;padding:11px 14px;margin:0 0 20px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--ice);}
+  .route:hover{background:rgba(159,212,232,.15);}
+
+  .fixed{background:rgba(217,164,65,.08);border:1px solid rgba(217,164,65,.28);
+    border-left:3px solid var(--larch);border-radius:3px;padding:14px 16px;margin:0 0 20px;}
+  .fixed .lbl{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--larch);margin:0 0 6px;}
+  .fixed p{margin:0;font-size:14.5px;color:var(--chalk);}
+  .fixed p + p{margin-top:6px;}
+
+  .stop{padding:16px 0;border-top:1px solid var(--rule);}
+  .stop:first-of-type{border-top:0;padding-top:0;}
+  .clock{font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;
+    font-size:13.5px;color:var(--ice);letter-spacing:.03em;margin:0 0 4px;}
+  .stop h3{font-family:'Syne','Archivo',sans-serif;font-weight:700;font-size:19px;
+    letter-spacing:-.01em;line-height:1.2;margin:0 0 6px;}
+  .stop p{margin:0;font-size:14.5px;color:var(--dim);}
+  .stop p + p{margin-top:7px;}
+  .stop b{color:var(--chalk);font-weight:600;}
+  .maplink{display:inline-block;margin-top:9px;padding:3px 9px;border-radius:2px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--ice);text-decoration:none;
+    border:1px solid rgba(159,212,232,.3);}
+  .maplink:hover{background:rgba(159,212,232,.1);}
+
+  /* ---- the summit sequence ---- */
+  .seq{list-style:none;padding:0;margin:14px 0 0;counter-reset:s;}
+  .seq li{position:relative;padding:0 0 16px 40px;margin-left:11px;
+    border-left:1px solid rgba(159,212,232,.28);font-size:14.5px;color:var(--dim);}
+  .seq li:last-child{border-left-color:transparent;padding-bottom:0;}
+  .seq li::before{counter-increment:s;content:counter(s);
+    position:absolute;left:-12px;top:-2px;width:23px;height:23px;border-radius:50%;
+    background:var(--raise2);border:1px solid rgba(159,212,232,.4);color:var(--ice);
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+    display:flex;align-items:center;justify-content:center;}
+  .seq b{color:var(--chalk);font-weight:600;}
+  .seq .cut{color:#E8917F;}
+
+  .alt{background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+    padding:15px 16px;margin-top:16px;}
+  .alt h4{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:0 0 7px;}
+  .alt p{margin:0 0 8px;font-size:14.5px;color:var(--dim);}
+  .alt p:last-child{margin:0;}
+  .alt b{color:var(--chalk);font-weight:600;}
+
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px;}
+  .chip{display:inline-block;padding:5px 10px;border-radius:2px;text-decoration:none;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.06em;
+    color:var(--ice);border:1px solid rgba(159,212,232,.28);background:rgba(159,212,232,.05);}
+  .chip:hover{background:rgba(159,212,232,.13);}
+
+
+  /* ---- live weather ---- */
+  .wx{background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+    padding:15px 16px;margin:0 0 14px;}
+  .wxtop{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+  .wxst{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--dim);}
+  .wxgrid{display:grid;gap:9px;}
+  .wxcell{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+    padding-bottom:9px;border-bottom:1px solid var(--rule);}
+  .wxcell:last-child{border-bottom:0;padding-bottom:0;}
+  .wxl{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
+    color:var(--dim);letter-spacing:.04em;}
+  .wxl b{display:block;color:var(--chalk);font-size:12px;letter-spacing:0;
+    font-family:'Archivo',sans-serif;font-weight:600;margin-bottom:2px;}
+  .wxv{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;
+    color:var(--chalk);text-align:right;white-space:nowrap;}
+  .wxv small{display:block;color:var(--dim);font-size:10px;margin-top:2px;}
+  .wxnote{margin:12px 0 0;font-size:13px;color:var(--dim);line-height:1.5;}
+  .wxnote b{color:var(--chalk);font-weight:600;}
+  .wxcred{margin:9px 0 0;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:9px;letter-spacing:.06em;color:var(--dim);opacity:.65;}
+  .wxcred a{color:inherit;}
+
+  /* ---- per-day check ---- */
+  .dot{display:inline-block;width:11px;height:11px;border-radius:50%;flex:0 0 auto;}
+  .dot.green{background:#7FB98A;box-shadow:0 0 0 3px rgba(127,185,138,.16);}
+  .dot.amber{background:#D9A441;box-shadow:0 0 0 3px rgba(217,164,65,.16);}
+  .dot.grey{background:#6C737A;}
+  .check{background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+    padding:14px 16px;margin:0 0 20px;}
+  .checktop{display:flex;align-items:center;gap:10px;margin-bottom:9px;}
+  .checktop .st{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--dim);}
+  .check p{margin:0 0 10px;font-size:14px;color:var(--dim);}
+  .check b{color:var(--chalk);font-weight:600;}
+
+  /* ---- alarm (day 9) ---- */
+  .alarm{background:rgba(217,107,90,.1);border:1px solid rgba(217,107,90,.35);
+    border-radius:3px;padding:20px;text-align:center;}
+  .alarm .big{font-family:'Syne','Archivo',sans-serif;font-weight:800;
+    font-size:clamp(30px,9vw,44px);letter-spacing:-.02em;line-height:1;
+    margin:0 0 8px;color:#E8917F;}
+  .alarm p{margin:0;font-size:15px;color:var(--dim);}
+  .alarm b{color:var(--chalk);font-weight:600;}
+
+  ul.plain{list-style:none;padding:0;margin:0;}
+  ul.plain li{display:flex;gap:12px;align-items:baseline;padding:10px 0;
+    font-size:15px;color:var(--dim);border-bottom:1px solid var(--rule);}
+  ul.plain li:last-child{border-bottom:0;}
+  ul.plain li i{flex:0 0 auto;width:6px;height:6px;border-radius:50%;
+    background:var(--larch);transform:translateY(-2px);}
+  ul.plain b{color:var(--chalk);font-weight:600;}
+
+  footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);
+    font-size:14px;color:var(--dim);}
+  footer b{color:var(--chalk);font-weight:600;}
+  a{color:var(--ice);}
+  a:focus-visible{outline:2px solid var(--ice);outline-offset:3px;}
+
+  @media (prefers-reduced-motion:no-preference){
+    .vline{stroke-dasharray:900;stroke-dashoffset:900;animation:draw 1.6s ease-out forwards;}
+    @keyframes draw{to{stroke-dashoffset:0;}}
+    .vdot{animation:pop .5s ease-out backwards;}
+    @keyframes pop{from{opacity:0;transform:scale(0);}to{opacity:1;transform:scale(1);}}
+  }
+
+  /* ---- today: live feed check ---- */
+  .today{background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+    padding:15px 17px;margin:24px 0 0;display:flex;align-items:center;gap:14px;}
+  .tdot{flex:0 0 auto;width:10px;height:10px;border-radius:50%;background:#5E7484;
+    transition:background .3s;}
+  .tdot.green{background:#6FCF97;box-shadow:0 0 0 3px rgba(111,207,151,.15);}
+  .tdot.amber{background:#E0A93B;box-shadow:0 0 0 3px rgba(224,169,59,.15);}
+  .tdot.red{background:#D9634E;box-shadow:0 0 0 3px rgba(217,99,78,.15);}
+  .tbody{flex:1;min-width:0;}
+  .tlbl{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:4px;}
+  .tval{margin:0;font-family:'Archivo',sans-serif;font-weight:600;font-size:15.5px;
+    color:var(--chalk);line-height:1.35;}
+  .tnote{margin:4px 0 0;font-size:12.5px;color:var(--dim);line-height:1.45;}
+  .sig{margin-top:22px;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:13px;color:var(--dim);opacity:.35;letter-spacing:.04em;user-select:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <p class="kicker">5–9 October · Chamonix-Mont-Blanc</p>
+    <h1>Mont Blanc,<br>three ways.</h1>
+    <p class="intro">Three days, three completely different relationships with the same mountain. <b>You stand on it, you walk across its flank, then you cross the valley and look back at the whole thing.</b> That's the trip.</p>
+      <div class="today">
+      <span class="tdot" id="tdot"></span>
+      <div class="tbody">
+        <span class="tlbl" id="tlbl">Live now · Chamonix</span>
+        <p class="tval" id="tval">Checking the feed…</p>
+        <p class="tnote" id="tnote">A reading here means the live weather feed is working. If it stalls, the day panels below won't fill either.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- =============== VALLEY CROSS-SECTION =============== -->
+  <section>
+    <p class="sechead">The valley, seen end-on</p>
+    <div class="valley">
+      <svg viewBox="0 0 460 272" role="img" aria-label="Cross-section of the Chamonix valley showing the three days">
+        <defs>
+          <linearGradient id="rock" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgba(232,230,226,.10)"/>
+            <stop offset="100%" stop-color="rgba(232,230,226,.02)"/>
+          </linearGradient>
+        </defs>
+
+        <!-- valley profile -->
+        <path d="M6,150 L75,105 L140,158 L210,191 L290,140 L345,117 L430,29 L454,24 L454,250 L6,250 Z"
+              fill="url(#rock)"/>
+        <path class="vline" d="M6,150 L75,105 L140,158 L210,191 L290,140 L345,117 L430,29 L454,24"
+              fill="none" stroke="rgba(232,230,226,.4)" stroke-width="1.6"
+              stroke-linejoin="round" stroke-linecap="round"/>
+
+        <!-- the balcony traverse -->
+        <path d="M290,140 L345,117" fill="none" stroke="#9FD4E8" stroke-width="2.4"
+              stroke-dasharray="5 4" stroke-linecap="round"/>
+
+        <g font-family="IBM Plex Mono, monospace" font-size="11">
+          <!-- Brévent -->
+          <circle class="vdot" cx="75" cy="105" r="6" fill="#D9A441" style="animation-delay:1.5s"/>
+          <text x="75" y="92" fill="#D9A441" text-anchor="middle">Brévent</text>
+          <text x="75" y="79" fill="#8A8F94" text-anchor="middle" font-size="9.5">2,525m · DAY 8</text>
+
+          <!-- Chamonix -->
+          <circle class="vdot" cx="210" cy="191" r="6" fill="#B7BCC1" style="animation-delay:1.2s"/>
+          <text x="210" y="209" fill="#E8E6E2" text-anchor="middle" font-size="10">Chamonix 1,035m</text>
+          <text x="210" y="222" fill="#B7BCC1" text-anchor="middle" font-size="9">DAY 5 · arrive &amp; DAY 9 · leave</text>
+
+          <!-- Montenvers -->
+          <circle class="vdot" cx="290" cy="140" r="5" fill="#9FD4E8" style="animation-delay:1.6s"/>
+          <text x="286" y="160" fill="#9FD4E8" text-anchor="middle" font-size="9.5">Montenvers</text>
+
+          <!-- Plan de l'Aiguille -->
+          <circle class="vdot" cx="345" cy="117" r="5" fill="#9FD4E8" style="animation-delay:1.7s"/>
+          <text x="352" y="108" fill="#9FD4E8" font-size="9.5">Plan de l'Aiguille</text>
+          <text x="318" y="132" fill="#8A8F94" text-anchor="middle" font-size="9">DAY 7</text>
+
+          <!-- Aiguille du Midi -->
+          <circle class="vdot" cx="430" cy="29" r="7" fill="#FFFFFF" style="animation-delay:1.8s"/>
+          <text x="424" y="18" fill="#FFFFFF" text-anchor="end">Aiguille du Midi</text>
+          <text x="424" y="5" fill="#8A8F94" text-anchor="end" font-size="9.5">3,842m · DAY 6</text>
+        </g>
+      </svg>
+      <div class="vkey">
+        <span><i style="background:#B7BCC1"></i>Day 5 &amp; 9 · the valley floor</span>
+        <span><i style="background:#FFFFFF"></i>Day 6 · you stand on it</span>
+        <span><i style="background:#9FD4E8"></i>Day 7 · you walk across it</span>
+        <span><i style="background:#D9A441"></i>Day 8 · you look at it</span>
+      </div>
+    </div>
+    <p class="vnote"><b>3,842m on Day 6 is the highest point of the entire trip</b> — higher than Jungfraujoch, and reached by cable car rather than a tunnel. The dashed line is Day 7: a horizontal traverse across the massif's flank, which is what a <i>balcon</i> means.</p>
+  </section>
+
+  <!-- =============== CLOSURES =============== -->
+  <section>
+    <p class="sechead">Read this before anything else</p>
+    <div class="closed">
+      <h3>Three things are shut for the season</h3>
+      <p>Early October sits just past the end of the summer lift season here. Checked against Compagnie du Mont-Blanc's published 2026 dates:</p>
+      <table class="ctable">
+        <tr><td class="n">Aiguille du Midi</td><td>1 May – 1 Nov</td><td class="y">OPEN</td></tr>
+        <tr><td class="n">Montenvers train</td><td>30 May – 1 Nov</td><td class="y">OPEN</td></tr>
+        <tr><td class="n">Brévent</td><td>13 Jun – 1 Nov</td><td class="y">OPEN</td></tr>
+        <tr><td class="n">Mer de Glace ice cave</td><td>shut 28 Sep – 1 Nov</td><td class="x">SHUT</td></tr>
+        <tr><td class="n">Panoramic Mont-Blanc<br><span style="font-size:9.5px">the gondola to Italy</span></td><td>13 Jul – 27 Sep</td><td class="x">SHUT</td></tr>
+        <tr><td class="n">Flégère / Index<br><span style="font-size:9.5px">the Lac Blanc lift</span></td><td>20 Jun – 13 Sep</td><td class="x">SHUT</td></tr>
+      </table>
+      <p><b>So the plan changed.</b> No ice cave on Day 7 — but the walk and the train are unaffected. No Lac Blanc on Day 8 — replaced by Brévent, which is arguably the better day anyway.</p>
+      <p>Dates are the operator's own and marked subject to change. Worth one look the week before.</p>
+    </div>
+  </section>
+
+  <!-- =============== DAY 5 =============== -->
+  <section>
+    <div class="daytop">
+      <span class="dnum">Day 5 · Monday 5 October</span>
+      <span class="dalt">Arrive · 1,035m</span>
+    </div>
+    <h2>Over the border</h2>
+    <p class="dlede">Grindelwald to Chamonix by road — about three and a half hours, against five by train. Nothing planned at the other end.</p>
+
+    <a class="route" href="https://www.google.com/maps/dir/46.6242,8.0341/45.9237,6.8694" target="_blank" rel="noopener">Day 5 route in Google Maps ↗</a>
+
+    <div class="wx" data-wx="cd5">
+      <div class="wxtop"><span class="dot grey"></span><span class="wxst">Loading…</span></div>
+      <div class="wxgrid">
+        <div class="wxcell"><span class="wxl"><b>Chamonix</b>1,035 m · where we sleep</span><span class="wxv">—</span></div>
+      </div>
+      <p class="wxnote">Checking…</p>
+      <p class="wxcred">Live · weather data by <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a></p>
+    </div>
+
+    <div class="check">
+      <div class="checktop"><span class="dot green"></span><span class="st">Confirmed and paid</span></div>
+      <p>Private transfer booked — six passengers, eight bags, 14:00 pickup. By road, so weather is irrelevant to this day.</p>
+      <div class="chips"><a class="chip" href="https://www.montblancnaturalresort.com/en/info-live" target="_blank" rel="noopener">Weather ahead ↗</a></div>
+    </div>
+
+    <div class="fixed">
+      <p class="lbl">Fixed departure</p>
+      <p><b>14:00 · private transfer from Grindelwald.</b> Six of us, eight bags. Bags down and ready by quarter to.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">~17:30</p>
+      <h3>Arrive Chamonix</h3>
+      <p>Straight into the centre. Walk the main street, eat, sleep — tomorrow is the big one and it starts before dawn.</p>
+    </div>
+
+    <div class="alt">
+      <h4>Do tonight</h4>
+      <p><b>Buy Wednesday's packed lunch and snacks</b> while shops are open. Six people hunting a boulangerie at eight in the morning is how a hike starts late.</p>
+      <p>Aiguille du Midi tickets should already be booked — <b>that's a weeks-ahead job, not a night-before one.</b> Reservation is mandatory, pricing is dynamic so earlier is cheaper, and if the early slots are gone the operator releases more around three days out.</p>
+    </div>
+  </section>
+
+  <!-- =============== DAY 6 =============== -->
+  <section>
+    <div class="daytop">
+      <span class="dnum">Day 6 · Tuesday 6 October</span>
+      <span class="dalt">Highest of the trip · 3,842m</span>
+    </div>
+    <h2>Aiguille du Midi</h2>
+    <p class="dlede">A cable car that climbs nearly 2,800m from the town centre to a granite spire in the middle of the Mont Blanc massif. The second stage runs almost vertically and passes within touching distance of the rock.</p>
+
+    <a class="route" href="https://www.google.com/maps/dir/45.9237,6.8694/45.9183,6.8700/45.8789,6.8873" target="_blank" rel="noopener">Day 6 route in Google Maps ↗</a>
+
+    <div class="wx" data-wx="cd6">
+      <div class="wxtop"><span class="dot grey"></span><span class="wxst">Loading…</span></div>
+      <div class="wxgrid">
+        <div class="wxcell"><span class="wxl"><b>Chamonix</b>1,035 m · where we sleep</span><span class="wxv">—</span></div>
+        <div class="wxcell"><span class="wxl"><b>Aiguille du Midi</b>3,842 m · where we go</span><span class="wxv">—</span></div>
+      </div>
+      <p class="wxnote">Checking…</p>
+      <p class="wxcred">Live · weather data by <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a></p>
+    </div>
+
+    <div class="check">
+      <div class="checktop"><span class="dot amber"></span><span class="st">Tickets are the open item</span></div>
+      <p>Reservation is <b>free but mandatory</b>. Book ahead — pricing is dynamic and the early slots go first. The night before, check the webcams: <b>in cloud this is an expensive way to stand inside one</b>, and we swap Days 6 and 7.</p>
+      <div class="chips"><a class="chip" href="https://aiguilledumidi.montblancnaturalresort.com/en/timetables-rates" target="_blank" rel="noopener">Book & timetable ↗</a><a class="chip" href="https://www.montblancnaturalresort.com/en/webcam" target="_blank" rel="noopener">Webcams ↗</a><a class="chip" href="https://www.montblancnaturalresort.com/en/info-live" target="_blank" rel="noopener">Live status ↗</a></div>
+    </div>
+
+    <div class="fixed">
+      <p class="lbl">First cable car · 08:10</p>
+      <p><b>Be at the station by 07:45.</b> Nothing runs before 08:10 in October — and sunrise here is around 07:45, so there's no point arriving earlier.</p>
+      <p>Still be on the first car. Cloud builds through the morning, and the earliest passengers get the mountain everyone else photographs from below.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">At the top · about two hours</p>
+      <h3>Do it in this order</h3>
+      <p>The layout is a maze of terraces, lifts and tunnels across two summits joined by a bridge. Follow this and you won't double back.</p>
+
+      <ol class="seq">
+        <li><b>Lower terrace first — but don't cross the bridge yet.</b> Climb the staircases to the upper terrace instead, points 16–17 on the site map. That's the best viewpoint on the mountain and almost everyone walks straight past it.</li>
+        <li><b>Now the bridge</b>, across to the central peak.</li>
+        <li><b>Espace Vertical</b> — the climbing and alpinism gallery.</li>
+        <li><b>Terrace 3842</b>, up by lift. This is <b>the Void</b> — a glass box cantilevered over a thousand-metre drop. Shoe covers provided. Not optional.</li>
+        <li><b>Espace Mont Blanc</b>.</li>
+        <li><b>The Hypoxia level</b> — on what thin air does to a body.</li>
+        <li><b>Le Tube</b>, the walkway wrapping the outside of the summit.</li>
+        <li><b>The open-air terrace</b>, point 12. Stand still and notice the breathing. That's the point of it.</li>
+        <li class="cut"><s>Gondola to Pointe Helbronner, Italy</s> — <b>closed for the season</b> since 27 September.</li>
+      </ol>
+
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=T%C3%A9l%C3%A9ph%C3%A9rique%20Aiguille%20du%20Midi&query_place_id=ChIJSbIVSHBOiUcR_tFiv4DRYzI" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="alt">
+      <h4>Verified from the operator · 28 Sept – 1 Nov</h4>
+      <p><b>Opens 08:10</b> · last departure for a round trip <b>15:00</b> · last one-way <b>16:00</b>.</p>
+      <p><b>Reservations are free but mandatory.</b> New tickets are released about three days before the date, and same-day box-office tickets depend on availability. Book, and if the early slots look gone, check again at three days out.</p>
+      <p>Round trip runs €60.20–83.00 per adult — dynamic pricing, so earlier booking is cheaper.</p>
+    </div>
+
+    <div class="alt">
+      <h4>Step into the Void isn't guaranteed</h4>
+      <p>The operator states access can be withdrawn for overcrowding, lift unavailability, <b>very low temperatures, heavy frost or strong winds</b>. At 3,842m in October several of those are live possibilities. Worth wanting rather than expecting.</p>
+    </div>
+
+    <div class="alt">
+      <h4>3,842m is high</h4>
+      <p>Nearly 400m higher than Jungfraujoch, and you get there in twenty minutes rather than acclimatising. <b>Move slowly, drink water, don't take the stairs at pace.</b> Light-headedness and a dull headache are common and pass — say so early rather than pushing through.</p>
+      <p>Also genuinely cold and windy on the open terraces. Gloves.</p>
+    </div>
+
+    <div class="alt">
+      <h4>The weather rule</h4>
+      <p>This is the day worth watching. In cloud you pay a lot to stand inside one. <b>If Tuesday looks poor and Wednesday looks better, we swap Days 6 and 7</b> — the Balcon walk is fine under cloud, the summit isn't.</p>
+      <div class="chips">
+        <a class="chip" href="https://www.montblancnaturalresort.com/en/webcam" target="_blank" rel="noopener">Webcams ↗</a>
+        <a class="chip" href="https://www.montblancnaturalresort.com/en/info-live" target="_blank" rel="noopener">Live status ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== DAY 7 =============== -->
+  <section>
+    <div class="daytop">
+      <span class="dnum">Day 7 · Wednesday 7 October</span>
+      <span class="dalt">The traverse · ~2,300m</span>
+    </div>
+    <h2>Grand Balcon Nord</h2>
+    <p class="dlede">Seven kilometres straight across the flank of the massif, from the Aiguille du Midi's mid-station to the old glacier railway at Montenvers. Little climbing, constant views, and the hardest day on the legs.</p>
+
+    <a class="route" href="https://www.google.com/maps/dir/45.9033,6.8873/45.9171,6.9026/45.9317,6.9174" target="_blank" rel="noopener">Day 7 route in Google Maps ↗</a>
+
+    <div class="wx" data-wx="cd7">
+      <div class="wxtop"><span class="dot grey"></span><span class="wxst">Loading…</span></div>
+      <div class="wxgrid">
+        <div class="wxcell"><span class="wxl"><b>Chamonix</b>1,035 m · where we sleep</span><span class="wxv">—</span></div>
+        <div class="wxcell"><span class="wxl"><b>Grand Balcon Nord</b>2,317 m · where we go</span><span class="wxv">—</span></div>
+      </div>
+      <p class="wxnote">Checking…</p>
+      <p class="wxcred">Live · weather data by <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a></p>
+    </div>
+
+    <div class="check">
+      <div class="checktop"><span class="dot grey"></span><span class="st">Timings verified — weather only</span></div>
+      <p>Cable car <b>08:10</b> first up, Montenvers train <b>to 17:30</b>. Both confirmed from the operators. The night before, check cloud and whether the trail is holding — it's rough ground and rain makes the scrambling sections slower.</p>
+      <div class="chips"><a class="chip" href="https://aiguilledumidi.montblancnaturalresort.com/en/timetables-rates" target="_blank" rel="noopener">Cable car times ↗</a><a class="chip" href="https://www.montenverstrain.com/en/opening-hours-and-prices/" target="_blank" rel="noopener">Montenvers times ↗</a><a class="chip" href="https://www.montblancnaturalresort.com/en/webcam" target="_blank" rel="noopener">Webcams ↗</a><a class="chip" href="https://www.montblancnaturalresort.com/en/info-live" target="_blank" rel="noopener">Live status ↗</a></div>
+    </div>
+
+    <div class="fixed">
+      <p class="lbl">Both times now confirmed</p>
+      <p><b>First cable car 08:10.</b> Be at the station by 08:00 and take it — the earlier we're walking, the more slack we have.</p>
+      <p><b>Montenvers train runs to 17:30</b> (14 Sept – 1 Nov). Far later than we need, so the day has real margin.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">08:00 → 08:25</p>
+      <h3>Cable car to Plan de l'Aiguille · 2,317m</h3>
+      <p>Same lift as yesterday, but we get off halfway. First departure is 08:10 — being on it buys us half an hour of daylight at the far end.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Plan%20de%20l%27Aiguille&query_place_id=ChIJ1zl3mPNOiUcRMnuLqFE75P4" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">08:35 · coffee only</p>
+      <h3>Refuge du Plan de l'Aiguille</h3>
+      <p>A few minutes from the station. 4.7 from nearly 500 reviews, and people climb up here just to eat — but we're eating at the far end, so coffee and a pastry.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Refuge%20du%20Plan%20de%20l%27Aiguille&query_place_id=ChIJXYkSPPVOiUcRg3BNPp2oeV4" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">09:05 → 13:05 · 7 km, four hours</p>
+      <h3>The traverse</h3>
+      <p>Little net height gain, but <b>the ground is rough and there are short scrambling sections</b>. Reviewers who quote 2.5 hours were moving fast alone; a mixed group takes four. That's what we've planned for.</p>
+      <p><b>There's a fork partway.</b> Higher is harder with a better view, lower is easier. <b>We're taking the lower line</b> — decided, so nobody's negotiating at a junction.</p>
+      <p>Bossons glacier behind you for the first half, Mer de Glace ahead for the second.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Grand%20Balcon%20Nord&query_place_id=ChIJIQUHKAhPiUcRVDVex4iVvBc" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">13:20</p>
+      <h3>Packed lunch on the terrace</h3>
+      <p>Bought last night. The Montenvers terrace looks straight down the Mer de Glace, and eating our own means no dependence on what's open up here in October.</p>
+      <p><b>Everyone carries their own lunch, snacks and water.</b> There's no refill point on the balcony and nothing to buy until we arrive.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">14:30</p>
+      <h3>Glaciorium, then the terrace</h3>
+      <p>A small museum on how glaciers form and how this one has retreated — about fifteen minutes, five minutes' walk from the station. Then the Temple de la Nature and the old railway hotel above the ice.</p>
+      <p><b>No ice cave and no gondola down to the glacier</b> — both closed for the season. The view from above is the day's ending.</p>
+      <p><i>The Glaciorium and Temple de la Nature should be open — only the gondola and cave are listed as shut. Worth one call to confirm: 04 65 60 00 80.</i></p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Gare%20du%20Montenvers%20Mer%20de%20Glace&query_place_id=ChIJ1Ru0811NiUcR2KpBAcGw2E8" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">15:30 → 15:50</p>
+      <h3>Cogwheel train down</h3>
+      <p>Twenty minutes, and it saves two hours of descent through forest. We're taking it deliberately — Brévent is tomorrow and Friday starts at half past one in the morning.</p>
+      <p>Last train is 17:30, so even running two hours late we're fine.</p>
+    </div>
+
+    <div class="alt">
+      <h4>Nothing after this</h4>
+      <p>Four hours on rough ground with six people is a full day. Back in town around five, and that's the day.</p>
+    </div>
+  </section>
+
+  <!-- =============== DAY 8 =============== -->
+  <section>
+    <div class="daytop">
+      <span class="dnum">Day 8 · Thursday 8 October</span>
+      <span class="dalt">The other side · 2,525m</span>
+    </div>
+    <h2>Brévent</h2>
+    <p class="dlede">Across the valley to the Aiguilles Rouges — the range facing the massif. Everything you've spent three days standing on is now laid out in front of you in one view: Mont Blanc, the Aiguille du Midi, the Bossons glacier, all at once.</p>
+
+    <a class="route" href="https://www.google.com/maps/dir/45.9237,6.8694/45.9355,6.8535" target="_blank" rel="noopener">Day 8 route in Google Maps ↗</a>
+
+    <div class="wx" data-wx="cd8">
+      <div class="wxtop"><span class="dot grey"></span><span class="wxst">Loading…</span></div>
+      <div class="wxgrid">
+        <div class="wxcell"><span class="wxl"><b>Chamonix</b>1,035 m · where we sleep</span><span class="wxv">—</span></div>
+        <div class="wxcell"><span class="wxl"><b>Brévent</b>2,525 m · where we go</span><span class="wxv">—</span></div>
+      </div>
+      <p class="wxnote">Checking…</p>
+      <p class="wxcred">Live · weather data by <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a></p>
+    </div>
+
+    <div class="check">
+      <div class="checktop"><span class="dot grey"></span><span class="st">Open per the operator — weather only</span></div>
+      <p>Brévent runs <b>13 June – 1 November</b>, so our date is inside the season. This is purely a view day: <b>in cloud there is no reason to go up</b>. Check the webcams first and keep it flexible.</p>
+      <div class="chips"><a class="chip" href="https://www.montblancnaturalresort.com/en/webcam" target="_blank" rel="noopener">Webcams ↗</a><a class="chip" href="https://www.montblancnaturalresort.com/en/info-live" target="_blank" rel="noopener">Live status ↗</a></div>
+    </div>
+
+    <div class="stop">
+      <p class="clock">Two stages · gondola then cable car</p>
+      <h3>Chamonix → Planpraz → Brévent</h3>
+      <p>Gondola from the edge of town to Planpraz, then the cable car to the summit at 2,525m. <b>The second stage runs about every thirty minutes</b>, so there's a wait built in either way.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=T%C3%A9l%C3%A9ph%C3%A9rique%20du%20Br%C3%A9vent&query_place_id=ChIJoV28AM9NiUcRMLDUMj-MWlw" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">At the top</p>
+      <h3>The view back</h3>
+      <p>This is the frame every photograph of Chamonix is taken from. There's a restaurant at the summit and a terrace, and after two hard days it's fine to make this a sitting-down day.</p>
+    </div>
+
+    <div class="alt">
+      <h4>If legs allow — the Grand Balcon Sud</h4>
+      <p>A ridge path from Planpraz running along the Aiguilles Rouges side with Mont Blanc opposite the whole way. <b>Note the Flégère lift at the far end is shut for the season</b>, so it's out and back rather than a crossing — turn round whenever you like.</p>
+    </div>
+
+    <div class="alt">
+      <h4>Then stop</h4>
+      <p>Back down mid-afternoon. <b>Rest, shower, pack properly and eat early.</b> The alarm goes at half one.</p>
+    </div>
+  </section>
+
+  <!-- =============== DAY 9 =============== -->
+  <section>
+    <div class="daytop">
+      <span class="dnum">Day 9 · Friday 9 October</span>
+      <span class="dalt">To San Sebastián</span>
+    </div>
+    <h2>The very early one</h2>
+
+    <a class="route" href="https://www.google.com/maps/dir/45.9237,6.8694/46.2381,6.1089" target="_blank" rel="noopener">Day 9 route in Google Maps ↗</a>
+
+    <div class="wx" data-wx="cd9">
+      <div class="wxtop"><span class="dot grey"></span><span class="wxst">Loading…</span></div>
+      <div class="wxgrid">
+        <div class="wxcell"><span class="wxl"><b>Chamonix</b>1,035 m · where we sleep</span><span class="wxv">—</span></div>
+      </div>
+      <p class="wxnote">Checking…</p>
+      <p class="wxcred">Live · weather data by <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a></p>
+    </div>
+
+    <div class="check">
+      <div class="checktop"><span class="dot green"></span><span class="st">Confirmed and paid</span></div>
+      <p>Transfer booked to Geneva, six passengers and eight bags. Weather-independent. <b>The only risk on this day is us</b> — bags packed Thursday evening, alarms set twice.</p>
+      <div class="chips"><a class="chip" href="https://www.montblancnaturalresort.com/en/info-live" target="_blank" rel="noopener">Weather ↗</a></div>
+    </div>
+
+    <div class="alarm">
+      <p class="big">01:30</p>
+      <p><b>Alarm.</b> Transfer to Geneva at 02:30, six of us and eight bags. Flight at 06:10, landing Bilbao 07:50, then an hour by road.</p>
+    </div>
+
+    <div class="alt" style="margin-top:20px">
+      <h4>Which means Thursday night matters</h4>
+      <p><b>Pack completely before dinner</b>, not after. Bags by the door, clothes for the morning out, passports and boarding passes in one place.</p>
+      <p><b>Nobody has a late one on Thursday.</b> You'll be awake for roughly twenty hours and arriving into a food city.</p>
+      <p>Sleep on the plane. San Sebastián starts the moment you land.</p>
+    </div>
+  </section>
+
+  <!-- =============== PRACTICAL =============== -->
+  <section>
+    <p class="sechead">Reference</p>
+    <h2>The links, in one place</h2>
+
+    <div class="alt" style="margin-top:16px">
+      <h4>Check these</h4>
+      <div class="chips">
+        <a class="chip" href="https://www.montblancnaturalresort.com/en/info-live" target="_blank" rel="noopener">Live lift status &amp; hours ↗</a>
+        <a class="chip" href="https://www.montblancnaturalresort.com/en/webcam" target="_blank" rel="noopener">Webcams ↗</a>
+        <a class="chip" href="https://www.montblancnaturalresort.com/en/annual-openings" target="_blank" rel="noopener">Season dates ↗</a>
+        <a class="chip" href="https://aiguilledumidi.montblancnaturalresort.com/en/timetables-rates" target="_blank" rel="noopener">Aiguille du Midi times ↗</a>
+        <a class="chip" href="https://www.montenverstrain.com/en/opening-hours-and-prices/" target="_blank" rel="noopener">Montenvers train times ↗</a>
+        <a class="chip" href="https://www.montblancnaturalresort.com/en/ticketing" target="_blank" rel="noopener">Tickets ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Timings on this page come from Compagnie du Mont-Blanc's published 2026 timetables: the Aiguille du Midi block for <b>28 Sept – 1 Nov</b> and the Montenvers block for <b>14 Sept – 1 Nov</b>. Both are marked subject to change with operating and weather conditions.</p>
+    <p>One thing still to confirm: whether the <b>Glaciorium and Temple de la Nature</b> are open in October. Everything else is verified.</p>
+    <p>Mountain plans move with the weather — if Tuesday looks bad, Days 6 and 7 swap.</p>
+      <p class="sig">¯\_(ツ)_/¯</p>
+  </footer>
+
+</div>
+
+<script>
+/* Live summit/valley weather -> RAG dot.
+   Open-Meteo: no API key, CORS enabled, free for non-commercial use. */
+(function () {
+  var DAYS = [{"id": "cd5", "date": "2026-10-05", "base": {"name": "Chamonix", "lat": 45.9237, "lon": 6.8694, "alt": 1035}, "peak": null}, {"id": "cd6", "date": "2026-10-06", "base": {"name": "Chamonix", "lat": 45.9237, "lon": 6.8694, "alt": 1035}, "peak": {"name": "Aiguille du Midi", "lat": 45.8789, "lon": 6.8873, "alt": 3842, "level": "700hPa"}, "to": 13, "swap": "We swap Days 6 and 7 \u2014 the Balcon walk is fine under cloud, the summit is not.", "from": 8}, {"id": "cd7", "date": "2026-10-07", "base": {"name": "Chamonix", "lat": 45.9237, "lon": 6.8694, "alt": 1035}, "peak": {"name": "Grand Balcon Nord", "lat": 45.9033, "lon": 6.8873, "alt": 2317, "level": "800hPa"}, "swap": "Rough ground gets slow in rain \u2014 we would shorten it or swap with Day 6."}, {"id": "cd8", "date": "2026-10-08", "base": {"name": "Chamonix", "lat": 45.9237, "lon": 6.8694, "alt": 1035}, "peak": {"name": "Br\u00e9vent", "lat": 45.933, "lon": 6.8447, "alt": 2525, "level": "800hPa"}, "swap": "Pure view day \u2014 in cloud there is no reason to go up at all."}, {"id": "cd9", "date": "2026-10-09", "base": {"name": "Chamonix", "lat": 45.9237, "lon": 6.8694, "alt": 1035}, "peak": null}];
+
+  var LEVEL_M = { '850hPa': 1500, '800hPa': 1900, '700hPa': 3000, '600hPa': 4200 };
+
+  function el(id){ return document.querySelector('[data-wx="'+id+'"]'); }
+  function setDot(node, cls){ var d = node.querySelector('.dot'); d.className = 'dot ' + cls; }
+
+  // collect unique coordinates
+  var pts = [], key = {};
+  DAYS.forEach(function (d) {
+    [d.base, d.peak].forEach(function (p) {
+      if (!p) return;
+      var k = p.lat + ',' + p.lon;
+      if (!(k in key)) { key[k] = pts.length; pts.push(p); }
+      p.idx = key[k];
+    });
+  });
+
+  var horizonOK = DAYS.some(function (d) {
+    var diff = (new Date(d.date + 'T12:00:00') - new Date()) / 86400000;
+    return diff >= -1 && diff <= 15;
+  });
+
+  if (!horizonOK) {
+    DAYS.forEach(function (d) {
+      var n = el(d.id); if (!n) return;
+      var first = new Date(DAYS[0].date + 'T12:00:00');
+      var opens = new Date(first.getTime() - 14 * 86400000);
+      n.querySelector('.wxst').textContent = 'Forecast opens ' +
+        opens.toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
+      setDot(n, 'grey');
+      n.querySelector('.wxnote').innerHTML =
+        '<b>Too far out to forecast.</b> Mountain weather beyond about two weeks is noise. ' +
+        'This panel fills in by itself once we are inside the window — until then, nothing to check.';
+    });
+    return;
+  }
+
+  var vars = ['temperature_2m','precipitation_probability','wind_speed_10m','cloud_cover',
+              'cloud_cover_850hPa','cloud_cover_800hPa','cloud_cover_700hPa','cloud_cover_600hPa'];
+  var url = 'https://api.open-meteo.com/v1/forecast'
+    + '?latitude=' + pts.map(function(p){return p.lat;}).join(',')
+    + '&longitude=' + pts.map(function(p){return p.lon;}).join(',')
+    + '&hourly=' + vars.join(',')
+    + '&start_date=' + DAYS[0].date + '&end_date=' + DAYS[DAYS.length-1].date
+    + '&timezone=' + encodeURIComponent("Europe/Paris");
+
+  function avg(arr){ var v = arr.filter(function(x){return x!==null&&x!==undefined;});
+    return v.length ? v.reduce(function(a,b){return a+b;},0)/v.length : null; }
+
+  function slice(series, times, date, from, to) {
+    var out = [];
+    for (var i = 0; i < times.length; i++) {
+      if (times[i].slice(0,10) !== date) continue;
+      var h = +times[i].slice(11,13);
+      if (h >= from && h <= to) out.push(series[i]);
+    }
+    return out;
+  }
+
+  fetch(url).then(function(r){ return r.json(); }).then(function(data){
+    var sets = Array.isArray(data) ? data : [data];
+
+    DAYS.forEach(function (d) {
+      var n = el(d.id); if (!n) return;
+      var cells = n.querySelectorAll('.wxv');
+
+      var bs = sets[d.base.idx].hourly, bt = bs.time;
+      var bTemp = avg(slice(bs.temperature_2m, bt, d.date, 8, 20));
+      var bRain = Math.max.apply(null, slice(bs.precipitation_probability, bt, d.date, 8, 20).concat([0]));
+      if (cells[0]) cells[0].innerHTML = (bTemp==null?'—':Math.round(bTemp)+'°C') +
+        '<small>' + Math.round(bRain) + '% rain</small>';
+
+      var verdict = 'grey', note = '';
+
+      if (d.peak) {
+        var ps = sets[d.peak.idx].hourly, pt = ps.time;
+        var lvl = 'cloud_cover_' + d.peak.level;
+        var cloud = avg(slice(ps[lvl], pt, d.date, d.from||9, d.to||16));
+        var rain  = Math.max.apply(null, slice(ps.precipitation_probability, pt, d.date, d.from||9, d.to||16).concat([0]));
+        var wind  = avg(slice(ps.wind_speed_10m, pt, d.date, d.from||9, d.to||16));
+
+        if (cells[1]) cells[1].innerHTML = (cloud==null?'—':Math.round(cloud)+'% cloud') +
+          '<small>' + Math.round(rain) + '% rain · ' + Math.round(wind) + ' km/h</small>';
+
+        if (cloud == null) { verdict = 'grey'; note = 'No data for this level yet.'; }
+        else if (cloud <= 30 && rain <= 30) { verdict = 'green';
+          note = '<b>Clear at summit height.</b> Going as planned.'; }
+        else if (cloud <= 70 && rain <= 60) { verdict = 'amber';
+          note = '<b>Broken cloud at summit height.</b> Could go either way — check the webcams and decide the night before.'; }
+        else { verdict = 'red';
+          note = '<b>Summit likely in cloud.</b> ' + (d.swap || 'Worth moving this one if we can.'); }
+
+        note += ' Cloud is measured at <b>' + LEVEL_M[d.peak.level] + 'm</b>, the nearest level to ' +
+          d.peak.name + ' at ' + d.peak.alt.toLocaleString() + 'm — not valley cloud.';
+      } else {
+        verdict = (bRain > 60) ? 'amber' : 'green';
+        note = 'Valley only today — nothing here depends on summit visibility.';
+      }
+
+      setDot(n, verdict);
+      n.querySelector('.wxst').textContent =
+        { green:'Looks good', amber:'Marginal', red:'Poor', grey:'No data' }[verdict];
+      n.querySelector('.wxnote').innerHTML = note +
+        ' <b>Still check the webcams the night before</b> — cloud sits below summits in ways a forecast cannot see.';
+    });
+  }).catch(function(){
+    DAYS.forEach(function(d){
+      var n = el(d.id); if(!n) return;
+      n.querySelector('.wxst').textContent = 'Could not load';
+      n.querySelector('.wxnote').innerHTML = 'Live forecast unavailable — use the links below instead.';
+    });
+  });
+})();
+</script>
+
+
+<script>
+/* Today, here. Doubles as a health check on the Open-Meteo feed. */
+(function(){
+  var LAT=45.9237, LON=6.8694, TZ="Europe/Paris", PLACE="Chamonix";
+  var W={0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Overcast',45:'Fog',48:'Freezing fog',
+    51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',56:'Freezing drizzle',57:'Freezing drizzle',
+    61:'Light rain',63:'Rain',65:'Heavy rain',66:'Freezing rain',67:'Freezing rain',
+    71:'Light snow',73:'Snow',75:'Heavy snow',77:'Snow grains',
+    80:'Rain showers',81:'Rain showers',82:'Heavy showers',85:'Snow showers',86:'Snow showers',
+    95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'};
+  var dot=document.getElementById('tdot'), val=document.getElementById('tval'),
+      note=document.getElementById('tnote'), lbl=document.getElementById('tlbl');
+  var u='https://api.open-meteo.com/v1/forecast?latitude='+LAT+'&longitude='+LON
+      +'&current=temperature_2m,precipitation,weather_code,wind_speed_10m'
+      +'&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max'
+      +'&forecast_days=1&timezone='+encodeURIComponent(TZ);
+  fetch(u).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(d){
+    var c=d.current, dy=d.daily, code=c.weather_code;
+    var desc=W[code]||'—';
+    var rain=dy&&dy.precipitation_probability_max?dy.precipitation_probability_max[0]:0;
+    var hi=dy&&dy.temperature_2m_max?Math.round(dy.temperature_2m_max[0]):null;
+    var lo=dy&&dy.temperature_2m_min?Math.round(dy.temperature_2m_min[0]):null;
+    var cls = (code<=2 && rain<=30) ? 'green' : (code<=48 || rain<=60) ? 'amber' : 'red';
+    dot.className='tdot '+cls;
+    lbl.textContent='Live now · '+PLACE+' · '+new Date().toLocaleDateString('en-GB',
+      {weekday:'short',day:'numeric',month:'short'});
+    val.textContent=Math.round(c.temperature_2m)+'°C, '+desc.toLowerCase()
+      +(hi!==null?'  ·  '+lo+'–'+hi+'°C today':'')+'  ·  '+Math.round(rain)+'% rain';
+    note.innerHTML='Feed is live. <b>This is today, not the trip</b> — the day panels below stay grey until we are inside the forecast window.';
+  }).catch(function(){
+    dot.className='tdot red';
+    val.textContent='Feed unavailable';
+    note.textContent='The live weather feed is not responding. Use the webcam and forecast links instead.';
+  });
+})();
+</script>
+
+</body>
+</html>

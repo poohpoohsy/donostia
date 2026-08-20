@@ -198,6 +198,49 @@
   }
   .routebtn:hover{filter:brightness(1.08);}
 
+  /* hours table */
+  .hours{margin-top:34px;padding-top:26px;border-top:1px solid var(--rule);}
+  .hours h2, .dishes h2{
+    font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:19px;
+    letter-spacing:-.01em;margin:0 0 8px;
+  }
+  .hours .lede, .dishes .lede{margin:0 0 18px;font-size:15px;color:var(--dim);}
+  .tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;
+    background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:4px 12px;}
+  table{border-collapse:collapse;width:100%;min-width:430px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;}
+  th,td{padding:9px 6px;text-align:center;border-bottom:1px solid var(--rule);white-space:nowrap;}
+  tr:last-child td{border-bottom:0;}
+  th{color:var(--dim);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:9px;}
+  th.v,td.v{text-align:left;color:var(--chalk);font-weight:600;position:sticky;left:0;
+    background:var(--raise);min-width:96px;}
+  td{color:var(--dim);}
+  td.shut{color:#F2809F;}
+  td.go{color:var(--sea);}
+  .hnote{margin:14px 0 0;font-size:14px;color:var(--dim);}
+  .hnote b{color:var(--chalk);font-weight:600;}
+
+  /* dishes */
+  .dishes{margin-top:34px;padding-top:26px;border-top:1px solid var(--rule);}
+  .dish{padding:15px 0;border-bottom:1px solid var(--rule);}
+  .dish:last-child{border-bottom:0;}
+  .dishtop{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:6px;}
+  .dish h3{font-family:'Syne','Archivo',sans-serif;font-weight:700;font-size:17px;
+    letter-spacing:-.01em;margin:0;}
+  .score{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;color:var(--dim);white-space:nowrap;}
+  .dish p{margin:0;font-size:14.5px;color:var(--dim);}
+  .dish b{color:var(--chalk);font-weight:600;}
+  .star{color:var(--sea);}
+  .pics{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px;}
+  .pic{
+    display:inline-block;padding:4px 10px;border-radius:2px;text-decoration:none;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.06em;text-transform:uppercase;
+    color:var(--sea);border:1px solid rgba(120,179,169,.35);
+    background:rgba(120,179,169,.06);
+  }
+  .pic:hover{background:rgba(120,179,169,.14);}
+
   /* footer strip */
   .money{
     margin-top:34px;background:var(--raise);border:1px solid var(--rule);
@@ -215,6 +258,23 @@
   }
   a{color:var(--pink);text-decoration:none;border-bottom:1px solid rgba(232,84,124,.35);}
   a:focus-visible{outline:2px solid var(--pink);outline-offset:3px;}
+
+  /* ---- today: live feed check ---- */
+  .today{background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+    padding:15px 17px;margin:24px 0 0;display:flex;align-items:center;gap:14px;}
+  .tdot{flex:0 0 auto;width:10px;height:10px;border-radius:50%;background:#5E7484;
+    transition:background .3s;}
+  .tdot.green{background:#6FCF97;box-shadow:0 0 0 3px rgba(111,207,151,.15);}
+  .tdot.amber{background:#E0A93B;box-shadow:0 0 0 3px rgba(224,169,59,.15);}
+  .tdot.red{background:#D9634E;box-shadow:0 0 0 3px rgba(217,99,78,.15);}
+  .tbody{flex:1;min-width:0;}
+  .tlbl{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:4px;}
+  .tval{margin:0;font-family:'Archivo',sans-serif;font-weight:600;font-size:15.5px;
+    color:var(--chalk);line-height:1.35;}
+  .tnote{margin:4px 0 0;font-size:12.5px;color:var(--dim);line-height:1.45;}
+  .sig{margin-top:22px;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:13px;color:var(--dim);opacity:.35;letter-spacing:.04em;user-select:none;}
 </style>
 </head>
 <body>
@@ -233,6 +293,14 @@
     <div class="routebox">
       <p>The whole route in Google Maps — all eight stops, walking, in order. Save it before you lose signal.</p>
       <a class="routebtn" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Elkano%201%20-%20Gaztagune%2C%20Donostia&origin_place_id=ChIJwSQUAE6lUQ0RI-pk5m8e6VQ&destination=SUA.MUKA.%2C%20Donostia&destination_place_id=ChIJ0V8LmealUQ0R6U7aRwwkhPM&waypoints=Lurka%20Chocolate%2C%20Donostia%7CSan%20Martin%20Merkatua%2C%20Donostia%7CAntonio%20taberna%2C%20Donostia%7CBouiboui%20Shop%2C%20Donostia%7CBodega%20Klandestina%2C%20Donostia%7CManojo%2C%20Donostia&waypoint_place_ids=ChIJTV0WnhylUQ0RBCFG0tA7TcI%7CChIJNbKD4VOlUQ0RA0e4gEExwJI%7CChIJ6T6eVVClUQ0Rr67NXUZTqSw%7CChIJM87Iwf30XIsR8Ot1wd2iB0I%7CChIJD_K7jNqlUQ0R5hgFyMuzk0M%7CChIJz3U4SRWlUQ0R4SAgDpt0FpQ" target="_blank" rel="noopener">Open the full route ↗</a>
+    </div>
+      <div class="today">
+      <span class="tdot" id="tdot"></span>
+      <div class="tbody">
+        <span class="tlbl" id="tlbl">Live now · San Sebastián</span>
+        <p class="tval" id="tval">Checking the feed…</p>
+        <p class="tnote" id="tnote">A reading here means the live weather feed is working. If it stalls, the day panels below won't fill either.</p>
+      </div>
     </div>
   </header>
 
@@ -368,6 +436,79 @@
     </article>
   </section>
 
+
+  <section class="hours">
+    <h2>Opening hours, whole week</h2>
+    <p class="lede">Checked on Google. Swipe the table sideways. <b>Friday is the column that matters</b> — everything else is here in case we shuffle.</p>
+    <div class="tblwrap">
+      <table>
+        <tr><th class="v">&nbsp;</th><th>Mon</th><th>Tue</th><th>Wed</th><th class="go">Fri</th><th>Sat</th><th>Sun</th></tr>
+        <tr><td class="v">Elkano 1</td><td class="shut">shut</td><td>10–14<br>16:30–20</td><td>10–14<br>16:30–20</td><td class="go">10–14<br>16:30–20</td><td>10–14<br>16:30–20</td><td class="shut">shut</td></tr>
+        <tr><td class="v">Lurka</td><td>?</td><td>?</td><td>?</td><td class="go">?</td><td>?</td><td>?</td></tr>
+        <tr><td class="v">San Martín</td><td>7:30–23:30</td><td>7:30–23:30</td><td>7:30–23:30</td><td class="go">7:30–23:30</td><td>7:30–23:30</td><td>8–14</td></tr>
+        <tr><td class="v">Antonio</td><td>9–23</td><td>9–23</td><td>9–23</td><td class="go">9–23</td><td>9–23</td><td class="shut">shut</td></tr>
+        <tr><td class="v">Bouiboui</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td class="go">10:30–14<br>16–20</td><td>11–14<br>16–19:30</td><td class="shut">shut</td></tr>
+        <tr><td class="v">Klandestina</td><td>10:30–14<br>17–20</td><td>11:30–14<br>17–20</td><td>10:30–14<br>17–20</td><td class="go">10:30–14<br>17–20</td><td>11:30–14<br>17–20</td><td class="shut">shut</td></tr>
+        <tr><td class="v">Manojo</td><td>17–24</td><td>17–24</td><td class="shut">shut</td><td class="go">17–00:45</td><td>12:30–00:45</td><td>17–24</td></tr>
+        <tr><td class="v">SUA.MUKA</td><td>12–23</td><td>12–23</td><td>12–23</td><td class="go">12–23</td><td>12–23</td><td>12–20</td></tr>
+      </table>
+    </div>
+    <p class="hnote"><b>Sunday is dead</b> — five of the eight are shut. <b>Wednesday</b> loses Manojo. <b>Saturday</b> pulls Bouiboui forward to 19:30, which is why we're going on a Friday. Lurka's hours still aren't published; that one needs a phone call.</p>
+  </section>
+
+  <section class="dishes">
+    <h2>What to order at each stop</h2>
+    <p class="lede">Pulled from what people actually keep mentioning in reviews, so you're not reading a Basque menu cold at the counter.</p>
+
+    <div class="dish">
+      <div class="dishtop"><h3>Elkano 1 Gaztagune</h3><span class="score"><span class="star">★</span> 4.7 · 185</span></div>
+      <p>Ask for the <b>Teyedu</b>. It comes up unprompted again and again — one reviewer was handed a taste and bought it on the spot. Pair it with an Idiazabal to see the contrast, and let the owner talk; that's most of the value here.</p>
+      <div class="pics"><a class="pic" href="https://www.google.com/search?tbm=isch&q=Teyedu%20queso%20cheese" target="_blank" rel="noopener">Teyedu cheese ↗</a><a class="pic" href="https://www.google.com/maps/search/?api=1&query=Elkano%201%20-%20Gaztagune%2C%20Donostia&query_place_id=ChIJwSQUAE6lUQ0RI-pk5m8e6VQ" target="_blank" rel="noopener">The shop ↗</a></div>
+    </div>
+
+    <div class="dish">
+      <div class="dishtop"><h3>Lurka Chocolate</h3><span class="score"><span class="star">★</span> 4.8 · 204</span></div>
+      <p>The <b>drinking chocolate</b>, and a <b>tablet to take home</b> — several regulars describe being sent back with orders from friends. There are a few seats and good coffee and pastries if we're running early.</p>
+      <div class="pics"><a class="pic" href="https://www.google.com/search?tbm=isch&q=Lurka%20Chocolate%20San%20Sebastian%20drinking%20chocolate" target="_blank" rel="noopener">Drinking chocolate ↗</a><a class="pic" href="https://www.google.com/maps/search/?api=1&query=Lurka%20Chocolate%2C%20Donostia&query_place_id=ChIJTV0WnhylUQ0RBCFG0tA7TcI" target="_blank" rel="noopener">The shop ↗</a></div>
+    </div>
+
+    <div class="dish">
+      <div class="dishtop"><h3>San Martín Market</h3><span class="score"><span class="star">★</span> 4.3 · 6,138</span></div>
+      <p>Nothing to buy. Look at the <b>fish counters</b> — reviewers single out the all-women fishmonger stall and the queue in front of it. That's the thing to watch, not the produce.</p>
+      <div class="pics"><a class="pic" href="https://www.google.com/search?tbm=isch&q=kokotxas%20de%20merluza%20bacalao%20Basque" target="_blank" rel="noopener">Kokotxas ↗</a><a class="pic" href="https://www.google.com/maps/search/?api=1&query=San%20Martin%20Merkatua%2C%20Donostia&query_place_id=ChIJNbKD4VOlUQ0RA0e4gEExwJI" target="_blank" rel="noopener">The market ↗</a></div>
+    </div>
+
+    <div class="dish">
+      <div class="dishtop"><h3>Antonio Taberna</h3><span class="score"><span class="star">★</span> 4.5 · 2,954</span></div>
+      <p><b>Tortilla de patata</b> with the house vermouth — the fresh batch lands around 18:30 and sells out, and one reviewer suggests being there by 18:15. Beyond that, two things come up repeatedly: the <b>txuleta</b>, and a newer <b>meatball</b> pintxo. Space is tight, so expect to stand at the outside bar.</p>
+      <div class="pics"><a class="pic" href="https://www.google.com/search?tbm=isch&q=Antonio%20taberna%20Donostia%20tortilla%20de%20patata" target="_blank" rel="noopener">The tortilla ↗</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=txuleta%20pintxo%20Basque%20steak" target="_blank" rel="noopener">Txuleta ↗</a><a class="pic" href="https://www.google.com/maps/search/?api=1&query=Antonio%20taberna%2C%20Donostia&query_place_id=ChIJ6T6eVVClUQ0Rr67NXUZTqSw" target="_blank" rel="noopener">The bar ↗</a></div>
+    </div>
+
+    <div class="dish">
+      <div class="dishtop"><h3>Bouiboui</h3><span class="score"><span class="star">★</span> 4.9 · 84</span></div>
+      <p>Highest-rated stop of the night. It's a specialty food and natural wine shop rather than a bar — reviewers rave about the <b>grilled cheese</b>, the sauces, the artisan pasta and the crisps. The owner is the draw and hands out recommendations freely. Good place to buy something to carry home.</p>
+      <div class="pics"><a class="pic" href="https://www.google.com/search?tbm=isch&q=Bouiboui%20San%20Sebastian%20grilled%20cheese" target="_blank" rel="noopener">Grilled cheese ↗</a><a class="pic" href="https://www.google.com/maps/search/?api=1&query=Bouiboui%20Shop%2C%20Donostia&query_place_id=ChIJM87Iwf30XIsR8Ot1wd2iB0I" target="_blank" rel="noopener">The shop ↗</a></div>
+    </div>
+
+    <div class="dish">
+      <div class="dishtop"><h3>Bodega Klandestina</h3><span class="score"><span class="star">★</span> 4.9 · 50</span></div>
+      <p>Don't choose. <b>Tell the owner what you've been drinking and let him pick</b> — that's what nearly every review describes, and they all describe it working. Modern Spanish alongside natural wines. This is where to buy bottles for the suitcase rather than at the airport.</p>
+      <div class="pics"><a class="pic" href="https://www.google.com/maps/search/?api=1&query=Bodega%20Klandestina%2C%20Donostia&query_place_id=ChIJD_K7jNqlUQ0R5hgFyMuzk0M" target="_blank" rel="noopener">The shop ↗</a></div>
+    </div>
+
+    <div class="dish">
+      <div class="dishtop"><h3>Manojo</h3><span class="score"><span class="star">★</span> 4.6 · 250</span></div>
+      <p><b>Navajas</b> — razor clams — are called a must more than once. Also strong: <b>bonito with leche de tigre</b>, the <b>handmade tagliatelle with clams</b>, the gilda and charcuterie, and pork in tomato sauce. Small plates, so three or four between two people. Menu changes with the market. Not fast — plan to sit.</p>
+      <div class="pics"><a class="pic" href="https://www.google.com/search?tbm=isch&q=navajas%20razor%20clams%20Basque%20pintxo" target="_blank" rel="noopener">Navajas ↗</a><a class="pic" href="https://www.google.com/search?tbm=isch&q=bonito%20leche%20de%20tigre" target="_blank" rel="noopener">Bonito, leche de tigre ↗</a><a class="pic" href="https://www.google.com/maps/search/?api=1&query=Manojo%2C%20Donostia&query_place_id=ChIJz3U4SRWlUQ0R4SAgDpt0FpQ" target="_blank" rel="noopener">The bar ↗</a></div>
+    </div>
+
+    <div class="dish">
+      <div class="dishtop"><h3>SUA.MUKA</h3><span class="score"><span class="star">★</span> 4.1 · 570</span></div>
+      <p>The weakest score of the eight, and worth knowing why: food and location get consistent praise, but <b>service and portion-for-price draw repeated complaints</b>. Tasting menu around €65, wine pairing about €28 more. Go à la carte for a drink at the bar, or skip it — the river-meets-sea terrace is the real reason to bother.</p>
+      <div class="pics"><a class="pic" href="https://www.google.com/maps/search/?api=1&query=SUA.MUKA.%2C%20Donostia&query_place_id=ChIJ0V8LmealUQ0R6U7aRwwkhPM" target="_blank" rel="noopener">The terrace ↗</a></div>
+    </div>
+  </section>
+
   <div class="money">
     <h2>Practical</h2>
     <p><b>Budget €60–90 each</b> for the whole evening, food and drink included.</p>
@@ -377,6 +518,7 @@
 
   <footer>
     <p>Message me if you're running late — don't try to catch us up at stop four.</p>
+      <p class="sig">¯\_(ツ)_/¯</p>
   </footer>
 
 </div>
@@ -393,5 +535,43 @@
     });
   })();
 </script>
+
+<script>
+/* Today, here. Doubles as a health check on the Open-Meteo feed. */
+(function(){
+  var LAT=43.3183, LON=-1.9812, TZ="Europe/Madrid", PLACE="San Sebasti\u00e1n";
+  var W={0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Overcast',45:'Fog',48:'Freezing fog',
+    51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',56:'Freezing drizzle',57:'Freezing drizzle',
+    61:'Light rain',63:'Rain',65:'Heavy rain',66:'Freezing rain',67:'Freezing rain',
+    71:'Light snow',73:'Snow',75:'Heavy snow',77:'Snow grains',
+    80:'Rain showers',81:'Rain showers',82:'Heavy showers',85:'Snow showers',86:'Snow showers',
+    95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'};
+  var dot=document.getElementById('tdot'), val=document.getElementById('tval'),
+      note=document.getElementById('tnote'), lbl=document.getElementById('tlbl');
+  var u='https://api.open-meteo.com/v1/forecast?latitude='+LAT+'&longitude='+LON
+      +'&current=temperature_2m,precipitation,weather_code,wind_speed_10m'
+      +'&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max'
+      +'&forecast_days=1&timezone='+encodeURIComponent(TZ);
+  fetch(u).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(d){
+    var c=d.current, dy=d.daily, code=c.weather_code;
+    var desc=W[code]||'—';
+    var rain=dy&&dy.precipitation_probability_max?dy.precipitation_probability_max[0]:0;
+    var hi=dy&&dy.temperature_2m_max?Math.round(dy.temperature_2m_max[0]):null;
+    var lo=dy&&dy.temperature_2m_min?Math.round(dy.temperature_2m_min[0]):null;
+    var cls = (code<=2 && rain<=30) ? 'green' : (code<=48 || rain<=60) ? 'amber' : 'red';
+    dot.className='tdot '+cls;
+    lbl.textContent='Live now · '+PLACE+' · '+new Date().toLocaleDateString('en-GB',
+      {weekday:'short',day:'numeric',month:'short'});
+    val.textContent=Math.round(c.temperature_2m)+'°C, '+desc.toLowerCase()
+      +(hi!==null?'  ·  '+lo+'–'+hi+'°C today':'')+'  ·  '+Math.round(rain)+'% rain';
+    note.innerHTML='Feed is live. <b>This is today, not the trip</b> — the day panels below stay grey until we are inside the forecast window.';
+  }).catch(function(){
+    dot.className='tdot red';
+    val.textContent='Feed unavailable';
+    note.textContent='The live weather feed is not responding. Use the webcam and forecast links instead.';
+  });
+})();
+</script>
+
 </body>
 </html>
