@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sunday 11 October — French Basque Coast</title>
+<meta name="description" content="Friends day from San Sebastián to Ciboure, Saint-Jean-de-Luz and Biarritz: Sunday market, music, French Basque lunch, Atlantic coast and sunset.">
+<meta property="og:title" content="Sunday 11 October — French Basque Coast">
+<meta property="og:description" content="Sunday market. Basque music. Seafood lunch. Biarritz coast.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#0F1113; --raise:#181B1F; --raise2:#20252A;
+  --chalk:#E8E6E2; --dim:#8A8F94;
+  --sea:#87C7C4; --sand:#D9A441; --rust:#D28B54; --go:#7FB98A; --stop:#D96B5A;
+  --rule:rgba(232,230,226,.13);
+  --pad:clamp(18px,5.5vw,40px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--chalk);
+  font-family:'Archivo',system-ui,-apple-system,sans-serif;font-size:16.5px;
+  line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:0 var(--pad) 72px}
+.top{padding:clamp(32px,9vw,58px) 0 0}
+.kicker{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:600;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--sand);margin:0 0 14px}
+h1{font-family:'Syne','Archivo',sans-serif;font-weight:800;
+  font-size:clamp(34px,9.7vw,55px);line-height:.97;letter-spacing:-.025em;margin:0 0 16px}
+.intro{margin:0;color:var(--dim);font-size:15.5px;max-width:52ch}
+.intro b{color:var(--chalk);font-weight:600}
+section{margin-top:36px;padding-top:26px;border-top:1px solid var(--rule)}
+.sechead{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:0 0 14px}
+h2{font-family:'Syne','Archivo',sans-serif;font-weight:800;
+  font-size:clamp(22px,5.6vw,29px);letter-spacing:-.02em;line-height:1.1;margin:0 0 8px}
+.lede{margin:0 0 20px;color:var(--dim);font-size:15px}
+.fixed{background:rgba(217,164,65,.08);border:1px solid rgba(217,164,65,.28);
+  border-left:3px solid var(--sand);border-radius:3px;padding:14px 16px;margin:0 0 18px}
+.fixed .lbl{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--sand);margin:0 0 6px}
+.fixed p{margin:0;font-size:14.5px}.fixed p+p{margin-top:6px}
+.stop{padding:17px 0;border-top:1px solid var(--rule)}
+.stop:first-child{border-top:0;padding-top:0}
+.clock{font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;
+  font-size:13.5px;color:var(--sea);letter-spacing:.03em;margin:0 0 4px}
+.stop h3{font-family:'Syne','Archivo',sans-serif;font-weight:700;font-size:19px;
+  letter-spacing:-.01em;line-height:1.2;margin:0 0 6px}
+.stop p{margin:0;font-size:14.5px;color:var(--dim)}
+.stop p+p{margin-top:7px}
+.stop b{color:var(--chalk);font-weight:600}
+.route{display:block;text-align:center;text-decoration:none;
+  background:rgba(135,199,196,.08);border:1px solid rgba(135,199,196,.30);
+  border-radius:3px;padding:11px 14px;margin:14px 0 0;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--sea)}
+.maplink,.chip{display:inline-block;margin-top:9px;padding:4px 9px;border-radius:2px;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--sea);text-decoration:none;
+  border:1px solid rgba(135,199,196,.30)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}.chip{margin-top:0}
+.alt{background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+  padding:15px 16px;margin-top:16px}
+.alt h4{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:0 0 7px}
+.alt p{margin:0 0 8px;font-size:14.5px;color:var(--dim)}.alt p:last-child{margin:0}
+.alt b{color:var(--chalk)}
+.orderbox{margin-top:10px;padding:10px 12px;background:rgba(135,199,196,.06);
+  border:1px solid rgba(135,199,196,.18);border-radius:3px}
+.orderbox .olbl{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--sea);margin-bottom:5px}
+.orderbox p{margin:0;font-size:13.5px;color:var(--dim)}.orderbox b{color:var(--chalk)}
+.momentline{margin-top:10px;padding:9px 11px;border-left:2px solid var(--rust);
+  background:rgba(210,139,84,.06);font-size:13px;color:var(--dim)}
+.momentline b{color:var(--chalk)}
+.switch{background:rgba(210,139,84,.08);border:1px solid rgba(210,139,84,.28);
+  border-radius:3px;padding:16px;margin-top:18px}
+.switch .tag{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--rust);margin-bottom:5px}
+.switch h3{font-family:'Syne','Archivo',sans-serif;font-size:19px;margin:0 0 7px}
+.switch p{margin:0;color:var(--dim);font-size:14px}.switch p+p{margin-top:8px}
+
+.wxpanel{background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:15px 16px;margin-top:24px}
+.wxtabs{display:flex;gap:7px;margin-bottom:10px;flex-wrap:wrap}
+.wxbtn{appearance:none;border:1px solid rgba(135,199,196,.28);background:transparent;color:var(--sea);
+  border-radius:2px;padding:5px 9px;font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.wxbtn.active{background:rgba(135,199,196,.12)}
+.wxrow{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--rule)}
+.wxrow:last-child{border-bottom:0}
+.wxl{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.wxv{text-align:right;font-size:14px;color:var(--chalk);font-weight:600}
+.wxv small{display:block;color:var(--dim);font-size:11px;font-weight:500;margin-top:2px}
+.wx7{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:10px}
+.wxd{background:var(--raise2);border:1px solid var(--rule);border-radius:3px;padding:9px 7px;text-align:center}
+.wxd b{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;color:var(--sea)}
+.wxd span{display:block;font-size:12px;color:var(--chalk);margin-top:4px}
+.wxd small{display:block;font-size:9.5px;color:var(--dim);margin-top:2px}
+
+footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--dim)}
+footer p{margin:0 0 9px}footer b{color:var(--chalk)}footer a{color:var(--sea)}
+.sig{margin-top:22px;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:13px;color:var(--dim);opacity:.35;letter-spacing:.04em}
+a:focus-visible,button:focus-visible{outline:2px solid var(--sea);outline-offset:3px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <p class="kicker">Sunday 11 October · French Basque Coast</p>
+  <h1>Market.<br>Music.<br>Atlantic.</h1>
+  <p class="intro">The friends day: <b>a lively Sunday morning in Ciboure + Saint‑Jean‑de‑Luz, one proper French Basque seafood lunch, then Biarritz for the coast and photos.</b> Keep Arcangues festival as a switch — not a third compulsory destination.</p>
+
+  <div class="wxpanel">
+    <div class="wxtabs">
+      <button class="wxbtn active" data-place="sjl">Saint‑Jean‑de‑Luz</button>
+      <button class="wxbtn" data-place="biarritz">Biarritz</button>
+    </div>
+    <div class="wxrow">
+      <div>
+        <div class="wxl" id="wx-label">Live now · Saint‑Jean‑de‑Luz</div>
+        <div id="wx-now-note" style="font-size:11px;color:var(--dim);margin-top:3px">Connecting to Open‑Meteo…</div>
+      </div>
+      <div class="wxv" id="wx-now">—</div>
+    </div>
+    <div class="wxrow">
+      <div>
+        <div class="wxl">11 Oct trip forecast</div>
+        <div style="font-size:11px;color:var(--dim);margin-top:3px">Auto-fills when 11 October enters the forecast horizon.</div>
+      </div>
+      <div class="wxv" id="wx-trip">Not available yet</div>
+    </div>
+    <div style="margin-top:12px">
+      <div class="wxl">Next 7 days · live feed check</div>
+      <div class="wx7" id="wx7"><div class="wxd"><span>Loading…</span></div></div>
+    </div>
+    <div class="chips" style="margin-top:12px">
+      <a class="chip" id="wx-api" href="#" target="_blank" rel="noopener">Open live API response ↗</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <p class="sechead">At a glance</p>
+  <h2>The whole day</h2>
+  <div class="alt">
+    <p><b>~08:15–08:30</b> hotel → Donostia Bus Station · target FlixBus around 09:00</p>
+    <p><b>~09:45</b> Ciboure Sunday regional market</p>
+    <p><b>~11:15</b> Saint‑Jean‑de‑Luz → Place Louis XIV</p>
+    <p><b>11:30</b> Sunday music at the bandstand</p>
+    <p><b>~12:00</b> harbour + Rue Gambetta + Grande Plage</p>
+    <p><b>~12:45–14:15</b> Pil Pil Enea lunch</p>
+    <p><b>~14:15</b> lunch ends → Gare Saint‑Jean‑de‑Luz–Ciboure → SNCF Biarritz</p>
+    <p><b>~15:15–18:30</b> Grande Plage → Rocher de la Vierge → Côte des Basques</p>
+    <p><b>~18:00</b> Côte des Basques → taxi Gare de Biarritz → SNCF Hendaye → Euskotren E2 → Amara</p>
+    <a class="route" href="https://www.google.com/maps/dir/?api=1&travelmode=driving&origin=Intelier+Victoria+San+Sebastian&destination=Intelier+Victoria+San+Sebastian&waypoints=Place+Camille+Jullian+Ciboure%7CPlace+Louis+XIV+Saint-Jean-de-Luz%7CPil+Pil+Enea+Saint-Jean-de-Luz%7CGrande+Plage+Biarritz%7CRocher+de+la+Vierge+Biarritz%7CCote+des+Basques+Biarritz" target="_blank" rel="noopener">Open total day route ↗</a>
+  </div>
+</section>
+
+<section>
+  <p class="sechead">Public transport · practical version</p>
+  <h2>Exactly where to board + when</h2>
+
+  <div class="fixed">
+    <p class="lbl">Leg 1 · Sunday morning</p>
+    <p><b>Target: leave hotel ~08:15–08:30 → board FlixBus around 08:45–09:15.</b></p>
+    <p><b>Board at:</b> San Sebastian / Donostia Bus Station, <b>Paseo Federico García Lorca 1, 20010 Donostia</b>.</p>
+    <p><b>Get off at:</b> Saint‑Jean‑de‑Luz Central Bus Station, <b>Bd du Commandant Passicot, 64500 Saint‑Jean‑de‑Luz</b> — directly in front of the SNCF station.</p>
+    <p>FlixBus currently publishes <b>3 direct trips/day</b> on this route, with a minimum journey time of about <b>40 minutes</b>; the current route window runs from <b>06:25 to 15:30</b>. The exact Sunday 11 Oct departures are <b>not yet published</b>, so choose the departure closest to 09:00 once booking opens.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Donostia+San+Sebastian+Bus+Station+Paseo+Federico+Garcia+Lorca+1" target="_blank" rel="noopener">Boarding point · Donostia ↗</a>
+      <a class="chip" href="https://global.flixbus.com/bus-routes/bus-san-sebastian-saint-jean-de-luz" target="_blank" rel="noopener">FlixBus route / booking ↗</a>
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Saint-Jean-de-Luz+Central+Bus+Station+Boulevard+du+Commandant+Passicot" target="_blank" rel="noopener">Arrival stop · Saint‑Jean ↗</a>
+      <a class="chip" href="https://www.google.com/maps/dir/?api=1&origin=Intelier+Victoria+San+Sebastian&destination=Donostia+San+Sebastian+Bus+Station&travelmode=walking" target="_blank" rel="noopener">Hotel → bus station ↗</a>
+    </div>
+  </div>
+
+  <div class="fixed">
+    <p class="lbl">Leg 2 · after lunch</p>
+    <p><b>Target: leave Pil Pil Enea ~14:15 → be at the station ~14:30.</b></p>
+    <p><b>Board at:</b> <b>Gare de Saint‑Jean‑de‑Luz–Ciboure</b>, beside the same bus station where you arrived in the morning.</p>
+    <p><b>Train:</b> direct SNCF service to <b>Gare de Biarritz</b>.</p>
+    <p>SNCF currently publishes roughly <b>24 trains/day</b>, with an average trip of <b>11 minutes</b> and fastest around <b>9 minutes</b>. Current daily service runs broadly from <b>04:56 to 20:17</b>. Exact 11 Oct departure times are not yet published, so take the first practical direct train after ~14:30.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Gare+Saint-Jean-de-Luz+Ciboure" target="_blank" rel="noopener">Board · Saint‑Jean station ↗</a>
+      <a class="chip" href="https://www.sncf-connect.com/train/trajet/saint-jean-de-luz/biarritz" target="_blank" rel="noopener">SNCF timetable / booking ↗</a>
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Gare+de+Biarritz" target="_blank" rel="noopener">Arrive · Biarritz station ↗</a>
+      <a class="chip" href="https://www.google.com/maps/dir/?api=1&origin=Pil+Pil+Enea+Saint-Jean-de-Luz&destination=Gare+Saint-Jean-de-Luz+Ciboure&travelmode=walking" target="_blank" rel="noopener">Lunch → station ↗</a>
+    </div>
+  </div>
+
+  <div class="fixed">
+    <p class="lbl">Leg 3 · Biarritz station → seafront</p>
+    <p><b>On arrival at Gare de Biarritz:</b> do <b>not</b> walk to Grande Plage. The station is inland.</p>
+    <p><b>Best for 6:</b> take <b>2 taxis</b> from Gare de Biarritz directly to <b>Grande Plage / Hôtel du Palais</b>. This is the one transport leg where taxi is simpler than learning another local bus.</p>
+    <p><b>Public-bus backup:</b> Txik Txak serves Biarritz centre and its beaches; current network information lists Grande Plage / central Biarritz on multiple lines. October-specific local schedules should be checked in the Txik Txak journey planner on the day.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/dir/?api=1&origin=Gare+de+Biarritz&destination=Grande+Plage+Biarritz&travelmode=transit" target="_blank" rel="noopener">Station → Grande Plage ↗</a>
+      <a class="chip" href="https://www.txiktxak.fr/en/visit-the-basque-country-with-txik-txak/" target="_blank" rel="noopener">Txik Txak visitor network ↗</a>
+    </div>
+  </div>
+
+  <div class="alt">
+    <h4>What is actually confirmed today?</h4>
+    <p><b>Confirmed:</b> boarding locations, direct FlixBus route, direct SNCF Saint‑Jean→Biarritz route, and current service frequency/duration.</p>
+    <p><b>Not yet confirmable:</b> the exact FlixBus and SNCF departure clock-times for <b>Sunday 11 Oct 2026</b>. Those operators have not yet released the date-specific timetable this far ahead.</p>
+  </div>
+</section>
+
+<section>
+  <p class="sechead">Sunday morning</p>
+  <h2>Ciboure → Saint‑Jean‑de‑Luz</h2>
+
+  <div class="stop">
+    <p class="clock">~09:45 → 10:45</p>
+    <h3>1 · Ciboure regional-products market</h3>
+    <p>This is <b>date-specific for Sunday 11 October 2026</b>: local producers and creators at <b>Place Camille Jullian / Place Lannes, 08:00–13:00</b>.</p>
+    <div class="orderbox">
+      <div class="olbl">Taste / buy</div>
+      <p>Look for <b>local cheese, charcuterie, Basque cake, bread, preserves and seasonal produce</b>. Treat this as browsing + tasting, not breakfast #2.</p>
+    </div>
+    <div class="momentline"><b>📸 Instagram / fun:</b> candid market shot — everyone holds one thing they independently chose. Best if the choices are completely different.</div>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Place+Camille+Jullian+Ciboure" target="_blank" rel="noopener">Market · Google Maps ↗</a>
+      <a class="chip" href="https://www.saint-jean-de-luz.com/en/sit/marche-de-produits-regionaux-61/" target="_blank" rel="noopener">Official 11 Oct market ↗</a>
+      <a class="chip" href="https://www.google.com/search?tbm=isch&q=Ciboure+Sunday+market+Basque" target="_blank" rel="noopener">Photo examples ↗</a>
+    </div>
+  </div>
+
+  <div class="stop">
+    <p class="clock">~10:45 → 11:25</p>
+    <h3>Walk into Saint‑Jean‑de‑Luz</h3>
+    <p>Cross toward the harbour and head for <b>Place Louis XIV</b>. The square links directly to the port, pedestrian Rue Gambetta and the route to Grande Plage.</p>
+    <a class="route" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Place+Camille+Jullian+Ciboure&destination=Place+Louis+XIV+Saint-Jean-de-Luz" target="_blank" rel="noopener">Ciboure market → Place Louis XIV ↗</a>
+  </div>
+
+  <div class="stop">
+    <p class="clock">11:30</p>
+    <h3>2 · Sunday music · Place Louis XIV</h3>
+    <p>The tourism office states that <b>every Sunday from Easter to All Saints’ Day</b> there is musical animation at the bandstand at <b>11:30</b>. The exact group for 11 Oct may be published later.</p>
+    <div class="momentline"><b>😄 Friends moment:</b> do not pose immediately. Get a walking / laughing shot with the bandstand and Sunday crowd behind you.</div>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Place+Louis+XIV+Saint-Jean-de-Luz" target="_blank" rel="noopener">Place Louis XIV · map ↗</a>
+      <a class="chip" href="https://www.saint-jean-de-luz.com/en/destination-saint-jean-de-luz/saint-jean-de-luz-the-historic-centre/" target="_blank" rel="noopener">Official Sunday-music info ↗</a>
+      <a class="chip" href="https://www.google.com/search?tbm=isch&q=Place+Louis+XIV+Saint+Jean+de+Luz+bandstand" target="_blank" rel="noopener">Photo examples ↗</a>
+    </div>
+  </div>
+
+  <div class="stop">
+    <p class="clock">~12:00 → 12:40</p>
+    <h3>3 · Harbour → Rue Gambetta → Grande Plage</h3>
+    <p>Keep this short before lunch: harbour boats, pedestrian centre, then one look at the protected bay.</p>
+    <a class="route" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Place+Louis+XIV+Saint-Jean-de-Luz&destination=Grande+Plage+Saint-Jean-de-Luz&waypoints=Port+de+Saint-Jean-de-Luz%7CRue+Gambetta+Saint-Jean-de-Luz" target="_blank" rel="noopener">One-click Saint‑Jean walk ↗</a>
+    <div class="momentline"><b>📸 Instagram:</b> harbour first — boats + red-roof Basque town. Then one wide group shot at Grande Plage; no need for ten beach photos.
+      <div class="chips">
+        <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Port+de+Saint-Jean-de-Luz" target="_blank" rel="noopener">Harbour · map ↗</a>
+        <a class="chip" href="https://www.google.com/search?tbm=isch&q=Saint+Jean+de+Luz+harbour+Grande+Plage" target="_blank" rel="noopener">Photo examples ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="sechead">~12:45 · lunch</p>
+  <h2>Pil Pil Enea</h2>
+
+  <div class="fixed">
+    <p class="lbl">Book this if you want the lunch fixed</p>
+    <p><b>3 rue Sallagoity, Saint‑Jean‑de‑Luz.</b> The tourism office lists it open <b>lunch and dinner Thursday–Monday from September to December</b>, so Sunday 11 Oct fits. Reservation is advised; groups are accepted.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Pil+Pil+Enea+Saint-Jean-de-Luz" target="_blank" rel="noopener">Google Maps ↗</a>
+      <a class="chip" href="https://www.saint-jean-de-luz.com/en/sit/restaurant-pil-pil-enea/" target="_blank" rel="noopener">Official tourism listing ↗</a>
+    </div>
+  </div>
+
+  <div class="orderbox">
+    <div class="olbl">Top tasty food · validated specialties</div>
+    <p><b>Ttoro</b> — the most locally distinctive choice · <b>grilled squid</b> · <b>Hake Koskera</b> · <b>Spanish-style hake</b> · <b>grilled fresh fish</b>.</p>
+  </div>
+
+  <div class="momentline"><b>😄 Friends food moment:</b> order several different fish dishes and share tastes. Vote “best fish of France” before you leave — you have Getaria the next day for the Spanish rematch.</div>
+</section>
+
+<section>
+  <p class="sechead">~14:30</p>
+  <h2>Move to Biarritz</h2>
+
+  <div class="stop" style="border-top:0;padding-top:0">
+    <p class="clock">~14:30 → 15:15</p>
+    <h3>Saint‑Jean‑de‑Luz → Biarritz</h3>
+    <p><b>Car / van:</b> simplest door-to-door for six. <b>Train:</b> direct TER from Saint‑Jean‑de‑Luz–Ciboure to Biarritz; current SNCF route data shows about 9–15 minutes on direct services, but the Biarritz station is inland, so add local transfer time to the seafront.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/dir/?api=1&origin=Pil+Pil+Enea+Saint-Jean-de-Luz&destination=Grande+Plage+Biarritz&travelmode=driving" target="_blank" rel="noopener">Drive to Biarritz ↗</a>
+      <a class="chip" href="https://www.sncf-connect.com/train/horaires/saint-jean-de-luz/biarritz" target="_blank" rel="noopener">SNCF timetable ↗</a>
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Gare+de+Biarritz" target="_blank" rel="noopener">Biarritz station · map ↗</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="sechead">Biarritz afternoon</p>
+  <h2>Postcard coast → dramatic coast</h2>
+
+  <a class="route" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Grande+Plage+Biarritz&destination=Cote+des+Basques+Biarritz&waypoints=Hotel+du+Palais+Biarritz%7CPort+des+Pecheurs+Biarritz%7CRocher+de+la+Vierge+Biarritz" target="_blank" rel="noopener">One-click Biarritz coastal walk ↗</a>
+
+  <div class="stop">
+    <p class="clock">~15:15</p>
+    <h3>1 · Grande Plage + Hôtel du Palais</h3>
+    <p>Start with the classic Biarritz postcard. Destination Biarritz describes Grande Plage as the central beach with <b>Hôtel du Palais overlooking the bay</b>. October beach facilities are listed through 31 Oct.</p>
+    <div class="momentline"><b>📸 Instagram:</b> shoot from the promenade, not just the sand — beach + Hôtel du Palais + Atlantic in one frame.</div>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Grande+Plage+Biarritz" target="_blank" rel="noopener">Grande Plage · map ↗</a>
+      <a class="chip" href="https://www.destination-biarritz.fr/en/decouvrir/plages/la-grande-plage/" target="_blank" rel="noopener">Official page / photos ↗</a>
+    </div>
+  </div>
+
+  <div class="stop">
+    <p class="clock">~16:00</p>
+    <h3>2 · Port des Pêcheurs</h3>
+    <p>Small fishing-port contrast after the grand resort façade. Walk through rather than turning it into another long stop.</p>
+    <div class="momentline"><b>😄 Fun moment:</b> six-person “French Riviera” pose, except this is the Atlantic and everyone knows it.</div>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Port+des+Pecheurs+Biarritz" target="_blank" rel="noopener">Port des Pêcheurs · map ↗</a>
+      <a class="chip" href="https://www.google.com/search?tbm=isch&q=Port+des+Pecheurs+Biarritz" target="_blank" rel="noopener">Photo examples ↗</a>
+    </div>
+  </div>
+
+  <div class="stop">
+    <p class="clock">~16:30</p>
+    <h3>3 · Rocher de la Vierge</h3>
+    <p>The signature group-photo stop. Official Biarritz information lists it <b>open every day throughout 2026</b> and free; the footbridge can close when weather is dangerous.</p>
+    <div class="momentline"><b>📸 Best group shot of the day:</b> one person shoots from slightly back while the other five move onto the walkway. Then swap photographer.</div>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Rocher+de+la+Vierge+Biarritz" target="_blank" rel="noopener">Rocher · Google Maps ↗</a>
+      <a class="chip" href="https://www.destination-biarritz.fr/en/decouvrir/le-rocher-de-la-vierge/" target="_blank" rel="noopener">Official story / photos ↗</a>
+    </div>
+  </div>
+
+  <div class="stop">
+    <p class="clock">~17:15 → 18:30</p>
+    <h3>4 · Côte des Basques</h3>
+    <p>Finish at the cliff-top viewpoint. Biarritz Tourism calls this one of the city's best sunset viewpoints. <b>Do not depend on walking the beach itself:</b> the beach can disappear completely at high tide.</p>
+    <div class="momentline"><b>📸 Instagram:</b> cliff-top silhouettes / candid walking shot. This should be the last photo stop, not another checklist item.</div>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Cote+des+Basques+Biarritz" target="_blank" rel="noopener">Côte des Basques · map ↗</a>
+      <a class="chip" href="https://www.destination-biarritz.fr/en/decouvrir/plages/la-cote-des-basques/" target="_blank" rel="noopener">Official sunset / tide info ↗</a>
+      <a class="chip" href="https://www.google.com/search?tbm=isch&q=Cote+des+Basques+Biarritz+sunset" target="_blank" rel="noopener">Photo examples ↗</a>
+    </div>
+  </div>
+
+  <div class="alt">
+    <h4>Optional snack only · Bar Jean</h4>
+    <p>If lunch was early and everyone wants something before returning, stop around Les Halles for a <b>small shared snack</b>. Bar Jean is at <b>5 rue des Halles</b> and is listed by Destination Biarritz. Do not turn this into a second full meal.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Bar+Jean+Biarritz" target="_blank" rel="noopener">Bar Jean · Google Maps ↗</a>
+      <a class="chip" href="https://www.destination-biarritz.fr/en/restaurant/bar-jean/" target="_blank" rel="noopener">Official tourism listing ↗</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="sechead">11 Oct only · optional switch</p>
+  <h2>Arcangues festival</h2>
+
+  <div class="switch">
+    <div class="tag">Optional · easier with a car</div>
+    <h3>Herri Uzta · Mutxikoaren Eguna</h3>
+    <p><b>Sunday 11 October 2026 · 11:00–20:00 · free.</b> Théâtre de la Nature, Bourg d'Arcangues. The published event description is centred on <b>Basque traditional dance, music and language</b>; the detailed 2026 programme is still to come.</p>
+
+    <div class="orderbox" style="margin-top:12px">
+      <div class="olbl">Transport reality</div>
+      <p><b>Car / taxi is much better than public transport</b> if you want to insert Arcangues between Saint‑Jean‑de‑Luz and Biarritz. It avoids turning the afternoon into multiple local-bus changes.</p>
+      <p style="margin-top:7px"><b>But do not assume easy parking.</b> Arcangues normally has free village parking near the centre, including parking close to the village roundabout. However, the festival takes place at the Théâtre de la Nature in the same village-centre area and <b>festival-specific parking / overflow arrangements for 11 Oct have not yet been published</b>. Expect the normal village spaces to be under more pressure than on an ordinary Sunday.</p>
+    </div>
+
+    <p style="margin-top:12px"><b>Best practical approach if you choose it:</b><br>
+      Saint‑Jean‑de‑Luz lunch → <b>taxi / hired car to Arcangues</b> → ask to be dropped near the village centre / Théâtre de la Nature → festival ~60–90 min → <b>taxi onward to Biarritz</b>.</p>
+
+    <p><b>If self-driving:</b> aim to arrive earlier rather than exactly at a headline performance time. Use the official village parking first, but be prepared to park farther away and walk. Check the final festival notice shortly before 11 Oct for any temporary parking, traffic or shuttle instructions.</p>
+
+    <p><b>If you stay no-car:</b> this remains an optional detour, not part of the base itinerary. I would only do it if the final programme has something your group really wants to see and you are comfortable using taxis for both <b>Saint‑Jean‑de‑Luz → Arcangues</b> and <b>Arcangues → Biarritz</b>.</p>
+
+    <div class="momentline"><b>😄 Friends moment:</b> this is the most “local Basque culture” option of the day — watch one dance/music session rather than trying to see the whole festival. The value is joining the atmosphere, not staying for hours.</div>
+
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Theatre+de+la+Nature+Arcangues" target="_blank" rel="noopener">Festival · Google Maps ↗</a>
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Parking+Bourg+d%27Arcangues" target="_blank" rel="noopener">Village parking · map ↗</a>
+      <a class="chip" href="https://www.arcangues.fr/lieu/parking/" target="_blank" rel="noopener">Official village parking ↗</a>
+      <a class="chip" href="https://www.arcangues.fr/lieu/theatre-de-la-nature/" target="_blank" rel="noopener">Théâtre de la Nature ↗</a>
+      <a class="chip" href="https://www.saint-jean-de-luz.com/sit/festival-herri-uzta-mutxikoaren-eguna/" target="_blank" rel="noopener">Official 11 Oct festival ↗</a>
+      <a class="chip" href="https://www.google.com/maps/dir/?api=1&origin=Pil+Pil+Enea+Saint-Jean-de-Luz&destination=Cote+des+Basques+Biarritz&waypoints=Theatre+de+la+Nature+Arcangues&travelmode=driving" target="_blank" rel="noopener">Festival switch route ↗</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="sechead">No-car return · primary plan</p>
+  <h2>Biarritz → Hendaye → Donostia</h2>
+
+  <div class="fixed">
+    <p class="lbl">Step 1 · leave the coast</p>
+    <p><b>Target: leave Côte des Basques around 18:00–18:15.</b></p>
+    <p><b>Start at:</b> Côte des Basques cliff-top / central Biarritz.</p>
+    <p>Take <b>2 taxis to Gare de Biarritz</b>. Aim to be at the station by roughly <b>18:30</b>. Keep extra buffer rather than trying to catch a train with only a few minutes to spare.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Cote+des+Basques+Biarritz" target="_blank" rel="noopener">Start · Côte des Basques ↗</a>
+      <a class="chip" href="https://www.google.com/maps/dir/?api=1&origin=Cote+des+Basques+Biarritz&destination=Gare+de+Biarritz&travelmode=driving" target="_blank" rel="noopener">Taxi → Biarritz station ↗</a>
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Gare+de+Biarritz" target="_blank" rel="noopener">Board · Gare de Biarritz ↗</a>
+    </div>
+  </div>
+
+  <div class="fixed">
+    <p class="lbl">Step 2 · SNCF Biarritz → Hendaye</p>
+    <p><b>Board at:</b> <b>Gare de Biarritz</b>.</p>
+    <p><b>Get off at:</b> <b>Gare d'Hendaye</b>.</p>
+    <p>SNCF currently publishes about <b>25 trains/day</b>, average journey <b>30 minutes</b>, fastest <b>27 minutes</b>, with the current daily service extending as late as <b>22:56</b>. Exact 11 Oct times are not yet released.</p>
+    <p><b>Practical target:</b> take the first suitable direct train after about <b>18:30–18:45</b>. Current comparable schedules commonly have evening trains around the 18:00–20:30 period, but do <b>not</b> copy those clock-times into the final plan until SNCF publishes 11 Oct.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.sncf-connect.com/train/horaires/biarritz/hendaye" target="_blank" rel="noopener">Check 11 Oct SNCF ↗</a>
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Gare+de+Biarritz" target="_blank" rel="noopener">Biarritz station ↗</a>
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Gare+d%27Hendaye" target="_blank" rel="noopener">Hendaye SNCF station ↗</a>
+    </div>
+  </div>
+
+  <div class="fixed">
+    <p class="lbl">Step 3 · transfer at Hendaye</p>
+    <p>After the SNCF train, leave <b>Gare d'Hendaye</b> and transfer to the adjacent <b>Euskotren Hendaia</b> station.</p>
+    <p><b>Board:</b> Euskotren <b>E2 Hendaia → Donostia / Amara</b>.</p>
+    <p>The published 2026 Saturday/Sunday/holiday timetable currently shows departures from <b>Hendaia every 30 minutes from 07:03 through 21:33</b>, then later services at approximately <b>22:03 and 22:33</b>. Journey to <b>Amara Donostia</b> is roughly <b>40 minutes</b> on the published timetable.</p>
+    <p><b>Connection rule:</b> when SNCF publishes the 11 Oct train, choose one that gets you to Hendaye with at least <b>10–15 minutes</b> before the next E2 departure. If you miss one, the normal daytime wait is about 30 minutes.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Euskotren+Hendaia+Station" target="_blank" rel="noopener">Board · Euskotren Hendaia ↗</a>
+      <a class="chip" href="https://www.euskotren.eus/en/train" target="_blank" rel="noopener">Official Euskotren timetable ↗</a>
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Amara+Donostia+Euskotren" target="_blank" rel="noopener">Get off · Amara Donostia ↗</a>
+    </div>
+  </div>
+
+  <div class="fixed">
+    <p class="lbl">Step 4 · Amara → hotel</p>
+    <p><b>Get off at:</b> <b>Amara Donostia</b>. From there, walk or take a short taxi to Intelier Victoria.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/dir/?api=1&origin=Amara+Donostia+Euskotren&destination=Intelier+Victoria+San+Sebastian&travelmode=walking" target="_blank" rel="noopener">Amara → hotel ↗</a>
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Intelier+Victoria+San+Sebastian" target="_blank" rel="noopener">Hotel ↗</a>
+    </div>
+  </div>
+
+  <div class="alt">
+    <h4>Backup only · direct FlixBus</h4>
+    <p>If the final 11 Oct timetable gives you a very convenient direct <b>Biarritz → San Sebastián</b> departure, compare it with SNCF + Euskotren. Do not make it the default because the Biarritz boarding stop may be <b>Halle Iraty or Biarritz Airport</b>, requiring another transfer away from the sightseeing area.</p>
+    <div class="chips">
+      <a class="chip" href="https://global.flixbus.com/bus-routes/bus-biarritz-san-sebastian" target="_blank" rel="noopener">Check direct FlixBus ↗</a>
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Halle+Iraty+Biarritz" target="_blank" rel="noopener">Halle Iraty · map ↗</a>
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Biarritz+Airport" target="_blank" rel="noopener">Biarritz Airport · map ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><b>Validated for Sunday 11 Oct 2026:</b> Ciboure regional market is listed 08:00–13:00 on that exact date. Saint‑Jean‑de‑Luz has Sunday bandstand music at 11:30 from Easter to All Saints’ Day. Pil Pil Enea's September–December schedule includes Sunday lunch. Herri Uzta in Arcangues is listed 11:00–20:00 on 11 Oct 2026.</p>
+  <p><b>Biarritz:</b> Rocher de la Vierge is listed open daily through 2026; Côte des Basques is a recommended sunset viewpoint and can be fully covered at high tide. Les Halles is open daily 07:30–14:00, but this itinerary intentionally does not rush there after lunch.</p>
+  <p><b>Transport:</b> FlixBus and SNCF links are live operator pages; exact 11 Oct departure times may change and should be locked only when the date is bookable.</p>
+  <p><b>Arcangues parking:</b> the municipality lists free parking near the village centre, but no festival-specific parking / overflow plan for Herri Uzta on 11 Oct has been published yet. Treat parking availability during the festival as uncertain and check the final event notice.</p>
+    <p><b>Timetable status:</b> as of 21 Aug 2026, FlixBus and SNCF have not yet published the exact clock-times for Sunday 11 Oct 2026. The HTML therefore shows validated stations, current service patterns and target departure windows. Euskotren's currently published 2026 Sunday E2 timetable shows a 30-minute Hendaia→Donostia pattern through most of the day.</p>
+  <p><b>Weather:</b> Open‑Meteo is queried directly in the browser. Switch between Saint‑Jean‑de‑Luz and Biarritz above; each tab shows live conditions, next 7 days, and the 11 Oct forecast once available.</p>
+  <p class="sig">France for one day · back to Donostia tonight</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var TARGET='2026-10-11', TZ='Europe/Paris';
+  var places={
+    sjl:{name:'Saint‑Jean‑de‑Luz',lat:43.3887,lon:-1.6627},
+    biarritz:{name:'Biarritz',lat:43.4832,lon:-1.5586}
+  };
+  var codeText={
+    0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Overcast',
+    45:'Fog',48:'Fog',51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',
+    56:'Freezing drizzle',57:'Freezing drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',
+    66:'Freezing rain',67:'Freezing rain',71:'Light snow',73:'Snow',75:'Heavy snow',
+    80:'Showers',81:'Showers',82:'Heavy showers',85:'Snow showers',86:'Heavy snow showers',
+    95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'
+  };
+  var cache={};
+  var nowEl=document.getElementById('wx-now');
+  var noteEl=document.getElementById('wx-now-note');
+  var tripEl=document.getElementById('wx-trip');
+  var weekEl=document.getElementById('wx7');
+  var labelEl=document.getElementById('wx-label');
+  var apiEl=document.getElementById('wx-api');
+
+  function urlFor(p){
+    return 'https://api.open-meteo.com/v1/forecast'
+      +'?latitude='+p.lat+'&longitude='+p.lon
+      +'&current=temperature_2m,precipitation,weather_code,wind_speed_10m'
+      +'&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max'
+      +'&forecast_days=16&timezone='+encodeURIComponent(TZ);
+  }
+  function paint(key,d){
+    var p=places[key], c=d.current||{}, days=d.daily||{};
+    labelEl.textContent='Live now · '+p.name;
+    var desc=codeText[c.weather_code]||'Weather';
+    nowEl.innerHTML=Math.round(c.temperature_2m)+'°C'
+      +'<small>'+desc+' · '+Math.round(c.wind_speed_10m||0)+' km/h wind</small>';
+    noteEl.textContent='Feed working · updated '+(c.time?c.time.replace('T',' '):'now')+' local time';
+    apiEl.href=urlFor(p);
+
+    weekEl.innerHTML='';
+    var n=Math.min(7,(days.time||[]).length);
+    for(var i=0;i<n;i++){
+      var dt=new Date(days.time[i]+'T12:00:00');
+      var day=dt.toLocaleDateString('en-GB',{weekday:'short'});
+      var box=document.createElement('div'); box.className='wxd';
+      box.innerHTML='<b>'+day+'</b><span>'+Math.round(days.temperature_2m_min[i])+'–'+Math.round(days.temperature_2m_max[i])+'°</span>'
+        +'<small>'+Math.round(days.precipitation_probability_max[i]||0)+'% rain</small>';
+      weekEl.appendChild(box);
+    }
+    var idx=(days.time||[]).indexOf(TARGET);
+    if(idx>=0){
+      var dsc=codeText[(days.weather_code||[])[idx]]||'';
+      tripEl.innerHTML=Math.round(days.temperature_2m_min[idx])+'–'+Math.round(days.temperature_2m_max[idx])+'°C'
+        +'<small>'+dsc+' · '+Math.round(days.precipitation_probability_max[idx]||0)+'% rain</small>';
+    }else{
+      var last=(days.time||[]).length?days.time[days.time.length-1]:null;
+      tripEl.innerHTML='Not available yet<small>Current API horizon ends '+(last||'before 11 Oct')+'</small>';
+    }
+  }
+  function load(key){
+    document.querySelectorAll('.wxbtn').forEach(function(b){b.classList.toggle('active',b.dataset.place===key)});
+    var p=places[key]; apiEl.href=urlFor(p); labelEl.textContent='Live now · '+p.name;
+    nowEl.textContent='—'; noteEl.textContent='Connecting to Open‑Meteo…'; weekEl.innerHTML='<div class="wxd"><span>Loading…</span></div>';
+    if(cache[key]){paint(key,cache[key]);return}
+    fetch(urlFor(p)).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json()})
+      .then(function(d){cache[key]=d;paint(key,d)})
+      .catch(function(err){
+        nowEl.innerHTML='Feed unavailable<small>'+err.message+'</small>';
+        noteEl.textContent='Tap “Open live API response” below to test directly.';
+        weekEl.innerHTML='<div class="wxd"><span>Unavailable</span></div>';
+        tripEl.textContent='Not available';
+      });
+  }
+  document.querySelectorAll('.wxbtn').forEach(function(b){b.addEventListener('click',function(){load(b.dataset.place)})});
+  load('sjl');
+})();
+</script>
+</body>
+</html>

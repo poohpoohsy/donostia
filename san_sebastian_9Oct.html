@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Friday 9 October — Chamonix to San Sebastián & Pasaia</title>
+<meta name="description" content="Arrival day: Chamonix to Geneva, flight to Bilbao, San Sebastián hotel, Casa Cámara seafood lunch, Pasai Donibane harbour walk, then an easy evening.">
+<meta property="og:title" content="Friday 9 October — First taste of the Basque coast">
+<meta property="og:description" content="Fly in. Seafood by the harbour. Walk a fishing village. Sleep early.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#0F1113; --raise:#181B1F; --raise2:#20252A;
+  --chalk:#E8E6E2; --dim:#8A8F94;
+  --sea:#87C7C4; --sand:#D9A441; --stop:#D96B5A; --go:#7FB98A;
+  --rule:rgba(232,230,226,.13);
+  --pad:clamp(18px,5.5vw,40px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--chalk);
+  font-family:'Archivo',system-ui,-apple-system,sans-serif;font-size:16.5px;
+  line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:0 var(--pad) 72px}
+.top{padding:clamp(32px,9vw,58px) 0 0}
+.kicker{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:600;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--sand);margin:0 0 14px}
+h1{font-family:'Syne','Archivo',sans-serif;font-weight:800;
+  font-size:clamp(34px,9.7vw,55px);line-height:.97;letter-spacing:-.025em;margin:0 0 16px}
+.intro{margin:0;color:var(--dim);font-size:15.5px;max-width:50ch}
+.intro b{color:var(--chalk);font-weight:600}
+section{margin-top:36px;padding-top:26px;border-top:1px solid var(--rule)}
+.sechead{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:0 0 14px}
+h2{font-family:'Syne','Archivo',sans-serif;font-weight:800;
+  font-size:clamp(22px,5.6vw,29px);letter-spacing:-.02em;line-height:1.1;margin:0 0 8px}
+.lede{margin:0 0 20px;color:var(--dim);font-size:15px}
+
+.today{background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+  padding:15px 17px;margin:24px 0 0;display:flex;align-items:center;gap:14px}
+.tdot{flex:0 0 auto;width:10px;height:10px;border-radius:50%;background:#5E7484}
+.tdot.green{background:#6FCF97;box-shadow:0 0 0 3px rgba(111,207,151,.15)}
+.tdot.amber{background:#E0A93B;box-shadow:0 0 0 3px rgba(224,169,59,.15)}
+.tdot.red{background:#D9634E;box-shadow:0 0 0 3px rgba(217,99,78,.15)}
+.tbody{flex:1;min-width:0}
+.tlbl{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.tval{margin:0;font-weight:600;font-size:15.5px;color:var(--chalk);line-height:1.35}
+.tnote{margin:4px 0 0;font-size:12.5px;color:var(--dim);line-height:1.45}
+
+.fixed{background:rgba(217,164,65,.08);border:1px solid rgba(217,164,65,.28);
+  border-left:3px solid var(--sand);border-radius:3px;padding:14px 16px;margin:0 0 20px}
+.fixed .lbl{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--sand);margin:0 0 6px}
+.fixed p{margin:0;font-size:14.5px}.fixed p+p{margin-top:6px}
+
+.check{background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+  padding:14px 16px;margin:0 0 20px}
+.checktop{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.dot{display:inline-block;width:11px;height:11px;border-radius:50%;flex:0 0 auto}
+.dot.green{background:var(--go);box-shadow:0 0 0 3px rgba(127,185,138,.16)}
+.dot.amber{background:var(--sand);box-shadow:0 0 0 3px rgba(217,164,65,.16)}
+.st{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.check p{margin:0 0 10px;font-size:14px;color:var(--dim)}
+.check b{color:var(--chalk);font-weight:600}
+
+.timeline{margin-top:8px}
+.stop{padding:17px 0;border-top:1px solid var(--rule)}
+.stop:first-child{border-top:0;padding-top:0}
+.clock{font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;
+  font-size:13.5px;color:var(--sea);letter-spacing:.03em;margin:0 0 4px}
+.stop h3{font-family:'Syne','Archivo',sans-serif;font-weight:700;font-size:19px;
+  letter-spacing:-.01em;line-height:1.2;margin:0 0 6px}
+.stop p{margin:0;font-size:14.5px;color:var(--dim)}
+.stop p+p{margin-top:7px}
+.stop b{color:var(--chalk);font-weight:600}
+.maplink,.chip{display:inline-block;margin-top:9px;padding:3px 9px;border-radius:2px;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--sea);text-decoration:none;
+  border:1px solid rgba(135,199,196,.30)}
+.maplink:hover,.chip:hover{background:rgba(135,199,196,.10)}
+
+.route{display:block;text-align:center;text-decoration:none;
+  background:rgba(135,199,196,.08);border:1px solid rgba(135,199,196,.30);
+  border-radius:3px;padding:11px 14px;margin:0 0 20px;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--sea)}
+.route:hover{background:rgba(135,199,196,.15)}
+
+
+.food{background:rgba(135,199,196,.07);border:1px solid rgba(135,199,196,.24);
+  border-left:3px solid var(--sea);border-radius:3px;padding:18px;margin:18px 0}
+.food h3{font-family:'Syne','Archivo',sans-serif;font-size:20px;margin:0 0 7px}
+.food p{margin:0;color:var(--dim);font-size:14.5px}.food p+p{margin-top:8px}
+.food b{color:var(--chalk)}
+.food .big{font-family:'Syne','Archivo',sans-serif;font-size:26px;color:var(--chalk);font-weight:800}
+
+.walkbox{background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:17px}
+.seq{list-style:none;padding:0;margin:0;counter-reset:s}
+.seq li{position:relative;padding:0 0 17px 39px;margin-left:10px;
+  border-left:1px solid rgba(135,199,196,.28);font-size:14.5px;color:var(--dim)}
+.seq li:last-child{border-left-color:transparent;padding-bottom:0}
+.seq li::before{counter-increment:s;content:counter(s);
+  position:absolute;left:-12px;top:-1px;width:23px;height:23px;border-radius:50%;
+  background:var(--raise2);border:1px solid rgba(135,199,196,.42);color:var(--sea);
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+  display:flex;align-items:center;justify-content:center}
+.seq b{color:var(--chalk);font-weight:600}
+
+.alt{background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+  padding:15px 16px;margin-top:16px}
+.alt h4{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:0 0 7px}
+.alt p{margin:0 0 8px;font-size:14.5px;color:var(--dim)}.alt p:last-child{margin:0}
+.alt b{color:var(--chalk);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.chip{margin-top:0}
+
+.dinner{background:rgba(217,164,65,.08);border:1px solid rgba(217,164,65,.28);
+  border-radius:3px;padding:18px}
+.dinner .choice{font-family:'Syne','Archivo',sans-serif;font-weight:800;
+  font-size:25px;margin:0 0 8px;color:var(--chalk)}
+.dinner p{margin:0;color:var(--dim);font-size:14.5px}.dinner p+p{margin-top:8px}
+.dinner b{color:var(--chalk)}
+.nores{display:inline-block;margin-top:12px;padding:5px 9px;border-radius:2px;
+  background:rgba(127,185,138,.12);border:1px solid rgba(127,185,138,.3);
+  color:#9BD2A7;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+  letter-spacing:.08em;text-transform:uppercase}
+
+footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);
+  font-size:13.5px;color:var(--dim)}
+footer p{margin:0 0 9px} footer b{color:var(--chalk)}
+footer a{color:var(--sea)}
+.sig{margin-top:22px;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:13px;color:var(--dim);opacity:.35;letter-spacing:.04em}
+a:focus-visible{outline:2px solid var(--sea);outline-offset:3px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <p class="kicker">Friday 9 October · Chamonix → Basque coast</p>
+  <h1>Fly in.<br>Eat by the harbour.</h1>
+  <p class="intro">The first San Sebastián day is deliberately simple: <b>get there without stress, have one excellent seafood lunch, walk Pasai Donibane slowly, then go home.</b> No ambitious sightseeing after a 01:30 alarm.</p>
+
+  <div class="today">
+    <span class="tdot" id="tdot"></span>
+    <div class="tbody">
+      <span class="tlbl" id="tlbl">Live now · San Sebastián</span>
+      <p class="tval" id="tval">Checking the feed…</p>
+      <p class="tnote" id="tnote">This becomes useful inside the forecast window. Rain changes the harbour walk, not the lunch.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+  <p class="sechead">At a glance</p>
+  <h2>The whole day</h2>
+  <div class="alt">
+    <p><b>01:30</b> alarm · <b>02:30</b> Chamonix→GVA · <b>06:10</b> flight · <b>07:50</b> BIO</p>
+    <p><b>~08:30</b> baggage · D050B → Donostia · <b>~10:30</b> hotel bag drop</p>
+    <p><b>13:45</b> taxi → Pasaia · <b>14:30</b> Casa Cámara</p>
+    <p><b>16:30</b> Pasai Donibane walk · <b>~17:30</b> ferry · <b>~18:15</b> taxi</p>
+    <p><b>~18:35</b> hotel · <b>20:30</b> optional 1–2 pintxos only</p>
+  </div>
+</section>
+
+<section>
+  <p class="sechead">The fixed pieces</p>
+  <h2>Two things set the day</h2>
+
+  <div class="fixed">
+    <p class="lbl">Flight · U2 1367</p>
+    <p><b>06:10 Geneva → 07:50 Bilbao.</b> The Chamonix page already has the 01:30 alarm and 02:30 transfer to GVA. Keep that exactly as planned.</p>
+  </div>
+
+  <div class="fixed">
+    <p class="lbl">Book this · Casa Cámara</p>
+    <p><b>14:30 lunch · Donibane Kalea 79, Pasai Donibane.</b></p>
+    <p>14:00 is possible on paper. 14:30 is better in real life: baggage, bus, hotel bag drop and one delay can all happen before lunch.</p>
+  </div>
+
+  <div class="check">
+    <div class="checktop"><span class="dot green"></span><span class="st">Timing works</span></div>
+    <p>The official airport connection is <b>Lurraldebus D050B</b>, direct from Bilbao Airport to Donostia/San Sebastián. Casa Cámara's October lunch kitchen runs <b>13:00–15:30</b>.</p>
+  </div>
+</section>
+
+<section>
+  <p class="sechead">Arrival sequence</p>
+  <h2>Airport → hotel → fishing village</h2>
+  <p class="lede">Do not book anything else before lunch. The spare time is the buffer.</p>
+
+  <div class="timeline">
+    <div class="stop">
+      <p class="clock">01:30</p>
+      <h3>Alarm in Chamonix</h3>
+      <p>Bags already packed Thursday night. <b>02:30 private transfer to Geneva Airport.</b></p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">06:10 → 07:50</p>
+      <h3>Fly Geneva → Bilbao</h3>
+      <p>U2 1367. Sleep on the plane if you can. Bilbao is the transfer point; <b>do not detour into Bilbao city today.</b></p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">~08:30 → ~10:15</p>
+      <h3>Baggage + D050B to San Sebastián</h3>
+      <p><b>Bus: Lurraldebus / PESA D050B.</b> The official airport information places the stop <b>outside the Arrivals gate on Floor 0</b>. In October the published winter pattern is hourly; buy the ticket for the departure that gives enough baggage margin.</p>
+      <p><b>Destination:</b> Donostia / San Sebastián Bus Station. The route may also serve Paseo de Bizkaia 12; for this itinerary, stay on to the <b>Bus Station</b>.</p>
+      <div class="chips">
+        <a class="chip" href="https://online.pesa.net/index0.asp?id=en" target="_blank" rel="noopener">Reserve D050B ticket ↗</a>
+        <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Bilbao+Airport+Arrivals+Bus+Stop" target="_blank" rel="noopener">BIO bus stop · map ↗</a>
+        <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Donostia+San+Sebastian+Bus+Station" target="_blank" rel="noopener">San Sebastián bus station · map ↗</a>
+      </div>
+      <p style="margin-top:10px"><b>Airport instruction:</b> collect bags → stay on <b>Floor 0 / Arrivals</b> → exit through Arrivals → D050B stop is at the arrivals door. No need to go to Bilbao city or Termibus.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">~10:30 → 11:15</p>
+      <h3>Intelier Victoria · bag drop</h3>
+      <p>Go straight to <b>Intelier Victoria · San Bartolome Kalea 13, Donostia / San Sebastián</b>. If the room is ready, great. If not, leave the luggage and move on.</p>
+      <div class="chips">
+        <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Intelier+Victoria+San+Sebastian" target="_blank" rel="noopener">Hotel · Google Maps ↗</a>
+        <a class="chip" href="https://www.google.com/maps/dir/?api=1&origin=Donostia+San+Sebastian+Bus+Station&destination=Intelier+Victoria+San+Sebastian&travelmode=walking" target="_blank" rel="noopener">Bus station → hotel ↗</a>
+      </div>
+    </div>
+
+    <div class="stop">
+      <p class="clock">11:15 → 13:35</p>
+      <h3>Slow morning in San Sebastián</h3>
+      <p>Coffee, short walk, sit down. <b>Do not have a real lunch.</b> A pastry or yoghurt is enough — Casa Cámara is the reason we kept this day light.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">13:40</p>
+      <h3>Taxi to Pasai Donibane</h3>
+      <p>Your confirmation states that <b>Casa Cámara can only be reached on foot</b>. Tell the taxi you are going to <b>Casa Cámara, Pasai Donibane</b> and allow extra time for the final walk. Aim to arrive in Pasai Donibane around <b>14:00</b> for the 14:30 reservation.</p>
+      <div class="chips">
+        <a class="chip" href="https://www.google.com/maps/dir/?api=1&origin=Intelier+Victoria+San+Sebastian&destination=Casa+Camara+Pasai+Donibane&travelmode=driving" target="_blank" rel="noopener">Hotel → Casa Cámara ↗</a>
+        <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Casa+Camara+Pasai+Donibane" target="_blank" rel="noopener">Casa Cámara · Google Maps ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="sechead">14:30 · the meal</p>
+  <h2>Casa Cámara</h2>
+
+  <div class="check">
+    <div class="checktop"><span class="dot green"></span><span class="st">Reservation confirmed</span></div>
+    <p><b>Friday, 9 October 2026 · 14:30 · 6 people.</b></p>
+    <p><b>Cancellation / changes:</b> less than 2 hours before the reservation time → <b>€30 per person</b>.</p>
+    <p><b>Punctuality:</b> the restaurant asks guests to be on time. After a <b>15-minute delay without prior notice</b>, the reservation will be cancelled. If delayed, contact the restaurant and obtain its confirmation.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Casa+Camara+Pasai+Donibane" target="_blank" rel="noopener">Casa Cámara · Google Maps ↗</a>
+      <a class="chip" href="https://www.casacamara.com/en/booking/" target="_blank" rel="noopener">Restaurant booking page ↗</a>
+    </div>
+  </div>
+<div class="food">
+    <p class="big">14:30 → ~16:30</p>
+    <h3>Seafood, not a tasting marathon</h3>
+    <p>Casa Cámara says the restaurant has remained in the Cámara family since it was founded in <b>1884</b>. Its official site lists <b>baked spider crab, lobster, hake kokotxas, grilled seafood and grilled sea bream</b> among its fish and seafood specialties.</p>
+    <p><b>Price reference:</b> Casa Cámara's official gift-card page recommends <b>€80–100 per person</b> as a meal value. This is a reference amount, not a fixed menu price.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Casa+Camara+Pasai+Donibane" target="_blank" rel="noopener">Casa Cámara · Google Maps ↗</a>
+      <a class="chip" href="https://www.casacamara.com/en/" target="_blank" rel="noopener">Restaurant website ↗</a>
+      <a class="chip" href="https://www.casacamara.com/en/booking/" target="_blank" rel="noopener">Reservation ↗</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="sechead">After lunch</p>
+  <h2>Walk the fishing town</h2>
+
+  <p class="sechead" style="margin-top:18px;margin-bottom:10px;color:var(--sea)">One-click route · Pasai Donibane walk</p>
+  <a class="route" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Casa+Camara+Pasai+Donibane&destination=Pasai+Donibane+Ferry&waypoints=Santiago+Plaza+Pasai+Donibane%7CCasa+Victor+Hugo+Pasai+Donibane" target="_blank" rel="noopener">Open town walk in Google Maps ↗</a>
+  
+  <div class="walkbox">
+    <ol class="seq">
+      <li><b>16:30 · Casa Cámara.</b> Start from the restaurant and walk back along Donibane Kalea.
+        <br><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Casa+Camara+Pasai+Donibane" target="_blank" rel="noopener">Casa Cámara · map ↗</a></li>
+      <li><b>Santiago Plaza.</b> Pause at the little waterfront square for harbour views, balconies and fishing boats.
+        <br><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Santiago+Plaza+Pasai+Donibane" target="_blank" rel="noopener">Santiago Plaza · map ↗</a></li>
+      <li><b>Casa Victor Hugo.</b> Victor Hugo stayed in Pasai Donibane in 1843. Treat this as a short exterior/photo stop.
+        <br><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Casa+Victor+Hugo+Pasai+Donibane" target="_blank" rel="noopener">Victor Hugo House · map ↗</a></li>
+      <li><b>Walk toward the harbour mouth.</b> Enjoy Donibane Kalea and the water; this is an arrival-day stroll, not a hike. Turn back when you are ready.</li>
+      <li><b>~17:30 · Pasai Donibane ferry.</b> Take the tiny local boat across to Pasai San Pedro.
+        <br><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Pasai+Donibane+Ferry" target="_blank" rel="noopener">Donibane ferry pier · map ↗</a></li>
+      <li><b>~17:35 · Pasai San Pedro.</b> Short waterfront look back across the harbour.
+        <br><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Pasai+San+Pedro+Ferry" target="_blank" rel="noopener">San Pedro pier · map ↗</a></li>
+      <li><b>Optional · Albaola.</b> Only if lunch finishes early and you still have energy.
+        <br><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Albaola+Itsas+Kultur+Faktoria" target="_blank" rel="noopener">Albaola · map ↗</a></li>
+    </ol>
+  </div>
+
+  <div class="alt">
+    <h4>Optional only · Albaola</h4>
+    <p><b>Optional only.</b> Albaola's published winter hours list Friday opening <b>10:00–14:00 and 15:00–18:00</b>. Go only if timing and energy allow.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Albaola+Itsas+Kultur+Faktoria" target="_blank" rel="noopener">Albaola · Google Maps ↗</a>
+      <a class="chip" href="https://albaola.org/en/useful-information/" target="_blank" rel="noopener">Albaola hours ↗</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+  <p class="sechead">~18:15</p>
+  <h2>Back to the hotel</h2>
+
+  <div class="stop" style="border-top:0;padding-top:0">
+    <p class="clock">~18:15 → 18:35</p>
+    <h3>Taxi Pasai San Pedro → Intelier Victoria</h3>
+    <p>Shower, unpack properly and lie down. You should be back at the hotel around <b>18:30–19:00</b>.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/dir/?api=1&origin=Pasai+San+Pedro&destination=Intelier+Victoria+San+Sebastian&travelmode=driving" target="_blank" rel="noopener">Taxi route ↗</a>
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Intelier+Victoria+San+Sebastian" target="_blank" rel="noopener">Hotel · Google Maps ↗</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="sechead">Dinner</p>
+  <h2>Do not book one.</h2>
+
+  <div class="dinner">
+    <p class="choice">20:30 · hunger decides</p>
+    <p>After a 14:30 Casa Cámara seafood lunch, I would <b>not reserve another restaurant</b>. You may genuinely not want dinner.</p>
+    <p>If hungry, walk into the Old Town and have <b>one or two pintxos only</b>. My simple choice is <b>Bar Txepetxa</b>: one anchovy pintxo, then stop. It is open Friday evening and keeps the first night fun without competing with tomorrow's crawl.</p>
+    <p>If nobody is hungry: <b>tea / yoghurt / fruit near the hotel and bed.</b> That is a successful dinner plan too.</p>
+    <span class="nores">No reservation needed</span>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Bar+Txepetxa+San+Sebastian" target="_blank" rel="noopener">Txepetxa ↗</a>
+      <a class="chip" href="https://www.google.com/maps/dir/?api=1&origin=San%20Bartolome%20Kalea%2C%20Donostia&destination=Bar%20Txepetxa%2C%20Donostia&travelmode=walking" target="_blank" rel="noopener">Walk from hotel ↗</a>
+    </div>
+  </div>
+
+  <div class="alt">
+    <h4>The rule tonight</h4>
+    <p><b>One decision at 20:30:</b> hungry = one/two pintxos; not hungry = stay in. No second big meal and no late night. Saturday is the proper San Sebastián food day.</p>
+  </div>
+</section>
+
+
+
+
+<section>
+  <p class="sechead">Transport links</p>
+  <h2>Save these before Friday</h2>
+  <div class="alt">
+    <h4>Bilbao Airport → San Sebastián</h4>
+    <p><b>D050B · Lurraldebus / PESA.</b> Airport stop: outside <b>Arrivals, Floor 0</b>. Destination: <b>Donostia / San Sebastián Bus Station</b>. Official Basque Government information currently quotes about <b>75 minutes</b>.</p>
+    <div class="chips">
+      <a class="chip" href="https://online.pesa.net/index0.asp?id=en" target="_blank" rel="noopener">Buy / reserve bus ticket ↗</a>
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Bilbao+Airport+Arrivals+Bus+Stop" target="_blank" rel="noopener">Airport bus stop · map ↗</a>
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Donostia+San+Sebastian+Bus+Station" target="_blank" rel="noopener">San Sebastián bus station · map ↗</a>
+      <a class="chip" href="https://www.euskadi.eus/en/airports/bilbao-airport-bio/web01-ejeduki/en/" target="_blank" rel="noopener">Official airport transport ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><b>Verified planning notes:</b> Euskadi's official transport information lists <b>D050B</b> between Bilbao Airport and Donostia/San Sebastián, with the airport stop at the <b>Arrivals gate, Floor 0</b>. Casa Cámara lists October lunch kitchen hours of <b>13:00–15:30</b> and says the small Pasai San Pedro ferry operates continuously until <b>24:00 on Fridays and Saturdays</b>. Albaola's current winter schedule lists Friday opening <b>10:00–14:00 and 15:00–18:00</b>.</p>
+  <p>Sources: 
+    <a href="https://www.euskadi.eus/tarjetas-aeropuertos/web01-a2mugiko/es/" target="_blank" rel="noopener">Euskadi airport transport</a> ·
+    <a href="https://www.casacamara.com/en/booking/" target="_blank" rel="noopener">Casa Cámara booking</a> ·
+    <a href="https://www.casacamara.com/en/how-to-get-here/" target="_blank" rel="noopener">Casa Cámara directions</a> ·
+    <a href="https://albaola.org/en/useful-information/" target="_blank" rel="noopener">Albaola</a>.
+  </p>
+  
+  <p><b>Validation:</b> reservation date/time, party size, €30-per-person late-change/cancellation charge, and the 15-minute lateness rule are confirmed.</p>
+
+  <p><b>Recheck in the week before travel:</b> D050B exact departure times, flight status and Albaola/ferry operating notices.</p>
+  <p class="sig">¯\_(ツ)_/¯</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var LAT=43.3183, LON=-1.9812, TZ="Europe/Madrid", PLACE="San Sebastián";
+  var dot=document.getElementById('tdot'), val=document.getElementById('tval'),
+      note=document.getElementById('tnote'), lbl=document.getElementById('tlbl');
+
+  var tripDate = new Date('2026-10-09T12:00:00+02:00');
+  var diff = (tripDate - new Date())/86400000;
+  if(diff > 15){
+    lbl.textContent='Weather · Friday 9 October';
+    val.textContent='Too far out to forecast';
+    note.innerHTML='This will fill automatically once the trip is inside the useful forecast window.';
+    return;
+  }
+
+  var u='https://api.open-meteo.com/v1/forecast?latitude='+LAT+'&longitude='+LON
+      +'&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max'
+      +'&forecast_days=16&timezone='+encodeURIComponent(TZ);
+  fetch(u).then(function(r){return r.json()}).then(function(d){
+    var i=d.daily.time.indexOf('2026-10-09');
+    if(i<0) throw 0;
+    var hi=Math.round(d.daily.temperature_2m_max[i]), lo=Math.round(d.daily.temperature_2m_min[i]);
+    var rain=d.daily.precipitation_probability_max[i]||0;
+    dot.className='tdot '+(rain<=30?'green':rain<=60?'amber':'red');
+    lbl.textContent='Forecast · Friday 9 October · '+PLACE;
+    val.textContent=lo+'–'+hi+'°C · '+rain+'% rain';
+    note.textContent=rain>60?'Wet harbour day — keep the walk short and use the ferry/taxi.':'The fishing-village walk looks workable.';
+  }).catch(function(){
+    val.textContent='Forecast unavailable';
+    note.textContent='The itinerary still works — check again a few days before.';
+  });
+})();
+</script>
+</body>
+</html>

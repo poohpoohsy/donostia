@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bookings &amp; confirmations</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#0D1214; --raise:#161D21; --chalk:#EAE9E5; --dim:#8A979D;
+    --go:#7FB98A; --warn:#E0A93B; --stop:#D4614E; --alp:#8ECDEC;
+    --rule:rgba(234,233,229,.13); --pad:clamp(18px,5.5vw,40px);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--ground);color:var(--chalk);
+    font-family:'Archivo',system-ui,sans-serif;font-size:16.5px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:640px;margin:0 auto;padding:0 var(--pad) 70px;}
+  .top{padding:clamp(30px,8vw,52px) 0 0;}
+  .kicker{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:600;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--warn);margin:0 0 12px;}
+  h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(32px,9vw,48px);
+    line-height:.97;letter-spacing:-.025em;margin:0 0 14px;}
+  .intro{margin:0;color:var(--dim);font-size:15.5px;}
+  .intro b{color:var(--chalk);font-weight:600;}
+
+  .prog{margin-top:20px;background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+    padding:14px 16px;}
+  .prog p{margin:0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--dim);}
+  .bar{height:5px;background:rgba(234,233,229,.1);border-radius:3px;margin-top:9px;overflow:hidden;}
+  .bar i{display:block;height:100%;background:var(--go);width:0;transition:width .4s;}
+
+  section{margin-top:32px;padding-top:22px;border-top:1px solid var(--rule);}
+  .when{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
+    letter-spacing:.18em;text-transform:uppercase;margin:0 0 4px;}
+  .when.now{color:var(--stop);} .when.soon{color:var(--warn);} .when.later{color:var(--dim);}
+  h2{font-family:'Syne',sans-serif;font-weight:800;font-size:21px;letter-spacing:-.02em;margin:0 0 4px;}
+  .why{margin:0 0 16px;font-size:14px;color:var(--dim);}
+
+  .list{background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:4px 16px;}
+  .cb{display:flex;gap:12px;align-items:flex-start;padding:13px 0;cursor:pointer;
+    border-bottom:1px solid var(--rule);}
+  .cb:last-child{border-bottom:0;}
+  .cb input{appearance:none;flex:0 0 auto;width:20px;height:20px;margin:2px 0 0;
+    border:1.5px solid var(--dim);border-radius:4px;background:transparent;cursor:pointer;position:relative;}
+  .cb input:checked{background:var(--go);border-color:var(--go);}
+  .cb input:checked::after{content:"✓";position:absolute;inset:0;color:#0D1214;font-size:13px;
+    font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .cb .body{flex:1;min-width:0;font-size:15px;color:var(--chalk);}
+  .cb input:checked ~ .body{opacity:.42;text-decoration:line-through;}
+  .cb .body small{display:block;font-size:13px;color:var(--dim);margin-top:3px;
+    text-decoration:none;line-height:1.45;}
+  .cb .body a{color:var(--alp);}
+  .cb .body .tel{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12.5px;color:var(--alp);}
+  .dead{display:inline-block;margin-top:5px;padding:2px 7px;border-radius:2px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:.1em;
+    text-transform:uppercase;background:rgba(212,97,78,.15);color:#EA9482;
+    border:1px solid rgba(212,97,78,.3);}
+  .dead.a{background:rgba(224,169,59,.15);color:#EBC078;border-color:rgba(224,169,59,.32);}
+
+  .reset{margin-top:26px;background:none;border:1px solid var(--rule);color:var(--dim);
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.14em;
+    text-transform:uppercase;padding:10px 15px;border-radius:2px;cursor:pointer;}
+  footer{margin-top:32px;padding-top:20px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--dim);}
+  .sig{margin-top:20px;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:13px;color:var(--dim);opacity:.35;user-select:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <p class="kicker">Lead only · ticks save to this phone</p>
+    <h1>What's still<br>outstanding.</h1>
+    <p class="intro">In date order, by the deadline that actually bites — <b>not the date of the thing itself</b>. Free-cancellation windows close long before the trip does.</p>
+    <div class="prog"><p id="pt">0 of 0 done</p><div class="bar"><i id="pb"></i></div></div>
+  </header>
+
+  <!-- ===== NOW ===== -->
+  <section>
+    <p class="when now">Do it now · deadlines already close</p>
+    <h2>This week</h2>
+    <p class="why">Two of these have money attached. Akelarre is off, so nothing here blocks an evening.</p>
+    <div class="list">
+      <label class="cb"><input type="checkbox" data-k="a1"><div class="body">
+        Confirm or replace the <b>Grindelwald → Chamonix transfer</b>
+        <small>HKD 5,522, six passengers, eight bags, 14:00 pickup on 5 Oct. Compare against chamonix.net first.</small>
+        <span class="dead">Free cancel expires 3 Oct</span></div></label>
+
+
+      <label class="cb"><input type="checkbox" data-k="a3"><div class="body">
+        Book <b>Manojo</b> for Saturday 10 Oct lunch
+        <small>12:45, six people. Saturday is the only day it opens at 12:30 instead of five — that's what makes the whole morning shape work.</small>
+        <span class="dead">Saturday lunch for six isn't a walk-in</span></div></label>
+
+      <label class="cb"><input type="checkbox" data-k="a4"><div class="body">
+        Book <b>Saturday 3 Oct dinner in Grindelwald</b>
+        <small>Six people, Saturday night, October. Still the only unbooked meal on the Swiss leg.</small></div></label>
+
+      <label class="cb"><input type="checkbox" data-k="a5"><div class="body">
+        Call <b>Lurka Chocolate</b> for opening hours
+        <small>Google publishes none despite 204 reviews. It's stop 2 on Saturday and the only thing nobody can look up.</small>
+        <span class="tel">+34 656 48 98 70</span></div></label>
+    </div>
+  </section>
+
+  <!-- ===== 1 SEPT ===== -->
+  <section>
+    <p class="when soon">1 September · the morning it opens</p>
+    <h2>Aiguille du Midi</h2>
+    <p class="why">The booking window opens on the 1st for October. Do it that morning, not that evening.</p>
+    <div class="list">
+      <label class="cb"><input type="checkbox" data-k="b1"><div class="body">
+        Book <b>6 adults, Tue 6 Oct, 08:10 departure</b>, round trip
+        <small>Reservation is free but mandatory. Pricing is dynamic — €60.20 to €83.00 each, and the cheap end goes first. <a href="https://aiguilledumidi.montblancnaturalresort.com/en/timetables-rates" target="_blank" rel="noopener">Book ↗</a></small>
+        <span class="dead a">08:10 is the slot everyone wants</span></div></label>
+
+      <label class="cb"><input type="checkbox" data-k="b2"><div class="body">
+        Ask first: does anyone want <b>Plan de l'Aiguille only</b>?
+        <small>€43 instead of €60–83, and we go there anyway on the Wednesday. A real option for anyone uneasy about 3,842m.</small></div></label>
+
+      <label class="cb"><input type="checkbox" data-k="b3"><div class="body">
+        If 08:10 is gone — set a reminder for <b>3 October</b>
+        <small>The operator releases a further batch at J-3. Box office at 07:45 on the day is the last resort, subject to availability.</small></div></label>
+    </div>
+  </section>
+
+  <!-- ===== SEPT DEADLINES ===== -->
+  <section>
+    <p class="when soon">September · cancellation windows</p>
+    <h2>Free-cancel dates</h2>
+    <p class="why">After these, the money is gone. Worth a diary entry each.</p>
+    <div class="list">
+      <label class="cb"><input type="checkbox" data-k="c1"><div class="body">
+        <b>Grindelwald hotel</b> — free cancel to <b>26 Sept</b></div></label>
+      <label class="cb"><input type="checkbox" data-k="c2"><div class="body">
+        <b>San Sebastián hotel</b> — free cancel to <b>23 Sept</b>, and <b>30 Sept</b> for the 14–15 Oct nights</div></label>
+      <label class="cb"><input type="checkbox" data-k="c3"><div class="body">
+        <b>Grindelwald → Chamonix taxi</b> — free cancel to <b>3 Oct</b></div></label>
+      <label class="cb"><input type="checkbox" data-k="c4"><div class="body">
+        <b>Zurich airport hotel</b> — free cancel to <b>14 Oct</b></div></label>
+      <label class="cb"><input type="checkbox" data-k="c5"><div class="body">
+        <b>Chamonix apartment</b> — <b>non-refundable</b>, already paid
+        <small>Nothing to do. Listed so it isn't mistaken for one of the others.</small></div></label>
+    </div>
+  </section>
+
+  <!-- ===== 24 SEPT ===== -->
+  <section>
+    <p class="when soon">~24 September · one week out</p>
+    <h2>Are the lifts running</h2>
+    <p class="why">Shoulder season. This is the single most likely thing to break a day, and it's knowable in advance.</p>
+    <div class="list">
+      <label class="cb"><input type="checkbox" data-k="d1"><div class="body">
+        <b>Switzerland:</b> First Cable Car, Grindelwald–Männlichen, Lauterbrunnen–Grütschalp
+        <small>Saturday 3 Oct needs all three and <b>cannot be moved</b> — Monday has the transfer. <a href="https://www.jungfrau.ch/en-gb/live/operating-info/" target="_blank" rel="noopener">Operating info ↗</a></small>
+        <span class="dead">Highest-risk day of the trip</span></div></label>
+
+      <label class="cb"><input type="checkbox" data-k="d2"><div class="body">
+        <b>Chamonix:</b> Aiguille du Midi, Montenvers train, Brévent
+        <small>All three showed open for our dates, but confirm. <a href="https://www.montblancnaturalresort.com/en/info-live" target="_blank" rel="noopener">Live status ↗</a></small></div></label>
+
+      <label class="cb"><input type="checkbox" data-k="d3"><div class="body">
+        Call <b>Montenvers</b>: is the Glaciorium open in October?
+        <small>The ice cave and gondola are definitely shut. The museum probably isn't — but it's the difference between a 45-minute stop and a 15-minute one.</small>
+        <span class="tel">04 65 60 00 80</span></div></label>
+
+      <label class="cb"><input type="checkbox" data-k="d4"><div class="body">
+        Check <b>Montenvers last train</b> and <b>Wednesday's first cable car</b>
+        <small>Train published as running to 17:30 between 14 Sept and 1 Nov. Cable car opens 08:10. Confirm both.</small></div></label>
+    </div>
+  </section>
+
+  <!-- ===== OTHER ===== -->
+  <section>
+    <p class="when later">Whenever · smaller things</p>
+    <h2>Loose ends</h2>
+    <div class="list">
+      <label class="cb"><input type="checkbox" data-k="e1"><div class="body">
+        Confirm the <b>07:00 pick-up on 3 Oct</b> from the Lauterbrunnen chalet
+        <small>Four passengers plus luggage. This is what makes the Saturday morning move work.</small></div></label>
+      <label class="cb"><input type="checkbox" data-k="e2"><div class="body">
+        Confirm <b>Eiger Stübli, Mürren, 12:00 on 2 Oct</b></div></label>
+      <label class="cb"><input type="checkbox" data-k="e3"><div class="body">
+        Confirm <b>dinner 18:00 on 4 Oct</b>
+        <small>Check it isn't double-booked — the notes have two entries for the same evening.</small></div></label>
+      <label class="cb"><input type="checkbox" data-k="e8"><div class="body">
+        Check the <b>Bilbao return coach</b> for Tue 13 Oct
+        <small>Last departure from Bilbao Intermodal. It's the only fixed thing left on that day now Akelarre is off.</small></div></label>
+      <label class="cb"><input type="checkbox" data-k="e4"><div class="body">
+        Check the <b>Lurraldebus timetable for Mon 12 Oct</b>
+        <small>UK09 / UK10 to Getaria, and the last return. Small-town stop, thin evening service. <a href="https://lurraldebus.eus/lineas/view_full_lineas_pdf/UK09/1" target="_blank" rel="noopener">Timetable ↗</a></small></div></label>
+      <label class="cb"><input type="checkbox" data-k="e5"><div class="body">
+        Set up the <b>shared photo album</b> and put the link in the group
+        <small>Before departure. Six people over sixteen days — otherwise you're chasing everyone in November.</small></div></label>
+      <label class="cb"><input type="checkbox" data-k="e6"><div class="body">
+        Download <b>all tickets to Apple Wallet</b>
+        <small>No signal inside mountains, and it's the thing most likely to be forgotten.</small></div></label>
+      <label class="cb"><input type="checkbox" data-k="e7"><div class="body">
+        Buy <b>Wednesday's packed lunch</b> in Chamonix on Tuesday evening
+        <small>Six people hunting a boulangerie at eight in the morning is how a hike starts late.</small></div></label>
+    </div>
+
+    <button class="reset" id="reset">Reset all boxes</button>
+  </section>
+
+  <footer>
+    <p>Ticks save to this phone only. Nobody else sees them, and clearing browser data clears them.</p>
+    <p class="sig">¯\_(ツ)_/¯</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var boxes=document.querySelectorAll('.cb input');
+  var pt=document.getElementById('pt'), pb=document.getElementById('pb');
+  function upd(){
+    var n=0; boxes.forEach(function(b){ if(b.checked) n++; });
+    pt.textContent=n+' of '+boxes.length+' done';
+    pb.style.width=(boxes.length? (n/boxes.length*100):0)+'%';
+  }
+  boxes.forEach(function(b){
+    var k='ck_'+b.dataset.k;
+    try{ if(localStorage.getItem(k)==='1') b.checked=true; }catch(e){}
+    b.addEventListener('change',function(){
+      try{ localStorage.setItem(k,b.checked?'1':'0'); }catch(e){}
+      upd();
+    });
+  });
+  document.getElementById('reset').addEventListener('click',function(){
+    boxes.forEach(function(b){ b.checked=false; try{localStorage.setItem('ck_'+b.dataset.k,'0');}catch(e){} });
+    upd();
+  });
+  upd();
+})();
+</script>
+</body>
+</html>

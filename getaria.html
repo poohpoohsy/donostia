@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Getaria — one fishing town, one long lunch</title>
+<meta name="description" content="Monday in Getaria. A mouse-shaped mountain, a gothic church, the best grilled fish on the coast, and Balenciaga.">
+<meta property="og:title" content="Getaria — Monday 12 October">
+<meta property="og:description" content="Climb the mouse, eat the turbot, then Balenciaga.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#0C1418; --raise:#13202A; --raise2:#1A2B36;
+    --chalk:#E6EBE9; --dim:#7D939C;
+    --sea:#7FB2C4; --ember:#E08A45; --stop:#D4614E; --go:#7FB98A;
+    --rule:rgba(230,235,233,.13);
+    --pad:clamp(18px,5.5vw,40px);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--ground);color:var(--chalk);
+    font-family:'Archivo',system-ui,-apple-system,sans-serif;font-size:16.5px;
+    line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:640px;margin:0 auto;padding:0 var(--pad) 70px;}
+
+  .top{padding:clamp(32px,9vw,58px) 0 0;}
+  .kicker{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:600;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--ember);margin:0 0 14px;}
+  h1{font-family:'Syne','Archivo',sans-serif;font-weight:800;
+    font-size:clamp(33px,9.5vw,54px);line-height:.97;letter-spacing:-.025em;margin:0 0 16px;}
+  .intro{margin:0;color:var(--dim);font-size:15.5px;max-width:48ch;}
+  .intro b{color:var(--chalk);font-weight:600;}
+
+  section{margin-top:36px;padding-top:26px;border-top:1px solid var(--rule);}
+  .sechead{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:0 0 14px;}
+  h2{font-family:'Syne','Archivo',sans-serif;font-weight:800;
+    font-size:clamp(22px,5.6vw,29px);letter-spacing:-.02em;line-height:1.1;margin:0 0 8px;}
+
+  /* live weather */
+  .today{background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+    padding:15px 17px;margin:24px 0 0;display:flex;align-items:center;gap:14px;}
+  .tdot{flex:0 0 auto;width:10px;height:10px;border-radius:50%;background:#5E7484;transition:background .3s;}
+  .tdot.green{background:#7FB98A;box-shadow:0 0 0 3px rgba(127,185,138,.15);}
+  .tdot.amber{background:var(--ember);box-shadow:0 0 0 3px rgba(224,138,69,.15);}
+  .tdot.red{background:var(--stop);box-shadow:0 0 0 3px rgba(212,97,78,.15);}
+  .tbody{flex:1;min-width:0;}
+  .tlbl{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:4px;}
+  .tval{margin:0;font-family:'Archivo',sans-serif;font-weight:600;font-size:15.5px;color:var(--chalk);line-height:1.35;}
+  .tnote{margin:4px 0 0;font-size:12.5px;color:var(--dim);line-height:1.45;}
+
+  /* the mouse */
+  .mouse{background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:14px 12px 8px;}
+  .mouse svg{display:block;width:100%;height:auto;}
+  .mnote{margin:16px 0 0;font-size:14.5px;color:var(--dim);}
+  .mnote b{color:var(--chalk);font-weight:600;}
+
+  .route{display:block;text-align:center;text-decoration:none;
+    background:rgba(127,178,196,.09);border:1px solid rgba(127,178,196,.32);
+    border-radius:3px;padding:11px 14px;margin:20px 0 0;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--sea);}
+  .route:hover{background:rgba(127,178,196,.16);}
+
+  .fixed{background:rgba(224,138,69,.09);border:1px solid rgba(224,138,69,.3);
+    border-left:3px solid var(--ember);border-radius:3px;padding:15px 17px;margin:0 0 20px;}
+  .fixed .lbl{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--ember);margin:0 0 6px;}
+  .fixed p{margin:0;font-size:14.5px;color:var(--chalk);}
+  .fixed p + p{margin-top:7px;}
+
+  .stop{padding:18px 0;border-top:1px solid var(--rule);}
+  .stop:first-of-type{border-top:0;padding-top:0;}
+  .clock{font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;
+    font-size:13.5px;color:var(--sea);letter-spacing:.03em;margin:0 0 4px;}
+  .clock .walk{color:var(--dim);font-weight:500;font-size:10.5px;letter-spacing:.06em;margin-left:8px;}
+  .stop h3{font-family:'Syne','Archivo',sans-serif;font-weight:700;font-size:20px;
+    letter-spacing:-.01em;line-height:1.2;margin:0 0 5px;}
+  .addr{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;color:var(--dim);margin:0 0 11px;}
+  .order{background:var(--raise);border-radius:3px;padding:13px 15px;margin:0 0 10px;font-size:15px;}
+  .order .tag{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--ember);margin-bottom:5px;}
+  .note{margin:0 0 8px;font-size:14.5px;color:var(--dim);}
+  .note:last-child{margin-bottom:0;}
+  .note b{color:var(--chalk);font-weight:600;}
+  .maplink{display:inline-block;margin-top:8px;padding:3px 9px;border-radius:2px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--sea);text-decoration:none;border:1px solid rgba(127,178,196,.3);}
+  .maplink:hover{background:rgba(127,178,196,.1);}
+  .warn{display:inline-block;margin-top:9px;padding:5px 10px;border-radius:2px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.04em;
+    background:rgba(212,97,78,.13);color:#E58973;border:1px solid rgba(212,97,78,.3);}
+  .warn.calm{background:rgba(127,185,138,.12);color:#9BC9A4;border-color:rgba(127,185,138,.28);}
+
+  .alt{background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:16px 17px;margin-top:16px;}
+  .alt h4{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:0 0 8px;}
+  .alt p{margin:0 0 8px;font-size:14.5px;color:var(--dim);}
+  .alt p:last-child{margin:0;}
+  .alt b{color:var(--chalk);font-weight:600;}
+
+  .prob{background:rgba(212,97,78,.08);border:1px solid rgba(212,97,78,.28);
+    border-left:3px solid var(--stop);border-radius:3px;padding:17px;}
+  .prob h3{font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:17px;
+    margin:0 0 9px;color:#E58973;}
+  .prob p{margin:0 0 9px;font-size:14.5px;color:var(--dim);}
+  .prob p:last-child{margin:0;}
+  .prob b{color:var(--chalk);font-weight:600;}
+
+  ul.plain{list-style:none;padding:0;margin:0;}
+  ul.plain li{display:flex;gap:12px;align-items:baseline;padding:10px 0;font-size:15px;
+    color:var(--dim);border-bottom:1px solid var(--rule);}
+  ul.plain li:last-child{border-bottom:0;}
+  ul.plain li i{flex:0 0 auto;width:6px;height:6px;border-radius:50%;background:var(--ember);transform:translateY(-2px);}
+  ul.plain b{color:var(--chalk);font-weight:600;}
+
+  footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-size:14px;color:var(--dim);}
+  footer b{color:var(--chalk);font-weight:600;}
+  .sig{margin-top:22px;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:13px;color:var(--dim);opacity:.35;letter-spacing:.04em;user-select:none;}
+  a{color:var(--sea);}
+  a:focus-visible{outline:2px solid var(--sea);outline-offset:3px;}
+
+  @media (prefers-reduced-motion:no-preference){
+    .mline{stroke-dasharray:700;stroke-dashoffset:700;animation:draw 1.7s ease-out forwards;}
+    @keyframes draw{to{stroke-dashoffset:0;}}
+    .mdot{animation:pop .5s ease-out backwards;}
+    @keyframes pop{from{opacity:0;transform:scale(0);}to{opacity:1;transform:scale(1);}}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <p class="kicker">Monday 12 October · Getaria</p>
+    <h1>Climb the mouse,<br>eat the turbot.</h1>
+    <p class="intro">A fishing town of two thousand people, forty minutes down the coast. <b>One long lunch is the whole point of the day</b> — everything else is arranged around a 13:00 table.</p>
+
+    <div class="today">
+      <span class="tdot" id="tdot"></span>
+      <div class="tbody">
+        <span class="tlbl" id="tlbl">Live now · Getaria</span>
+        <p class="tval" id="tval">Checking the feed…</p>
+        <p class="tnote" id="tnote">Live from Getaria. It's a coastal walk and an exposed viewpoint, so this one matters more than usual.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ THE MOUSE ============ -->
+  <section>
+    <p class="sechead">Why they call it the mouse</p>
+    <div class="mouse">
+      <svg viewBox="0 0 460 210" role="img" aria-label="Profile of Getaria: Monte San Antón rising from the sea beside the town">
+        <defs>
+          <linearGradient id="rock" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgba(230,235,233,.13)"/>
+            <stop offset="100%" stop-color="rgba(230,235,233,.02)"/>
+          </linearGradient>
+        </defs>
+        <!-- sea -->
+        <rect x="0" y="168" width="460" height="42" fill="rgba(127,178,196,.10)"/>
+        <!-- the mouse: island + isthmus + town slope -->
+        <path d="M14,168 L70,150 L140,142 L200,150 L246,140 L300,74 L352,52 L400,66 L436,120 L452,168 Z" fill="url(#rock)"/>
+        <path class="mline" d="M14,168 L70,150 L140,142 L200,150 L246,140 L300,74 L352,52 L400,66 L436,120 L452,168"
+              fill="none" stroke="rgba(230,235,233,.42)" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+        <!-- walking path up -->
+        <path d="M258,140 L292,110 L330,74 L352,56" fill="none" stroke="#E08A45" stroke-width="2.2"
+              stroke-dasharray="5 4" stroke-linecap="round"/>
+
+        <g font-family="IBM Plex Mono, monospace" font-size="11">
+          <circle class="mdot" cx="352" cy="52" r="6.5" fill="#E08A45" style="animation-delay:1.6s"/>
+          <text x="344" y="40" fill="#E08A45" text-anchor="end">San Antón · the lookout</text>
+
+          <circle class="mdot" cx="246" cy="140" r="5" fill="#7FB2C4" style="animation-delay:1.4s"/>
+          <text x="252" y="134" fill="#7FB2C4">Port</text>
+
+          <circle class="mdot" cx="182" cy="147" r="5" fill="#7FB2C4" style="animation-delay:1.3s"/>
+          <text x="176" y="141" fill="#7FB2C4" text-anchor="end">Old town &amp; church</text>
+
+          <circle class="mdot" cx="78" cy="149" r="5" fill="#7FB2C4" style="animation-delay:1.2s"/>
+          <text x="72" y="163" fill="#7FB2C4" text-anchor="end">Balenciaga</text>
+        </g>
+      </svg>
+    </div>
+    <p class="mnote">Monte San Antón sits on a spit of land off the town, and from a distance the shape reads as a mouse with its tail running back to shore. <b>Everything on this page is within fifteen minutes' walk of everything else.</b> The dashed line is a twenty-minute climb to the lookout.</p>
+    <a class="route" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=43.3044984,-2.2035772&destination=43.3018844,-2.2049474&waypoints=43.3057106,-2.2024680%7C43.3085693,-2.2024472%7C43.3047282,-2.2034138" target="_blank" rel="noopener">Open the Getaria route ↗</a>
+  </section>
+
+
+  <!-- ============ THE DAY ============ -->
+  <section>
+    <p class="sechead">The day</p>
+    <h2>Around a 13:00 table</h2>
+
+    <div class="fixed">
+      <p class="lbl">The fixed point</p>
+      <p><b>13:00 · Kaia Kaipe. Booked, six of us.</b> On a Monday it serves lunch only, 13:00–15:30, and then it's shut until Wednesday. Everything else today bends around this.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">~09:30 <span class="walk">BUS · ABOUT 45 MIN</span></p>
+      <h3>Donostia → Getaria</h3>
+      <p class="addr">Lines <b>UK09 / UK10 / UK11</b> · Lurraldebus</p>
+      <p class="note"><b>Where to get on:</b> Donostia bus station, <b>Federico García Lorca 2</b>, under Tabakalera next to the train station. The same buses also stop on <b>Avenida de la Libertad 34</b> if that's closer.</p>
+      <p class="note"><b>Which line:</b> <b>UK10</b> takes the AP-8 motorway — faster, straight to Zarautz then Getaria. <b>UK09</b> runs the old N-634 coast road through Orio and Usurbil — slower, much better views. Going out, take UK09 and sit on the right.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Donostia%20Autobus%20Geltokia%20Federico%20Garcia%20Lorca%202" target="_blank" rel="noopener">Donostia stop ↗</a>
+      <a class="maplink" href="https://lurraldebus.eus/lineas/view_full_lineas_pdf/UK09/1" target="_blank" rel="noopener">UK09 timetable ↗</a>
+      <a class="maplink" href="https://www.lurraldebus.eus" target="_blank" rel="noopener">Lurraldebus ↗</a>
+      <span class="warn">Confirm October times — this is the one thing I can't verify</span>
+    </div>
+
+
+    <div class="stop">
+      <p class="clock">10:20 <span class="walk">ARRIVE</span></p>
+      <h3>Walk into the old town</h3>
+      <p class="addr">Kale Nagusia · the one main street</p>
+      <p class="note">A single sloping street of stone houses running down to the harbour, with fish grilling on coals outside the doors. Twenty minutes to walk it properly.</p>
+    </div>
+
+    <div class="stop">
+      <p class="clock">10:45 <span class="walk">SHUTS AT 14:00</span></p>
+      <h3>San Salvador church</h3>
+      <p class="addr">Kale Nagusia 39 · gothic · 4.7</p>
+      <p class="note">The floor slopes and the wood is worn — one reviewer calls it weather-beaten and gothic, looming over the town. <b>Open 09:00–14:00 on a Monday</b>, so it has to be before lunch, not after.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Salbatore%20Deunaren%20Eliza%20Getaria&query_place_id=ChIJVQakaJ_IUQ0RTcmlVL57b_k" target="_blank" rel="noopener">Map ↗</a>
+      <span class="warn">Closes 14:00 — go before lunch</span>
+    </div>
+
+    <div class="stop">
+      <p class="clock">11:15 <span class="walk">1 HR ROUND TRIP</span></p>
+      <h3>Up the mouse — San Antón lookout</h3>
+      <p class="addr">Monte San Antón · free · 4.6</p>
+      <p class="note">Signposted clearly from the port. Twenty minutes up through thick vegetation on a made path — reviewers describe it as easy and suitable for anyone. At the top, an old watchtower site once used to spot storms, enemy ships and shoals of fish.</p>
+      <p class="note"><b>The lighthouse itself is closed</b> — you can photograph it, not enter. Views over the Cantabrian in every direction.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=San%20Anton%20mendiko%20talaia%20Getaria&query_place_id=ChIJ84vs3ZXHUQ0RqHfamfK8FgQ" target="_blank" rel="noopener">Map ↗</a>
+      <span class="warn calm">Earns the lunch</span>
+    </div>
+
+    <div class="stop">
+      <p class="clock">12:20 <span class="walk">DOWN AT THE PORT</span></p>
+      <h3>Getariako Kaia — the harbour</h3>
+      <p class="addr">Portua Kalea · open always</p>
+      <p class="note">Half an hour to mooch before the table. Working fishing port, boats in and out, restaurants along the front all grilling the same thing.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Getariako%20Kaia&query_place_id=ChIJl6QyD5_IUQ0RpnVk9FOAzZI" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+
+    <div class="stop">
+      <p class="clock">13:00 → 15:00 <span class="walk">BOOKED</span></p>
+      <h3>Kaia Kaipe</h3>
+      <p class="addr">General Arnao Kalea 4 · 4.4 from 2,236 · top price bracket</p>
+      <p class="order"><span class="tag">Order this</span>The <b>grilled turbot</b> — it's what people come for. Plus txangurro, the spider crab stew, and langoustines. Three kinds of bread and the olive oil get mentioned as often as the fish.</p>
+      <p class="note">Overlooking the port. Old-school, calm, formal-ish service. Local Getaria txakoli is the obvious wine and it's made on the hillside above the town.</p>
+      <p class="note"><b>Worth knowing:</b> not every review is a rave. One regular thinks it's overpriced for what it is and says you can eat similar fish down the street for a fraction. It's the most expensive meal of the trip after Akelarre — go in expecting an occasion, not a bargain.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Kaia%20Kaipe%20Getaria&query_place_id=ChIJlaW_XZ_IUQ0RhWhoONqUhwk" target="_blank" rel="noopener">Map ↗</a>
+      <span class="warn">Monday: lunch only, 13:00–15:30</span>
+    </div>
+
+    <div class="stop">
+      <p class="clock">15:15 → 16:30 <span class="walk">FREE</span></p>
+      <h3>Mooch</h3>
+      <p class="note">Back down to the harbour. Fish drying on racks, boats coming in, and the txakoli shops along the main street — <b>buy it here, not at the airport.</b> It's made on the hill you can see above the town.</p>
+      <p class="note">If anyone wants sand, there's a small sheltered beach on the town side of the isthmus.</p>
+    </div>
+
+
+    <div class="stop">
+      <p class="clock">~16:45 <span class="walk">UK09 / UK10 / UK11 · ~45 MIN</span></p>
+      <h3>Getaria → Donostia</h3>
+      <p class="addr">Getaria stop · Ganeta, on the main road above the old town</p>
+      <p class="note">Same lines back, opposite direction. <b>The town sits below the road</b>, so it's a short climb up from the port to the stop — allow ten minutes, not two.</p>
+      <p class="note">Back to <b>Federico García Lorca 2</b> in Donostia, or get off earlier at <b>Avenida de la Libertad 34</b> if that's closer to where we're staying.</p>
+      <p class="note"><b>Optional:</b> break the journey at <b>Zarautz</b>, ten minutes along — a long surf beach with a boardwalk, 4.6 from 1,647. Currents are strong, so it's a walk rather than a swim.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Getaria%20bus%20stop%20Ganeta&query_place_id=ChIJmcFWoZjIUQ0RrShyPMT_otU" target="_blank" rel="noopener">Getaria stop ↗</a>
+      <a class="maplink" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=43.3047282,-2.2034138&destination=43.3027728,-2.2038614" target="_blank" rel="noopener">Port → bus stop ↗</a>
+      <a class="maplink" href="https://www.google.com/maps/dir/?api=1&travelmode=transit&origin=43.3027728,-2.2038614&destination=43.3168200,-1.9775102" target="_blank" rel="noopener">Getaria → Donostia ↗</a>
+      <a class="maplink" href="https://lurraldebus.eus/lineas/view_full_lineas_pdf/UK09/1" target="_blank" rel="noopener">Timetable ↗</a>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Zarautz%20Beach&query_place_id=ChIJK8sMUV3IUQ0RcXIZ5vlnb-A" target="_blank" rel="noopener">Zarautz ↗</a>
+      <span class="warn">Check the last return before we leave in the morning</span>
+    </div>
+
+
+    <div class="stop">
+      <p class="clock">18:30 → 20:00 <span class="walk">SUNSET ~19:40</span></p>
+      <h3>Urgulleko Polboriña</h3>
+      <p class="addr">Monte Urgull · bar in the old gunpowder magazine · 4.7 from 918 · cheap</p>
+      <p class="order"><span class="tag">The move</span>Climb Urgull from the old town, drink on the terrace, watch the sun go down over the bay.</p>
+      <p class="note">A tiny bar hidden inside the fortifications halfway up the hill. Reviewers call it a hidden gem and warn you'll <b>miss it if you don't look for the small bar sign and arrow.</b> Open daily <b>11:00–20:45</b>, so sunset at 19:40 sits perfectly inside.</p>
+      <p class="note"><b>Get there by 18:45.</b> One review puts it plainly: it's a great sunset spot but hard to get a seat. Thirty minutes up from the old town, so leave around 18:15.</p>
+      <p class="note"><b>Photo:</b> the terrace looks straight down over the bay and the Christ statue stands above you at the summit. Go up to the castle first for the 360°, then drop back to the bar for the light.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Urgulleko%20Polbori%C3%B1a&query_place_id=ChIJn7ZhSbK6UQ0Rbk5Ru3Airo4" target="_blank" rel="noopener">Map ↗</a>
+      <a class="maplink" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=43.3236924,-1.9848650&destination=43.3239502,-1.9916164" target="_blank" rel="noopener">Walk up from the old town ↗</a>
+      <span class="warn calm">Closes 20:45 — the whole sunset fits</span>
+    </div>
+
+    <div class="stop">
+      <p class="clock">Alternative <span class="walk">IF LEGS HAVE GONE</span></p>
+      <h3>La Concha promenade</h3>
+      <p class="addr">Kontxa Pasealekua · 4.8 from 2,951 · flat, free, always open</p>
+      <p class="note">No climb. The bay faces west, so the sun goes down across the water in front of you. One reviewer: catching this place at golden hour is really something.</p>
+      <p class="note"><b>Photo:</b> the white balustrade railings are the signature of the city — shoot along them with the bay behind. Isla Santa Clara sits in the middle of the frame.</p>
+      <p class="note"><b>Drink:</b> <b>Café de La Concha</b> sits right on the promenade, open till 23:00. Only 3.8 and pricier than town — you're paying for the terrace, not the coffee.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Paseo%20de%20La%20Concha&query_place_id=ChIJP_E2zau6UQ0R7b-CzcGsb8Y" target="_blank" rel="noopener">Promenade ↗</a>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Caf%C3%A9%20de%20La%20Concha&query_place_id=ChIJFV8mqKm6UQ0RWZbNIQTN8Yc" target="_blank" rel="noopener">Café ↗</a>
+    </div>
+
+  </section>
+
+  <!-- ============ EVENING ============ -->
+  <section>
+    <p class="sechead">Evening</p>
+    <h2>Skip dinner</h2>
+    <p class="intro" style="margin-bottom:16px">You'll have eaten a two-hour lunch at the best fish restaurant on this coast. Nobody needs dinner.</p>
+
+    <div class="alt">
+      <h4>If anyone does want something later</h4>
+      <p><b>All three are open on a Monday</b> — checked.</p>
+      <p><b>Bar Sport</b> · Fermin Calbeton 10 · 4.7 from 8,779 · Mon 09:00–23:00<br>
+      Sea urchin cream and the foie gras pintxo are what people rave about. Reviewers also mention watching them pour the txakoli from height — worth filming.
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=BAR%20SPORT%20Donostia&query_place_id=ChIJlwEV3E2lUQ0RgvA10WoFd74" target="_blank" rel="noopener">Map ↗</a>
+      <span class="warn" style="margin-left:6px">Shut Wednesdays — not tonight though</span></p>
+
+      <p style="margin-top:14px"><b>La Cepa de Bernardo</b> · 31 de Agosto 7 · 4.3 from 3,158 · daily 11:00–23:00<br>
+      Jamón ibérico, padrón peppers, txakoli. Served on soft fresh bread rather than toasted, which reviewers single out.
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=La%20Cepa%20de%20Bernardo%20Donostia&query_place_id=ChIJMevYsk2lUQ0R7ABFE3h8DBQ" target="_blank" rel="noopener">Map ↗</a></p>
+
+      <p style="margin-top:14px"><b>Bodega Donostiarra</b> · Peña y Goñi 13, Gros · 4.4 from 6,249 · Mon 09:30–23:00<br>
+      Across the river and quieter. Anchovies, the stuffed piquillo pepper with oxtail, tortilla. About €15–20 a head.
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bodega%20Donostiarra%20Gros&query_place_id=ChIJ6XYVQkWlUQ0RrKLaNKQolCI" target="_blank" rel="noopener">Map ↗</a></p>
+    </div>
+  </section>
+
+  <!-- ============ MOMENTS ============ -->
+  <section>
+    <p class="sechead">The bits you'll remember</p>
+    <h2>Five moments, not a shot list</h2>
+    <p class="intro" style="margin-bottom:18px">Nobody wants a day of being posed. These are just the ones worth not missing — mostly because they only happen here.</p>
+
+    <ul class="plain">
+      <li><i></i><div><b>The smoke on Kale Nagusia.</b> Fish grills sit outside the restaurant doors on the main street, whole turbot over coals. The smell hits before you see it. <b>Walk down slowly and film the street, not the fish.</b></div></li>
+
+      <li><i></i><div><b>The txakoli pour.</b> It's poured from arm's length above the glass to break the fizz. It looks like showing off and it isn't. Someone film it — nobody at home believes it otherwise.</div></li>
+
+      <li><i></i><div><b>Six at the lookout.</b> The one group photo of the day.<br>
+      <span style="color:var(--dim)">What you'll see: a bare grassy headland with a stubby old watchtower and a lighthouse you can photograph but not enter. Open sea on three sides, the town and its beach below on the fourth. Reviewers describe it as an easy signposted climb through thick green vegetation, twenty minutes from the port.</span><br>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=San%20Anton%20mendiko%20talaia%20Getaria&query_place_id=ChIJ84vs3ZXHUQ0RqHfamfK8FgQ" target="_blank" rel="noopener">The lookout ↗</a>
+      <a class="maplink" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=43.3057106,-2.2024680&destination=43.3085693,-2.2024472" target="_blank" rel="noopener">Walk up ↗</a></div></li>
+
+      <li><i></i><div><b>Looking back at the mouse.</b> From the coast path toward Zarautz, turn round.<br>
+      <span style="color:var(--dim)">What you'll see: the headland in profile across the water — a rounded body rising to a snout at the seaward end, with the low isthmus running back to town as the tail. From inside Getaria it just looks like a hill. From here it doesn't, and that's the whole joke of the name.</span><br>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=San%20Anton%20Getaria%20island&query_place_id=ChIJY9ygiSDGUQ0RMNuUWQtEPuA" target="_blank" rel="noopener">The mouse ↗</a>
+      <a class="maplink" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=43.3047282,-2.2034138&destination=43.2881606,-2.1680500" target="_blank" rel="noopener">The coast path ↗</a></div></li>
+
+      <li><i></i><div><b>Bread and oil before the fish.</b> Three kinds of bread arrive first at Kaia Kaipe, with a small mushroom soup sent out on the house. Reviewers mention them as often as the turbot.<br>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Kaia%20Kaipe%20Getaria&query_place_id=ChIJlaW_XZ_IUQ0RhWhoONqUhwk" target="_blank" rel="noopener">Kaia Kaipe ↗</a></div></li>
+    </ul>
+
+    <div class="alt">
+      <h4>One rule for the day</h4>
+      <p><b>No photos at the table for the first ten minutes.</b> It's a two-hour lunch at the best fish restaurant on this coast, we're six friends, and the food will still be there. Eat first.</p>
+    </div>
+  </section>
+
+  <!-- ============ PRACTICAL ============ -->
+  <section>
+    <p class="sechead">Practical</p>
+    <h2>Worth knowing</h2>
+    <ul class="plain" style="margin-top:14px">
+      <li><i></i><div><b>Shoes you can climb in.</b> The San Antón path is easy but it's a real path, and the old town street is steep and cobbled.</div></li>
+      <li><i></i><div><b>A layer.</b> The lookout is exposed on all sides and it's the Cantabrian in October.</div></li>
+      <li><i></i><div><b>Don't eat breakfast heavily.</b> Lunch is the day.</div></li>
+      <li><i></i><div><b>Cash for the bus.</b> Worth having coins rather than relying on a card.</div></li>
+      <li><i></i><div><b>Buy txakoli here, not at the airport.</b> It's made on the hill above the town and the price reflects that.</div></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Hours checked on current listings — <b>Kaia Kaipe lunch-only on Mondays, San Salvador closing at 14:00, Urgulleko Polboriña till 20:45</b>, and all three evening bars open. <b>Bus times are the one thing unverified for October</b>, along with anything to do with the winery.</p>
+    <p>Sunset around 19:40 is approximate.</p>
+    <p class="sig">¯\_(ツ)_/¯</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var LAT=43.3047, LON=-2.2034, TZ="Europe/Madrid", PLACE="Getaria";
+  var W={0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Overcast',45:'Fog',48:'Freezing fog',
+    51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',56:'Freezing drizzle',57:'Freezing drizzle',
+    61:'Light rain',63:'Rain',65:'Heavy rain',66:'Freezing rain',67:'Freezing rain',
+    71:'Light snow',73:'Snow',75:'Heavy snow',77:'Snow grains',
+    80:'Rain showers',81:'Rain showers',82:'Heavy showers',85:'Snow showers',86:'Snow showers',
+    95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'};
+  var dot=document.getElementById('tdot'), val=document.getElementById('tval'),
+      note=document.getElementById('tnote'), lbl=document.getElementById('tlbl');
+  var u='https://api.open-meteo.com/v1/forecast?latitude='+LAT+'&longitude='+LON
+      +'&current=temperature_2m,precipitation,weather_code,wind_speed_10m'
+      +'&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max'
+      +'&forecast_days=1&timezone='+encodeURIComponent(TZ);
+  fetch(u).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(d){
+    var c=d.current, dy=d.daily, code=c.weather_code, desc=W[code]||'—';
+    var rain=dy&&dy.precipitation_probability_max?dy.precipitation_probability_max[0]:0;
+    var hi=dy&&dy.temperature_2m_max?Math.round(dy.temperature_2m_max[0]):null;
+    var lo=dy&&dy.temperature_2m_min?Math.round(dy.temperature_2m_min[0]):null;
+    var cls=(code<=2&&rain<=30)?'green':(code<=48||rain<=60)?'amber':'red';
+    dot.className='tdot '+cls;
+    lbl.textContent='Live now · '+PLACE+' · '+new Date().toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});
+    val.textContent=Math.round(c.temperature_2m)+'°C, '+desc.toLowerCase()
+      +(hi!==null?'  ·  '+lo+'–'+hi+'°C today':'')+'  ·  '+Math.round(rain)+'% rain';
+    note.innerHTML='Feed is live. <b>This is today, not the trip.</b> Worth a look the night before — the lookout is exposed and the walk is the first thing to drop in rain.';
+  }).catch(function(){
+    dot.className='tdot amber';
+    val.textContent='Feed not reachable from here';
+    note.innerHTML='This usually means the page is being previewed inside an app that blocks outside requests. <b>Open it at poohpoohsy.github.io and it will fill in.</b>';
+  });
+})();
+</script>
+</body>
+</html>

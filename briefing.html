@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trip briefing — screenshot this</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#0D1214; --card:#161D21; --chalk:#EAE9E5; --dim:#8A979D;
+    --alp:#8ECDEC; --cham:#D9A441; --bask:#E8547C; --stop:#D4614E;
+    --rule:rgba(234,233,229,.14);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#05090B;color:var(--chalk);
+    font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+    padding:16px 12px 60px;}
+  .lead{max-width:420px;margin:0 auto 16px;font-size:13.5px;color:var(--dim);line-height:1.5;text-align:center;}
+  .lead b{color:var(--chalk);}
+
+  /* each .shot is sized to screenshot cleanly on a phone */
+  .shot{max-width:420px;margin:0 auto 14px;background:var(--ground);
+    border:1px solid var(--rule);border-radius:10px;padding:20px 18px;}
+  .shot h2{font-family:'Syne',sans-serif;font-weight:800;font-size:21px;letter-spacing:-.02em;
+    margin:0 0 3px;}
+  .sub{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--dim);margin:0 0 16px;}
+
+  .row{display:flex;gap:11px;padding:9px 0;border-bottom:1px solid var(--rule);align-items:baseline;}
+  .row:last-of-type{border-bottom:0;}
+  .t{flex:0 0 62px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;
+    color:var(--alp);letter-spacing:.02em;}
+  .t.c{color:var(--cham);} .t.b{color:var(--bask);}
+  .x{flex:1;min-width:0;font-size:14px;color:var(--dim);line-height:1.45;}
+  .x b{color:var(--chalk);font-weight:600;}
+  .x .s{display:block;font-size:12px;margin-top:2px;}
+
+  .flag{display:inline-block;margin-top:3px;padding:2px 7px;border-radius:2px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:.1em;
+    text-transform:uppercase;background:rgba(212,97,78,.15);color:#EA9482;
+    border:1px solid rgba(212,97,78,.32);}
+  .flag.g{background:rgba(127,185,138,.14);color:#9BC9A4;border-color:rgba(127,185,138,.3);}
+  .flag.a{background:rgba(217,164,65,.15);color:#EBC078;border-color:rgba(217,164,65,.32);}
+
+  .big{font-family:'Syne',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.02em;
+    margin:0;color:var(--stop);line-height:1.05;}
+  .cap{font-size:13px;color:var(--dim);margin:6px 0 0;line-height:1.45;}
+  .cap b{color:var(--chalk);}
+
+  .sig{max-width:420px;margin:24px auto 0;text-align:center;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:13px;color:var(--dim);
+    opacity:.35;user-select:none;}
+</style>
+</head>
+<body>
+
+<p class="lead">Each card below is sized to <b>screenshot on its own</b>. Long-press → screenshot → send. No card needs scrolling.</p>
+
+<!-- 1 -->
+<div class="shot">
+  <h2>The trip</h2>
+  <p class="sub">1–16 October · six of us</p>
+  <div class="row"><div class="t">1–5 Oct</div><div class="x"><b>Switzerland</b><span class="s">Lauterbrunnen, then Grindelwald</span></div></div>
+  <div class="row"><div class="t c">5–9 Oct</div><div class="x"><b>Chamonix</b><span class="s">Mont Blanc, three ways</span></div></div>
+  <div class="row"><div class="t b">9–15 Oct</div><div class="x"><b>San Sebastián</b><span class="s">Base for the whole Basque week</span></div></div>
+  <div class="row"><div class="t b">15–16</div><div class="x"><b>Home</b><span class="s">Bilbao → Zürich → Hong Kong</span></div></div>
+</div>
+
+<!-- 2 -->
+<div class="shot">
+  <h2>Times that won't wait</h2>
+  <p class="sub">Miss these and the day changes</p>
+  <div class="row"><div class="t">Fri 2</div><div class="x"><b>09:00 · Postbus 141</b><span class="s">Be at the stop by 08:50. The whole morning hangs off it.</span></div></div>
+  <div class="row"><div class="t">Sat 3</div><div class="x"><b>07:00 check out · 07:15 train</b><span class="s">Bags packed the night before.</span></div></div>
+  <div class="row"><div class="t">Sun 4</div><div class="x"><b>08:13 · Jungfrau Railway</b><span class="s">Seats reserved and paid. Walk to the Terminal at 07:30.</span></div></div>
+  <div class="row"><div class="t c">Mon 5</div><div class="x"><b>14:00 · transfer to Chamonix</b><span class="s">Six of us, eight bags. Ready by 13:45.</span></div></div>
+  <div class="row"><div class="t c">Tue 6</div><div class="x"><b>08:10 · first cable car</b><span class="s">At the station by 07:45. Nothing runs earlier.</span></div></div>
+  <div class="row"><div class="t c">Fri 9</div><div class="x"><b>01:30 alarm · 02:30 transfer</b><span class="s">Flight 06:10. Pack Thursday evening.</span></div></div>
+  <div class="row"><div class="t b">Sat 10</div><div class="x"><b>18:15 · Antonio</b><span class="s">Tortilla drops 18:30 and sells out.</span></div></div>
+  <div class="row"><div class="t b">Mon 12</div><div class="x"><b>13:00 · Kaia Kaipe</b><span class="s">Booked. Monday is lunch only, 13:00–15:30.</span></div></div>
+</div>
+
+<!-- 3 -->
+<div class="shot">
+  <h2 style="color:#EA9482">Closed. Don't turn up.</h2>
+  <p class="sub">Checked against current listings</p>
+  <div class="row"><div class="t">Sept</div><div class="x"><b>Flégère &amp; Index</b> — shut from 13 Sept<span class="s">No Lac Blanc. Brévent replaces it.</span></div></div>
+  <div class="row"><div class="t c">Oct</div><div class="x"><b>Mer de Glace ice cave</b> — shut 28 Sept–1 Nov<span class="s">The walk and the train still run.</span></div></div>
+  <div class="row"><div class="t c">Oct</div><div class="x"><b>Panoramic Mont-Blanc to Italy</b> — shut from 27 Sept</div></div>
+  <div class="row"><div class="t b">Mon</div><div class="x"><b>Akerbeltz</b> — closed Mondays<span class="s">Sunset drink is Urgulleko Polboriña instead.</span></div></div>
+  <div class="row"><div class="t b">Sun</div><div class="x"><b>Five of the eight pintxos stops</b> — closed Sundays<span class="s">Which is why hopping is on a Saturday.</span></div></div>
+  <div class="row"><div class="t b">Wed</div><div class="x"><b>Bar Sport</b> closed Wednesdays · <b>Manojo</b> closed Wednesdays</div></div>
+</div>
+
+<!-- 4 -->
+<div class="shot">
+  <h2>What to bring</h2>
+  <p class="sub">The bits people forget</p>
+  <div class="row"><div class="t">Feet</div><div class="x"><b>Proper walking shoes.</b><span class="s">Six days have a hike. Chamonix Wednesday has scrambling.</span></div></div>
+  <div class="row"><div class="t">Cold</div><div class="x"><b>Layers, gloves, sunglasses.</b><span class="s">Valley mild, 3,842m well below freezing. Glacier glare is severe.</span></div></div>
+  <div class="row"><div class="t">Power</div><div class="x"><b>Power bank.</b><span class="s">Cold flattens phones at altitude. Essential on 4 and 6 Oct.</span></div></div>
+  <div class="row"><div class="t">Money</div><div class="x"><b>Francs, then euros.</b><span class="s">Switzerland isn't in the euro. Cash for buses and small bars.</span></div></div>
+  <div class="row"><div class="t">Water</div><div class="x"><b>A bottle.</b><span class="s">Fountains everywhere. Buying at 2,000m is its own kind of expensive.</span></div></div>
+  <div class="row"><div class="t">Phone</div><div class="x"><b>Tickets in the wallet app before you fly.</b><span class="s">No signal inside mountains.</span></div></div>
+</div>
+
+<!-- 5 -->
+<div class="shot">
+  <h2>How we do it</h2>
+  <p class="sub">Three rules, that's all</p>
+  <div class="row"><div class="t b">Eating</div><div class="x"><b>One bite, one drink, standing. Then move.</b><span class="s">The failure mode is sitting down at stop three and never leaving.</span></div></div>
+  <div class="row"><div class="t">Walking</div><div class="x"><b>Say it early, not late.</b><span class="s">Every walk has a bail-out. Nobody has to finish anything.</span></div></div>
+  <div class="row"><div class="t c">Weather</div><div class="x"><b>Calls get made the night before.</b><span class="s">Never over breakfast. If something moves, I'll say so.</span></div></div>
+</div>
+
+<!-- 6 -->
+<div class="shot">
+  <h2>Money</h2>
+  <p class="sub">Roughly, per person</p>
+  <div class="row"><div class="t">CHF 324</div><div class="x"><b>Jungfrau Travel Pass + Jungfraujoch</b><span class="s">CHF 299 for the two joining on the 3rd.</span></div></div>
+  <div class="row"><div class="t">CHF 16</div><div class="x">Trümmelbach Falls · 2 Oct</div></div>
+  <div class="row"><div class="t c">€60–83</div><div class="x"><b>Aiguille du Midi</b> round trip<span class="s">Dynamic pricing — book early, it only goes up.</span></div></div>
+  <div class="row"><div class="t c">€20</div><div class="x">Glacier Gorge · 4 Oct · optional</div></div>
+  <div class="row"><div class="t b">€60–90</div><div class="x"><b>Pintxos hopping, whole day</b> · 10 Oct<span class="s">Rough. Manojo lunch is the biggest line.</span></div></div>
+</div>
+
+<!-- 7 -->
+<div class="shot">
+  <p class="sub">The one to remember</p>
+  <p class="big">3,842m</p>
+  <p class="cap"><b>Aiguille du Midi, Tuesday 6 October.</b> Higher than Jungfraujoch, reached in twenty minutes by cable car with no acclimatising.<br><br>Walk slowly, drink water, and say something early if your head goes. It passes, but it's better managed at the start than at the top.</p>
+</div>
+
+<p class="sig">¯\_(ツ)_/¯</p>
+
+</body>
+</html>
