@@ -28,10 +28,10 @@ body{margin:0;background:var(--ground);color:var(--chalk);
 .kicker{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:600;
   letter-spacing:.24em;text-transform:uppercase;color:var(--rust);margin:0 0 14px}
 h1{font-family:'Syne','Archivo',sans-serif;font-weight:800;
-  font-size:clamp(34px,9.8vw,56px);line-height:.97;letter-spacing:-.025em;margin:0 0 16px}
+  font-size:clamp(24px,6.2vw,32px);line-height:.97;letter-spacing:-.025em;margin:0 0 16px}
 .intro{margin:0;color:var(--dim);font-size:15.5px;max-width:50ch}
 .intro b{color:var(--chalk);font-weight:600}
-section{margin-top:36px;padding-top:26px;border-top:1px solid var(--rule)}
+section{margin-top:22px;padding-top:16px;border-top:1px solid var(--rule)}
 .sechead{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
   letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:0 0 14px}
 h2{font-family:'Syne','Archivo',sans-serif;font-weight:800;
@@ -79,7 +79,7 @@ h2{font-family:'Syne','Archivo',sans-serif;font-weight:800;
   letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:0 0 7px}
 .alt p{margin:0 0 8px;font-size:14.5px;color:var(--dim)}
 .alt p:last-child{margin:0}.alt b{color:var(--chalk)}
-footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);
+footer{margin-top:24px;padding-top:16px;border-top:1px solid var(--rule);
   font-size:13.5px;color:var(--dim)}
 footer p{margin:0 0 9px} footer b{color:var(--chalk)}
 footer a{color:var(--titanium)}
@@ -112,11 +112,11 @@ a:focus-visible{outline:2px solid var(--titanium);outline-offset:3px}
 .wxl{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
 .wxv{text-align:right;font-size:14px;color:var(--chalk);font-weight:600}
 .wxv small{display:block;color:var(--dim);font-size:11px;font-weight:500;margin-top:2px}
-.wx7{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:10px}
-.wxd{background:var(--raise2);border:1px solid var(--rule);border-radius:3px;padding:9px 7px;text-align:center}
-.wxd b{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;color:var(--titanium);letter-spacing:.05em}
-.wxd span{display:block;font-size:12px;color:var(--chalk);margin-top:4px}
-.wxd small{display:block;font-size:9.5px;color:var(--dim);margin-top:2px}
+
+
+
+
+
 .momentline{margin-top:10px;padding:9px 11px;border-left:2px solid var(--rust);background:rgba(210,139,84,.06);font-size:13px;color:var(--dim)}
 .momentline b{color:var(--chalk)}
 .orderbox{margin-top:10px;padding:10px 12px;background:rgba(175,196,207,.06);border:1px solid rgba(175,196,207,.18);border-radius:3px}
@@ -148,10 +148,7 @@ a:focus-visible{outline:2px solid var(--titanium);outline-offset:3px}
       </div>
       <div class="wxv" id="wxtrip">Not available yet</div>
     </div>
-    <div style="margin-top:12px">
-      <div class="wxl">Next 7 days · proves the feed is working</div>
-      <div class="wx7" id="wx7"><div class="wxd"><span>Loading…</span></div></div>
-    </div>
+    
     <div class="chips" style="margin-top:12px">
       <a class="chip" id="wxtest" href="https://api.open-meteo.com/v1/forecast?latitude=43.2630&longitude=-2.9350&current=temperature_2m,precipitation,weather_code,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max&forecast_days=7&timezone=Europe%2FMadrid" target="_blank" rel="noopener">Open live API response ↗</a>
     </div>
@@ -168,12 +165,14 @@ a:focus-visible{outline:2px solid var(--titanium);outline-offset:3px}
     <p><b>~14:15</b> Zubizuri / riverside walk</p>
     <p><b>~15:00–17:30</b> Guggenheim Museum</p>
     <p><b>~18:00</b> Bilbao Intermodal → San Sebastián</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bilbao%20Intermodal&query_place_id=ChIJRdkAVSZRTg0RERzMaWTuDkw" target="_blank" rel="noopener">Coach station ↗</a>
     <a class="route" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Bilbao+Intermodal&destination=Bilbao+Intermodal&waypoints=Mercado+de+la+Ribera+Bilbao%7CBar+Bacaicoa+Bilbao%7CLa+Olla+de+la+Plaza+Nueva+Bilbao%7CGure+Toki+Plaza+Nueva+Bilbao%7CSorginzulo+Plaza+Nueva+Bilbao%7CZubizuri+Bilbao%7CGuggenheim+Museum+Bilbao" target="_blank" rel="noopener">Open total Bilbao town route ↗</a>
   </div>
 </section>
 
 <section>
   <p class="sechead">The fixed pieces</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Sorg%C3%ADnzulo%20Bilbao&query_place_id=ChIJkTo_pdBPTg0Rx8JD5DRGBR0" target="_blank" rel="noopener">Map ↗</a>
   <h2>Transport</h2>
 <div class="fixed">
     <p class="lbl">Transport</p>
@@ -187,6 +186,30 @@ a:focus-visible{outline:2px solid var(--titanium);outline-offset:3px}
 </section>
 
 <section>
+  <p class="sechead">Getting there and back</p>
+  <h2>Book the coach</h2>
+  <div class="alt">
+    <p><b>Book a return with ALSA, San Sebastián ⇄ Bilbao Intermodal.</b> Roughly 1h15 each way. Booking ahead gets you allocated seats and saves standing in a queue with six people.</p>
+    <p><a href="https://www.alsa.com/en/web/bus/home" target="_blank" rel="noopener">alsa.com ↗</a></p>
+
+    <p style="margin-top:14px"><b>If we don't book ahead, two fallbacks:</b></p>
+    <p>· <b>Ticket machines at San Sebastián bus station</b>, Federico García Lorca 2.</p>
+    <p>· <b>The Lurraldebus ticket app</b> — buy 30–60 minutes before departure.</p>
+
+    <p style="margin-top:14px"><b>Do book though.</b> A Tuesday in October is quiet, but six seats together on a specific departure is not something to leave to a machine ten minutes before.</p>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=San%20Sebasti%C3%A1n%20Bus%20Station&query_place_id=ChIJ599IHFqlUQ0Ra-q6lchvTmM" target="_blank" rel="noopener">Donostia station ↗</a>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bilbao%20Intermodal&query_place_id=ChIJRdkAVSZRTg0RERzMaWTuDkw" target="_blank" rel="noopener">Bilbao Intermodal ↗</a>
+  </div>
+
+  <div class="alt" style="margin-top:12px">
+    <h4 style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:0 0 8px;">Worth knowing</h4>
+    <p><b>Check the last return before we set off in the morning.</b> Evening frequency thins out, and the Guggenheim doesn't shut until 20:00 — easy to lose track.</p>
+    <p><b>Bilbao Intermodal is not central.</b> Allow time to get there from the museum; it's a separate journey, not a walk round the corner.</p>
+  </div>
+</section>
+
+
+<section>
   <p class="sechead">Morning</p>
   <h2>Market first</h2>
 
@@ -194,6 +217,8 @@ a:focus-visible{outline:2px solid var(--titanium);outline-offset:3px}
     <p class="clock">~08:30–09:00</p>
     <h3>San Sebastián → Bilbao</h3>
     <p>Take a direct coach to Bilbao. Target an arrival around <b>10:00–10:15</b>. The exact departure stays flexible until the official timetable for 13 October is published.</p>
+      <p><b>Tickets online.</b> Reviewers recommend booking ahead, repeatedly and unprompted. We're deciding the night before — so buy then, rather than turning up cold. Open 10:00–20:00 every day.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=San%20Sebasti%C3%A1n%20Bus%20Station&query_place_id=ChIJ599IHFqlUQ0Ra-q6lchvTmM" target="_blank" rel="noopener">Donostia station ↗</a>
     <div class="chips">
       <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Donostia+San+Sebastian+Bus+Station" target="_blank" rel="noopener">San Sebastián bus station ↗</a>
       <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Bilbao+Intermodal" target="_blank" rel="noopener">Bilbao Intermodal ↗</a>
@@ -204,6 +229,7 @@ a:focus-visible{outline:2px solid var(--titanium);outline-offset:3px}
     <p class="clock">~10:15 → 11:00</p>
     <h3>Mercado de la Ribera</h3>
     <p>Do this <b>before lunch</b>. On Tuesdays, several official market listings show fish and seafood stalls operating roughly <b>08:00–14:00 / 14:30</b>. Walk the food floors while they are actually trading.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Erriberako%20Merkatua%20Bilbao&query_place_id=ChIJ329u8cxPTg0RX7XirbQve-0" target="_blank" rel="noopener">Market ↗</a>
     <div class="chips">
       <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Mercado+de+la+Ribera+Bilbao" target="_blank" rel="noopener">Mercado · Google Maps ↗</a>
       <a class="chip" href="https://mercadodelaribera.biz/puestos-3/" target="_blank" rel="noopener">Official stalls & hours ↗</a>
@@ -224,6 +250,7 @@ a:focus-visible{outline:2px solid var(--titanium);outline-offset:3px}
     <p class="clock">~11:15</p>
     <h3>1 · Bar Bacaicoa</h3>
     <p>Small, old-school stop in Plaza Miguel de Unamuno. Their own menu is unusually clear about the house specialties.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bacaicoa%20taberna%20Bilbao&query_place_id=ChIJQ6ms48tPTg0RED6Sk7NEniQ" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox">
       <div class="olbl">Top tasty food</div>
       <p><b>Champiñón a la Gloria</b> · <b>Chorizo al Infierno</b> · <b>Croqueta de bacalao</b>. If six of you want to sample efficiently, the official menu also lists a combo.</p>
@@ -240,6 +267,7 @@ a:focus-visible{outline:2px solid var(--titanium);outline-offset:3px}
     <p class="clock">~11:50</p>
     <h3>2 · La Olla de la Plaza Nueva</h3>
     <p>A modern pintxo bar on Plaza Nueva with a large rotating counter plus hot pintxos made to order.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=La%20Olla%20de%20la%20Plaza%20Nueva%20Bilbao&query_place_id=ChIJh1WEsM5PTg0RTARK_rreVA0" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox">
       <div class="olbl">Top tasty food</div>
       <p>From its current official pintxo list: <b>taco de chuletón</b>, <b>Alcachofa XL</b>, <b>taco de atún rojo</b>, <b>bacalao al pil-pil</b>. For the most photogenic bite, look for the <b>tomato-shaped cream-cheese pintxo</b>. Availability can change by season.</p>
@@ -256,6 +284,7 @@ a:focus-visible{outline:2px solid var(--titanium);outline-offset:3px}
     <p class="clock">~12:25</p>
     <h3>3 · Gure Toki</h3>
     <p>Plaza Nueva institution mixing traditional Basque flavours with more modern miniature cooking.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Gure%20Toki%20Bilbao&query_place_id=ChIJ2SYPMslPTg0RUhs46RaMHV0" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox">
       <div class="olbl">Top tasty food</div>
       <p>Bilbao's official pintxo guide highlights <b>oxtail croquette</b>, <b>scallop with potato and breadcrumbs</b>, <b>grilled foie with apple and Pedro Ximénez</b>, and <b>cod with pil-pil</b> as the most demanded pintxos.</p>
@@ -312,6 +341,7 @@ a:focus-visible{outline:2px solid var(--titanium);outline-offset:3px}
     <p class="clock">~15:00 → 17:30</p>
     <h3>Guggenheim Museum Bilbao</h3>
     <p>The museum is officially open on Tuesday from <b>10:00 to 19:00</b>. Two to two-and-a-half hours is a sensible visit for this itinerary.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Guggenheim%20Museum%20Bilbao&query_place_id=ChIJtTFg3t5PTg0RrW2vzbeTiFA" target="_blank" rel="noopener">Museum ↗</a>
     <p>The official essentials include Richard Serra's <b>The Matter of Time</b>, Jeff Koons' <b>Puppy</b> and Louise Bourgeois' <b>Maman</b>.</p>
     <div class="chips">
       <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Guggenheim+Museum+Bilbao" target="_blank" rel="noopener">Guggenheim · Google Maps ↗</a>
@@ -380,7 +410,7 @@ a:focus-visible{outline:2px solid var(--titanium);outline-offset:3px}
   var nowEl=document.getElementById('wxnow');
   var nowNote=document.getElementById('wxnow-note');
   var tripEl=document.getElementById('wxtrip');
-  var weekEl=document.getElementById('wx7');
+  var weekEl=document.getElementById('wx7'); // strip removed; guarded below
 
   var codeText={
     0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Overcast',
@@ -406,7 +436,7 @@ a:focus-visible{outline:2px solid var(--titanium);outline-offset:3px}
     nowNote.textContent='Feed working · updated '+(c.time?c.time.replace('T',' '):'now')+' Bilbao time';
 
     var days=d.daily||{};
-    weekEl.innerHTML='';
+    if(weekEl) weekEl.innerHTML='';
     var n=Math.min(7,(days.time||[]).length);
     for(var i=0;i<n;i++){
       var dt=new Date(days.time[i]+'T12:00:00');
@@ -415,7 +445,7 @@ a:focus-visible{outline:2px solid var(--titanium);outline-offset:3px}
       box.className='wxd';
       box.innerHTML='<b>'+day+'</b><span>'+Math.round(days.temperature_2m_min[i])+'–'+Math.round(days.temperature_2m_max[i])+'°</span>'
         +'<small>'+Math.round(days.precipitation_probability_max[i]||0)+'% rain</small>';
-      weekEl.appendChild(box);
+      if(weekEl) weekEl.appendChild(box);
     }
 
     var idx=(days.time||[]).indexOf(TARGET);
@@ -430,7 +460,7 @@ a:focus-visible{outline:2px solid var(--titanium);outline-offset:3px}
   }).catch(function(err){
     nowEl.innerHTML='Feed unavailable<small>'+err.message+'</small>';
     nowNote.textContent='Open‑Meteo did not respond. Tap “Open live API response” below to test directly.';
-    weekEl.innerHTML='<div class="wxd"><span>Unavailable</span></div>';
+    if(weekEl) weekEl.innerHTML='<div class="wxd"><span>Unavailable</span></div>';
     tripEl.textContent='Not available';
   });
 })();

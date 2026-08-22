@@ -21,9 +21,9 @@ body{margin:0;background:var(--ground);color:var(--chalk);font-family:'Archivo',
 .wrap{max-width:640px;margin:0 auto;padding:0 var(--pad) 72px}
 .top{padding:clamp(32px,9vw,58px) 0 0}
 .kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--sand);margin:0 0 14px}
-h1{font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:clamp(34px,9.7vw,55px);line-height:.97;letter-spacing:-.025em;margin:0 0 16px}
+h1{font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:clamp(24px,6.2vw,32px);line-height:1.03;letter-spacing:-.03em;margin:0 0 10px}
 .intro{margin:0;color:var(--dim);font-size:15.5px;max-width:52ch}.intro b{color:var(--chalk)}
-section{margin-top:36px;padding-top:26px;border-top:1px solid var(--rule)}
+section{margin-top:22px;padding-top:16px;border-top:1px solid var(--rule)}
 .sechead{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:0 0 14px}
 h2{font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:clamp(22px,5.6vw,29px);letter-spacing:-.02em;line-height:1.1;margin:0 0 8px}
 .stop{padding:17px 0;border-top:1px solid var(--rule)}.stop:first-child{border-top:0;padding-top:0}
@@ -48,9 +48,7 @@ h2{font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:clamp(22px,
 .wxrow{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--rule)}.wxrow:last-child{border-bottom:0}
 .wxl{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
 .wxv{text-align:right;font-size:14px;color:var(--chalk);font-weight:600}.wxv small{display:block;color:var(--dim);font-size:11px;font-weight:500;margin-top:2px}
-.wx7{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:10px}.wxd{background:var(--raise2);border:1px solid var(--rule);border-radius:3px;padding:9px 7px;text-align:center}
-.wxd b{display:block;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--sea)}.wxd span{display:block;font-size:12px;margin-top:4px}.wxd small{display:block;font-size:9.5px;color:var(--dim);margin-top:2px}
-footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--dim)}footer p{margin:0 0 9px}footer b{color:var(--chalk)}
+footer{margin-top:24px;padding-top:16px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--dim)}footer p{margin:0 0 9px}footer b{color:var(--chalk)}
 
 .modebar{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px;position:sticky;top:8px;z-index:20}
 .modebtn{appearance:none;border:1px solid rgba(135,199,196,.30);background:rgba(24,27,31,.94);
@@ -64,6 +62,14 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
 .quickintro p{margin:0;color:var(--dim);font-size:14px}
 .quickintro b{color:var(--chalk)}
 
+
+  .maplink{display:inline-block;margin-top:9px;margin-right:6px;padding:3px 9px;border-radius:2px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.08em;
+    text-transform:uppercase;text-decoration:none;color:var(--sea,#87C7C4);
+    border:1px solid rgba(135,199,196,.32);}
+  .maplink:hover{background:rgba(135,199,196,.12);}
+  .sig{margin-top:22px;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:13px;color:var(--dim);opacity:.35;user-select:none;}
 </style>
 </head>
 <body>
@@ -77,7 +83,7 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
   <div class="wxpanel">
     <div class="wxrow"><div><div class="wxl">Live now · San Sebastián</div><div id="wxnote" style="font-size:11px;color:var(--dim);margin-top:3px">Connecting to Open‑Meteo…</div></div><div class="wxv" id="wxnow">—</div></div>
     <div class="wxrow"><div><div class="wxl">14 Oct forecast</div><div style="font-size:11px;color:var(--dim);margin-top:3px">Auto-fills when the date enters the forecast horizon.</div></div><div class="wxv" id="wxtrip">Not available yet</div></div>
-    <div style="margin-top:12px"><div class="wxl">Next 7 days · live feed check</div><div class="wx7" id="wx7"><div class="wxd"><span>Loading…</span></div></div></div>
+    
     <div class="chips"><a class="chip" id="wxapi" href="#" target="_blank" rel="noopener">Open live API response ↗</a></div>
   </div>
 </header>
@@ -149,6 +155,7 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
     <div class="rank"><span class="badge">#1 of original 3</span></div>
     <h3>Ganbara · 4.3 ★ (3,453)</h3>
     <p><b>Wed:</b> 12:30–15:30 / 19:00–22:30.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Ganbara%20Donostia&query_place_id=ChIJRz4rGE2lUQ0RCXKD4hcaFDA" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox"><div class="olbl">Must eat</div><p><b>Spider-crab tartlet</b> · <b>seasonal mushrooms / hongos</b>. Your Bourdain note is kept as trip context, but the dish recommendation is based on Ganbara / tourism sources.</p></div>
     <div class="chips"><a class="chip" href="https://www.google.com/maps/search/?api=1&query=Ganbara+San+Sebastian" target="_blank" rel="noopener">Map ↗</a></div>
   </div>
@@ -157,6 +164,7 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
     <div class="rank"><span class="badge">Highest-rated core dinner</span></div>
     <h3>La Cuchara de San Telmo · 4.6 ★ (6,126)</h3>
     <p><b>Wed:</b> 12:00–16:00 / 19:00–23:00.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=La%20Cuchara%20de%20San%20Telmo%20Donostia&query_place_id=ChIJa5GBWU2lUQ0RxDvGh0Fu2ug" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox"><div class="olbl">Must eat</div><p><b>Octopus</b> · <b>suckling pig</b> if on the day's menu. Best used as a cooked-to-order savoury stop.</p></div>
     <div class="chips"><a class="chip" href="https://www.google.com/maps/search/?api=1&query=La+Cuchara+de+San+Telmo+San+Sebastian" target="_blank" rel="noopener">Map ↗</a></div>
   </div>
@@ -165,6 +173,7 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
     <div class="rank"><span class="badge">Dessert finish</span></div>
     <h3>La Viña · 4.4 ★ (9,756)</h3>
     <p><b>Wed:</b> 10:30–16:00 / 19:00–23:00.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=La%20Vi%C3%B1a%20Donostia&query_place_id=ChIJVUcO602lUQ0RXQVbLI2jbxk" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox"><div class="olbl">Must eat</div><p><b>Original La Viña burnt cheesecake.</b> This is the clearly validated signature dish; use it only if you have not already done it.</p></div>
     <div class="chips">
       <a class="chip" href="https://www.google.com/maps/search/?api=1&query=La+Vina+San+Sebastian" target="_blank" rel="noopener">Map ↗</a>
@@ -182,6 +191,7 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
     <div class="rank"><span class="badge backup">Status watch</span></div>
     <h3>Narrika Taberna · 4.3 ★ (377)</h3>
     <p><b>Current Google status:</b> <b>Temporarily closed.</b> Keep it in your list for a recheck before October, but do not build the night around it.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Narrika%20taberna%20Donostia&query_place_id=ChIJ_U4Sxk2lUQ0RqpzifygLNKc" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox"><div class="olbl">Your target if reopened</div><p><b>Gilda</b> · <b>foie gras</b>. Revalidate the current menu after reopening.</p></div>
     <div class="chips"><a class="chip" href="https://www.google.com/maps/search/?api=1&query=Narrika+Taberna+San+Sebastian" target="_blank" rel="noopener">Map / status ↗</a></div>
   </div>
@@ -190,6 +200,7 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
     <div class="rank"><span class="badge backup">Hours conflict · recheck</span></div>
     <h3>Itxaropena 1910 · 4.3 ★ (1,566)</h3>
     <p>Current listings conflict on Wednesday opening: some show <b>10:30–23:00</b>, others show Wednesday closed. <b>Do not rely on it without checking that day.</b></p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Itxaropena%201910%20Donostia&query_place_id=ChIJp5IZg02lUQ0RFuUN3ytfq3k" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox"><div class="olbl">Your target</div><p><b>Shaved asparagus</b> — keep as a quick-stop target, but I could not validate this as a current signature dish from an official menu.</p></div>
     <div class="chips"><a class="chip" href="https://www.google.com/maps/search/?api=1&query=Itxaropena+1910+San+Sebastian" target="_blank" rel="noopener">Map / live hours ↗</a></div>
   </div>
@@ -198,6 +209,7 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
     <div class="rank"><span class="badge">Reliable Wed option</span></div>
     <h3>Antonio Boulevard · 4.2 ★ (1,497)</h3>
     <p><b>Wed:</b> Google currently shows 09:00–23:30.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Antonio%20Bulebarra%20Donostia&query_place_id=ChIJ3bfX5Y2lUQ0Rl6uFl_ow-Ow" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox"><div class="olbl">Must eat</div><p><b>Prawn ravioli in Martini sauce</b>. Keep your <b>salty anchovy + green pepper</b> target if available on the counter.</p></div>
     <div class="chips">
       <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Antonio+Bulebarra+San+Sebastian" target="_blank" rel="noopener">Map ↗</a>
@@ -209,6 +221,7 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
     <div class="rank"><span class="badge">4.7 ★ crowd favourite</span></div>
     <h3>Bar Sport · 4.7 ★ (8,779)</h3>
     <p><b>Wednesday hours need a same-week recheck.</b> Google structured hours currently omit Wednesday, while other current listings show Wednesday opening — treat the map as the live source.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=BAR%20SPORT%20Donostia&query_place_id=ChIJlwEV3E2lUQ0RgvA10WoFd74" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox"><div class="olbl">Must eat</div><p><b>Foie gras a la plancha</b> · <b>sea-urchin cream</b> · <b>txangurro / crab</b>. These are repeatedly identified as Bar Sport signatures.</p></div>
     <div class="chips"><a class="chip" href="https://www.google.com/maps/search/?api=1&query=Bar+Sport+San+Sebastian" target="_blank" rel="noopener">Map / live hours ↗</a></div>
   </div>
@@ -217,6 +230,7 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
     <div class="rank"><span class="badge">Sunset / drink</span></div>
     <h3>Urgulleko Polboriña · 4.7 ★ (918)</h3>
     <p><b>Wed:</b> Google currently shows 11:00–20:45. This is more valuable for the <b>Monte Urgull setting / sunset atmosphere</b> than as a must-eat destination.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Urgulleko%20Polbori%C3%B1a&query_place_id=ChIJn7ZhSbK6UQ0Rbk5Ru3Airo4" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox"><div class="olbl">Use it for</div><p><b>View + drink / simple snack.</b> Do not sacrifice a stronger food stop just to eat here.</p></div>
     <div class="chips"><a class="chip" href="https://www.google.com/maps/search/?api=1&query=Urgulleko+Polborina+San+Sebastian" target="_blank" rel="noopener">Map ↗</a></div>
   </div>
@@ -229,6 +243,7 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
   <div class="stop">
     <h3>La Cepa de Bernardo · 4.3 ★ (3,158)</h3>
     <p><b>Wed:</b> 11:00–23:00.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=La%20Cepa%20de%20Bernardo%20Donostia&query_place_id=ChIJMevYsk2lUQ0R7ABFE3h8DBQ" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox"><div class="olbl">Your must eat</div><p><b>Jamón / Iberian cured meat.</b> Useful as an easy, flexible stop because of continuous opening.</p></div>
     <div class="chips"><a class="chip" href="https://www.google.com/maps/search/?api=1&query=La+Cepa+de+Bernardo+San+Sebastian" target="_blank" rel="noopener">Map ↗</a></div>
   </div>
@@ -237,6 +252,7 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
     <div class="rank"><span class="badge">Mission</span></div>
     <h3>Bar Néstor · 4.5 ★ (2,450)</h3>
     <p><b>Wed:</b> 12:30–15:00 / 19:30–22:00.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bar%20Nestor%20Donostia&query_place_id=ChIJfQW8xU2lUQ0Rn4b6SEEWmLY" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox"><div class="olbl">Must eat</div><p><b>Tortilla</b> if you manage the limited serving system; otherwise <b>tomato + green peppers + txuleta</b>. Not a good spontaneous six-person stop if everybody expects tortilla.</p></div>
     <div class="chips"><a class="chip" href="https://www.google.com/maps/search/?api=1&query=Bar+Nestor+San+Sebastian" target="_blank" rel="noopener">Map ↗</a></div>
   </div>
@@ -245,6 +261,7 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
     <div class="rank"><span class="badge">Top Google score</span></div>
     <h3>Bar KBZÓNa · 4.9 ★ (1,331)</h3>
     <p><b>Wed:</b> 12:30–23:00.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bar%20KBZ%C3%93Na%20Donostia&query_place_id=ChIJv8gidaylUQ0RmGr3Mjzqm64" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox"><div class="olbl">Must eat</div><p><b>Duck breast marinated in soy + honey</b> · <b>razor clams</b> when available. Keep your <b>grilled goat cheese</b> target if it is on the current menu.</p></div>
     <div class="chips"><a class="chip" href="https://www.google.com/maps/search/?api=1&query=Bar+KBZONa+San+Sebastian" target="_blank" rel="noopener">Map ↗</a></div>
   </div>
@@ -253,6 +270,7 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
     <div class="rank"><span class="badge">Worth Gros detour</span></div>
     <h3>Bar Desy · 4.7 ★ (1,829)</h3>
     <p><b>Wed:</b> 08:00–23:00. This is outside the Old Town cluster in Gros, so only detour if the food itself interests you.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bar%20Desy%20Donostia&query_place_id=ChIJmwBvzVqlUQ0Rl6ecjGX3e4o" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox"><div class="olbl">Must eat</div><p><b>Txuleta burger</b> · <b>anchovy toast</b> · <b>cheesecake</b>. Current review consensus is particularly strong for the burger.</p></div>
     <div class="chips"><a class="chip" href="https://www.google.com/maps/search/?api=1&query=Bar+Desy+San+Sebastian" target="_blank" rel="noopener">Map ↗</a></div>
   </div>
@@ -288,6 +306,7 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
     <div class="rank"><span class="badge">Best one-stop browse</span></div>
     <h3>San Martín Merkatua · 4.3 ★ (6,139)</h3>
     <p><b>Wed:</b> Google currently shows 07:30–23:30 for the market complex; individual food stalls can keep shorter hours.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=San%20Martin%20Merkatua%20Donostia&query_place_id=ChIJNbKD4VOlUQ0RA0e4gEExwJI" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox"><div class="olbl">Buy / look for</div><p><b>Seasonal vegetables + herbs</b> · local produce · fish/meat stalls · <b>Idiazabal cheese</b> · Ibarra peppers / guindillas · Tolosa beans where available. Best place to browse before deciding what specialist item you still need.</p></div>
     <div class="chips">
       <a class="chip" href="https://www.google.com/maps/search/?api=1&query=San+Martin+Merkatua+San+Sebastian" target="_blank" rel="noopener">Map ↗</a>
@@ -299,6 +318,7 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
     <div class="rank"><span class="badge">Ham / cold cuts</span></div>
     <h3>Viandas Donostia · 4.4 ★ (76)</h3>
     <p><b>Wed:</b> 09:30–20:30.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=VIANDAS%20Urbieta%20Donostia&query_place_id=ChIJm9Jy9_2lUQ0R1IAoosLoBjM" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox"><div class="olbl">Buy</div><p><b>Jamón</b> · Iberian loin / cured meats · cheeses. Official San Sebastián Tourism specifically recommends it for ham, cheeses and sausages.</p></div>
     <div class="chips"><a class="chip" href="https://www.google.com/maps/search/?api=1&query=Viandas+Donostia+Urbieta+19" target="_blank" rel="noopener">Map ↗</a></div>
   </div>
@@ -307,6 +327,7 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
     <div class="rank"><span class="badge">Cheese + pantry specialist</span></div>
     <h3>Aitor Lasa Gaztategia · 4.4 ★ (70)</h3>
     <p><b>Wed:</b> 09:00–14:00 / 17:00–20:00.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Aitor%20Lasa%20Gaztategia%20Donostia&query_place_id=ChIJEbLJZE2lUQ0R2yD3fnfIrJU" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox"><div class="olbl">Best fit for your list</div><p><b>Artisan Latxa / Idiazabal cheeses</b> · wild mushrooms / preserved hongos · beans · apple paste · Iberian cured meats · <b>pasta</b> · preserves · oils. This is the strongest single specialist for the pantry items you mentioned.</p></div>
     <div class="chips">
       <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Aitor+Lasa+Gaztategia+San+Sebastian" target="_blank" rel="noopener">Map ↗</a>
@@ -318,6 +339,7 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
     <div class="rank"><span class="badge">Best ham specialist rating</span></div>
     <h3>Zapore Jai · 4.8 ★ (124)</h3>
     <p><b>Wed:</b> 10:30–19:30.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Zapore%20Jai%20Donostia&query_place_id=ChIJZZzapk2lUQ0RKdE3ppk-2cI" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox"><div class="olbl">Buy</div><p><b>Knife-sliced ham</b> · charcuterie · cheese · gourmet pantry products. San Sebastián Tourism specifically describes it as an Old Town delicatessen specialising in knife-sliced ham.</p></div>
     <div class="chips">
       <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Zapore+Jai+San+Sebastian" target="_blank" rel="noopener">Map ↗</a>
@@ -329,6 +351,7 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
     <div class="rank"><span class="badge backup">Luxury backup</span></div>
     <h3>Lukas Gourmet · Hotel María Cristina · 5.0 ★ (29)</h3>
     <p><b>Wed:</b> 10:00–14:00 / 16:00–20:00. Small review count, so treat the 5.0 rating cautiously.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Lukas%20Gourmet%20Shop%20Hotel%20Maria%20Cristina&query_place_id=ChIJkZ5Fx2alUQ0RiDCpS_8ltbo" target="_blank" rel="noopener">Map ↗</a>
     <div class="orderbox"><div class="olbl">Use it for</div><p>A polished <b>gourmet gift / premium pantry</b> stop if you want nicer packaging or cannot find something in the market/specialists.</p></div>
     <div class="chips"><a class="chip" href="https://www.google.com/maps/search/?api=1&query=Lukas+Gourmet+Shop+Hotel+Maria+Cristina+San+Sebastian" target="_blank" rel="noopener">Map ↗</a></div>
   </div>
@@ -341,9 +364,9 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
 </section>
 </div>
 <footer>
-  <p><b>Ganbara:</b> Wednesday lunch is viable. Current sources list 12:30–15:30; Ganbara's own site says only the dining room accepts reservations, not the bar.</p>
-  <p><b>Ratings:</b> Google snapshots captured 21 Aug 2026 and may change. Use each Google Maps link for live opening status before walking over.</p>
-  <p><b>Weather:</b> Open‑Meteo is queried directly. The page shows current Donostia conditions, next 7 days and the 14 Oct forecast once available.</p>
+  <p><b>Ganbara</b> only takes reservations for the dining room, not the bar — the bar is walk-in.</p>
+  <p style="margin-top:8px"><a href="index.html">← Back to the trip</a> &nbsp;·&nbsp; <a href="daycard.html">Day cards</a></p>
+  <p class="sig">¯\_(ツ)_/¯</p>
 </footer>
 </div>
 
@@ -359,16 +382,22 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
     food.classList.toggle('active',isFood);
     shop.classList.toggle('active',!isFood);
     buttons.forEach(function(b){b.classList.toggle('active',b.dataset.mode===mode)});
-    history.replaceState(null,'','#'+mode);
-    window.scrollTo({top:document.querySelector('.modebar').offsetTop-8,behavior:'instant'});
+    // replaceState throws a SecurityError inside sandboxed previews
+    try{ history.replaceState(null,'','#'+mode); }catch(e){}
+    try{
+      var bar=document.querySelector('.modebar');
+      if(bar) window.scrollTo(0, Math.max(0, bar.offsetTop-8));
+    }catch(e){}
   }
 
   buttons.forEach(function(b){
     b.addEventListener('click',function(){setMode(b.dataset.mode)});
   });
 
-  if(location.hash==='#shop') setMode('shop');
-  else setMode('food');
+  try{
+    if(location.hash==='#shop') setMode('shop');
+    else setMode('food');
+  }catch(e){ setMode('food'); }
 })();
 </script>
 
@@ -377,16 +406,11 @@ footer{margin-top:38px;padding-top:24px;border-top:1px solid var(--rule);font-si
   var LAT=43.3183,LON=-1.9812,TARGET='2026-10-14',TZ='Europe/Madrid';
   var codeText={0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Overcast',45:'Fog',48:'Fog',51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',80:'Showers',81:'Showers',82:'Heavy showers',95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'};
   var url='https://api.open-meteo.com/v1/forecast?latitude='+LAT+'&longitude='+LON+'&current=temperature_2m,precipitation,weather_code,wind_speed_10m&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&forecast_days=16&timezone='+encodeURIComponent(TZ);
-  document.getElementById('wxapi').href=url;
+  var apiEl=document.getElementById('wxapi'); if(apiEl) apiEl.href=url;
   fetch(url).then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}).then(d=>{
     var c=d.current||{},days=d.daily||{};
     document.getElementById('wxnow').innerHTML=Math.round(c.temperature_2m)+'°C<small>'+(codeText[c.weather_code]||'Weather')+' · '+Math.round(c.wind_speed_10m||0)+' km/h wind</small>';
     document.getElementById('wxnote').textContent='Feed working · updated '+(c.time?c.time.replace('T',' '):'now')+' Donostia time';
-    var w=document.getElementById('wx7');w.innerHTML='';
-    for(var i=0;i<Math.min(7,(days.time||[]).length);i++){
-      var dt=new Date(days.time[i]+'T12:00:00'),box=document.createElement('div');box.className='wxd';
-      box.innerHTML='<b>'+dt.toLocaleDateString('en-GB',{weekday:'short'})+'</b><span>'+Math.round(days.temperature_2m_min[i])+'–'+Math.round(days.temperature_2m_max[i])+'°</span><small>'+Math.round(days.precipitation_probability_max[i]||0)+'% rain</small>';w.appendChild(box);
-    }
     var idx=(days.time||[]).indexOf(TARGET);
     document.getElementById('wxtrip').innerHTML=idx>=0?Math.round(days.temperature_2m_min[idx])+'–'+Math.round(days.temperature_2m_max[idx])+'°C<small>'+(codeText[(days.weather_code||[])[idx]]||'')+' · '+Math.round(days.precipitation_probability_max[idx]||0)+'% rain</small>':'Not available yet<small>Will fill automatically</small>';
   }).catch(e=>{document.getElementById('wxnow').innerHTML='Feed unavailable<small>'+e.message+'</small>';document.getElementById('wxnote').textContent='Tap the live API link to test directly.'});

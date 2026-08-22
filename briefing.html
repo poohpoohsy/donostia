@@ -3,138 +3,317 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Trip briefing — screenshot this</title>
-<meta name="robots" content="noindex">
+<title>What to prepare — 1–16 October</title>
+<meta property="og:title" content="Swiss + Basque — what to prepare">
+<meta property="og:description" content="Passports, packing, weather, and the early mornings.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ground:#0D1214; --card:#161D21; --chalk:#EAE9E5; --dim:#8A979D;
-    --alp:#8ECDEC; --cham:#D9A441; --bask:#E8547C; --stop:#D4614E;
-    --rule:rgba(234,233,229,.14);
+    --ground:#0D1214; --raise:#161D21; --raise2:#1D262B;
+    --chalk:#EAE9E5; --dim:#88969C;
+    --alp:#8ECDEC; --cham:#D9A441; --bask:#E8547C;
+    --go:#7FB98A; --warn:#E0A93B; --stop:#D4614E;
+    --rule:rgba(234,233,229,.13); --pad:clamp(16px,5vw,36px);
   }
   *{box-sizing:border-box;}
-  body{margin:0;background:#05090B;color:var(--chalk);
-    font-family:'Archivo',system-ui,sans-serif;-webkit-font-smoothing:antialiased;
-    padding:16px 12px 60px;}
-  .lead{max-width:420px;margin:0 auto 16px;font-size:13.5px;color:var(--dim);line-height:1.5;text-align:center;}
-  .lead b{color:var(--chalk);}
+  body{margin:0;background:var(--ground);color:var(--chalk);
+    font-family:'Archivo',system-ui,sans-serif;font-size:16px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:640px;margin:0 auto;padding:0 var(--pad) 50px;}
 
-  /* each .shot is sized to screenshot cleanly on a phone */
-  .shot{max-width:420px;margin:0 auto 14px;background:var(--ground);
-    border:1px solid var(--rule);border-radius:10px;padding:20px 18px;}
-  .shot h2{font-family:'Syne',sans-serif;font-weight:800;font-size:21px;letter-spacing:-.02em;
-    margin:0 0 3px;}
-  .sub{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;letter-spacing:.18em;
-    text-transform:uppercase;color:var(--dim);margin:0 0 16px;}
+  .top{padding:24px 0 0;}
+  .kicker{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;font-weight:600;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin:0 0 10px;}
+  h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(25px,6.4vw,34px);
+    line-height:1.02;letter-spacing:-.03em;margin:0 0 10px;}
+  .intro{margin:0;color:var(--dim);font-size:13.5px;line-height:1.45;}
+  .intro b{color:var(--chalk);}
+  .stamp{margin:10px 0 0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--warn);}
 
-  .row{display:flex;gap:11px;padding:9px 0;border-bottom:1px solid var(--rule);align-items:baseline;}
-  .row:last-of-type{border-bottom:0;}
-  .t{flex:0 0 62px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;
-    color:var(--alp);letter-spacing:.02em;}
-  .t.c{color:var(--cham);} .t.b{color:var(--bask);}
-  .x{flex:1;min-width:0;font-size:14px;color:var(--dim);line-height:1.45;}
-  .x b{color:var(--chalk);font-weight:600;}
-  .x .s{display:block;font-size:12px;margin-top:2px;}
+  section{margin-top:26px;padding-top:18px;border-top:1px solid var(--rule);}
+  .sechead{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:0 0 8px;}
+  h2{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.02em;margin:0 0 10px;}
+  h3{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;letter-spacing:-.01em;margin:18px 0 7px;}
+  p{margin:0 0 11px;font-size:14.5px;color:var(--dim);}
+  p:last-child{margin-bottom:0;}
+  b{color:var(--chalk);font-weight:600;}
 
-  .flag{display:inline-block;margin-top:3px;padding:2px 7px;border-radius:2px;
-    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:.1em;
-    text-transform:uppercase;background:rgba(212,97,78,.15);color:#EA9482;
-    border:1px solid rgba(212,97,78,.32);}
-  .flag.g{background:rgba(127,185,138,.14);color:#9BC9A4;border-color:rgba(127,185,138,.3);}
-  .flag.a{background:rgba(217,164,65,.15);color:#EBC078;border-color:rgba(217,164,65,.32);}
+  .box{background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:15px 16px;margin:12px 0;}
+  .box.alert{background:rgba(212,97,78,.08);border-color:rgba(212,97,78,.28);border-left:3px solid var(--stop);}
+  .box.ok{background:rgba(127,185,138,.07);border-color:rgba(127,185,138,.25);border-left:3px solid var(--go);}
+  .box.warn{background:rgba(224,169,59,.08);border-color:rgba(224,169,59,.28);border-left:3px solid var(--warn);}
+  .box h4{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;
+    text-transform:uppercase;margin:0 0 8px;color:var(--dim);}
+  .box.alert h4{color:#EA9482;} .box.ok h4{color:#9BC9A4;} .box.warn h4{color:#EBC078;}
 
-  .big{font-family:'Syne',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.02em;
-    margin:0;color:var(--stop);line-height:1.05;}
-  .cap{font-size:13px;color:var(--dim);margin:6px 0 0;line-height:1.45;}
-  .cap b{color:var(--chalk);}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13.5px;}
+  td,th{padding:8px 5px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top;color:var(--dim);}
+  tr:last-child td{border-bottom:0;}
+  th{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--dim);}
+  td.n{color:var(--chalk);font-weight:600;}
+  td.c{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;white-space:nowrap;}
 
-  .sig{max-width:420px;margin:24px auto 0;text-align:center;
-    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:13px;color:var(--dim);
-    opacity:.35;user-select:none;}
+  .cb{display:flex;gap:11px;align-items:flex-start;padding:9px 0;cursor:pointer;
+    border-bottom:1px solid var(--rule);}
+  .cb:last-child{border-bottom:0;}
+  .cb input{appearance:none;flex:0 0 auto;width:18px;height:18px;margin:2px 0 0;
+    border:1.5px solid var(--dim);border-radius:3px;background:transparent;cursor:pointer;position:relative;}
+  .cb input:checked{background:var(--go);border-color:var(--go);}
+  .cb input:checked::after{content:"✓";position:absolute;inset:0;color:#0D1214;font-size:12px;
+    font-weight:700;display:flex;align-items:center;justify-content:center;}
+  .cb .b{flex:1;font-size:14.5px;color:var(--chalk);}
+  .cb input:checked ~ .b{opacity:.4;text-decoration:line-through;}
+  .cb .b small{display:block;font-size:12.5px;color:var(--dim);margin-top:2px;text-decoration:none;line-height:1.45;}
+  .list{background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:3px 15px;margin:10px 0;}
+
+  .reset{margin-top:16px;background:none;border:1px solid var(--rule);color:var(--dim);
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;letter-spacing:.14em;
+    text-transform:uppercase;padding:8px 13px;border-radius:2px;cursor:pointer;}
+
+  footer{margin-top:28px;padding-top:16px;border-top:1px solid var(--rule);font-size:13px;color:var(--dim);}
+  footer a{color:var(--alp);}
+  .sig{margin-top:18px;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:13px;color:var(--dim);opacity:.35;user-select:none;}
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<p class="lead">Each card below is sized to <b>screenshot on its own</b>. Long-press → screenshot → send. No card needs scrolling.</p>
+  <header class="top">
+    <p class="kicker">1–16 October 2026 · six of us</p>
+    <h1>What to prepare.</h1>
+    <p class="intro">Switzerland → Chamonix → San Sebastián. <b>Mina, Vivian, Fion, SY from 1 Oct; Ju and Lu join on the 3rd in Grindelwald.</b></p>
+    <p class="stamp">Ticks save to your own phone</p>
+  </header>
 
-<!-- 1 -->
-<div class="shot">
-  <h2>The trip</h2>
-  <p class="sub">1–16 October · six of us</p>
-  <div class="row"><div class="t">1–5 Oct</div><div class="x"><b>Switzerland</b><span class="s">Lauterbrunnen, then Grindelwald</span></div></div>
-  <div class="row"><div class="t c">5–9 Oct</div><div class="x"><b>Chamonix</b><span class="s">Mont Blanc, three ways</span></div></div>
-  <div class="row"><div class="t b">9–15 Oct</div><div class="x"><b>San Sebastián</b><span class="s">Base for the whole Basque week</span></div></div>
-  <div class="row"><div class="t b">15–16</div><div class="x"><b>Home</b><span class="s">Bilbao → Zürich → Hong Kong</span></div></div>
+  <!-- DEADLINES -->
+  <section>
+    <p class="sechead">Please action</p>
+    <h2>Three things, by when</h2>
+    <table>
+      <tr><th>By</th><th>What</th></tr>
+      <tr><td class="c n">Now</td><td><b>Check your passport</b> — both validity and issue date. See below. Renewals take weeks.</td></tr>
+      <tr><td class="c n">September</td><td><b>Travel insurance</b> — must cover hiking and cable cars.</td></tr>
+      <tr><td class="c n">Before we fly</td><td><b>All tickets into Apple Wallet</b>, offline. No signal inside mountains.</td></tr>
+    </table>
+  </section>
+
+  <!-- PASSPORTS -->
+  <section>
+    <p class="sechead">Entry</p>
+    <h2>Passports — no visa needed</h2>
+    <div class="box ok">
+      <h4>Good news</h4>
+      <p>HKSAR passport holders <b>don't need a visa</b>. Switzerland, France and Spain are all Schengen — visa-free for 90 days in any 180. Our trip is sixteen.</p>
+      <p><b>No ETIAS either.</b> The EU dropped its late-2026 target and hasn't set a new date. Nothing to apply for. <b>If a website offers to sell you one, it's a scam.</b></p>
+    </div>
+
+    <div class="box alert">
+      <h4>But check two things</h4>
+      <p><b>1 · Validity.</b> Must be valid at least three months beyond 16 October 2026 — so mid-January 2027 minimum. Aim for more.</p>
+      <p><b>2 · Issue date.</b> Must have been issued within the last ten years. <b>This is the one that catches people.</b> A passport issued in 2015 or earlier can be refused at the border even if the expiry date looks fine.</p>
+      <p>If either is a problem, <b>start the renewal today.</b></p>
+    </div>
+  </section>
+
+  <!-- BORDER -->
+  <section>
+    <p class="sechead">1 October</p>
+    <h2>Slow immigration at Zurich</h2>
+    <p>The EU's Entry/Exit System replaced passport stamping and has been running since April. First entry means <b>fingerprints and a facial scan</b>, which takes longer than a stamp.</p>
+    <div class="box warn">
+      <h4>What this means for us</h4>
+      <p>Queues of two to five hours were reported at some airports during the rollout. <b>We land at 07:10 with a train to catch.</b></p>
+      <p>Expect it to be slow, don't panic, and <b>we wait for each other before heading to the platform.</b></p>
+    </div>
+  </section>
+
+  <!-- WEATHER -->
+  <section>
+    <p class="sechead">What to expect</p>
+    <h2>Weather</h2>
+    <p>Early October is shoulder season. Cold mornings, mild afternoons, and a real chance of rain.</p>
+    <table>
+      <tr><th>Where</th><th>Daytime</th></tr>
+      <tr><td class="n">Lauterbrunnen / Grindelwald<br><small style="color:var(--dim)">~800–1,000m</small></td><td class="c">4–15°C</td></tr>
+      <tr><td class="n">Jungfraujoch · 4 Oct<br><small style="color:var(--dim)">3,454m</small></td><td class="c">−6 to −10°C</td></tr>
+      <tr><td class="n">Chamonix<br><small style="color:var(--dim)">1,035m</small></td><td class="c">3–15°C</td></tr>
+      <tr><td class="n">Aiguille du Midi · 6 Oct<br><small style="color:var(--dim)">3,842m</small></td><td class="c">−10 to −15°C</td></tr>
+      <tr><td class="n">San Sebastián / Bilbao</td><td class="c">14–22°C</td></tr>
+    </table>
+    <div class="box">
+      <p><b>The big one:</b> you'll go from −10°C at Jungfraujoch to 20°C in San Sebastián on the same trip. <b>Layers, not one big coat.</b></p>
+    </div>
+  </section>
+
+  <!-- PACKING -->
+  <section>
+    <p class="sechead">Packing</p>
+    <h2>Absolutely essential</h2>
+    <div class="list">
+      <label class="cb"><input type="checkbox" data-k="p1"><span class="b">Proper hiking shoes — broken in, grip, ankle support
+        <small>Three serious walking days: the Mürren cliff walk, the Panorama Trail, and the Grand Balcon Nord in Chamonix, which is 7km with scrambling sections. Trainers won't do on wet rock.</small></span></label>
+      <label class="cb"><input type="checkbox" data-k="p2"><span class="b">Waterproof jacket with a hood
+        <small>You get soaked on the Trümmelbach staircase on Day 2, and the Basque country rains.</small></span></label>
+      <label class="cb"><input type="checkbox" data-k="p3"><span class="b">Warm layers — thermal base, fleece, hat, gloves, scarf
+        <small>Wear all of it at Jungfraujoch and Aiguille du Midi.</small></span></label>
+      <label class="cb"><input type="checkbox" data-k="p4"><span class="b">Sunglasses
+        <small>Not optional at altitude. Snow glare is brutal.</small></span></label>
+      <label class="cb"><input type="checkbox" data-k="p5"><span class="b">High-SPF sunscreen and SPF lip balm
+        <small>UV is far stronger above 3,400m.</small></span></label>
+      <label class="cb"><input type="checkbox" data-k="p6"><span class="b">Daypack, 20–25L</span></label>
+      <label class="cb"><input type="checkbox" data-k="p7"><span class="b">Reusable water bottle
+        <small>Swiss tap water and village fountains are excellent and free.</small></span></label>
+    </div>
+
+    <h3>Clothing</h3>
+    <div class="list">
+      <label class="cb"><input type="checkbox" data-k="c1"><span class="b">Quick-dry hiking trousers <small>Jeans are miserable when wet.</small></span></label>
+      <label class="cb"><input type="checkbox" data-k="c2"><span class="b">Hiking socks, several pairs <small>The single best blister prevention there is.</small></span></label>
+      <label class="cb"><input type="checkbox" data-k="c3"><span class="b">Comfortable walking shoes for the city days</span></label>
+      <label class="cb"><input type="checkbox" data-k="c4"><span class="b">Swimwear <small>Beach mornings in San Sebastián — 14 Oct especially.</small></span></label>
+      <label class="cb"><input type="checkbox" data-k="c5"><span class="b">Sleepwear and something warm for chalet evenings</span></label>
+    </div>
+    <div class="box ok">
+      <p><b>No formal outfit needed.</b> The Michelin dinner is off — every meal on this trip is somewhere you can walk into in what you've been wearing.</p>
+    </div>
+
+    <h3>Documents</h3>
+    <div class="list">
+      <label class="cb"><input type="checkbox" data-k="d1"><span class="b">Passport <small>Validity and issue date — see above.</small></span></label>
+      <label class="cb"><input type="checkbox" data-k="d2"><span class="b">Travel insurance — printed and on your phone</span></label>
+      <label class="cb"><input type="checkbox" data-k="d3"><span class="b">Flight confirmations
+        <small>CX383 out, CX382 home, plus Geneva→Bilbao on the 9th and Bilbao→Zurich on the 15th.</small></span></label>
+      <label class="cb"><input type="checkbox" data-k="d4"><span class="b">Hotel confirmations</span></label>
+      <label class="cb"><input type="checkbox" data-k="d5"><span class="b">Jungfrau Travel Pass
+        <small>Sandy is holding these and will pass them out individually — don't buy your own. <b>Note it only starts at Interlaken Ost</b>, so the Zürich→Interlaken train on Day 1 is a separate ticket we buy on arrival.</small></span></label>
+      <label class="cb"><input type="checkbox" data-k="d6"><span class="b">A photo of your passport, saved separately</span></label>
+    </div>
+
+    <h3>Electronics</h3>
+    <div class="box warn">
+      <h4>Two different plugs — this catches people</h4>
+      <p><b>Switzerland = Type J.</b> Three round pins, unique to Switzerland.<br>
+      <b>France &amp; Spain = Type C / E / F.</b> Standard European two-pin.</p>
+      <p><b>A standard EU adapter will not fit older Swiss sockets.</b> Bring a universal one, or one of each.</p>
+    </div>
+    <div class="list">
+      <label class="cb"><input type="checkbox" data-k="e1"><span class="b">Universal adapter, or one of each type</span></label>
+      <label class="cb"><input type="checkbox" data-k="e2"><span class="b">Power bank <small>Long days, cold kills batteries at altitude, and you'll take a lot of photos.</small></span></label>
+      <label class="cb"><input type="checkbox" data-k="e3"><span class="b">Charging cables</span></label>
+    </div>
+    <button class="reset" id="reset">Reset all ticks</button>
+  </section>
+
+  <!-- BAGGAGE -->
+  <section>
+    <p class="sechead">Both European flights</p>
+    <h2>The baggage rule</h2>
+    <div class="box alert">
+      <h4>Pack to this and you're safe on both</h4>
+      <p><b>1 checked bag up to 23kg + 1 personal item only</b> — a backpack or handbag that fits under the seat.</p>
+    </div>
+    <p><b>9 Oct, Geneva → Bilbao (easyJet):</b> two checked bags of 23kg allowed, but <b>no cabin bag at all</b> — only the under-seat item.</p>
+    <p><b>15 Oct, Bilbao → Zurich (Swiss/Edelweiss):</b> one checked bag of 23kg, plus a cabin bag up to 8kg.</p>
+    <p><b>So: no wheeled cabin case.</b> easyJet won't take one on the 9th. If it doesn't fit under the seat in front of you, it goes in the hold.</p>
+    <p>You can check a second bag on the 9th if you need it — <b>but not on the 15th</b>, so anything extra has to be consolidated before we leave Spain.</p>
+  </section>
+
+  <!-- MONEY -->
+  <section>
+    <p class="sechead">Practical</p>
+    <h2>Money</h2>
+    <p><b>Switzerland uses Swiss Francs, not Euros.</b> France and Spain use Euros. Some Swiss places take EUR but at a terrible rate.</p>
+    <p>Cards work almost everywhere, but bring cash — a few mountain restaurants and small pintxos bars are cash-only or card-shy.</p>
+    <p><b>Switzerland is genuinely expensive.</b> Budget roughly CHF 25–35 for a simple mountain lunch.</p>
+
+    <h3>Apps to download before flying</h3>
+    <div class="list">
+      <label class="cb"><input type="checkbox" data-k="a1"><span class="b">SBB Mobile <small>Swiss trains, live times and platforms.</small></span></label>
+      <label class="cb"><input type="checkbox" data-k="a2"><span class="b">Your Jungfrau pass downloads</span></label>
+      <label class="cb"><input type="checkbox" data-k="a3"><span class="b">Google Maps offline areas
+        <small>Lauterbrunnen, Grindelwald, Chamonix, San Sebastián. Mountain signal is patchy.</small></span></label>
+      <label class="cb"><input type="checkbox" data-k="a4"><span class="b">WhatsApp group — daily coordination happens here</span></label>
+    </div>
+  </section>
+
+  <!-- PACE -->
+  <section>
+    <p class="sechead">Be honest with yourself</p>
+    <h2>The pace</h2>
+    <p><b>Most days start early.</b> We leave the chalet at 07:45 on Day 2, check out at 07:00 on Day 3, and are at the Terminal by 07:55 on Day 4.</p>
+    <p>Then it flips completely in Spain, where dinner doesn't start until 20:30 and pintxos bars run late.</p>
+    <p><b>Get sleep on the flight over.</b></p>
+
+    <h3>Altitude</h3>
+    <p>Jungfraujoch at 3,454m and Aiguille du Midi at 3,842m are high enough that you may feel light-headed, breathless, or get a mild headache. <b>It's normal.</b></p>
+    <p>Walk slowly, don't rush the stairs, drink water, and <b>tell someone if you feel unwell</b>. There's a "hypoxia level" exhibit at Aiguille du Midi — that's how thin the air is.</p>
+  </section>
+
+  <!-- DAY 9 -->
+  <section>
+    <p class="sechead">Friday 9 October</p>
+    <h2>The very early one</h2>
+    <div class="box alert">
+      <h4>02:30 pickup for a 06:10 flight</h4>
+      <p><b>Pack completely the night before, on the 8th. No exceptions.</b></p>
+      <p>Bags by the door, travel clothes laid out.</p>
+      <p><b>Phones charged and on loud</b> — the transfer company sends an SMS the day before to confirm.</p>
+      <p>Have a light snack ready. Nothing will be open.</p>
+    </div>
+  </section>
+
+  <!-- FOOD -->
+  <section>
+    <p class="sechead">San Sebastián</p>
+    <h2>How pintxos works</h2>
+    <p>Pintxos bars are standing-room, loud, and you order at the counter. <b>The routine is one or two bites and one drink per bar, then move on.</b></p>
+    <p><b>Don't fill up at the first place.</b> Cash is handy for the small ones.</p>
+  </section>
+
+  <!-- OUTSTANDING -->
+  <section>
+    <p class="sechead">Don't book anything yourself</p>
+    <h2>Still being sorted</h2>
+    <div class="box warn">
+      <p><b>Manojo</b>, Saturday lunch — requested, awaiting confirmation.</p>
+      <p><b>ALSA coach</b> to Bilbao on the 13th.</p>
+      <p><b>Lift operating dates</b> — checking about a week out, in case anything shuts for maintenance.</p>
+    </div>
+    <div class="box ok">
+      <h4>Already done</h4>
+      <p>Aiguille du Midi · Jungfraujoch · Heubode on the 4th · Kaia Kaipe in Getaria · the Chamonix transfer · the bag handover in Grindelwald.</p>
+      <p><b>Some dinners are deliberately unbooked</b> — the 3rd and 4th in Grindelwald are walk-ins, so we eat where we feel like it.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Questions in the group chat.</p>
+    <p style="margin-top:8px"><a href="index.html">← Back to the trip</a> &nbsp;·&nbsp; <a href="daycard.html">Day cards</a></p>
+    <p class="sig">¯\_(ツ)_/¯</p>
+  </footer>
+
 </div>
 
-<!-- 2 -->
-<div class="shot">
-  <h2>Times that won't wait</h2>
-  <p class="sub">Miss these and the day changes</p>
-  <div class="row"><div class="t">Fri 2</div><div class="x"><b>09:00 · Postbus 141</b><span class="s">Be at the stop by 08:50. The whole morning hangs off it.</span></div></div>
-  <div class="row"><div class="t">Sat 3</div><div class="x"><b>07:00 check out · 07:15 train</b><span class="s">Bags packed the night before.</span></div></div>
-  <div class="row"><div class="t">Sun 4</div><div class="x"><b>08:13 · Jungfrau Railway</b><span class="s">Seats reserved and paid. Walk to the Terminal at 07:30.</span></div></div>
-  <div class="row"><div class="t c">Mon 5</div><div class="x"><b>14:00 · transfer to Chamonix</b><span class="s">Six of us, eight bags. Ready by 13:45.</span></div></div>
-  <div class="row"><div class="t c">Tue 6</div><div class="x"><b>08:10 · first cable car</b><span class="s">At the station by 07:45. Nothing runs earlier.</span></div></div>
-  <div class="row"><div class="t c">Fri 9</div><div class="x"><b>01:30 alarm · 02:30 transfer</b><span class="s">Flight 06:10. Pack Thursday evening.</span></div></div>
-  <div class="row"><div class="t b">Sat 10</div><div class="x"><b>18:15 · Antonio</b><span class="s">Tortilla drops 18:30 and sells out.</span></div></div>
-  <div class="row"><div class="t b">Mon 12</div><div class="x"><b>13:00 · Kaia Kaipe</b><span class="s">Booked. Monday is lunch only, 13:00–15:30.</span></div></div>
-</div>
-
-<!-- 3 -->
-<div class="shot">
-  <h2 style="color:#EA9482">Closed. Don't turn up.</h2>
-  <p class="sub">Checked against current listings</p>
-  <div class="row"><div class="t">Sept</div><div class="x"><b>Flégère &amp; Index</b> — shut from 13 Sept<span class="s">No Lac Blanc. Brévent replaces it.</span></div></div>
-  <div class="row"><div class="t c">Oct</div><div class="x"><b>Mer de Glace ice cave</b> — shut 28 Sept–1 Nov<span class="s">The walk and the train still run.</span></div></div>
-  <div class="row"><div class="t c">Oct</div><div class="x"><b>Panoramic Mont-Blanc to Italy</b> — shut from 27 Sept</div></div>
-  <div class="row"><div class="t b">Mon</div><div class="x"><b>Akerbeltz</b> — closed Mondays<span class="s">Sunset drink is Urgulleko Polboriña instead.</span></div></div>
-  <div class="row"><div class="t b">Sun</div><div class="x"><b>Five of the eight pintxos stops</b> — closed Sundays<span class="s">Which is why hopping is on a Saturday.</span></div></div>
-  <div class="row"><div class="t b">Wed</div><div class="x"><b>Bar Sport</b> closed Wednesdays · <b>Manojo</b> closed Wednesdays</div></div>
-</div>
-
-<!-- 4 -->
-<div class="shot">
-  <h2>What to bring</h2>
-  <p class="sub">The bits people forget</p>
-  <div class="row"><div class="t">Feet</div><div class="x"><b>Proper walking shoes.</b><span class="s">Six days have a hike. Chamonix Wednesday has scrambling.</span></div></div>
-  <div class="row"><div class="t">Cold</div><div class="x"><b>Layers, gloves, sunglasses.</b><span class="s">Valley mild, 3,842m well below freezing. Glacier glare is severe.</span></div></div>
-  <div class="row"><div class="t">Power</div><div class="x"><b>Power bank.</b><span class="s">Cold flattens phones at altitude. Essential on 4 and 6 Oct.</span></div></div>
-  <div class="row"><div class="t">Money</div><div class="x"><b>Francs, then euros.</b><span class="s">Switzerland isn't in the euro. Cash for buses and small bars.</span></div></div>
-  <div class="row"><div class="t">Water</div><div class="x"><b>A bottle.</b><span class="s">Fountains everywhere. Buying at 2,000m is its own kind of expensive.</span></div></div>
-  <div class="row"><div class="t">Phone</div><div class="x"><b>Tickets in the wallet app before you fly.</b><span class="s">No signal inside mountains.</span></div></div>
-</div>
-
-<!-- 5 -->
-<div class="shot">
-  <h2>How we do it</h2>
-  <p class="sub">Three rules, that's all</p>
-  <div class="row"><div class="t b">Eating</div><div class="x"><b>One bite, one drink, standing. Then move.</b><span class="s">The failure mode is sitting down at stop three and never leaving.</span></div></div>
-  <div class="row"><div class="t">Walking</div><div class="x"><b>Say it early, not late.</b><span class="s">Every walk has a bail-out. Nobody has to finish anything.</span></div></div>
-  <div class="row"><div class="t c">Weather</div><div class="x"><b>Calls get made the night before.</b><span class="s">Never over breakfast. If something moves, I'll say so.</span></div></div>
-</div>
-
-<!-- 6 -->
-<div class="shot">
-  <h2>Money</h2>
-  <p class="sub">Roughly, per person</p>
-  <div class="row"><div class="t">CHF 324</div><div class="x"><b>Jungfrau Travel Pass + Jungfraujoch</b><span class="s">CHF 299 for the two joining on the 3rd.</span></div></div>
-  <div class="row"><div class="t">CHF 16</div><div class="x">Trümmelbach Falls · 2 Oct</div></div>
-  <div class="row"><div class="t c">€60–83</div><div class="x"><b>Aiguille du Midi</b> round trip<span class="s">Dynamic pricing — book early, it only goes up.</span></div></div>
-  <div class="row"><div class="t c">€20</div><div class="x">Glacier Gorge · 4 Oct · optional</div></div>
-  <div class="row"><div class="t b">€60–90</div><div class="x"><b>Pintxos hopping, whole day</b> · 10 Oct<span class="s">Rough. Manojo lunch is the biggest line.</span></div></div>
-</div>
-
-<!-- 7 -->
-<div class="shot">
-  <p class="sub">The one to remember</p>
-  <p class="big">3,842m</p>
-  <p class="cap"><b>Aiguille du Midi, Tuesday 6 October.</b> Higher than Jungfraujoch, reached in twenty minutes by cable car with no acclimatising.<br><br>Walk slowly, drink water, and say something early if your head goes. It passes, but it's better managed at the start than at the top.</p>
-</div>
-
-<p class="sig">¯\_(ツ)_/¯</p>
-
+<script>
+(function(){
+  var boxes=document.querySelectorAll('.cb input');
+  boxes.forEach(function(b){
+    var k='br_'+b.dataset.k;
+    try{ if(localStorage.getItem(k)==='1') b.checked=true; }catch(e){}
+    b.addEventListener('change',function(){
+      try{ localStorage.setItem(k,b.checked?'1':'0'); }catch(e){}
+    });
+  });
+  document.getElementById('reset').addEventListener('click',function(){
+    boxes.forEach(function(b){ b.checked=false; try{localStorage.setItem('br_'+b.dataset.k,'0');}catch(e){} });
+  });
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day cards — copy &amp; paste</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#0D1214; --raise:#161D21; --raise2:#1D262B;
+    --chalk:#EAE9E5; --dim:#88969C;
+    --alp:#8ECDEC; --cham:#D9A441; --bask:#E8547C; --go:#7FB98A;
+    --rule:rgba(234,233,229,.13); --pad:clamp(16px,5vw,36px);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--ground);color:var(--chalk);
+    font-family:'Archivo',system-ui,sans-serif;font-size:16px;line-height:1.5;
+    -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:600px;margin:0 auto;padding:0 var(--pad) 60px;}
+
+  .top{padding:24px 0 0;}
+  .kicker{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;font-weight:600;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin:0 0 10px;}
+  h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(24px,6.2vw,32px);
+    line-height:1.02;letter-spacing:-.03em;margin:0 0 10px;}
+  .intro{margin:0;color:var(--dim);font-size:13.5px;line-height:1.45;}
+  .intro b{color:var(--chalk);}
+
+  .leg{display:flex;align-items:center;gap:9px;margin:22px 0 9px;}
+  .leg i{width:8px;height:8px;border-radius:50%;flex:0 0 auto;}
+  .leg span{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--dim);}
+
+  .card{scroll-margin-top:14px;background:var(--raise);border:1px solid var(--rule);border-left:3px solid var(--dim);
+    border-radius:3px;padding:14px 15px;margin-bottom:8px;}
+  .card.alp{border-left-color:var(--alp);}
+  .card.cham{border-left-color:var(--cham);}
+  .card.bask{border-left-color:var(--bask);}
+  .ctop{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .cwhen{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--dim);}
+  .card h2{font-family:'Syne',sans-serif;font-weight:700;font-size:16.5px;
+    letter-spacing:-.01em;margin:3px 0 0;}
+  .card p.sum{margin:4px 0 0;font-size:13px;color:var(--dim);}
+
+  .btn{appearance:none;background:rgba(127,185,138,.12);border:1px solid rgba(127,185,138,.35);
+    color:#9BC9A4;border-radius:3px;padding:6px 12px;cursor:pointer;white-space:nowrap;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.12em;text-transform:uppercase;}
+  .btn:hover{background:rgba(127,185,138,.2);}
+  .btn.done{background:var(--go);color:#0D1214;border-color:var(--go);}
+
+  details{margin-top:9px;}
+  summary{cursor:pointer;list-style:none;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);}
+  summary::-webkit-details-marker{display:none;}
+  summary:hover{color:var(--chalk);}
+  pre{margin:9px 0 0;background:var(--raise2);border:1px solid var(--rule);border-radius:3px;
+    padding:12px 13px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;
+    line-height:1.55;color:var(--dim);white-space:pre-wrap;word-break:break-word;overflow-x:auto;}
+
+  footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--rule);
+    font-size:13px;color:var(--dim);}
+  footer a{color:var(--alp);}
+  .sig{margin-top:18px;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:13px;color:var(--dim);opacity:.35;user-select:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <p class="kicker">1–16 October 2026</p>
+    <h1>Day cards.</h1>
+    <p class="intro"><b>Tap Copy, then paste into the group.</b> Plain text — no screenshot, no broken formatting. Tap <i>see text</i> to check it first.</p>
+  </header>
+
+  <div class="leg"><i style="background:#8ECDEC"></i><span>Switzerland</span></div>
+
+  <div id="day1" class="card alp">
+    <div class="ctop"><span class="cwhen">Thu 1 Oct</span><button class="btn" data-c="d1">Copy</button></div>
+    <h2>Arrive Lauterbrunnen</h2>
+    <p class="sum">Land Zürich 07:10, four hours across the country.</p>
+    <details><summary>see text</summary><pre id="d1">🇨🇭 THU 1 OCT · ARRIVE
+
+07:10 Land Zürich
+Train ZRH Flughafen → Interlaken Ost (IC81, ~2hrs)
+Change → Lauterbrunnen (~20 min)
+
+⚠️ The Jungfrau Pass only starts at Interlaken Ost.
+Buy the Zürich→Interlaken ticket at the airport station.
+
+Nothing planned on arrival. Red-eye, and tomorrow starts at 07:45.</pre></details>
+  </div>
+
+  <div id="day2" class="card alp">
+    <div class="ctop"><span class="cwhen">Fri 2 Oct</span><button class="btn" data-c="d2">Copy</button></div>
+    <h2>Waterfalls &amp; Mürren</h2>
+    <p class="sum">Three falls, then the cliff walk.</p>
+    <details><summary>see text</summary><pre id="d2">🇨🇭 FRI 2 OCT · WATERFALLS &amp; MÜRREN
+
+07:45 Leave the chalet
+08:00 Staubbachfall — main street, looking north
+      (bring a jacket, you get wet on the staircase)
+08:50 At the bus stop
+09:00 ⚠️ POSTBUS 141 — fixed, don't miss it
+09:20 Mürrenbachfall
+10:00 Trümmelbach Falls — CHF 16pp, jacket
+11:15 Postbus + cable car up
+11:45 Mürren
+12:00 Lunch — Eiger Stübli (booked)
+14:00 Train to Grütschalp
+14:20 Cliff walk back to Mürren (1.5hr, 3.5km)
+      Eiger/Mönch/Jungfrau in front of you the whole way
+      Tired? Hop on the train at Winteregg, halfway
+16:40 Back in Lauterbrunnen
+
+Everything on the Jungfrau Pass except Trümmelbach.</pre></details>
+  </div>
+
+  <div id="day3" class="card alp">
+    <div class="ctop"><span class="cwhen">Sat 3 Oct</span><button class="btn" data-c="d3">Copy</button></div>
+    <h2>Glider, then the ridge</h2>
+    <p class="sum">Move to Grindelwald. Longest day of the leg.</p>
+    <details><summary>see text</summary><pre id="d3">🇨🇭 SAT 3 OCT · MOVE TO GRINDELWALD
+
+⚠️ PACK THE NIGHT BEFORE
+
+07:00 Leave the chalet
+07:15 Train → Interlaken Ost
+07:45 Train → Grindelwald
+08:30 Arrive — hotel takes our bags at the station ✅
+08:50 First valley station — BUY THE GLIDER TICKET
+      (can't book online, counter only, they sell out)
+09:15 FIRST GLIDER — get off at Schreckfeld, not the top
+      min age 10 · min height 130cm
+10:00 Up to First — Cliff Walk, group photo, terrace
+11:30 Down
+12:30 Lunch
+
+14:00 Gondola to Männlichen
+14:30 Walk 1km to the summit
+15:30 Panorama Trail → Kleine Scheidegg (1.5hr, flat)
+      at ~2km: best Eiger North Face view of the walk
+16:45 Kleine Scheidegg terrace, coffee, golden hour
+17:30 Cogwheel down
+19:00 Dinner in the village — walk-in
+
+If the Glider queue is long we skip the Cliff Walk.</pre></details>
+  </div>
+
+  <div id="day4" class="card alp">
+    <div class="ctop"><span class="cwhen">Sun 4 Oct</span><button class="btn" data-c="d4">Copy</button></div>
+    <h2>Jungfraujoch · 3,454m</h2>
+    <p class="sum">Top of Europe, then fondue.</p>
+    <details><summary>see text</summary><pre id="d4">🇨🇭 SUN 4 OCT · JUNGFRAUJOCH · 3,454m
+
+07:40 Leave
+07:55 Grindelwald Terminal
+08:15 Eiger Express up (runs continuously)
+08:43 ⚠️ JUNGFRAU RAILWAY — booked, ref 270932
+09:11 Arrive Jungfraujoch
+
+At the top, in this order:
+ 1. Viewpoint first, before the crowds
+ 2. Sphinx terrace
+ 3. Glacier Plateau — out on the ice
+ 4. Ice Palace — slippery, hold the rail
+ 5. Alpine Sensation tunnel
+
+⚠️ Altitude is real. Go slow, drink water.
+Say something early if your head goes.
+
+11:15 Train down
+12:30 STALLBEIZLI HEUBODE — booked
+      900m walk up from the Terminal, 15-20 min
+      Fondue + apple pie. Walk down after, 25 min.
+
+Evening: no booking. Eat if you're hungry.</pre></details>
+  </div>
+
+  <div id="day5" class="card alp">
+    <div class="ctop"><span class="cwhen">Mon 5 Oct</span><button class="btn" data-c="d5">Copy</button></div>
+    <h2>Over to Chamonix</h2>
+    <p class="sum">14:00 transfer, morning free.</p>
+    <details><summary>see text</summary><pre id="d5">🇨🇭→🇫🇷 MON 5 OCT · TO CHAMONIX
+
+Morning free — nothing booked.
+
+⚠️ 14:00 PRIVATE TRANSFER — bags ready by 13:45
+     6 of us, 8 bags, ~3.5hrs by road
+~17:30 Arrive Chamonix
+
+Do tonight:
+· Buy Wednesday's packed lunch + snacks
+· Euros now, not francs — different country</pre></details>
+  </div>
+
+  <div class="leg"><i style="background:#D9A441"></i><span>Chamonix</span></div>
+
+  <div id="day6" class="card cham">
+    <div class="ctop"><span class="cwhen">Tue 6 Oct</span><button class="btn" data-c="d6">Copy</button></div>
+    <h2>Aiguille du Midi · 3,842m</h2>
+    <p class="sum">Highest point of the whole trip.</p>
+    <details><summary>see text</summary><pre id="d6">🇫🇷 TUE 6 OCT · AIGUILLE DU MIDI · 3,842m
+HIGHEST POINT OF THE TRIP — higher than Jungfraujoch
+
+07:45 At the cable car station
+08:10 First car up (nothing runs earlier in October)
+      Last round trip down: 15:00
+
+At the top, in this order:
+ 1. Lower terrace — DON'T cross the bridge yet.
+    Climb the stairs to the upper terrace (points 16-17).
+    Best viewpoint and almost everyone walks past it.
+ 2. The bridge
+ 3. Espace Vertical
+ 4. Terrace 3842 — STEP INTO THE VOID
+    (not guaranteed — closes for wind, frost, crowds)
+ 5. Espace Mont Blanc
+ 6. Hypoxia level
+ 7. Le Tube
+ 8. Open-air terrace
+
+⚠️ 3,842m in 20 minutes with no acclimatising.
+Slow, water, gloves. Say something early.
+
+Cloudy? We swap days 6 and 7.</pre></details>
+  </div>
+
+  <div id="day7" class="card cham">
+    <div class="ctop"><span class="cwhen">Wed 7 Oct</span><button class="btn" data-c="d7">Copy</button></div>
+    <h2>Grand Balcon Nord</h2>
+    <p class="sum">7km traverse. Hardest day on the legs.</p>
+    <details><summary>see text</summary><pre id="d7">🇫🇷 WED 7 OCT · GRAND BALCON NORD
+
+⚠️ BOOTS. Rough ground, some scrambling.
+⚠️ Everyone carries their own packed lunch + water.
+   No refill point on the trail.
+
+08:00 At the cable car station
+08:10 First lift → 08:25 Plan de l'Aiguille (2,317m)
+08:35 Coffee at the Refuge (coffee only)
+09:05 Start the traverse — 7km, FOUR hours with six of us
+      There's a fork partway. WE TAKE THE LOWER LINE.
+13:05 Montenvers
+13:20 Packed lunch on the terrace, Mer de Glace below
+14:30 Glaciorium + Temple de la Nature
+15:30 Cogwheel train down (last one 17:30)
+
+❌ No ice cave — shut for the season.
+
+Nothing after this. Brévent tomorrow, Friday starts at 01:30.</pre></details>
+  </div>
+
+  <div id="day8" class="card cham">
+    <div class="ctop"><span class="cwhen">Thu 8 Oct</span><button class="btn" data-c="d8">Copy</button></div>
+    <h2>Brévent · 2,525m</h2>
+    <p class="sum">Mont Blanc head-on from the other side.</p>
+    <details><summary>see text</summary><pre id="d8">🇫🇷 THU 8 OCT · BRÉVENT · 2,525m
+
+Across the valley to the Aiguilles Rouges.
+Everything we've spent three days standing on,
+laid out in front of us in one view.
+
+Gondola Chamonix → Planpraz
+Cable car Planpraz → Brévent (runs every ~30 min)
+
+Restaurant and terrace at the summit.
+After two hard days it's fine to make this a sitting-down day.
+
+Optional: Grand Balcon Sud ridge from Planpraz.
+Out and back — the lift at the far end is shut.
+
+⚠️ THEN STOP.
+Pack completely before dinner. Eat early.
+Alarm is 01:30.</pre></details>
+  </div>
+
+  <div class="leg"><i style="background:#E8547C"></i><span>Basque country</span></div>
+
+  <div id="day9" class="card bask">
+    <div class="ctop"><span class="cwhen">Fri 9 Oct</span><button class="btn" data-c="d9">Copy</button></div>
+    <h2>Arrive · Pasaia</h2>
+    <p class="sum">01:30 alarm. Twenty-one hour day.</p>
+    <details><summary>see text</summary><pre id="d9">🇫🇷→🇪🇸 FRI 9 OCT · TO SAN SEBASTIÁN
+
+⚠️ 01:30 ALARM
+02:30 Transfer to Geneva
+06:10 Flight
+07:50 Land Bilbao
+~09:30 San Sebastián
+
+Then SLEEP. You'll have been up 20 hours.
+
+Evening — the three old town classics.
+All three shut in the afternoon and reopen at 19:00.
+
+18:30 Queue at Ganbara (arrive early or queue an hour)
+19:00 GANBARA — wild mushrooms with egg yolk, crab tartlet
+20:15 LA CUCHARA DE SAN TELMO — beef cheek, suckling pig
+21:30 LA VIÑA — the cheesecake
+
+Sleep on the plane.</pre></details>
+  </div>
+
+  <div id="day10" class="card bask">
+    <div class="ctop"><span class="cwhen">Sat 10 Oct</span><button class="btn" data-c="d10">Copy</button></div>
+    <h2>Pintxos hopping</h2>
+    <p class="sum">Seven stops by 14:30, then one at six.</p>
+    <details><summary>see text</summary><pre id="d10">🇪🇸 SAT 10 OCT · PINTXOS HOPPING
+
+Leave the hotel together at 09:10.
+One bite, one drink, standing. Then we move.
+
+09:15 MOTX COFFEE — cortado (optional, takeaway only)
+10:00 ELKANO 1 — cheese. Ask for the Teyedu.
+10:30 GORROTXATEGI — drinking chocolate
+      then GARRARTE next door (4.9) to buy
+11:00 SAN MARTÍN MARKET — 20 min, look at the fish
+11:45 BOUIBOUI — grilled cheese ⚠️ shuts 14:00
+12:15 KLANDESTINA — let the owner pick ⚠️ shuts 14:00
+12:45 MANOJO — sit-down lunch. Navajas.
+
+14:30-18:00 FREE
+   Optional: La Concha walk → old town shops
+   (Koloreka, Alboka) → Monte Urgull
+   ⚠️ Buy edible souvenirs in the MORNING —
+      the food shops shut at 14:30 on Saturdays
+
+18:15 ANTONIO — tortilla + house vermouth
+      ⚠️ Batch drops 18:30 and sells out. Be on time.
+19:45 Sunset — walk to La Concha promenade
+20:00 SUA.MUKA — optional last drink
+
+~€60-90 each. Bring cash.</pre></details>
+  </div>
+
+  <div id="day11" class="card bask">
+    <div class="ctop"><span class="cwhen">Sun 11 Oct</span><button class="btn" data-c="d11">Copy</button></div>
+    <h2>French beach town</h2>
+    <p class="sum">Ciboure, Saint-Jean-de-Luz, Biarritz.</p>
+    <details><summary>see text</summary><pre id="d11">🇫🇷 SUN 11 OCT · FRENCH BEACH TOWN
+
+Ciboure market — Sundays only, 08:00-13:00
+Place Camille Jullian + Place Lannes
+
+Then Saint-Jean-de-Luz:
+· Place Louis XIV
+· The harbour
+· Rue Gambetta
+· Grande Plage
+
+Lunch — French Basque seafood
+
+Then Biarritz:
+· Grande Plage + Hôtel du Palais
+· Port des Pêcheurs
+· Rocher de la Vierge
+· Côte des Basques
+
+Different country — euros still, but French prices.</pre></details>
+  </div>
+
+  <div id="day12" class="card bask">
+    <div class="ctop"><span class="cwhen">Mon 12 Oct</span><button class="btn" data-c="d12">Copy</button></div>
+    <h2>Getaria</h2>
+    <p class="sum">Climb the mouse, then two hours at lunch.</p>
+    <details><summary>see text</summary><pre id="d12">🇪🇸 MON 12 OCT · GETARIA
+
+⚠️ Check UK09/UK10 times the night before,
+   AND the last return. Small-town stop.
+
+09:30 Bus from Donostia station (Federico García Lorca 2)
+      UK09 = coast road, prettier. UK10 = motorway, faster.
+10:20 Arrive Getaria
+10:30 Old town — fish grilling on coals in the street
+10:45 San Salvador church ⚠️ SHUTS 14:00 — before lunch
+11:15 UP THE MOUSE — San Antón lookout
+      20 min up, signposted, free. GROUP PHOTO.
+12:20 The harbour
+13:00 KAIA KAIPE — BOOKED ⚠️ Monday = lunch only
+      Grilled turbot, txangurro, langoustines
+15:15 Optional: walk the coast path to Zarautz (3.5km)
+      Turn round on the path — THAT'S where it
+      looks like a mouse
+16:45 Bus back
+
+19:00 Up Monte Urgull
+19:40 SUNSET — URGULLEKO POLBORIÑA
+      Tiny bar in the old powder magazine.
+      Look for the small "bar" sign. Closes 20:45.
+
+Skip dinner. Big lunch.</pre></details>
+  </div>
+
+  <div id="day13" class="card bask">
+    <div class="ctop"><span class="cwhen">Tue 13 Oct</span><button class="btn" data-c="d13">Copy</button></div>
+    <h2>Bilbao</h2>
+    <p class="sum">Market, Casco Viejo, Guggenheim.</p>
+    <details><summary>see text</summary><pre id="d13">🇪🇸 TUE 13 OCT · BILBAO
+
+⚠️ Coach booked with ALSA — check the last return.
+
+08:30 Coach from San Sebastián (~1hr15)
+10:15 MERCADO DE LA RIBERA
+11:15 Casco Viejo:
+      · BACAICOA — mushroom + chorizo pintxos
+      · LA OLLA DE LA PLAZA NUEVA
+      · GURE TOKI — cheese soup with quail egg
+      · SORGINZULO — gilda, calamari
+14:15 Zubizuri / riverside walk
+15:00 GUGGENHEIM ⚠️ buy tickets the night before
+      Open till 20:00
+18:00 Coach back from Bilbao Intermodal
+
+⚠️ The station is NOT central. Allow time from the museum.</pre></details>
+  </div>
+
+  <div id="day14" class="card bask">
+    <div class="ctop"><span class="cwhen">Wed 14 Oct</span><button class="btn" data-c="d14">Copy</button></div>
+    <h2>Last full day</h2>
+    <p class="sum">Beach, and everything we missed.</p>
+    <details><summary>see text</summary><pre id="d14">🇪🇸 WED 14 OCT · LAST FULL DAY
+
+Nothing booked. Beach in the morning.
+
+Anything we didn't get to:
+· GANBARA — if we want it again
+· BAR NÉSTOR — txuleta + tomato salad
+  ⚠️ Queue ~11:00 for a 12:45 sitting. It's a plan, not a drop-in.
+· BAR KBZÓNa (4.9) — duck, razor clams
+· BAR DESY — the txuleta burger
+· NARRIKA — gilda, foie
+· LA CEPA DE BERNARDO — jamón
+
+BUY WHAT YOU'RE TAKING HOME TODAY:
+· ZAPORE JAI — jamón, tinned fish (shuts 19:30)
+· AITOR LASA — cheese
+· SAN MARTÍN MARKET
+· LUKAS GOURMET (Hotel María Cristina) — wine
+
+⚠️ Last chance. Tomorrow is the airport.</pre></details>
+  </div>
+
+  <div id="day15" class="card bask">
+    <div class="ctop"><span class="cwhen">Thu 15 Oct</span><button class="btn" data-c="d15">Copy</button></div>
+    <h2>Fly out</h2>
+    <p class="sum">Bilbao → Zürich, 20:45.</p>
+    <details><summary>see text</summary><pre id="d15">🇪🇸→🇨🇭 THU 15 OCT · FLY OUT
+
+Slow morning. Last walk, last coffee.
+
+Then Bilbao airport.
+20:45 BIO → ZRH (direct, 1h55)
+22:40 Land Zürich
+
+Night at the airport hotel.
+Tram 10, second stop: Glattbrugg Unterriet (3 min).</pre></details>
+  </div>
+
+  <div id="day16" class="card bask">
+    <div class="ctop"><span class="cwhen">Fri 16 Oct</span><button class="btn" data-c="d16">Copy</button></div>
+    <h2>Home</h2>
+    <p class="sum">CX382, 13:30.</p>
+    <details><summary>see text</summary><pre id="d16">🇨🇭→🇭🇰 FRI 16 OCT · HOME
+
+13:30 CX382 ZRH → HKG
+
+That's the trip. Sixteen days, three countries,
+one mountain seen from every angle.</pre></details>
+  </div>
+
+  <footer>
+    <p>Copy puts plain text on your clipboard — paste straight into WhatsApp. Emoji survive; formatting doesn't, which is why there isn't any.</p>
+    <p style="margin-top:8px"><a href="index.html">← Back to the trip</a></p>
+    <p class="sig">¯\_(ツ)_/¯</p>
+  </footer>
+
+</div>
+
+<script>
+document.querySelectorAll('.btn').forEach(function(b){
+  b.addEventListener('click', function(){
+    var t = document.getElementById(b.dataset.c).textContent;
+    var done = function(){
+      b.textContent = 'Copied ✓'; b.classList.add('done');
+      setTimeout(function(){ b.textContent='Copy'; b.classList.remove('done'); }, 1800);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(t).then(done).catch(function(){ fallback(t, done); });
+    } else { fallback(t, done); }
+  });
+});
+function fallback(text, cb){
+  var ta = document.createElement('textarea');
+  ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); cb(); } catch(e){}
+  document.body.removeChild(ta);
+}
+</script>
+</body>
+</html>

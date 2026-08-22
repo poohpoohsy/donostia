@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tonight in San Sebastián — our pintxos crawl</title>
+<title>Saturday in San Sebastián — pintxos hopping</title>
 <meta name="description" content="Eight stops across Donostia. Where to be, when, and what to order.">
-<meta property="og:title" content="Tonight in San Sebastián">
-<meta property="og:description" content="Eight stops. Meet 16:25 at Elkano Kalea 1.">
+<meta property="og:title" content="Saturday in San Sebastián">
+<meta property="og:description" content="Seven stops before two, one at six. Meet 09:55 at Elkano Kalea 1.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -275,185 +275,253 @@
   .tnote{margin:4px 0 0;font-size:12.5px;color:var(--dim);line-height:1.45;}
   .sig{margin-top:22px;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
     font-size:13px;color:var(--dim);opacity:.35;letter-spacing:.04em;user-select:none;}
+
+  /* shop & culture sub-route */
+  .sc{background:var(--raise);border:1px solid var(--rule);border-left:3px solid var(--sea);
+    border-radius:3px;padding:18px;margin-top:14px;}
+  .sc h4{font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:17px;
+    letter-spacing:-.01em;margin:0 0 5px;color:var(--chalk);}
+  .sc .lede{margin:0 0 14px;font-size:14px;color:var(--dim);}
+  .scr{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--rule);}
+  .scr:last-of-type{border-bottom:0;}
+  .sct{flex:0 0 46px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+    color:var(--sea);padding-top:2px;}
+  .scb{flex:1;min-width:0;}
+  .scb b{display:block;color:var(--chalk);font-weight:600;font-size:15px;margin-bottom:2px;}
+  .scb p{margin:0;font-size:13.5px;color:var(--dim);}
+  .scb a.maplink{margin-top:7px;}
+  .scbtn{display:block;text-align:center;text-decoration:none;margin-top:14px;
+    background:rgba(120,179,169,.12);border:1px solid rgba(120,179,169,.4);border-radius:3px;
+    padding:11px 14px;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--sea);}
+  .scbtn:hover{background:rgba(120,179,169,.2);}
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <header class="top">
-    <p class="kicker">Friday · Donostia</p>
-    <h1>Eight stops,<br>one evening.</h1>
+    <p class="kicker">Saturday 10 October · Donostia</p>
+    <h1>Seven by two,<br>one at six.</h1>
+    <p class="intro" style="margin:16px 0 0;color:var(--dim);font-size:15.5px;">We leave the hotel together at <b style="color:var(--chalk)">09:10</b>. Seven stops done by half two, the afternoon free, then back out for the tortilla at quarter past six.</p>
 
-    <div class="meet">
-      <p class="lbl">Meet here</p>
-      <p class="big">16:25 — Elkano Kalea 1</p>
-      <p>Outside the cheese shop, <b>Elkano 1 Gaztagune</b>. It opens at 16:30 on the dot and we start there.</p>
-    </div>
-
-    <div class="routebox">
-      <p>The whole route in Google Maps — all eight stops, walking, in order. Save it before you lose signal.</p>
-      <a class="routebtn" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Elkano%201%20-%20Gaztagune%2C%20Donostia&origin_place_id=ChIJwSQUAE6lUQ0RI-pk5m8e6VQ&destination=SUA.MUKA.%2C%20Donostia&destination_place_id=ChIJ0V8LmealUQ0R6U7aRwwkhPM&waypoints=Lurka%20Chocolate%2C%20Donostia%7CSan%20Martin%20Merkatua%2C%20Donostia%7CAntonio%20taberna%2C%20Donostia%7CBouiboui%20Shop%2C%20Donostia%7CBodega%20Klandestina%2C%20Donostia%7CManojo%2C%20Donostia&waypoint_place_ids=ChIJTV0WnhylUQ0RBCFG0tA7TcI%7CChIJNbKD4VOlUQ0RA0e4gEExwJI%7CChIJ6T6eVVClUQ0Rr67NXUZTqSw%7CChIJM87Iwf30XIsR8Ot1wd2iB0I%7CChIJD_K7jNqlUQ0R5hgFyMuzk0M%7CChIJz3U4SRWlUQ0R4SAgDpt0FpQ" target="_blank" rel="noopener">Open the full route ↗</a>
-    </div>
-      <div class="today">
+    <div class="today">
       <span class="tdot" id="tdot"></span>
       <div class="tbody">
         <span class="tlbl" id="tlbl">Live now · San Sebastián</span>
         <p class="tval" id="tval">Checking the feed…</p>
-        <p class="tnote" id="tnote">A reading here means the live weather feed is working. If it stalls, the day panels below won't fill either.</p>
+        <p class="tnote" id="tnote">Live from San Sebastián. If a temperature shows here, the feed is working — and you know whether to bring a jacket.</p>
       </div>
     </div>
-  </header>
+    <div class="routebox">
+      <p>The food route in Google Maps — all nine stops, walking, in order. Save it before you lose signal.</p>
+      <a class="routebtn" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Motx%20Coffee%2C%20Donostia&origin_place_id=ChIJDzdE7EqlUQ0RyXoCIS0CdnA&destination=SUA.MUKA.%2C%20Donostia&destination_place_id=ChIJ0V8LmealUQ0R6U7aRwwkhPM&waypoints=Elkano%201%20-%20Gaztagune%2C%20Donostia%7CRafa%20Gorrotxategi%2C%20Donostia%7CSan%20Martin%20Merkatua%2C%20Donostia%7CBouiboui%20Shop%2C%20Donostia%7CBodega%20Klandestina%2C%20Donostia%7CManojo%2C%20Donostia%7CAntonio%20taberna%2C%20Donostia&waypoint_place_ids=ChIJwSQUAE6lUQ0RI-pk5m8e6VQ%7CChIJZar6yM-lUQ0REfKvZcuEXY8%7CChIJNbKD4VOlUQ0RA0e4gEExwJI%7CChIJM87Iwf30XIsR8Ot1wd2iB0I%7CChIJD_K7jNqlUQ0R5hgFyMuzk0M%7CChIJz3U4SRWlUQ0R4SAgDpt0FpQ%7CChIJ6T6eVVClUQ0Rr67NXUZTqSw" target="_blank" rel="noopener">Open the full route ↗</a>
+    </div>
+    </header>
 
   <section class="rules">
     <h2>Three things before we start</h2>
     <ul>
-      <li><span></span><div>Come hungry, and <b>don't fill up at stop one</b>. There are eight.</div></li>
-      <li><span></span><div>One bite and one drink per stop, standing, then we move. <b>Three places shut at 20:00</b> and they will not wait for us.</div></li>
-      <li><span></span><div>Some of these are tiny shops. <b>We'll go in two groups of three</b> — I'll tell you when.</div></li>
+      <li><span></span><div>Come hungry, and <b>don't fill up at stop one</b>. Seven of them before two o'clock.</div></li>
+      <li><span></span><div>One bite and one drink per stop, standing, then we move. <b>This is how Basques eat</b> — nobody sits for three hours.</div></li>
+      <li><span></span><div>Some of these are tiny shops and we're six. <b>Expect to be cosy</b>, and be ready to step outside with a plate.</div></li>
     </ul>
   </section>
 
   <section class="clockbox">
-    <h2>Why we're moving fast</h2>
-    <p class="why">Each bar is how long a place stays open. The gold marks are when we arrive. The red ones shut at eight — that's the squeeze.</p>
+    <h2>Why we go early</h2>
+    <p class="why">Each bar is how long a place stays open on a Saturday. The gold marks are when we arrive. <b>The red ones shut at two</b> — that's why the morning is packed and the afternoon is free.</p>
 
     <div class="chart">
       <div class="chart-inner">
         <div class="axis" aria-hidden="true">
-          <span>16:00</span><span>17:00</span><span>18:00</span><span>19:00</span><span>20:00</span><span>21:00</span><span>22:00</span>
+          <span>09:00</span><span>11:00</span><span>13:00</span><span>15:00</span><span>17:00</span><span>19:00</span>
         </div>
 
-        <div class="row"><div class="row-name">Elkano 1</div><div class="track">
-          <div class="open" style="left:7.1%;width:50%;animation-delay:.05s"></div>
-          <div class="hit" data-n="1" style="left:7.1%;animation-delay:.4s"></div></div></div>
+        <div class="row"><div class="row-name">Motx</div><div class="track">
+          <div class="open" style="left:0%;width:90.9%;animation-delay:.0s"></div>
+          <div class="hit" data-n="0" style="left:2.3%;animation-delay:.4s"></div></div></div>
 
-        <div class="row"><div class="row-name">Lurka</div><div class="track">
-          <div class="open" style="left:0;width:57.1%;animation-delay:.1s"></div>
-          <div class="hit" data-n="2" style="left:15.5%;animation-delay:.45s"></div></div></div>
+        <div class="row"><div class="row-name">Elkano 1</div><div class="track">
+          <div class="open" style="left:9.1%;width:90.9%;animation-delay:.1s"></div>
+          <div class="hit" data-n="1" style="left:9.1%;animation-delay:.5s"></div></div></div>
+
+        <div class="row"><div class="row-name">Chocolate</div><div class="track">
+          <div class="open" style="left:0%;width:100%;animation-delay:.2s"></div>
+          <div class="hit" data-n="2" style="left:13.6%;animation-delay:.6s"></div></div></div>
 
         <div class="row"><div class="row-name">San Martín</div><div class="track">
-          <div class="open" style="left:0;width:100%;animation-delay:.15s"></div>
-          <div class="hit" data-n="3" style="left:23.8%;animation-delay:.5s"></div></div></div>
-
-        <div class="row"><div class="row-name">Antonio</div><div class="track">
-          <div class="open" style="left:0;width:100%;animation-delay:.2s"></div>
-          <div class="hit" data-n="4" style="left:28.6%;animation-delay:.55s"></div></div></div>
+          <div class="open" style="left:0%;width:100%;animation-delay:.3s"></div>
+          <div class="hit" data-n="3" style="left:18.2%;animation-delay:.7s"></div></div></div>
 
         <div class="row"><div class="row-name">Bouiboui</div><div class="track">
-          <div class="open tight" style="left:0;width:57.1%;animation-delay:.25s"></div>
-          <div class="hit" data-n="5" style="left:45.2%;animation-delay:.6s"></div></div></div>
+          <div class="open tight" style="left:18.2%;width:27.3%;animation-delay:.4s"></div>
+          <div class="hit" data-n="4" style="left:25.0%;animation-delay:.8s"></div></div></div>
 
         <div class="row"><div class="row-name">Klandestina</div><div class="track">
-          <div class="open tight" style="left:14.3%;width:42.8%;animation-delay:.3s"></div>
-          <div class="hit" data-n="6" style="left:51.2%;animation-delay:.65s"></div></div></div>
+          <div class="open tight" style="left:22.7%;width:22.8%;animation-delay:.5s"></div>
+          <div class="hit" data-n="5" style="left:29.5%;animation-delay:.9s"></div></div></div>
 
         <div class="row"><div class="row-name">Manojo</div><div class="track">
-          <div class="open" style="left:14.3%;width:85.7%;animation-delay:.35s"></div>
-          <div class="hit" data-n="7" style="left:60.7%;animation-delay:.7s"></div></div></div>
+          <div class="open" style="left:31.8%;width:68.2%;animation-delay:.6s"></div>
+          <div class="hit" data-n="6" style="left:34.1%;animation-delay:.10s"></div></div></div>
 
-        <div class="row"><div class="row-name">SUA.MUKA</div><div class="track">
-          <div class="open" style="left:0;width:100%;animation-delay:.4s"></div>
-          <div class="hit" data-n="8" style="left:82.1%;animation-delay:.75s"></div></div></div>
+        <div class="row"><div class="row-name">Antonio</div><div class="track">
+          <div class="open" style="left:0%;width:100%;animation-delay:.7s"></div>
+          <div class="hit" data-n="7" style="left:84.1%;animation-delay:.11s"></div></div></div>
 
         <div class="legend">
           <span><i class="sw-open"></i>Open</span>
-          <span><i class="sw-tight"></i>Shuts at 20:00</span>
+          <span><i class="sw-tight"></i>Shuts at 14:00</span>
           <span><i class="sw-hit"></i>We arrive</span>
         </div>
       </div>
     </div>
-    <p class="crunch">Stops <b>5 and 6</b> are the tight ones. Everything earlier is paced to get us there in time, which is why stop four ends when it ends.</p>
+    <p class="crunch">Stops <b>4 and 5</b> are the tight ones — three places that close at two. Everything before is paced to get us there, and <b>stop 7 waits until six</b> because that's when the tortilla comes out.</p>
   </section>
 
   <section class="stops">
-    <p class="stops-h">The route</p>
+    <p class="stops-h">The route · Saturday</p>
 
-    <article class="stop" data-start="16:30" data-end="17:05">
-      <p class="clock">16:30</p>
-      <h3>Elkano 1 Gaztagune</h3>
+    <article class="stop" data-start="09:15" data-end="09:55">
+      <p class="clock">09:15 <span class="walk">BEFORE WE START</span></p>
+      <h3>0 · Motx Coffee</h3>
+      <p class="addr">C. de San Jerónimo 14 · coffee  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Motx%20Coffee%2C%20Donostia&query_place_id=ChIJDzdE7EqlUQ0RyXoCIS0CdnA" target="_blank" rel="noopener">Map ↗</a></p>
+      <p class="order"><span class="tag">Order this</span>A cortado. Reviewers rate it the best coffee in the city.</p>
+      <p class="note">Opens at eight. <b>Takeaway only — there's no seating</b>, so we drink standing in the plaza and walk five minutes to Elkano. Not compulsory: anyone who'd rather sleep, just meet us at 09:55.</p>
+      <span class="warn">Want a sit-down breakfast instead? Vincent's Café, old town, opens 09:00</span>
+    </article>
+
+    <article class="stop" data-start="10:00" data-end="10:30">
+      <p class="clock">10:00</p>
+      <h3>1 · Elkano 1 Gaztagune</h3>
       <p class="addr">Elkano Kalea 1 · cheese  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Elkano%201%20-%20Gaztagune%2C%20Donostia&query_place_id=ChIJwSQUAE6lUQ0RI-pk5m8e6VQ" target="_blank" rel="noopener">Map ↗</a></p>
       <p class="order"><span class="tag">Order this</span>The Teyedu, with an Idiazabal to compare.</p>
-      <p class="note">A cheese shop that looks well past the Basque country for what it stocks. Good place to start while everyone's still sober enough to taste properly.</p>
+      <p class="note">Opens at ten on a Saturday. A cheese shop that looks well past the Basque country for what it stocks — the right place to start while everyone can still taste properly.</p>
+      <span class="warn">Closed Sun–Mon</span>
     </article>
 
-    <article class="stop" data-start="17:05" data-end="17:40">
-      <p class="clock">17:05 <span class="walk">2 MIN WALK</span></p>
-      <h3>Lurka Chocolate</h3>
-      <p class="addr">Bengoetxea Kalea 1 · chocolate  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Lurka%20Chocolate%2C%20Donostia&query_place_id=ChIJTV0WnhylUQ0RBCFG0tA7TcI" target="_blank" rel="noopener">Map ↗</a></p>
-      <p class="order"><span class="tag">Order this</span>A cup of the drinking chocolate.</p>
-      <p class="note">Mexican bean-to-bar, made here by a Mexican of Basque descent reviving a trade route that once ran between this port and his home country. Buy a tablet to take home — they travel well.</p>
+    <article class="stop" data-start="10:30" data-end="11:00">
+      <p class="clock">10:30 <span class="walk">2 MIN WALK · TWO DOORS</span></p>
+      <h3>2 · Gorrotxategi &amp; Garrarte</h3>
+      <p class="addr">Narrika Kalea 6 and 4 · chocolate  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Rafa%20Gorrotxategi%20Donostia&query_place_id=ChIJZar6yM-lUQ0REfKvZcuEXY8" target="_blank" rel="noopener">Gorrotxategi ↗</a><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Garrarte%20Donostia%20Gozogintza%20Artisaua&query_place_id=ChIJrf76CU2lUQ0RwOFhPWGxrV0" target="_blank" rel="noopener">Garrarte ↗</a></p>
+      <p class="order"><span class="tag">Order this</span>A drinking chocolate at Gorrotxategi. Then buy next door at Garrarte.</p>
+      <p class="note"><b>Rafa Gorrotxategi</b> — a reviewer describes it as drinking properly melted dark chocolate rather than watery hot chocolate, and says a small one is plenty. Also does the Basque classics: cigarillos, tejas de almendra, pastel vasco, goxua. Open daily 09:00–20:00.</p>
+      <p class="note"><b>Garrarte</b>, forty metres away — <b>4.9 from 577 reviews</b>, the highest-rated sweet shop in the old town. They hand out samples, and the coated almonds come up again and again. Open 10:30. <b>This is where the take-home purchase happens.</b></p>
+      <span class="warn">Lurka, which used to be here, has closed permanently</span>
     </article>
 
-    <article class="stop" data-start="17:40" data-end="18:00">
-      <p class="clock">17:40 <span class="walk">6 MIN WALK</span></p>
-      <h3>San Martín Market</h3>
+    <article class="stop" data-start="11:00" data-end="11:45">
+      <p class="clock">11:00 <span class="walk">6 MIN WALK</span></p>
+      <h3>3 · San Martín Market</h3>
       <p class="addr">Urbieta Kalea 9 · market  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=San%20Martin%20Merkatua%2C%20Donostia&query_place_id=ChIJNbKD4VOlUQ0RA0e4gEExwJI" target="_blank" rel="noopener">Map ↗</a></p>
-      <p class="order"><span class="tag">Look for</span>Kokotxas at the fish counters.</p>
-      <p class="note">Ten minutes, nothing to buy. Kokotxas are cod and hake throats — chefs and grandmothers queue for them in the same line. This is where the food you'll eat tonight comes from.</p>
+      <p class="note">Twenty minutes, nothing to buy. <b>Saturday morning is when this place is alive</b> — by evening it's half shut. Look for kokotxas at the fish counters: cod and hake throats, sold by the kilo to chefs and grandmothers in the same queue.</p>
+      <p class="note"><b>Watch for</b> the all-women fishmonger stall, and the queue in front of it.</p>
     </article>
 
-    <article class="stop" data-start="18:00" data-end="19:10">
-      <p class="clock">18:00 <span class="walk">4 MIN WALK</span></p>
-      <h3>Antonio Taberna</h3>
-      <p class="addr">Bergara Kalea 3 · tortilla  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Antonio%20taberna%2C%20Donostia&query_place_id=ChIJ6T6eVVClUQ0Rr67NXUZTqSw" target="_blank" rel="noopener">Map ↗</a></p>
-      <p class="order"><span class="tag">Order this</span>Tortilla de patata and a house vermouth.</p>
-      <p class="note">The best tortilla in the city, and the reason we're here at six rather than seven. A fresh one comes out around 18:30 and it sells out. I'll queue — you hold standing room at the bar.</p>
-      <span class="warn">We leave at 18:55 sharp</span>
+    <article class="stop" data-start="11:45" data-end="12:15">
+      <p class="clock">11:45 <span class="walk">12 MIN — OVER THE BRIDGE</span></p>
+      <h3>4 · Bouiboui</h3>
+      <p class="addr">Calle Trueba 4 · shop  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bouiboui%20Shop%2C%20Donostia&query_place_id=ChIJM87Iwf30XIsR8Ot1wd2iB0I" target="_blank" rel="noopener">Map ↗</a></p>
+      <p class="order"><span class="tag">Order this</span>The grilled cheese, and something to carry home.</p>
+      <p class="note">We cross the Kursaal bridge into Gros. <b>Highest-rated stop of the day at 4.9</b> — a specialty food and natural wine shop rather than a bar. Sauces, artisan pasta, crisps, and an owner who hands out recommendations freely. Small — we'll be shoulder to shoulder, which is half the fun.</p>
+      <span class="warn">Shuts at 14:00</span>
     </article>
 
-    <article class="stop" data-start="19:10" data-end="19:35">
-      <p class="clock">19:10 <span class="walk">12 MIN — OVER THE BRIDGE</span></p>
-      <h3>Bouiboui</h3>
-      <p class="addr">Calle Trueba 4 · cider  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bouiboui%20Shop%2C%20Donostia&query_place_id=ChIJM87Iwf30XIsR8Ot1wd2iB0I" target="_blank" rel="noopener">Map ↗</a></p>
-      <p class="order"><span class="tag">Order this</span>Cider, and whatever the fish of the day is.</p>
-      <p class="note">We cross the Kursaal bridge into Gros, where the newer places are. This one's small — three of us at a time.</p>
-      <span class="warn">Closes 20:00 · we have 20 minutes</span>
-    </article>
-
-    <article class="stop" data-start="19:35" data-end="20:15">
-      <p class="clock">19:35 <span class="walk">2 MIN WALK</span></p>
-      <h3>Bodega Klandestina</h3>
+    <article class="stop" data-start="12:15" data-end="12:45">
+      <p class="clock">12:15 <span class="walk">2 MIN WALK</span></p>
+      <h3>5 · Bodega Klandestina</h3>
       <p class="addr">Kale Berria 18 · natural wine  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bodega%20Klandestina%2C%20Donostia&query_place_id=ChIJD_K7jNqlUQ0R5hgFyMuzk0M" target="_blank" rel="noopener">Map ↗</a></p>
       <p class="order"><span class="tag">Order this</span>Tell the owner what you've liked so far and let him choose.</p>
-      <p class="note">He's very good at this. If you want to bring wine home, buy it here rather than at the airport.</p>
-      <span class="warn">Closes 20:00 · quick one</span>
+      <p class="note">Also 4.9, and he's very good at this. If you want to bring wine home, buy it here rather than at the airport.</p>
+      <span class="warn">Shuts at 14:00</span>
     </article>
 
-    <article class="stop" data-start="20:15" data-end="21:45">
-      <p class="clock">20:15 <span class="walk">6 MIN WALK</span></p>
-      <h3>Manojo</h3>
-      <p class="addr">José Arana Kalea 13 · dinner  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Manojo%2C%20Donostia&query_place_id=ChIJz3U4SRWlUQ0R4SAgDpt0FpQ" target="_blank" rel="noopener">Map ↗</a></p>
-      <p class="order"><span class="tag">Order this</span>Navajas — razor clams — and share three or four plates.</p>
-      <p class="note">Booked, so we can finally sit down and stop rushing. The menu is short and changes on whatever came into the market that morning.</p>
+    <article class="stop" data-start="12:45" data-end="14:30">
+      <p class="clock">12:45 <span class="walk">6 MIN WALK</span></p>
+      <h3>6 · Manojo</h3>
+      <p class="addr">José Arana Kalea 13 · lunch  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Manojo%2C%20Donostia&query_place_id=ChIJz3U4SRWlUQ0R4SAgDpt0FpQ" target="_blank" rel="noopener">Map ↗</a></p>
+      <p class="order"><span class="tag">Order this</span>Navajas — razor clams — then share three or four plates.</p>
+      <p class="note"><b>Only possible on a Saturday</b>: every other day this place opens at five. We finally sit down. Short market-driven menu that changes on whatever came in that morning, plus bonito with leche de tigre and handmade tagliatelle with clams.</p>
+      <span class="warn">Book ahead · shut Wednesdays</span>
     </article>
 
-    <article class="stop" data-start="21:45" data-end="23:00">
-      <p class="clock">21:45 <span class="walk">10 MIN WALK · OPTIONAL</span></p>
-      <h3>SUA.MUKA</h3>
-      <p class="addr">Zurriola Hiribidea 1 · last drink  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=SUA.MUKA.%2C%20Donostia&query_place_id=ChIJ0V8LmealUQ0R6U7aRwwkhPM" target="_blank" rel="noopener">Map ↗</a></p>
+    <article class="stop">
+      <p class="clock">14:30 → 18:00 <span class="walk">FREE</span></p>
+      <h3>Shop &amp; culture</h3>
+      <p class="note">Nothing here is compulsory. Skip the lot and sleep if you'd rather — <b>we meet again at Antonio at quarter past six.</b></p>
+
+      <div class="sc">
+        <h4>A route, if you want one</h4>
+        <p class="lede">Beach → old town → viewpoint. Roughly 3km, all flat except the climb at the end.</p>
+
+      <div class="scr"><div class="sct">14:30</div><div class="scb">
+        <b>Paseo de La Concha</b><p>Walk the bay first — you have just eaten a lot and the promenade is flat. Twenty minutes resets everybody.</p>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Paseo%20de%20La%20Concha%2C%20Donostia&query_place_id=ChIJP_E2zau6UQ0R7b-CzcGsb8Y" target="_blank" rel="noopener">Map ↗</a>
+      </div></div>
+      <div class="scr"><div class="sct">15:00</div><div class="scb">
+        <b>Café de La Concha</b><p><b>Rest stop.</b> Coffee facing the beach. Open till 23:00. Pricier than town and only 3.8, but the terrace is the point.</p>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Caf%C3%A9%20de%20La%20Concha%2C%20Donostia&query_place_id=ChIJFV8mqKm6UQ0RWZbNIQTN8Yc" target="_blank" rel="noopener">Map ↗</a>
+      </div></div>
+      <div class="scr"><div class="sct">15:30</div><div class="scb">
+        <b>Konstituzio Plaza</b><p>The old town square, and the middle of everything below. All three shops are within 200m.</p>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Constituci%C3%B3n%20Plaza%2C%20Donostia&query_place_id=ChIJ99dMuk2lUQ0Ruon3ZBJmFqk" target="_blank" rel="noopener">Map ↗</a>
+      </div></div>
+      <div class="scr"><div class="sct">15:35</div><div class="scb">
+        <b>Koloreka</b><p><b>The one worth going for.</b> 4.9 — minimal art prints of the city by a local artist, in a converted butcher's shop. Till 21:00.</p>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Koloreka%2C%20Donostia&query_place_id=ChIJmT0KoU2lUQ0RAqqehzcAkaE" target="_blank" rel="noopener">Map ↗</a>
+      </div></div>
+      <div class="scr"><div class="sct">16:00</div><div class="scb">
+        <b>Alboka Crafts</b><p>Basque crafts, berets, eguzkilore charms, and staff who explain what things mean. Till 20:00.</p>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Alboka%20Crafts%2C%20Donostia&query_place_id=ChIJ_xKBt02lUQ0Rxj9ERAEJkV0" target="_blank" rel="noopener">Map ↗</a>
+      </div></div>
+      <div class="scr"><div class="sct">16:20</div><div class="scb">
+        <b>Santesteban</b><p>Cheap and cheerful seaside souvenirs, down by the harbour. Till 19:00.</p>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Santesteban%20Oroigarriak%2C%20Donostia&query_place_id=ChIJyXi_krK6UQ0R0zp6an8z_UY" target="_blank" rel="noopener">Map ↗</a>
+      </div></div>
+      <div class="scr"><div class="sct">16:40</div><div class="scb">
+        <b>Basílica Santa María</b><p>Baroque, at the end of the old town's prettiest street. €3, and quiet.</p>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Koruko%20Andre%20Mariaren%20basilika%2C%20Donostia&query_place_id=ChIJrSaC002lUQ0Rnize-8TrLts" target="_blank" rel="noopener">Map ↗</a>
+      </div></div>
+      <div class="scr"><div class="sct">17:00</div><div class="scb">
+        <b>Monte Urgull</b><p><b>Free, till 21:00.</b> Thirty minutes up through the trees to the castle. Best view of the bay in the city. Skip if legs have gone.</p>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Monte%20Urgull%2C%20Donostia&query_place_id=ChIJdTG5OrO6UQ0RX6mBaN5vrP0" target="_blank" rel="noopener">Map ↗</a>
+      </div></div>
+
+        <a class="scbtn" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=43.3144134,-1.9914711&destination=43.3252324,-1.9898449&waypoints=43.3156828,-1.9885929%7C43.3236924,-1.9848650%7C43.3233500,-1.9854984%7C43.3237890,-1.9846092%7C43.3238369,-1.9866066%7C43.3236433,-1.9881727" target="_blank" rel="noopener">Open the shop &amp; culture route ↗</a>
+      </div>
+
+      <p class="note" style="margin-top:16px">⚠️ <b>Edible souvenirs have to be bought this morning.</b> Aitor Lasa shuts at 14:30 on Saturdays and Chocolates de Mendaro at 13:30. That's what Bouiboui and Klandestina are for at stops 4 and 5.</p>
+      <p class="note"><b>San Telmo Museum</b> is also open till 20:00 if it rains — Basque history inside an old convent, and free on Tuesdays. <a href="https://www.google.com/maps/search/?api=1&query=San%20Telmo%20Museum%2C%20Donostia&query_place_id=ChIJVZOYN0ylUQ0ReHvJLYkPSBc" target="_blank" rel="noopener">Map ↗</a></p>
+    </article>
+
+    <article class="stop" data-start="18:15" data-end="19:15">
+      <p class="clock">18:15 <span class="walk">AFTERNOON OFF FIRST</span></p>
+      <h3>7 · Antonio Taberna</h3>
+      <p class="addr">Bergara Kalea 3 · tortilla  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Antonio%20taberna%2C%20Donostia&query_place_id=ChIJ6T6eVVClUQ0Rr67NXUZTqSw" target="_blank" rel="noopener">Map ↗</a></p>
+      <p class="order"><span class="tag">Order this</span>Tortilla de patata and a house vermouth.</p>
+      <p class="note">The best tortilla in the city, and the reason we come back out in the evening. <b>A fresh one lands around 18:30 and sells out</b> — one reviewer suggests being there by 18:15. I'll queue; the rest of us hold standing room at the bar. The txuleta and the meatball pintxo are both worth ordering too.</p>
+      <span class="warn">Be there by 18:15</span>
+      <p class="note"><b>Sunset is around 19:45</b> — leave here at 19:15 and walk five minutes to the <b>La Concha promenade</b>. It faces west across the bay. Muka is the opposite direction and faces north, so do the promenade first and decide about Muka after.</p>
+    </article>
+
+    <article class="stop" data-start="20:00" data-end="23:00">
+      <p class="clock">20:00 <span class="walk">10 MIN WALK · OPTIONAL</span></p>
+      <h3>8 · SUA.MUKA</h3>
+      <p class="addr">Zurriola Hiribidea 1 · optional  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=SUA.MUKA.%2C%20Donostia&query_place_id=ChIJ0V8LmealUQ0R6U7aRwwkhPM" target="_blank" rel="noopener">Map ↗</a></p>
       <p class="order"><span class="tag">Order this</span>A txakoli, standing at the bar.</p>
-      <p class="note">Right where the river meets the sea. Anyone still going, come. Anyone done, Gros is full of taxis and the old town is a fifteen-minute walk.</p>
+      <p class="note">Where the river meets the sea. Lowest-rated of the eight at 4.1 — food and setting get praise, service and price don't. <b>Come for the terrace and a drink, not a meal.</b> Anyone done for the day, the old town is fifteen minutes on foot.</p>
     </article>
   </section>
 
 
   <section class="hours">
     <h2>Opening hours, whole week</h2>
-    <p class="lede">Checked on Google. Swipe the table sideways. <b>Friday is the column that matters</b> — everything else is here in case we shuffle.</p>
+    <p class="lede">Checked on Google. Swipe the table sideways. <b>Saturday is the column that matters</b> — everything else is here in case we shuffle.</p>
     <div class="tblwrap">
-      <table>
-        <tr><th class="v">&nbsp;</th><th>Mon</th><th>Tue</th><th>Wed</th><th class="go">Fri</th><th>Sat</th><th>Sun</th></tr>
-        <tr><td class="v">Elkano 1</td><td class="shut">shut</td><td>10–14<br>16:30–20</td><td>10–14<br>16:30–20</td><td class="go">10–14<br>16:30–20</td><td>10–14<br>16:30–20</td><td class="shut">shut</td></tr>
-        <tr><td class="v">Lurka</td><td>?</td><td>?</td><td>?</td><td class="go">?</td><td>?</td><td>?</td></tr>
-        <tr><td class="v">San Martín</td><td>7:30–23:30</td><td>7:30–23:30</td><td>7:30–23:30</td><td class="go">7:30–23:30</td><td>7:30–23:30</td><td>8–14</td></tr>
-        <tr><td class="v">Antonio</td><td>9–23</td><td>9–23</td><td>9–23</td><td class="go">9–23</td><td>9–23</td><td class="shut">shut</td></tr>
-        <tr><td class="v">Bouiboui</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td class="go">10:30–14<br>16–20</td><td>11–14<br>16–19:30</td><td class="shut">shut</td></tr>
-        <tr><td class="v">Klandestina</td><td>10:30–14<br>17–20</td><td>11:30–14<br>17–20</td><td>10:30–14<br>17–20</td><td class="go">10:30–14<br>17–20</td><td>11:30–14<br>17–20</td><td class="shut">shut</td></tr>
-        <tr><td class="v">Manojo</td><td>17–24</td><td>17–24</td><td class="shut">shut</td><td class="go">17–00:45</td><td>12:30–00:45</td><td>17–24</td></tr>
-        <tr><td class="v">SUA.MUKA</td><td>12–23</td><td>12–23</td><td>12–23</td><td class="go">12–23</td><td>12–23</td><td>12–20</td></tr>
-      </table>
+      <table><tr><th class="v">&nbsp;</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th class="go">Sat</th><th>Sun</th></tr><tr><td class="v">Motx</td><td>8–17</td><td>8–19</td><td>8–19</td><td>8–19</td><td>8–19</td><td class="go">8–19</td><td>8–19</td></tr><tr><td class="v">Elkano 1</td><td class="shut">shut</td><td>10–14<br>16:30–20</td><td>10–14<br>16:30–20</td><td>10–14<br>16:30–20</td><td>10–14<br>16:30–20</td><td class="go">10–14<br>16:30–20</td><td class="shut">shut</td></tr><tr><td class="v">Gorrotxategi</td><td>9–20</td><td>9–20</td><td>9–20</td><td>9–20</td><td>9–20</td><td class="go">9–20</td><td>9–20</td></tr><tr><td class="v">Garrarte</td><td>10:30–22</td><td>10:30–22</td><td>10:30–22</td><td>10:30–22</td><td>10:30–22</td><td class="go">10:30–22</td><td>10:30–22</td></tr><tr><td class="v">San Martín</td><td>7:30–23:30</td><td>7:30–23:30</td><td>7:30–23:30</td><td>7:30–23:30</td><td>7:30–23:30</td><td class="go">7:30–23:30</td><td>8–14</td></tr><tr><td class="v">Bouiboui</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td class="go">11–14<br>16–19:30</td><td class="shut">shut</td></tr><tr><td class="v">Klandestina</td><td>10:30–14<br>17–20</td><td>11:30–14<br>17–20</td><td>10:30–14<br>17–20</td><td>10:30–14<br>17–20</td><td>10:30–14<br>17–20</td><td class="go">11:30–14<br>17–20</td><td class="shut">shut</td></tr><tr><td class="v">Manojo</td><td>17–24</td><td>17–24</td><td class="shut">shut</td><td>17–24</td><td>17–00:45</td><td class="go">12:30–00:45</td><td>17–24</td></tr><tr><td class="v">Antonio</td><td>9–23</td><td>9–23</td><td>9–23</td><td>9–23</td><td>9–23</td><td class="go">9–23</td><td class="shut">shut</td></tr><tr><td class="v">SUA.MUKA</td><td>12–23</td><td>12–23</td><td>12–23</td><td>12–23</td><td>12–23</td><td class="go">12–23</td><td>12–20</td></tr></table>
     </div>
-    <p class="hnote"><b>Sunday is dead</b> — five of the eight are shut. <b>Wednesday</b> loses Manojo. <b>Saturday</b> pulls Bouiboui forward to 19:30, which is why we're going on a Friday. Lurka's hours still aren't published; that one needs a phone call.</p>
+    <p class="hnote"><b>Sunday is dead</b> — five of the eight are shut. <b>Wednesday</b> loses Manojo. <b>Saturday is the only day Manojo opens at 12:30</b> instead of five, which is what makes a lunch stop possible and the whole morning shape work. Lurka has closed permanently — Gorrotxategi and Garrarte replace it, and both open every day.</p>
   </section>
 
   <section class="dishes">
@@ -467,9 +535,10 @@
     </div>
 
     <div class="dish">
-      <div class="dishtop"><h3>Lurka Chocolate</h3><span class="score"><span class="star">★</span> 4.8 · 204</span></div>
-      <p>The <b>drinking chocolate</b>, and a <b>tablet to take home</b> — several regulars describe being sent back with orders from friends. There are a few seats and good coffee and pastries if we're running early.</p>
-      <div class="pics"><a class="pic" href="https://www.google.com/search?tbm=isch&q=Lurka%20Chocolate%20San%20Sebastian%20drinking%20chocolate" target="_blank" rel="noopener">Drinking chocolate ↗</a><a class="pic" href="https://www.google.com/maps/search/?api=1&query=Lurka%20Chocolate%2C%20Donostia&query_place_id=ChIJTV0WnhylUQ0RBCFG0tA7TcI" target="_blank" rel="noopener">The shop ↗</a></div>
+      <div class="dishtop"><h3>Gorrotxategi &amp; Garrarte</h3><span class="score"><span class="star">★</span> 4.3 · 74 &nbsp;/&nbsp; <span class="star">★</span> 4.9 · 577</span></div>
+      <p><b>At Gorrotxategi:</b> the drinking chocolate. One reviewer says it's like drinking perfectly melted dark chocolate, not watery at all, and a small is enough. The <b>pastel vasco</b> and <b>tejas de almendra</b> also get named.</p>
+      <p style="margin-top:8px"><b>Next door at Garrarte:</b> the coated almonds, mentioned by reviewer after reviewer, and whatever bar catches your eye. They give out samples, so taste before you buy.</p>
+      <div class="pics"><a class="pic" href="https://www.google.com/maps/search/?api=1&query=Rafa%20Gorrotxategi%20Donostia&query_place_id=ChIJZar6yM-lUQ0REfKvZcuEXY8" target="_blank" rel="noopener">Gorrotxategi ↗</a><a class="pic" href="https://www.google.com/maps/search/?api=1&query=Garrarte%20Donostia%20Gozogintza%20Artisaua&query_place_id=ChIJrf76CU2lUQ0RwOFhPWGxrV0" target="_blank" rel="noopener">Garrarte ↗</a></div>
     </div>
 
     <div class="dish">
@@ -511,13 +580,14 @@
 
   <div class="money">
     <h2>Practical</h2>
-    <p><b>Budget €60–90 each</b> for the whole evening, food and drink included.</p>
+    <p><b>Budget roughly €60–90 each</b> — a rough estimate, not a quote. Manojo is the one real meal and the biggest single line.</p>
     <p><b>Bring cash.</b> Most of these won't split a bill six ways. I'll pay at each stop and we'll settle up at Manojo.</p>
-    <p><b>About 3km of walking</b>, all flat, but you're on your feet for five hours. Wear accordingly.</p>
+    <p><b>Walking:</b> roughly 2km in the morning, and about the same again in the evening. The shop &amp; culture loop adds another 3km if you do all of it. All flat except Monte Urgull.</p>
+    <p><b>Book Manojo.</b> Saturday lunch for six isn't a walk-in.</p>
   </div>
 
   <footer>
-    <p>Message me if you're running late — don't try to catch us up at stop four.</p>
+    <p>Message me if you're running late — don't try to catch us up mid-morning. Easier to rejoin at Manojo for lunch, or at Antonio at six.</p>
       <p class="sig">¯\_(ツ)_/¯</p>
   </footer>
 
@@ -530,6 +600,7 @@
     var now = new Date();
     var nowMins = now.getHours() * 60 + now.getMinutes();
     document.querySelectorAll('.stop').forEach(function (el) {
+      if (!el.dataset.start || !el.dataset.end) return;   // the free-afternoon card has no times
       var s = mins(el.dataset.start), e = mins(el.dataset.end);
       if (nowMins >= s && nowMins < e) el.classList.add('now');
     });
@@ -566,9 +637,9 @@
       +(hi!==null?'  ·  '+lo+'–'+hi+'°C today':'')+'  ·  '+Math.round(rain)+'% rain';
     note.innerHTML='Feed is live. <b>This is today, not the trip</b> — the day panels below stay grey until we are inside the forecast window.';
   }).catch(function(){
-    dot.className='tdot red';
-    val.textContent='Feed unavailable';
-    note.textContent='The live weather feed is not responding. Use the webcam and forecast links instead.';
+    dot.className='tdot amber';
+    val.textContent='Feed not reachable from here';
+    note.innerHTML='This usually means the page is being previewed inside an app that blocks outside requests. <b>Open it at poohpoohsy.github.io and it will fill in.</b> If it still fails there, the forecast service is down — use the links instead.';
   });
 })();
 </script>

@@ -23,57 +23,61 @@
   body{margin:0;background:var(--ground);color:var(--chalk);
     font-family:'Archivo',system-ui,-apple-system,sans-serif;font-size:16.5px;
     line-height:1.55;-webkit-font-smoothing:antialiased;}
-  .wrap{max-width:660px;margin:0 auto;padding:0 var(--pad) 70px;}
+  .wrap{max-width:660px;margin:0 auto;padding:0 var(--pad) 40px;}
 
-  .top{padding:clamp(30px,8vw,54px) 0 0;}
+  .top{padding:clamp(20px,5vw,32px) 0 0;}
   .kicker{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:600;
     letter-spacing:.24em;text-transform:uppercase;color:var(--dim);margin:0 0 12px;}
   h1{font-family:'Syne','Archivo',sans-serif;font-weight:800;
-    font-size:clamp(34px,10vw,56px);line-height:.95;letter-spacing:-.03em;margin:0 0 16px;}
-  .intro{margin:0;color:var(--dim);font-size:15.5px;max-width:46ch;}
+    font-size:clamp(25px,6.4vw,34px);line-height:1.02;letter-spacing:-.03em;margin:0 0 10px;}
+  .intro{margin:0;color:var(--dim);font-size:13.5px;max-width:46ch;line-height:1.45;}
   .intro b{color:var(--chalk);font-weight:600;}
 
-  .wxstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:22px;}
-  .wxc{background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:11px 10px;text-align:center;}
+  .wxstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:14px;}
+  .wxc{background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:8px 8px;text-align:center;}
   .wxc .p{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:.14em;
     text-transform:uppercase;color:var(--dim);margin:0 0 5px;}
-  .wxc .t{font-family:'Syne',sans-serif;font-weight:800;font-size:19px;margin:0;color:var(--chalk);}
+  .wxc .t{font-family:'Syne',sans-serif;font-weight:800;font-size:16px;margin:0;color:var(--chalk);}
   .wxc .d{font-size:10.5px;color:var(--dim);margin:2px 0 0;}
 
-  section{margin-top:34px;padding-top:24px;border-top:1px solid var(--rule);}
-  .sechead{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
-    letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:0 0 14px;}
+  section{margin-top:20px;padding-top:16px;border-top:1px solid var(--rule);}
+  .sechead{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:0 0 10px;}
   h2{font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:20px;
     letter-spacing:-.02em;margin:0 0 6px;}
 
-  .leg{display:flex;align-items:center;gap:10px;margin:26px 0 12px;}
+  .leg{display:flex;align-items:center;gap:9px;margin:16px 0 8px;}
   .leg:first-of-type{margin-top:0;}
   .leg i{width:9px;height:9px;border-radius:50%;flex:0 0 auto;}
-  .leg span{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
+  .leg span{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
     letter-spacing:.18em;text-transform:uppercase;color:var(--dim);}
 
   .day{display:block;text-decoration:none;color:inherit;background:var(--raise);
     border:1px solid var(--rule);border-left:3px solid var(--dim);border-radius:3px;
-    padding:15px 16px;margin-bottom:9px;}
+    padding:10px 13px;margin-bottom:6px;}
   .day:hover{background:var(--raise2);}
   .day.alp{border-left-color:var(--alp);}
   .day.cham{border-left-color:var(--cham);}
   .day.bask{border-left-color:var(--bask);}
   .day.none{opacity:.55;cursor:default;}
-  .dtop{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:4px;}
-  .dwhen{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
+  .dtop{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:2px;}
+  .dwhen{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
     letter-spacing:.1em;text-transform:uppercase;color:var(--dim);}
-  .dtag{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:.12em;
+  .dtag{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8px;letter-spacing:.1em;
     text-transform:uppercase;padding:2px 7px;border-radius:2px;white-space:nowrap;}
   .dtag.ok{background:rgba(127,185,138,.14);color:#9BC9A4;border:1px solid rgba(127,185,138,.3);}
   .dtag.todo{background:rgba(224,169,59,.14);color:#EBC078;border:1px solid rgba(224,169,59,.32);}
   .dtag.na{background:transparent;color:var(--dim);border:1px solid var(--rule);}
-  .day h3{font-family:'Syne','Archivo',sans-serif;font-weight:700;font-size:18px;
-    letter-spacing:-.01em;margin:0 0 3px;}
-  .day p{margin:0;font-size:13.5px;color:var(--dim);}
+  .day h3{font-family:'Syne','Archivo',sans-serif;font-weight:700;font-size:15px;
+    letter-spacing:-.01em;margin:0;}
+  .day p{display:none;}
 
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .grid .tool{margin-bottom:0;}
+  .grid .stack{display:grid;gap:8px;}
+  .tool.tall{display:flex;flex-direction:column;justify-content:space-between;height:100%;}
   .tool{display:block;text-decoration:none;color:inherit;background:var(--raise);
-    border:1px solid var(--rule);border-radius:3px;padding:16px 17px;margin-bottom:10px;}
+    border:1px solid var(--rule);border-radius:3px;padding:13px 15px;margin-bottom:8px;}
   .tool:hover{background:var(--raise2);}
   .tool h3{font-family:'Syne','Archivo',sans-serif;font-weight:700;font-size:17px;margin:0 0 4px;}
   .tool p{margin:0;font-size:13.5px;color:var(--dim);}
@@ -84,7 +88,7 @@
   .note p{margin:0;font-size:14px;color:var(--dim);}
   .note b{color:var(--chalk);font-weight:600;}
 
-  footer{margin-top:36px;padding-top:22px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--dim);}
+  footer{margin-top:22px;padding-top:16px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--dim);}
   .sig{margin-top:20px;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
     font-size:13px;color:var(--dim);opacity:.35;user-select:none;}
 </style>
@@ -94,8 +98,8 @@
 
   <header class="top">
     <p class="kicker">1–16 October 2026 · six of us</p>
-    <h1>Switzerland,<br>Chamonix,<br>Basque.</h1>
-    <p class="intro">Sixteen days in one place. <b>Save this link</b> — every day below opens its own page with times, maps and one-tap directions.</p>
+    <h1>Sixteen days.<br>Three countries.</h1>
+    <p class="intro"><b>Save this link.</b> Every day below opens its own page with times, maps and one-tap directions.</p>
 
     <div class="wxstrip">
       <div class="wxc"><p class="p">Grindelwald</p><p class="t" id="w1">—</p><p class="d" id="d1">checking</p></div>
@@ -137,7 +141,7 @@
 
     <a class="day bask" href="french_basque_11Oct.html">
       <div class="dtop"><span class="dwhen">Sun 11</span><span class="dtag ok">Set</span></div>
-      <h3>French Basque coast</h3>
+      <h3>French beach town</h3>
       <p>Ciboure market, Saint-Jean-de-Luz, then Biarritz and the Côte des Basques.</p>
     </a>
 
@@ -159,46 +163,45 @@
       <p>Beach, Ganbara, and every bar we didn't get to. Buy what you're taking home.</p>
     </a>
 
-    <div class="day bask none">
-      <div class="dtop"><span class="dwhen">Thu 15</span><span class="dtag na">No page</span></div>
-      <h3>Fly out · Bilbao → Zürich</h3>
-      <p>Slow morning, then the airport. Night at Zurich.</p>
-    </div>
+    <a class="day bask" href="daycard.html#day15">
+      <div class="dtop"><span class="dwhen">Thu 15</span><span class="dtag na">LX8227 · 20:45</span></div>
+      <h3>Bilbao → Zürich</h3>
+      <p style="display:block;font-size:12px;margin-top:2px">20:45 BIO → 22:40 ZRH · direct, 1h55. Night at the airport hotel.</p>
+    </a>
 
-    <div class="day none">
-      <div class="dtop"><span class="dwhen">Fri 16</span><span class="dtag na">No page</span></div>
+    <a class="day" href="daycard.html#day16">
+      <div class="dtop"><span class="dwhen">Fri 16</span><span class="dtag na">CX382 · 13:30</span></div>
       <h3>Zürich → Hong Kong</h3>
-      <p>13:30.</p>
+      <p style="display:block;font-size:12px;margin-top:2px">13:30 ZRH → HKG. Home.</p>
+    </a>
+  </section>
+
+  <section>
+    <p class="sechead">For the group</p>
+    <div class="grid">
+      <a class="tool tall" href="daycard.html">
+        <div>
+          <h3>Day cards</h3>
+          <p style="display:block">One card per day with a copy button — plain text, straight into WhatsApp.</p>
+        </div>
+        <span class="go">Open →</span>
+      </a>
+      <div class="stack">
+        <a class="tool" href="checklist.html">
+          <h3>Checklist</h3>
+          <span class="go">Open →</span>
+        </a>
+        <a class="tool" href="briefing.html">
+          <h3>Briefing</h3>
+          <span class="go">Open →</span>
+        </a>
+      </div>
     </div>
   </section>
 
-  <section>
-    <p class="sechead">Everything else</p>
-    <h2>The other bits</h2>
-
-    <a class="tool" href="briefing.html">
-      <h3>The one-screen briefing</h3>
-      <p>Compact enough to screenshot and drop straight into WhatsApp. Every fixed time, every booking, every closure — nothing you have to scroll past.</p>
-      <span class="go">Open →</span>
-    </a>
-
-    <a class="tool" href="checklist.html">
-      <h3>Bookings and confirmations</h3>
-      <p>What still needs doing, in date order, with the deadline that actually bites. Tick boxes save on your own phone.</p>
-      <span class="go">Open →</span>
-    </a>
-  </section>
-
-  <section>
-    <p class="sechead">How to use these</p>
-    <h2>Three things worth knowing</h2>
-    <div class="note"><p><b>One-tap directions.</b> Every stop has a <b>Map ↗</b> button. It opens that exact place in Google Maps — the actual pin, not a name search. Tap it and walk.</p></div>
-    <div class="note"><p><b>Whole-day routes.</b> Each page has a route button near the top that chains the entire day together, in order, on foot. <b>Open it before you set out</b> and it stays loaded when signal drops.</p></div>
-    <div class="note"><p><b>Live weather.</b> The three readings above are real, right now. On the mountain days the forecast fills in by itself from about five days out and colours each day green, amber or red <b>at summit height</b> — which is a different thing from valley weather, and the reason most people get it wrong.</p></div>
-  </section>
 
   <footer>
-    <p>Opening hours checked against current listings. Mountain plans move with the weather — anything that changes gets said the night before, not over breakfast.</p>
+    <p style="text-align:center;font-size:14.5px;color:var(--chalk);">每星期做一件無效率但有感覺嘅事</p>
     <p class="sig">¯\_(ツ)_/¯</p>
   </footer>
 
