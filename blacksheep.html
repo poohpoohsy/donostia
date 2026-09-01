@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Saturday in San Sebastián — pintxos hopping</title>
-<meta name="description" content="Eight stops across Donostia. Where to be, when, and what to order.">
+<title>Saturday in San Sebastián — pintxos, then Monte Igueldo</title>
+<meta name="description" content="Eight stops across Donostia, then the little boat and the little cart on Monte Igueldo. Where to be, when, and what to order.">
 <meta property="og:title" content="Saturday in San Sebastián">
-<meta property="og:description" content="Seven stops before two, one at six. Meet 09:55 at Elkano Kalea 1.">
+<meta property="og:description" content="Seven stops before two, Monte Igueldo at four, tortilla at six. Meet 09:55 at Elkano Kalea 1.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -87,10 +87,11 @@
   }
   .chart-inner{min-width:430px;}
   .axis{
-    display:grid;grid-template-columns:repeat(7,1fr);margin-left:92px;
+    position:relative;height:13px;margin-left:92px;
     padding-bottom:7px;border-bottom:1px solid var(--rule);
     font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;color:var(--dim);
   }
+  .axis span{position:absolute;top:0;}
   .row{display:flex;align-items:center;height:30px;}
   .row-name{
     width:92px;flex:0 0 92px;padding-right:11px;text-align:right;
@@ -100,7 +101,7 @@
   .track{position:relative;flex:1;height:100%;}
   .track::before{
     content:"";position:absolute;inset:0;
-    background:repeating-linear-gradient(90deg,var(--rule) 0 1px,transparent 1px calc(100%/7));
+    background:repeating-linear-gradient(90deg,var(--rule) 0 1px,transparent 1px 18.1818%);
   }
   .open{
     position:absolute;top:11px;height:8px;border-radius:1px;
@@ -112,6 +113,7 @@
     content:attr(data-n);position:absolute;top:-13px;left:50%;transform:translateX(-50%);
     font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;color:var(--gold);
   }
+  .sw-gap{background:transparent;border:1px dashed var(--alarm);}
   .legend{
     display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:14px;padding-top:11px;
     border-top:1px solid var(--rule);
@@ -302,8 +304,8 @@
 
   <header class="top">
     <p class="kicker">Saturday 10 October · Donostia</p>
-    <h1>Seven by two,<br>one at six.</h1>
-    <p class="intro" style="margin:16px 0 0;color:var(--dim);font-size:15.5px;">We leave the hotel together at <b style="color:var(--chalk)">09:10</b>. Seven stops done by half two, the afternoon free, then back out for the tortilla at quarter past six.</p>
+    <h1>Seven by two,<br>the park at four.</h1>
+    <p class="intro" style="margin:16px 0 0;color:var(--dim);font-size:15.5px;">We leave the hotel together at <b style="color:var(--chalk)">09:10</b>. Seven stops done by lunch, <b style="color:var(--chalk)">hard stop at Manojo at 15:00</b>, up Monte Igueldo for the boat and the cart, then back out for the tortilla at quarter past six.</p>
 
     <div class="today">
       <span class="tdot" id="tdot"></span>
@@ -314,28 +316,30 @@
       </div>
     </div>
     <div class="routebox">
-      <p>The food route in Google Maps — all nine stops, walking, in order. Save it before you lose signal.</p>
+      <p>The food route in Google Maps — all nine stops, walking, in order. Save it before you lose signal. The afternoon leg out to the <b>Monte Igueldo amusement park</b> is the second button.</p>
       <a class="routebtn" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Motx%20Coffee%2C%20Donostia&origin_place_id=ChIJDzdE7EqlUQ0RyXoCIS0CdnA&destination=SUA.MUKA.%2C%20Donostia&destination_place_id=ChIJ0V8LmealUQ0R6U7aRwwkhPM&waypoints=Elkano%201%20-%20Gaztagune%2C%20Donostia%7CRafa%20Gorrotxategi%2C%20Donostia%7CSan%20Martin%20Merkatua%2C%20Donostia%7CBouiboui%20Shop%2C%20Donostia%7CBodega%20Klandestina%2C%20Donostia%7CManojo%2C%20Donostia%7CAntonio%20taberna%2C%20Donostia&waypoint_place_ids=ChIJwSQUAE6lUQ0RI-pk5m8e6VQ%7CChIJZar6yM-lUQ0REfKvZcuEXY8%7CChIJNbKD4VOlUQ0RA0e4gEExwJI%7CChIJM87Iwf30XIsR8Ot1wd2iB0I%7CChIJD_K7jNqlUQ0R5hgFyMuzk0M%7CChIJz3U4SRWlUQ0R4SAgDpt0FpQ%7CChIJ6T6eVVClUQ0Rr67NXUZTqSw" target="_blank" rel="noopener">Open the full route ↗</a>
+      <a class="routebtn" style="margin-top:10px;background:var(--sea)" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Manojo%2C%20Donostia&destination=Parque%20de%20Atracciones%20Monte%20Igueldo&destination_place_id=ChIJ96pnLpi6UQ0Rwshthamc4qg&waypoints=Peine%20del%20Viento%2C%20Donostia%7CFunicular%20Monte%20Igueldo" target="_blank" rel="noopener">Open the Igueldo route ↗</a>
     </div>
     </header>
 
   <section class="rules">
-    <h2>Three things before we start</h2>
+    <h2>Four things before we start</h2>
     <ul>
       <li><span></span><div>Come hungry, and <b>don't fill up at stop one</b>. Seven of them before two o'clock.</div></li>
       <li><span></span><div>One bite and one drink per stop, standing, then we move. <b>This is how Basques eat</b> — nobody sits for three hours.</div></li>
       <li><span></span><div>Some of these are tiny shops and we're six. <b>Expect to be cosy</b>, and be ready to step outside with a plate.</div></li>
+      <li><span></span><div><b>We leave Manojo at 15:00 whatever is left on the table.</b> That is what makes the <b>Monte Igueldo amusement park</b> possible — it shuts for siesta and only reopens at four, and we have to be back for the tortilla at six.</div></li>
     </ul>
   </section>
 
   <section class="clockbox">
     <h2>Why we go early</h2>
-    <p class="why">Each bar is how long a place stays open on a Saturday. The gold marks are when we arrive. <b>The red ones shut at two</b> — that's why the morning is packed and the afternoon is free.</p>
+    <p class="why">Each bar is how long a place stays open on a Saturday. The gold marks are when we arrive. <b>The red ones shut at two</b> — that's why the morning is packed. The bottom row is the <b>Monte Igueldo amusement park</b>, and its own two-hour siesta gap is why the afternoon lands where it does.</p>
 
     <div class="chart">
       <div class="chart-inner">
         <div class="axis" aria-hidden="true">
-          <span>09:00</span><span>11:00</span><span>13:00</span><span>15:00</span><span>17:00</span><span>19:00</span>
+          <span style="left:0%">09:00</span><span style="left:18.18%">11:00</span><span style="left:36.36%">13:00</span><span style="left:54.55%">15:00</span><span style="left:72.73%">17:00</span><span style="left:90.91%">19:00</span>
         </div>
 
         <div class="row"><div class="row-name">Motx</div><div class="track">
@@ -366,18 +370,24 @@
           <div class="open" style="left:31.8%;width:68.2%;animation-delay:.6s"></div>
           <div class="hit" data-n="6" style="left:34.1%;animation-delay:.10s"></div></div></div>
 
+        <div class="row"><div class="row-name">Igueldo</div><div class="track">
+          <div class="open tight" style="left:20.5%;width:25.0%;animation-delay:.7s"></div>
+          <div class="open" style="left:63.6%;width:36.4%;animation-delay:.7s"></div>
+          <div class="hit" data-n="山" style="left:63.6%;animation-delay:.11s"></div></div></div>
+
         <div class="row"><div class="row-name">Antonio</div><div class="track">
-          <div class="open" style="left:0%;width:100%;animation-delay:.7s"></div>
-          <div class="hit" data-n="7" style="left:84.1%;animation-delay:.11s"></div></div></div>
+          <div class="open" style="left:0%;width:100%;animation-delay:.8s"></div>
+          <div class="hit" data-n="7" style="left:84.1%;animation-delay:.12s"></div></div></div>
 
         <div class="legend">
           <span><i class="sw-open"></i>Open</span>
           <span><i class="sw-tight"></i>Shuts at 14:00</span>
+          <span><i class="sw-gap"></i>Igueldo siesta</span>
           <span><i class="sw-hit"></i>We arrive</span>
         </div>
       </div>
     </div>
-    <p class="crunch">Stops <b>4 and 5</b> are the tight ones — three places that close at two. Everything before is paced to get us there, and <b>stop 7 waits until six</b> because that's when the tortilla comes out.</p>
+    <p class="crunch">Stops <b>4 and 5</b> are the tight ones — three places that close at two. Everything before is paced to get us there. <b>Igueldo shuts 14:00–16:00 for siesta</b>, which is exactly why we eat until three and go up at four, and <b>stop 7 waits until six</b> because that's when the tortilla comes out.</p>
   </section>
 
   <section class="stops">
@@ -437,38 +447,103 @@
       <span class="warn">Shuts at 14:00</span>
     </article>
 
-    <article class="stop" data-start="12:45" data-end="14:30">
+    <article class="stop" data-start="12:45" data-end="15:00">
       <p class="clock">12:45 <span class="walk">6 MIN WALK</span></p>
       <h3>6 · Manojo</h3>
       <p class="addr">José Arana Kalea 13 · lunch  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Manojo%2C%20Donostia&query_place_id=ChIJz3U4SRWlUQ0R4SAgDpt0FpQ" target="_blank" rel="noopener">Map ↗</a></p>
       <p class="order"><span class="tag">Order this</span>Navajas — razor clams — then share three or four plates.</p>
       <p class="note"><b>Only possible on a Saturday</b>: every other day this place opens at five. We finally sit down. Short market-driven menu that changes on whatever came in that morning, plus bonito with leche de tigre and handmade tagliatelle with clams.</p>
-      <span class="warn">Book ahead · shut Wednesdays</span>
+      <span class="warn">Book ahead · shut Wednesdays · we leave at 15:00 sharp</span>
     </article>
 
-    <article class="stop">
-      <p class="clock">14:30 → 18:00 <span class="walk">FREE</span></p>
-      <h3>Shop &amp; culture</h3>
-      <p class="note">Nothing here is compulsory. Skip the lot and sleep if you'd rather — <b>we meet again at Antonio at quarter past six.</b></p>
+    <article class="stop" data-start="15:00" data-end="17:45">
+      <p class="clock">15:00 → 17:45 <span class="walk">THE NEW BIT</span></p>
+      <h3>Monte Igueldo</h3>
+      <p class="addr">Paseo de Igeldo 183 · funfair on a cliff  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Parque%20de%20Atracciones%20Monte%20Igueldo&query_place_id=ChIJ96pnLpi6UQ0Rwshthamc4qg" target="_blank" rel="noopener">Map ↗</a></p>
+      <p class="order"><span class="tag">Ride these two</span>Río Misterioso 小船, then Montaña Suiza 小火車.</p>
+      <p class="note">The 1912 funfair on the headland at the far west end of the bay — the one in the reel. <b>Everything else up there is skippable.</b> Two rides, about €3 each, and the terrace between them.</p>
+      <span class="warn">Park shuts 14:00–16:00 · we go up at 16:00</span>
 
       <div class="sc">
-        <h4>A route, if you want one</h4>
-        <p class="lede">Beach → old town → viewpoint. Roughly 3km, all flat except the climb at the end.</p>
+        <h4>The two rides</h4>
+        <p class="lede">This is the whole reason we're on the hill. Do them in this order — the boat while the light is still high, the cart after.</p>
 
-      <div class="scr"><div class="sct">14:30</div><div class="scb">
-        <b>Paseo de La Concha</b><p>Walk the bay first — you have just eaten a lot and the promenade is flat. Twenty minutes resets everybody.</p>
-        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Paseo%20de%20La%20Concha%2C%20Donostia&query_place_id=ChIJP_E2zau6UQ0R7b-CzcGsb8Y" target="_blank" rel="noopener">Map ↗</a>
+      <div class="scr"><div class="sct">16:05</div><div class="scb">
+        <b>Río Misterioso 小船</b><p>The wooden boat. It runs along the outside of the cliff with the whole bay below you, then ducks into a tunnel and comes out the other side. Two minutes, about €3, and it is the shot everybody sent each other. <b>Sit at the back for the view over the bow.</b></p>
       </div></div>
-      <div class="scr"><div class="sct">15:00</div><div class="scb">
-        <b>Café de La Concha</b><p><b>Rest stop.</b> Coffee facing the beach. Open till 23:00. Pricier than town and only 3.8, but the terrace is the point.</p>
-        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Caf%C3%A9%20de%20La%20Concha%2C%20Donostia&query_place_id=ChIJFV8mqKm6UQ0RWZbNIQTN8Yc" target="_blank" rel="noopener">Map ↗</a>
+      <div class="scr"><div class="sct">16:30</div><div class="scb">
+        <b>Montaña Suiza 小火車</b><p>The little blue carts, open-topped, on a track that runs right along the cliff edge. Built 1928 and it feels it. 400m, about 50km/h, ninety seconds, roughly €2.50. <b>Hold onto your phone properly</b> — there is nothing between you and the sea.</p>
       </div></div>
-      <div class="scr"><div class="sct">15:30</div><div class="scb">
-        <b>Konstituzio Plaza</b><p>The old town square, and the middle of everything below. All three shops are within 200m.</p>
-        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Constituci%C3%B3n%20Plaza%2C%20Donostia&query_place_id=ChIJ99dMuk2lUQ0Ruon3ZBJmFqk" target="_blank" rel="noopener">Map ↗</a>
+      <div class="scr"><div class="sct">16:45</div><div class="scb">
+        <b>The terrace, and the group photo</b><p>Free once you're in. The classic frame is the whole of La Concha with Santa Clara island in the middle. This is the postcard everybody recognises. The Torreón tower costs €3 or €4 extra and you do not need it.</p>
       </div></div>
+      <div class="scr"><div class="sct">17:20</div><div class="scb">
+        <b>Down, and back to town</b><p><b>Taxi, not the funicular.</b> The queue going down is the known bottleneck and 18:15 at Antonio is not negotiable. Straight to Bergara Kalea, about ten minutes.</p>
+      </div></div>
+      </div>
+
+      <div class="sc">
+        <h4>The photos · 影相位</h4>
+        <p class="lede">Five spots, in the order you'll walk past them. The first one is before we even get on the funicular. <b>Each row has a link so you can see the shot before we're standing there.</b></p>
+        <a class="maplink" href="https://www.instagram.com/popular/monte-igueldo/" target="_blank" rel="noopener">143K reels tagged Monte Igueldo ↗</a>
+        <a class="maplink" href="https://www.instagram.com/igueldomonte/" target="_blank" rel="noopener">@igueldomonte, the park's own feed ↗</a>
+
+      <div class="scr"><div class="sct">1</div><div class="scb">
+        <b>Peine del Viento 風之梳</b><p><b>At the bottom, five minutes from the funicular square.</b> Chillida's rusted iron claws bolted into the rock at the end of Ondarreta, with the sea blowing through them. Free, always open. If we walk out, we pass it anyway — worth ten minutes before we go up.</p>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Peine%20del%20Viento%2C%20Donostia" target="_blank" rel="noopener">Map ↗</a>
+      </div></div>
+      <div class="scr"><div class="sct">2</div><div class="scb">
+        <b>The funicular window</b><p>Wooden carriage on a cog railway, running since 1912, and the bay opens up sideways as it climbs. <b>Stand at the downhill end</b> and shoot out and back over the city. Three minutes, so have the phone out before it moves.</p>
+        <a class="maplink" href="https://www.instagram.com/reel/DL9lbHUMpcU/" target="_blank" rel="noopener">What it looks like ↗</a>
+      </div></div>
+      <div class="scr"><div class="sct">3</div><div class="scb">
+        <b>Río Misterioso 小船 — the reel shot</b><p><b>This is the one everybody sent.</b> Don't all ride together. <b>Three ride, three shoot.</b> Three of us get in the boat, three stay on the path above and film down as it comes round the outside of the cliff with the bay behind. Then swap and pay again — it's about €3, nobody will mind. <b>Shoot in slow-mo</b>, the boat is slower than it looks.</p>
+        <a class="maplink" href="https://www.instagram.com/reel/DV357JtDCT-/" target="_blank" rel="noopener">What it looks like ↗</a>
+        <a class="maplink" href="https://www.instagram.com/reel/DLxRIa3tast/" target="_blank" rel="noopener">Second angle ↗</a>
+      </div></div>
+      <div class="scr"><div class="sct">4</div><div class="scb">
+        <b>Montaña Suiza 小火車 on the cliff bend</b><p>Same trick — <b>Three ride, three shoot.</b> The seaward bend is where the carts sit against nothing but open water. <b>From inside the cart, film forwards over the row in front</b>, not sideways; sideways is just sky.</p>
+        <a class="maplink" href="https://www.instagram.com/reel/DUi0K5KjF-Y/" target="_blank" rel="noopener">What it looks like ↗</a>
+      </div></div>
+      <div class="scr"><div class="sct">5</div><div class="scb">
+        <b>The terrace — the group photo</b><p>The postcard: the whole curve of La Concha with <b>Santa Clara island dead centre</b> and the city behind. Stand at the stone balustrade and shoot back at the group with the bay behind them. <b>Best light is late afternoon</b>, which is exactly when we're there. The Torreón — an old wood-fired lighthouse — charges extra for a higher version of the same view. Skip it.</p>
+        <a class="maplink" href="https://sansebastianturismoa.eus/en/to-do/hills/mount-igeldo/" target="_blank" rel="noopener">The official view ↗</a>
+      </div></div>
+      <div class="scr"><div class="sct">+</div><div class="scb">
+        <b>Three rules</b><p><b>Wrist strap or zip pocket on both rides.</b> There is nothing between the track and the sea, and no one is getting a phone back. <b>Bring cash</b> — rides are paid one at a time and cards aren't reliable up there. And the whole park is faded Belle Époque paintwork and hand-painted signs — <b>shoot the peeling blue and gold detail</b>, not just the view. That's the bit that doesn't look like everyone else's San Sebastián photos.</p>
+      </div></div>
+      </div>
+
+      <div class="sc">
+        <h4>Getting there · 交通</h4>
+        <p class="lede">We are aiming for <b>Funicular Plaza</b>, at the bottom of the hill behind Ondarreta beach. Meet there at 16:00.</p>
+
+      <div class="scr"><div class="sct">行路</div><div class="scb">
+        <b>Walk it — 60 min, free</b><p>Leave Manojo at 15:00. West over the Kursaal bridge, along La Concha, past Ondarreta, and you arrive at the funicular square. Flat the whole way, and it walks off the lunch.</p>
+        <a class="maplink" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Manojo%2C%20Donostia&destination=Funicular%20de%20Monte%20Igueldo%2C%20Donostia" target="_blank" rel="noopener">Walking route ↗</a>
+      </div></div>
+      <div class="scr"><div class="sct">巴士</div><div class="scb">
+        <b>Dbus line 16 — about 15 min, ~€2</b><p>Board at <b>Boulevard 19</b> or Avenida de la Libertad, get off at <b>Funikularea</b> — the stop is right in front of the funicular square. Every 15–30 minutes. <b>Do not stay on to Igeldo village at the top</b>; that stop is a kilometre from the gate along a road with no footpath.</p>
+        <a class="maplink" href="https://dbus.eus/es/16-igeldo/" target="_blank" rel="noopener">Line 16 timetable ↗</a>
+      </div></div>
+      <div class="scr"><div class="sct">的士</div><div class="scb">
+        <b>Taxi — 6–10 min, ~€15–20 the car</b><p>Two cars for six. Worth it if we are behind at Manojo. Ask for <i>el funicular de Igueldo</i>, not the park, unless you want to be driven all the way up.</p>
+      </div></div>
+      <div class="scr"><div class="sct">纜車</div><div class="scb">
+        <b>Funicular up — 3 min, ~€4.75 return</b><p>Running since 1912, oldest in the Basque Country, 320m up the hillside. Every 15 minutes. <b>Buy singles, not returns</b>, since we are taxiing down — and have coins, the ride kiosks up top prefer cash.</p>
+        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Funicular%20Monte%20Igueldo&query_place_id=ChIJeR2P9aK6UQ0Rea0xEhydVwo" target="_blank" rel="noopener">Funicular square ↗</a>
+      </div></div>
+      </div>
+
+      <p class="note" style="margin-top:16px">⚠️ <b>Someone has to ring the park before we fly: +34 943 213 525.</b> October is low season and the schedule shrinks. Ask two things — does the 16:00–20:00 afternoon session run on Saturdays, and are <b>both</b> Río Misterioso and Montaña Suiza operating. If the answer is no, we move it to the free afternoon on <b>Wednesday 14th</b> after Ganbara.</p>
+      <p class="note">🌧 <b>Both rides are open-air.</b> If it's wet, drop the hill and use the old-town loop below, then try again on the 14th.</p>
+
+      <div class="sc">
+        <h4>If you're skipping the hill</h4>
+        <p class="lede">Or if it rains. The old-town loop still stands — all of it within 200m of Konstituzio Plaza. <b>We meet at Antonio at quarter past six either way.</b></p>
+
       <div class="scr"><div class="sct">15:35</div><div class="scb">
-        <b>Koloreka</b><p><b>The one worth going for.</b> 4.9 — minimal art prints of the city by a local artist, in a converted butcher's shop. Till 21:00.</p>
+        <b>Koloreka</b><p><b>The one worth going for.</b> 4.9 — minimal art prints of the city by a local artist, in a converted butcher's shop. Till 21:00, so this one also works <i>after</i> Antonio.</p>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Koloreka%2C%20Donostia&query_place_id=ChIJmT0KoU2lUQ0RAqqehzcAkaE" target="_blank" rel="noopener">Map ↗</a>
       </div></div>
       <div class="scr"><div class="sct">16:00</div><div class="scb">
@@ -483,16 +558,13 @@
         <b>Basílica Santa María</b><p>Baroque, at the end of the old town's prettiest street. €3, and quiet.</p>
         <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Koruko%20Andre%20Mariaren%20basilika%2C%20Donostia&query_place_id=ChIJrSaC002lUQ0Rnize-8TrLts" target="_blank" rel="noopener">Map ↗</a>
       </div></div>
-      <div class="scr"><div class="sct">17:00</div><div class="scb">
-        <b>Monte Urgull</b><p><b>Free, till 21:00.</b> Thirty minutes up through the trees to the castle. Best view of the bay in the city. Skip if legs have gone.</p>
-        <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Monte%20Urgull%2C%20Donostia&query_place_id=ChIJdTG5OrO6UQ0RX6mBaN5vrP0" target="_blank" rel="noopener">Map ↗</a>
-      </div></div>
 
-        <a class="scbtn" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=43.3144134,-1.9914711&destination=43.3252324,-1.9898449&waypoints=43.3156828,-1.9885929%7C43.3236924,-1.9848650%7C43.3233500,-1.9854984%7C43.3237890,-1.9846092%7C43.3238369,-1.9866066%7C43.3236433,-1.9881727" target="_blank" rel="noopener">Open the shop &amp; culture route ↗</a>
+        <a class="scbtn" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=43.3236924,-1.9848650&destination=43.3236433,-1.9881727&waypoints=43.3233500,-1.9854984%7C43.3237890,-1.9846092%7C43.3238369,-1.9866066" target="_blank" rel="noopener">Open the old-town loop ↗</a>
       </div>
 
       <p class="note" style="margin-top:16px">⚠️ <b>Edible souvenirs have to be bought this morning.</b> Aitor Lasa shuts at 14:30 on Saturdays and Chocolates de Mendaro at 13:30. That's what Bouiboui and Klandestina are for at stops 4 and 5.</p>
       <p class="note"><b>San Telmo Museum</b> is also open till 20:00 if it rains — Basque history inside an old convent, and free on Tuesdays. <a href="https://www.google.com/maps/search/?api=1&query=San%20Telmo%20Museum%2C%20Donostia&query_place_id=ChIJVZOYN0ylUQ0ReHvJLYkPSBc" target="_blank" rel="noopener">Map ↗</a></p>
+      <p class="note"><b>Monte Urgull is not on today's list</b> — we're doing the sunset drink up there on Monday the 12th after Getaria. <b>Café de La Concha</b> has come off too; the walk west replaces it.</p>
     </article>
 
     <article class="stop" data-start="18:15" data-end="19:15">
@@ -517,10 +589,11 @@
 
   <section class="hours">
     <h2>Opening hours, whole week</h2>
-    <p class="lede">Checked on Google. Swipe the table sideways. <b>Saturday is the column that matters</b> — everything else is here in case we shuffle.</p>
+    <p class="lede">Checked on Google, plus the <b>Monte Igueldo amusement park</b> and its funicular at the bottom. Swipe the table sideways. <b>Saturday is the column that matters</b> — everything else is here in case we shuffle.</p>
     <div class="tblwrap">
-      <table><tr><th class="v">&nbsp;</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th class="go">Sat</th><th>Sun</th></tr><tr><td class="v">Motx</td><td>8–17</td><td>8–19</td><td>8–19</td><td>8–19</td><td>8–19</td><td class="go">8–19</td><td>8–19</td></tr><tr><td class="v">Elkano 1</td><td class="shut">shut</td><td>10–14<br>16:30–20</td><td>10–14<br>16:30–20</td><td>10–14<br>16:30–20</td><td>10–14<br>16:30–20</td><td class="go">10–14<br>16:30–20</td><td class="shut">shut</td></tr><tr><td class="v">Gorrotxategi</td><td>9–20</td><td>9–20</td><td>9–20</td><td>9–20</td><td>9–20</td><td class="go">9–20</td><td>9–20</td></tr><tr><td class="v">Garrarte</td><td>10:30–22</td><td>10:30–22</td><td>10:30–22</td><td>10:30–22</td><td>10:30–22</td><td class="go">10:30–22</td><td>10:30–22</td></tr><tr><td class="v">San Martín</td><td>7:30–23:30</td><td>7:30–23:30</td><td>7:30–23:30</td><td>7:30–23:30</td><td>7:30–23:30</td><td class="go">7:30–23:30</td><td>8–14</td></tr><tr><td class="v">Bouiboui</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td class="go">11–14<br>16–19:30</td><td class="shut">shut</td></tr><tr><td class="v">Klandestina</td><td>10:30–14<br>17–20</td><td>11:30–14<br>17–20</td><td>10:30–14<br>17–20</td><td>10:30–14<br>17–20</td><td>10:30–14<br>17–20</td><td class="go">11:30–14<br>17–20</td><td class="shut">shut</td></tr><tr><td class="v">Manojo</td><td>17–24</td><td>17–24</td><td class="shut">shut</td><td>17–24</td><td>17–00:45</td><td class="go">12:30–00:45</td><td>17–24</td></tr><tr><td class="v">Antonio</td><td>9–23</td><td>9–23</td><td>9–23</td><td>9–23</td><td>9–23</td><td class="go">9–23</td><td class="shut">shut</td></tr><tr><td class="v">SUA.MUKA</td><td>12–23</td><td>12–23</td><td>12–23</td><td>12–23</td><td>12–23</td><td class="go">12–23</td><td>12–20</td></tr></table>
+      <table><tr><th class="v">&nbsp;</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th class="go">Sat</th><th>Sun</th></tr><tr><td class="v">Motx</td><td>8–17</td><td>8–19</td><td>8–19</td><td>8–19</td><td>8–19</td><td class="go">8–19</td><td>8–19</td></tr><tr><td class="v">Elkano 1</td><td class="shut">shut</td><td>10–14<br>16:30–20</td><td>10–14<br>16:30–20</td><td>10–14<br>16:30–20</td><td>10–14<br>16:30–20</td><td class="go">10–14<br>16:30–20</td><td class="shut">shut</td></tr><tr><td class="v">Gorrotxategi</td><td>9–20</td><td>9–20</td><td>9–20</td><td>9–20</td><td>9–20</td><td class="go">9–20</td><td>9–20</td></tr><tr><td class="v">Garrarte</td><td>10:30–22</td><td>10:30–22</td><td>10:30–22</td><td>10:30–22</td><td>10:30–22</td><td class="go">10:30–22</td><td>10:30–22</td></tr><tr><td class="v">San Martín</td><td>7:30–23:30</td><td>7:30–23:30</td><td>7:30–23:30</td><td>7:30–23:30</td><td>7:30–23:30</td><td class="go">7:30–23:30</td><td>8–14</td></tr><tr><td class="v">Bouiboui</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td class="go">11–14<br>16–19:30</td><td class="shut">shut</td></tr><tr><td class="v">Klandestina</td><td>10:30–14<br>17–20</td><td>11:30–14<br>17–20</td><td>10:30–14<br>17–20</td><td>10:30–14<br>17–20</td><td>10:30–14<br>17–20</td><td class="go">11:30–14<br>17–20</td><td class="shut">shut</td></tr><tr><td class="v">Manojo</td><td>17–24</td><td>17–24</td><td class="shut">shut</td><td>17–24</td><td>17–00:45</td><td class="go">12:30–00:45</td><td>17–24</td></tr><tr><td class="v">Antonio</td><td>9–23</td><td>9–23</td><td>9–23</td><td>9–23</td><td>9–23</td><td class="go">9–23</td><td class="shut">shut</td></tr><tr><td class="v">Igueldo park</td><td>11:15–14<br>16–20</td><td>11:15–14<br>16–20</td><td>11:15–14<br>16–20</td><td>11:15–14<br>16–20</td><td>11:15–14<br>16–20</td><td class="go">11:15–14<br>16–20</td><td>11:15–14<br>16–20</td></tr><tr><td class="v">Funicular</td><td>10:30–21</td><td>10:30–21</td><td>10:30–21</td><td>10:30–21</td><td>10:30–21</td><td class="go">10:30–21</td><td>10:30–21</td></tr><tr><td class="v">SUA.MUKA</td><td>12–23</td><td>12–23</td><td>12–23</td><td>12–23</td><td>12–23</td><td class="go">12–23</td><td>12–20</td></tr></table>
     </div>
+    <p class="hnote">⚠️ <b>The Igueldo row is the summer schedule and is the one thing here I could not verify for October.</b> Ring +34 943 213 525 before we go. Everything else was checked on Google.</p>
     <p class="hnote"><b>Sunday is dead</b> — five of the eight are shut. <b>Wednesday</b> loses Manojo. <b>Saturday is the only day Manojo opens at 12:30</b> instead of five, which is what makes a lunch stop possible and the whole morning shape work. Lurka has closed permanently — Gorrotxategi and Garrarte replace it, and both open every day.</p>
   </section>
 
@@ -582,7 +655,8 @@
     <h2>Practical</h2>
     <p><b>Budget roughly €60–90 each</b> — a rough estimate, not a quote. Manojo is the one real meal and the biggest single line.</p>
     <p><b>Bring cash.</b> Most of these won't split a bill six ways. I'll pay at each stop and we'll settle up at Manojo.</p>
-    <p><b>Walking:</b> roughly 2km in the morning, and about the same again in the evening. The shop &amp; culture loop adds another 3km if you do all of it. All flat except Monte Urgull.</p>
+    <p><b>Walking:</b> roughly 2km in the morning, and about the same again in the evening. <b>The walk out to the funicular is 4.5km and takes an hour</b>, flat the whole way — bus 16 or a taxi if you'd rather not.</p>
+    <p><b>Budget for the hill:</b> under €70 for all six. Funicular about €4.75 return or roughly half that one way, and rides are pay-as-you-go from about €2.30 — the two we want are around €3 each. <b>Bring cash.</b> Plus two taxis down.</p>
     <p><b>Book Manojo.</b> Saturday lunch for six isn't a walk-in.</p>
   </div>
 
@@ -600,7 +674,7 @@
     var now = new Date();
     var nowMins = now.getHours() * 60 + now.getMinutes();
     document.querySelectorAll('.stop').forEach(function (el) {
-      if (!el.dataset.start || !el.dataset.end) return;   // the free-afternoon card has no times
+      if (!el.dataset.start || !el.dataset.end) return;   // skip any card without times
       var s = mins(el.dataset.start), e = mins(el.dataset.end);
       if (nowMins >= s && nowMins < e) el.classList.add('now');
     });
