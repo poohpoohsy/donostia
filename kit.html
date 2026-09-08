@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What to bring, day by day</title>
+<meta property="og:title" content="Hiking kit — day by day">
+<meta property="og:description" content="Which days need boots, poles, sun or cold kit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#0D1214; --raise:#161D21; --raise2:#1D262B;
+    --chalk:#EAE9E5; --dim:#88969C;
+    --alp:#8ECDEC; --cham:#D9A441; --bask:#E8547C;
+    --go:#7FB98A; --warn:#E0A93B; --stop:#D4614E;
+    --rule:rgba(234,233,229,.13); --pad:clamp(16px,5vw,36px);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--ground);color:var(--chalk);
+    font-family:'Archivo',system-ui,-apple-system,sans-serif;font-size:16px;line-height:1.55;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:660px;margin:0 auto;padding:0 var(--pad) 60px}
+
+  .top{padding:24px 0 0}
+  .kicker{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;font-weight:600;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--dim);margin:0 0 10px}
+  h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(24px,6.2vw,32px);
+    line-height:1.03;letter-spacing:-.03em;margin:0 0 10px}
+  .intro{margin:0;color:var(--dim);font-size:13.5px;line-height:1.45}
+  .intro b{color:var(--chalk);font-weight:600}
+
+  section{margin-top:24px;padding-top:18px;border-top:1px solid var(--rule)}
+  .sechead{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:0 0 9px}
+  h2{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.02em;margin:0 0 6px}
+  .why{margin:0 0 14px;font-size:14px;color:var(--dim)}
+  .why b{color:var(--chalk);font-weight:600}
+
+  .tblwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;background:var(--raise);
+    border:1px solid var(--rule);border-radius:3px;padding:4px 10px}
+  table{border-collapse:collapse;width:100%;min-width:520px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px}
+  th,td{padding:8px 5px;text-align:center;border-bottom:1px solid var(--rule);white-space:nowrap}
+  tr:last-child td{border-bottom:0}
+  th{color:var(--dim);font-weight:600;font-size:8.5px;letter-spacing:.08em;text-transform:uppercase}
+  th.v,td.v{text-align:left;color:var(--chalk);font-weight:600;position:sticky;left:0;
+    background:var(--raise);min-width:132px;font-family:'Archivo',sans-serif;font-size:12.5px}
+  td{color:var(--dim)}
+  .yes{color:var(--go);font-size:14px}
+  .opt{color:var(--dim);opacity:.7;font-size:12px}
+  .cold{color:var(--alp)}
+  .hot{color:var(--warn)}
+  th.hard{color:var(--stop)}
+  td.v small{display:block;font-family:'IBM Plex Mono',monospace;font-size:9.5px;
+    color:var(--dim);font-weight:400;margin-top:2px}
+
+  .key{display:flex;flex-wrap:wrap;gap:7px 18px;margin-top:12px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;color:var(--dim)}
+
+  .item{padding:14px 0;border-bottom:1px solid var(--rule)}
+  .item:last-child{border-bottom:0}
+  .item h3{font-family:'Syne',sans-serif;font-weight:700;font-size:17px;margin:0 0 5px}
+  .item p{margin:0;font-size:14px;color:var(--dim)}
+  .item p + p{margin-top:7px}
+  .item b{color:var(--chalk);font-weight:600}
+  .tag{display:inline-block;margin-left:8px;padding:2px 7px;border-radius:2px;vertical-align:2px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8.5px;letter-spacing:.1em;
+    text-transform:uppercase}
+  .tag.must{background:rgba(127,185,138,.14);color:#9BC9A4;border:1px solid rgba(127,185,138,.3)}
+  .tag.maybe{background:rgba(224,169,59,.13);color:#EBC078;border:1px solid rgba(224,169,59,.3)}
+  .tag.skip{background:transparent;color:var(--dim);border:1px solid var(--rule)}
+
+  .box{background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:15px 16px;margin-top:14px}
+  .box.alert{background:rgba(212,97,78,.08);border-color:rgba(212,97,78,.28);border-left:3px solid var(--stop)}
+  .box.ok{background:rgba(127,185,138,.07);border-color:rgba(127,185,138,.25);border-left:3px solid var(--go)}
+  .box h4{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;letter-spacing:.16em;
+    text-transform:uppercase;margin:0 0 8px;color:var(--dim)}
+  .box.alert h4{color:#EA9482} .box.ok h4{color:#9BC9A4}
+  .box p{margin:0 0 9px;font-size:14px;color:var(--dim)}
+  .box p:last-child{margin:0}
+  .box b{color:var(--chalk);font-weight:600}
+
+  footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--rule);font-size:13px;color:var(--dim)}
+  footer a{color:var(--alp)}
+  .sig{margin-top:18px;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:13px;color:var(--dim);opacity:.35;user-select:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <p class="kicker">1–16 October 2026</p>
+    <h1>What to bring,<br>day by day.</h1>
+    <p class="intro"><b>Only four days actually need hiking kit.</b> The rest is city walking in mild weather. Worth knowing before anyone packs boots for sixteen days.</p>
+  </header>
+
+  <!-- ============ THE WALKING DAYS ============ -->
+  <section>
+    <p class="sechead">First, the honest picture</p>
+    <h2>Which days involve walking</h2>
+    <p class="why">Distance, height and ground — because those three decide everything below.</p>
+    <div class="tblwrap">
+      <table>
+        <tr>
+          <th class="v">&nbsp;</th><th>Distance</th><th>Height</th><th>Ground</th><th>Temp</th>
+        </tr>
+        <tr><td class="v">Fri 2 · Waterfalls<br><small>+ Mürren cliff walk</small></td>
+          <td>~7 km</td><td>1,638 m</td><td>Path + wet steps</td><td class="cold">4–15°</td></tr>
+        <tr><td class="v">Sat 3 · Panorama Trail<br><small>+ First</small></td>
+          <td>~6 km</td><td>2,343 m</td><td>Wide, flat</td><td class="cold">4–15°</td></tr>
+        <tr><td class="v">Sun 4 · Jungfraujoch<br><small>+ walk to Heubode</small></td>
+          <td>~2 km</td><td>3,454 m</td><td>Indoors + ice</td><td class="cold">−6 to −10°</td></tr>
+        <tr><td class="v">Tue 6 · Aiguille du Midi</td>
+          <td>terraces</td><td>3,842 m</td><td>Steps, exposed</td><td class="cold">−10 to −15°</td></tr>
+        <tr><td class="v" style="color:#EA9482">Wed 7 · Grand Balcon Nord</td>
+          <td><b style="color:#EA9482">7 km</b></td><td>2,317 m</td><td><b style="color:#EA9482">Rough, scrambling</b></td><td class="cold">3–15°</td></tr>
+        <tr><td class="v">Thu 8 · Brévent</td>
+          <td>optional</td><td>2,525 m</td><td>Ridge path</td><td class="cold">3–15°</td></tr>
+        <tr><td class="v">Sat 10 · Donostia<br><small>+ Monte Urgull</small></td>
+          <td>~5 km</td><td>123 m</td><td>Streets + steps</td><td class="hot">14–22°</td></tr>
+        <tr><td class="v">Mon 12 · Getaria<br><small>San Antón + coast</small></td>
+          <td>~5 km</td><td>~90 m</td><td>Made path</td><td class="hot">14–22°</td></tr>
+      </table>
+    </div>
+    <div class="box alert">
+      <h4>The only genuinely hard one</h4>
+      <p><b>Wednesday 7 October, the Grand Balcon Nord.</b> Seven kilometres, four hours with six people, rough ground and short scrambling sections. Everything in the "must" column below exists because of this day.</p>
+      <p>The Swiss walks are wide, graded paths. The Basque ones are streets and a made staircase. <b>Only Wednesday is a mountain trail.</b></p>
+    </div>
+  </section>
+
+  <!-- ============ THE MATRIX ============ -->
+  <section>
+    <p class="sechead">The kit</p>
+    <h2>What's needed when</h2>
+    <p class="why"><span class="yes">●</span> bring it &nbsp;·&nbsp; <span class="opt">○</span> optional &nbsp;·&nbsp; blank means leave it at the hotel.</p>
+    <div class="tblwrap">
+      <table>
+        <tr>
+          <th class="v">&nbsp;</th>
+          <th>Fri 2</th><th>Sat 3</th><th>Sun 4</th><th>Tue 6</th>
+          <th class="hard">Wed 7</th><th>Thu 8</th><th>Sat 10</th><th>Mon 12</th>
+        </tr>
+        <tr><td class="v">Hiking shoes</td>
+          <td class="yes">●</td><td class="yes">●</td><td class="opt">○</td><td class="opt">○</td>
+          <td class="yes">●</td><td class="yes">●</td><td></td><td class="opt">○</td></tr>
+        <tr><td class="v">Thick socks</td>
+          <td class="yes">●</td><td class="yes">●</td><td class="yes">●</td><td class="yes">●</td>
+          <td class="yes">●</td><td class="yes">●</td><td></td><td class="opt">○</td></tr>
+        <tr><td class="v">Hiking poles</td>
+          <td></td><td></td><td></td><td></td>
+          <td class="yes">●</td><td class="opt">○</td><td></td><td></td></tr>
+        <tr><td class="v">Sunscreen</td>
+          <td class="opt">○</td><td class="yes">●</td><td class="yes">●</td><td class="yes">●</td>
+          <td class="yes">●</td><td class="yes">●</td><td class="opt">○</td><td class="opt">○</td></tr>
+        <tr><td class="v">Sun cap</td>
+          <td class="opt">○</td><td class="yes">●</td><td class="opt">○</td><td class="opt">○</td>
+          <td class="yes">●</td><td class="yes">●</td><td class="opt">○</td><td class="opt">○</td></tr>
+        <tr><td class="v">Warm hat</td>
+          <td></td><td class="opt">○</td><td class="yes">●</td><td class="yes">●</td>
+          <td class="opt">○</td><td class="opt">○</td><td></td><td></td></tr>
+        <tr><td class="v">Neck gaiter · 頸巾</td>
+          <td class="opt">○</td><td class="yes">●</td><td class="yes">●</td><td class="yes">●</td>
+          <td class="yes">●</td><td class="yes">●</td><td></td><td class="opt">○</td></tr>
+        <tr><td class="v">Sunglasses</td>
+          <td class="opt">○</td><td class="yes">●</td><td class="yes">●</td><td class="yes">●</td>
+          <td class="yes">●</td><td class="yes">●</td><td class="opt">○</td><td class="opt">○</td></tr>
+        <tr><td class="v">Gloves</td>
+          <td></td><td class="opt">○</td><td class="yes">●</td><td class="yes">●</td>
+          <td class="opt">○</td><td class="opt">○</td><td></td><td></td></tr>
+        <tr><td class="v">Waterproof jacket</td>
+          <td class="yes">●</td><td class="opt">○</td><td class="opt">○</td><td class="opt">○</td>
+          <td class="yes">●</td><td class="opt">○</td><td class="opt">○</td><td class="opt">○</td></tr>
+        <tr><td class="v">Daypack 20–25L</td>
+          <td class="opt">○</td><td class="yes">●</td><td class="opt">○</td><td class="opt">○</td>
+          <td class="yes">●</td><td class="opt">○</td><td></td><td class="opt">○</td></tr>
+        <tr><td class="v">Water bottle</td>
+          <td class="yes">●</td><td class="yes">●</td><td class="yes">●</td><td class="yes">●</td>
+          <td class="yes">●</td><td class="yes">●</td><td class="opt">○</td><td class="yes">●</td></tr>
+        <tr><td class="v">Power bank</td>
+          <td class="opt">○</td><td class="opt">○</td><td class="yes">●</td><td class="yes">●</td>
+          <td class="yes">●</td><td class="opt">○</td><td></td><td class="opt">○</td></tr>
+      </table>
+    </div>
+    <div class="key">
+      <span>Wed 7 is the only day everything is needed</span>
+    </div>
+  </section>
+
+  <!-- ============ ITEM BY ITEM ============ -->
+  <section>
+    <p class="sechead">Why, item by item</p>
+    <h2>The reasoning</h2>
+
+    <div class="item">
+      <h3>Hiking shoes <span class="tag must">Four days</span></h3>
+      <p><b>Friday 2, Saturday 3, Wednesday 7, Thursday 8.</b> Broken in, with grip and ankle support.</p>
+      <p>Wednesday is the one that decides it — rough ground and scrambling on a four-hour traverse. Friday matters for a different reason: <b>the Trümmelbach staircase is wet rock</b>, and smooth soles there are genuinely unsafe.</p>
+      <p>Saturday's Panorama Trail is wide and flat, so trainers would survive it, but October ground gets damp and it's a long day. <b>In the Basque country, leave them at the hotel</b> — San Antón is a made path and the rest is streets.</p>
+    </div>
+
+    <div class="item">
+      <h3>Thick socks <span class="tag must">Every mountain day</span></h3>
+      <p>Several pairs, not one. <b>The single best blister prevention there is</b>, and blisters on Wednesday would ruin Thursday.</p>
+      <p>They also do a second job at altitude: on Sunday and Tuesday you're standing still in sub-zero air, and cold reaches feet before anywhere else.</p>
+    </div>
+
+    <div class="item">
+      <h3>Hiking poles <span class="tag maybe">One day, really</span></h3>
+      <p><b>Wednesday 7 only.</b> Rough descending ground over four hours is exactly what poles are for — they take load off knees and give you a third point of contact on the scrambling bits.</p>
+      <p>Everywhere else they'd be dead weight. The Swiss trails are graded and gentle; poles there are something to carry, not something to use.</p>
+      <p><b>The honest question:</b> is one day worth packing them for? If anyone has knee trouble, yes, unambiguously. If not, collapsible ones that fit inside a daypack are the compromise — full-length poles are awkward on easyJet, where you get no cabin bag at all on the 9th.</p>
+    </div>
+
+    <div class="item">
+      <h3>Sunscreen <span class="tag must">Higher matters more than hotter</span></h3>
+      <p>This is the one people get wrong, because they associate sunscreen with heat and Sunday at Jungfraujoch is minus ten.</p>
+      <p><b>UV rises roughly 10% for every 1,000m of altitude, and snow reflects up to 80% of it back at you.</b> At 3,842m on Tuesday, standing on a terrace surrounded by glacier, you are getting sun from above and below at once — in air cold enough that you'll feel nothing until that evening.</p>
+      <p>High SPF, and <b>SPF lip balm too</b>. Lips burn badly at altitude and nobody packs for it.</p>
+    </div>
+
+    <div class="item">
+      <h3>Two different hats <span class="tag must">Not the same object</span></h3>
+      <p>These get conflated and they shouldn't be.</p>
+      <p><b>A peaked sun cap</b> for Saturday, Wednesday and Thursday — long days in open sun at 2,000–2,500m, where the peak also keeps glare off your face for photographs.</p>
+      <p><b>A warm hat</b> for Sunday and Tuesday. At −10 to −15°C with wind on an exposed terrace, a cap does nothing. This is a beanie that covers your ears.</p>
+      <p>Two small items. Both worth the space.</p>
+    </div>
+
+    <div class="item">
+      <h3>Neck gaiter · 頸巾 <span class="tag must">The most useful thing on this list</span></h3>
+      <p>A tube-style gaiter — a Buff or similar — rather than a wrapped scarf. It's the highest-value item per gram on the whole trip because it does four jobs:</p>
+      <p><b>Neck warmth</b> at altitude. <b>Pull it over your face</b> against wind on the Aiguille du Midi terraces, where the wind is the thing that actually drives people back inside. <b>Sun protection</b> for the back of the neck on Wednesday, which burns and nobody notices. And <b>a headband</b> if it's warmer than expected.</p>
+      <p>A wrapped scarf does one of those and gets in the way of a rucksack strap. <b>Bring the tube version.</b></p>
+    </div>
+
+    <div class="item">
+      <h3>Sunglasses <span class="tag must">Not optional at altitude</span></h3>
+      <p>Snow and glacier glare is severe enough at 3,400m+ that this stops being about comfort. Sunday and Tuesday particularly.</p>
+      <p>They also make the difference between seeing the view and squinting at it — which sounds trivial until you've paid CHF 89 to be there.</p>
+    </div>
+
+    <div class="item">
+      <h3>Gloves <span class="tag must">Sunday and Tuesday</span></h3>
+      <p>Below freezing on both summit days. And there's a practical consequence beyond comfort: <b>you can't work a phone with numb hands.</b> Thin liner gloves that work with a touchscreen, or gloves you can pull off quickly.</p>
+    </div>
+
+    <div class="item">
+      <h3>Waterproof jacket <span class="tag must">Two very different reasons</span></h3>
+      <p><b>Friday 2:</b> you get genuinely soaked climbing the staircase behind Staubbach and again inside Trümmelbach. This isn't rain protection, it's spray protection, and it's certain rather than possible.</p>
+      <p><b>Wednesday 7:</b> four hours exposed on a traverse where the weather can change. Also the Basque country in October, which rains.</p>
+    </div>
+
+    <div class="item">
+      <h3>Daypack, 20–25L <span class="tag must">Sat 3 and Wed 7</span></h3>
+      <p>Wednesday needs it — everyone carries their own packed lunch, snacks and water, and <b>there's no refill point on the balcony</b>. Saturday needs it for layers you'll take on and off between 1,034m and 2,343m.</p>
+    </div>
+
+    <div class="item">
+      <h3>Water bottle <span class="tag must">Every day</span></h3>
+      <p>Swiss tap water and village fountains are excellent and free. Altitude also dehydrates you faster than you expect, which is half of why people get headaches up there.</p>
+    </div>
+
+    <div class="item">
+      <h3>Power bank <span class="tag must">Sun 4, Tue 6, Wed 7</span></h3>
+      <p>Cold flattens phone batteries fast. On the Sphinx terrace a half-charged phone can die outright.</p>
+      <p>Keep the phone in an inside pocket rather than an outer one — body heat is the real fix, the power bank is the backup.</p>
+    </div>
+  </section>
+
+  <!-- ============ WORTH ADDING ============ -->
+  <section>
+    <p class="sechead">Small things, easy to forget</p>
+    <h2>Worth adding to the list</h2>
+    <div class="box">
+      <p><b>Blister plasters.</b> Compeed or similar. Four hours on rough ground with six people means somebody will need one, and Thursday depends on Wednesday not wrecking anyone's feet.</p>
+      <p><b>A dry bag or ziplock for your phone.</b> Friday, for Trümmelbach. Water gets everywhere in there.</p>
+      <p><b>A lens cloth.</b> Cable car glass and cold air both fog things, and every photograph on Sunday and Tuesday goes through one or the other.</p>
+      <p><b>SPF lip balm.</b> Listed above but worth repeating — it's the thing nobody packs and everybody regrets.</p>
+    </div>
+    <div class="box ok">
+      <h4>What you don't need</h4>
+      <p><b>Crampons, ice axes, technical gear.</b> Nothing on this trip requires them. The Grand Balcon Nord is a hiking trail, not a glacier route.</p>
+      <p><b>Boots in the Basque week.</b> Days 9 to 15 are city streets, a beach, and one made staircase up Monte Urgull. Comfortable walking shoes are correct.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Temperatures from the trip briefing. Altitudes and distances from the day pages. UV guidance is general — roughly 10% more per 1,000m, and up to 80% reflected off snow.</p>
+    <p style="margin-top:8px"><a href="index.html">← Back to the trip</a> &nbsp;·&nbsp; <a href="briefing.html">Full briefing</a></p>
+    <p class="sig">¯\_(ツ)_/¯</p>
+  </footer>
+
+</div>
+</body>
+</html>
