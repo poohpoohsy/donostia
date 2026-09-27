@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Weather — 1–16 October</title>
+<meta name="description" content="Sixteen days of temperature and rain, day by day, with the official forecasts.">
+<meta property="og:title" content="Weather — 1–16 October">
+<meta property="og:description" content="Temperature, rain, and where we are each day.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#0D1214; --raise:#161D21; --raise2:#1D262B;
+    --chalk:#EAE9E5; --dim:#88969C;
+    --alp:#8ECDEC; --cham:#D9A441; --bask:#E8547C; --zur:#9AA8AE;
+    --cold:#6FA8D6; --wet:#7FC4D8; --sun:#E9C46A;
+    --rule:rgba(234,233,229,.13);
+    --pad:clamp(18px,5.5vw,40px);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--ground);color:var(--chalk);
+    font-family:'Archivo',system-ui,-apple-system,sans-serif;font-size:16.5px;
+    line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:660px;margin:0 auto;padding:0 var(--pad) 40px;}
+
+  .top{padding:clamp(20px,5vw,32px) 0 0;}
+  .back{display:inline-block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-decoration:none;margin-bottom:14px;}
+  .back:hover{color:var(--chalk);}
+  .kicker{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:600;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--dim);margin:0 0 12px;}
+  h1{font-family:'Syne','Archivo',sans-serif;font-weight:800;
+    font-size:clamp(25px,6.4vw,34px);line-height:1.02;letter-spacing:-.03em;margin:0 0 10px;}
+  .intro{margin:0;color:var(--dim);font-size:13.5px;max-width:48ch;line-height:1.45;}
+  .intro b{color:var(--chalk);font-weight:600;}
+
+  section{margin-top:22px;padding-top:16px;border-top:1px solid var(--rule);}
+  .sechead{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:0 0 10px;}
+  h2{font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:20px;
+    letter-spacing:-.02em;margin:0 0 6px;}
+  .lede{margin:0 0 12px;color:var(--dim);font-size:13.5px;line-height:1.5;}
+  .lede b{color:var(--chalk);font-weight:600;}
+
+  .chartbox{background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:12px 10px 10px;}
+  .scroller{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  .scroller svg{display:block;min-width:580px;width:100%;height:auto;}
+  .legend{display:flex;flex-wrap:wrap;gap:11px;margin-top:10px;padding-top:9px;border-top:1px solid var(--rule);
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--dim);}
+  .legend span{display:flex;align-items:center;gap:5px;}
+  .legend i{width:13px;height:6px;border-radius:3px;flex:0 0 auto;}
+  .swipe{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--dim);opacity:.55;margin:0 0 8px;}
+
+  .days{background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:2px 13px;}
+  .dr{display:grid;grid-template-columns:42px 1fr 24px 58px;gap:9px;align-items:center;
+    padding:9px 0;border-bottom:1px solid var(--rule);}
+  .dr:last-child{border-bottom:0;}
+  .dr .dt{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;color:var(--dim);line-height:1.2;}
+  .dr .dt b{display:block;color:var(--chalk);font-size:12px;font-weight:600;}
+  .dr .pl{min-width:0;}
+  .dr .pl .nm{font-size:13.5px;color:var(--chalk);line-height:1.25;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .dr .pl .sky{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;
+    letter-spacing:.06em;text-transform:uppercase;color:var(--dim);margin-top:2px;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .dr .pl .sky em{font-style:normal;color:var(--wet);}
+  .dr .ic{display:flex;align-items:center;justify-content:center;}
+  .dr .tp{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;text-align:right;
+    color:var(--chalk);white-space:nowrap;}
+  .dr .tp s{text-decoration:none;color:var(--dim);}
+  .dr.est .nm,.dr.est .tp{opacity:.62;}
+
+  .summit{display:grid;gap:7px;margin-top:10px;}
+  .sm{background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+    border-left:3px solid var(--cold);padding:11px 14px;}
+  .sm .ttl{font-family:'Syne','Archivo',sans-serif;font-weight:700;font-size:14.5px;margin:0;}
+  .sm .alt{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8.5px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--dim);margin:1px 0 0;}
+  .sm .line{margin:6px 0 0;font-size:13.5px;color:var(--dim);line-height:1.45;}
+  .sm .line b{color:var(--chalk);font-weight:600;}
+  .sm .line .frz{color:var(--cold);font-weight:600;}
+
+  .lk{display:block;text-decoration:none;color:inherit;background:var(--raise);
+    border:1px solid var(--rule);border-left:3px solid var(--dim);border-radius:3px;
+    padding:11px 14px;margin-bottom:7px;}
+  .lk:hover{background:var(--raise2);}
+  .lk.alp{border-left-color:var(--alp);}
+  .lk.cham{border-left-color:var(--cham);}
+  .lk.bask{border-left-color:var(--bask);}
+  .lktop{display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
+  .lk h3{font-family:'Syne','Archivo',sans-serif;font-weight:700;font-size:15px;margin:0;}
+  .lk .src{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8.5px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--dim);white-space:nowrap;}
+  .lk p{margin:3px 0 0;font-size:12.5px;color:var(--dim);line-height:1.4;}
+
+  footer{margin-top:24px;padding-top:16px;border-top:1px solid var(--rule);font-size:13px;color:var(--dim);}
+  .sig{margin-top:20px;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:13px;color:var(--dim);opacity:.35;user-select:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <a class="back" href="index.html">← Every day</a>
+    <p class="kicker">1–16 October 2026</p>
+    <h1>Weather.</h1>
+    <p class="intro"><b>Live forecast, refreshed every time you open this.</b> Temperature and rain for all sixteen days, then where we are each day, then the official national forecasts.</p>
+  </header>
+
+  <section>
+    <p class="sechead">Sixteen days</p>
+    <h2>Temperature and rain.</h2>
+    <p class="lede">Top panel: the <b>bar</b> is each day's low to high, the <b>dot</b> is midday. Bottom panel: <b>chance of rain</b>.</p>
+
+    <div class="chartbox">
+      <p class="swipe">← swipe the chart →</p>
+      <div class="scroller"><svg id="chart" viewBox="0 0 680 400" role="img" aria-label="Temperature and rain forecast, 1 to 16 October"></svg></div>
+      <div class="legend">
+        <span><i style="background:#8ECDEC"></i>Bernese Oberland</span>
+        <span><i style="background:#D9A441"></i>Chamonix</span>
+        <span><i style="background:#E8547C"></i>Basque country</span>
+        <span><i style="background:#9AA8AE"></i>Zürich</span>
+        <span><i style="background:rgba(234,233,229,.22)"></i>Oct normal</span>
+      </div>
+    </div>
+    <p class="lede" id="chartNote" style="margin-top:10px"></p>
+  </section>
+
+  <section>
+    <p class="sechead">Day by day</p>
+    <h2>Where we are, and the sky.</h2>
+    <p class="lede">Each day's <b>symbol and description come straight from the forecast</b> for that place, not from a guess — so this changes as the trip gets closer.</p>
+
+    <div class="days" id="days"><p class="lede" style="margin:12px 0">Loading…</p></div>
+
+    <div class="summit">
+      <div class="sm">
+        <p class="ttl">Jungfraujoch</p>
+        <p class="alt">3,454 m · up in the morning, down at noon</p>
+        <p class="line" id="smJung">Checking the forecast…</p>
+      </div>
+      <div class="sm">
+        <p class="ttl">Aiguille du Midi</p>
+        <p class="alt">3,842 m · up in the morning, down at noon</p>
+        <p class="line" id="smMidi">Checking the forecast…</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="sechead">Check before each leg</p>
+    <h2>Official forecasts.</h2>
+    <p class="lede">The chart above is one global model. These are the <b>national services</b> for each place — better in the mountains, and what the locals actually use.</p>
+
+    <a class="lk alp" href="https://www.meteoswiss.admin.ch/local-forecasts/grindelwald/3818.html" target="_blank" rel="noopener">
+      <div class="lktop"><h3>Grindelwald</h3><span class="src">MeteoSwiss ↗</span></div>
+      <p>Official Swiss forecast for postcode 3818. Also carries the Jungfrau mountain forecast, which matters more than the valley on Jungfraujoch day.</p>
+    </a>
+
+    <a class="lk cham" href="https://www.chamonix.com/meteo" target="_blank" rel="noopener">
+      <div class="lktop"><h3>Chamonix</h3><span class="src">Météo-France ↗</span></div>
+      <p>The seven-day Météo-France bulletin from the Chamonix tourist office, with the mountain and freezing-level forecast for the Aiguille du Midi.</p>
+    </a>
+
+    <a class="lk bask" href="https://www.aemet.es/en/eltiempo/prediccion/municipios/donostia-san-sebastian-id20069" target="_blank" rel="noopener">
+      <div class="lktop"><h3>San Sebastián</h3><span class="src">AEMET ↗</span></div>
+      <p>Spain's national service, Donostia municipal forecast in English. The Basque coast turns fast, so check this the night before, not the week before.</p>
+    </a>
+  </section>
+
+  <footer>
+    <p class="sig">¯\_(ツ)_/¯</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var W={0:'clear',1:'mostly clear',2:'partly cloudy',3:'overcast',45:'fog',48:'freezing fog',
+    51:'light drizzle',53:'drizzle',55:'heavy drizzle',56:'freezing drizzle',57:'freezing drizzle',
+    61:'light rain',63:'rain',65:'heavy rain',66:'freezing rain',67:'freezing rain',
+    71:'light snow',73:'snow',75:'heavy snow',77:'snow grains',
+    80:'showers',81:'showers',82:'heavy showers',85:'snow showers',86:'snow showers',
+    95:'thunderstorm',96:'thunderstorm',99:'thunderstorm'};
+
+  function kind(c){
+    if(c===0) return 'sun';
+    if(c===1||c===2) return 'part';
+    if(c===3) return 'cloud';
+    if(c===45||c===48) return 'fog';
+    if(c>=71&&c<=77) return 'snow';
+    if(c===85||c===86) return 'snow';
+    if(c>=95) return 'storm';
+    if(c>=51&&c<=67) return 'rain';
+    if(c>=80&&c<=82) return 'rain';
+    return 'cloud';
+  }
+
+  function icon(k){
+    var g='<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke-linecap="round" stroke-width="1.6">';
+    if(k==='sun') return g+'<circle cx="12" cy="12" r="4.4" fill="#E9C46A"/>'
+      +'<g stroke="#E9C46A"><line x1="12" y1="2.4" x2="12" y2="4.6"/><line x1="12" y1="19.4" x2="12" y2="21.6"/>'
+      +'<line x1="2.4" y1="12" x2="4.6" y2="12"/><line x1="19.4" y1="12" x2="21.6" y2="12"/>'
+      +'<line x1="5.4" y1="5.4" x2="6.9" y2="6.9"/><line x1="17.1" y1="17.1" x2="18.6" y2="18.6"/>'
+      +'<line x1="18.6" y1="5.4" x2="17.1" y2="6.9"/><line x1="6.9" y1="17.1" x2="5.4" y2="18.6"/></g></svg>';
+    if(k==='part') return g+'<circle cx="8.6" cy="8.6" r="3.4" fill="#E9C46A"/>'
+      +'<g stroke="#E9C46A"><line x1="8.6" y1="2" x2="8.6" y2="3.5"/><line x1="2" y1="8.6" x2="3.5" y2="8.6"/>'
+      +'<line x1="3.9" y1="3.9" x2="5" y2="5"/><line x1="13.3" y1="3.9" x2="12.2" y2="5"/></g>'
+      +'<path d="M7.5 19h9.6a3.3 3.3 0 0 0 .3-6.6 4.7 4.7 0 0 0-9-1.2A3.4 3.4 0 0 0 7.5 19z" fill="#5E7078"/></svg>';
+    if(k==='cloud') return g+'<path d="M6.8 18.6h10.4a3.5 3.5 0 0 0 .3-7 5 5 0 0 0-9.6-1.3 3.6 3.6 0 0 0-1.1 8.3z" fill="#7E8E96"/></svg>';
+    if(k==='fog') return g+'<path d="M6.8 13.6h10.4a3.5 3.5 0 0 0 .3-7 5 5 0 0 0-9.6-1.3 3.6 3.6 0 0 0-1.1 8.3z" fill="#7E8E96"/>'
+      +'<g stroke="#7E8E96"><line x1="4.5" y1="17.2" x2="19.5" y2="17.2"/><line x1="6.5" y1="20.4" x2="17.5" y2="20.4"/></g></svg>';
+    if(k==='rain') return g+'<path d="M6.8 14.2h10.4a3.5 3.5 0 0 0 .3-7 5 5 0 0 0-9.6-1.3 3.6 3.6 0 0 0-1.1 8.3z" fill="#6E8088"/>'
+      +'<g stroke="#7FC4D8"><line x1="9" y1="17" x2="7.9" y2="20.4"/><line x1="13" y1="17" x2="11.9" y2="20.4"/>'
+      +'<line x1="17" y1="17" x2="15.9" y2="20.4"/></g></svg>';
+    if(k==='snow') return g+'<path d="M6.8 14.2h10.4a3.5 3.5 0 0 0 .3-7 5 5 0 0 0-9.6-1.3 3.6 3.6 0 0 0-1.1 8.3z" fill="#6E8088"/>'
+      +'<g stroke="#CFE6F2"><line x1="8.4" y1="18.6" x2="10" y2="18.6"/><line x1="9.2" y1="17.8" x2="9.2" y2="19.4"/>'
+      +'<line x1="14" y1="18.6" x2="15.6" y2="18.6"/><line x1="14.8" y1="17.8" x2="14.8" y2="19.4"/>'
+      +'<line x1="11.2" y1="21.3" x2="12.8" y2="21.3"/><line x1="12" y1="20.5" x2="12" y2="22.1"/></g></svg>';
+    return g+'<path d="M6.8 13.8h10.4a3.5 3.5 0 0 0 .3-7 5 5 0 0 0-9.6-1.3 3.6 3.6 0 0 0-1.1 8.3z" fill="#6E8088"/>'
+      +'<path d="M13 15.6l-3.4 4.2h3l-1.1 3.4 3.8-4.6h-3z" fill="#E9C46A"/></svg>';
+  }
+
+  var PL={
+    lau:{name:'Lauterbrunnen',lat:46.5935,lon:7.9094, tz:'Europe/Zurich',col:'#8ECDEC',nLo:6, nHi:15,nMid:12,nRain:35},
+    gri:{name:'Grindelwald',  lat:46.6242,lon:8.0341, tz:'Europe/Zurich',col:'#8ECDEC',nLo:4, nHi:13,nMid:10,nRain:35},
+    cha:{name:'Chamonix',     lat:45.9237,lon:6.8694, tz:'Europe/Paris', col:'#D9A441',nLo:3, nHi:13,nMid:10,nRain:32},
+    don:{name:'San Sebastián',lat:43.3183,lon:-1.9812,tz:'Europe/Madrid',col:'#E8547C',nLo:13,nHi:21,nMid:19,nRain:43},
+    bio:{name:'Bilbao',       lat:43.2630,lon:-2.9350,tz:'Europe/Madrid',col:'#E8547C',nLo:12,nHi:21,nMid:19,nRain:42},
+    zrh:{name:'Zürich',       lat:47.3769,lon:8.5417, tz:'Europe/Zurich',col:'#9AA8AE',nLo:7, nHi:15,nMid:12,nRain:33}
+  };
+
+  var DAYS=[
+    {d:1, k:'lau', t:'Lauterbrunnen'},
+    {d:2, k:'lau', t:'Lauterbrunnen'},
+    {d:3, k:'gri', t:'Grindelwald'},
+    {d:4, k:'gri', t:'Grindelwald'},
+    {d:5, k:'gri', t:'Grindelwald → Chamonix'},
+    {d:6, k:'cha', t:'Chamonix · Mont Blanc'},
+    {d:7, k:'cha', t:'Chamonix'},
+    {d:8, k:'cha', t:'Chamonix'},
+    {d:9, k:'don', t:'Chamonix → San Sebastián'},
+    {d:10,k:'don', t:'San Sebastián'},
+    {d:11,k:'don', t:'San Sebastián'},
+    {d:12,k:'don', t:'San Sebastián'},
+    {d:13,k:'don', t:'San Sebastián'},
+    {d:14,k:'don', t:'San Sebastián'},
+    {d:15,k:'bio', t:'Bilbao → Zürich'},
+    {d:16,k:'zrh', t:'Zürich → Hong Kong'}
+  ];
+
+  var SUM=[{id:'smJung',lat:46.5475,lon:7.9853,elev:3454,tz:'Europe/Zurich',from:1,to:5},
+           {id:'smMidi',lat:45.8791,lon:6.8874,elev:3842,tz:'Europe/Paris',from:5,to:9}];
+
+  function pad(n){return (n<10?'0':'')+n;}
+  function iso(d){return '2026-10-'+pad(d);}
+  var DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  var DATA={}, keys=Object.keys(PL), done=0, ROWS=[];
+
+  keys.forEach(function(k){
+    var p=PL[k];
+    var u='https://api.open-meteo.com/v1/forecast?latitude='+p.lat+'&longitude='+p.lon
+      +'&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code'
+      +'&hourly=temperature_2m&forecast_days=16&timezone='+encodeURIComponent(p.tz);
+    fetch(u).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){
+      var noon={};
+      d.hourly.time.forEach(function(t,i){ if(t.slice(11)==='12:00') noon[t.slice(0,10)]=d.hourly.temperature_2m[i]; });
+      var map={};
+      d.daily.time.forEach(function(t,i){
+        map[t]={lo:d.daily.temperature_2m_min[i],hi:d.daily.temperature_2m_max[i],
+                rain:d.daily.precipitation_probability_max[i],code:d.daily.weather_code[i],
+                noon:(noon[t]!==undefined?noon[t]:null)};
+      });
+      DATA[k]=map;
+    }).catch(function(){}).finally(function(){ if(++done===keys.length) build(); });
+  });
+
+  function build(){
+    ROWS=DAYS.map(function(x){
+      var p=PL[x.k], rec=(DATA[x.k]||{})[iso(x.d)];
+      if(rec && rec.hi!==null && rec.hi!==undefined){
+        return {d:x.d,t:x.t,p:p,lo:rec.lo,hi:rec.hi,
+                noon:(rec.noon===null?(rec.lo+rec.hi)/2:rec.noon),
+                rain:(rec.rain===null?p.nRain:rec.rain),code:rec.code,est:false};
+      }
+      return {d:x.d,t:x.t,p:p,lo:p.nLo,hi:p.nHi,noon:p.nMid,rain:p.nRain,code:null,est:true};
+    });
+    drawChart();
+    drawDays();
+  }
+
+  function drawChart(){
+    var svg=document.getElementById('chart');
+    var W0=680,H0=400,L=36,R=12,T1=30,H1=196,T2=T1+H1+52,H2=66;
+    var lo=99,hi=-99,est=0;
+    ROWS.forEach(function(r){ lo=Math.min(lo,r.lo); hi=Math.max(hi,r.hi); if(r.est) est++; });
+    var yLo=Math.min(0,Math.floor((lo-3)/5)*5), yHi=Math.ceil((hi+3)/5)*5;
+    var PW=W0-L-R, step=PW/16;
+    function X(i){return L+step*i+step/2;}
+    function Y(t){return T1+H1-((t-yLo)/(yHi-yLo))*H1;}
+    function YR(v){return T2+H2-(v/100)*H2;}
+    var o='';
+
+    o+='<text x="'+L+'" y="14" fill="#88969C" font-family="IBM Plex Mono, monospace" '
+      +'font-size="8.5" letter-spacing="1.5">TEMPERATURE · LOW TO HIGH, DOT = MIDDAY</text>';
+    o+='<text x="'+L+'" y="'+(T2-14)+'" fill="#88969C" font-family="IBM Plex Mono, monospace" '
+      +'font-size="8.5" letter-spacing="1.5">CHANCE OF RAIN</text>';
+
+    for(var g=yLo; g<=yHi; g+=5){
+      var gy=Y(g);
+      o+='<line x1="'+L+'" y1="'+gy.toFixed(1)+'" x2="'+(W0-R)+'" y2="'+gy.toFixed(1)
+        +'" stroke="rgba(234,233,229,.09)"/>';
+      o+='<text x="'+(L-7)+'" y="'+(gy+3.5).toFixed(1)+'" text-anchor="end" fill="#88969C" '
+        +'font-family="IBM Plex Mono, monospace" font-size="9">'+g+'°</text>';
+    }
+    if(yLo<=0&&yHi>=0)
+      o+='<line x1="'+L+'" y1="'+Y(0).toFixed(1)+'" x2="'+(W0-R)+'" y2="'+Y(0).toFixed(1)
+        +'" stroke="#6FA8D6" stroke-dasharray="3 3" opacity=".5"/>';
+    [0,50,100].forEach(function(v){
+      var ry=YR(v);
+      o+='<line x1="'+L+'" y1="'+ry.toFixed(1)+'" x2="'+(W0-R)+'" y2="'+ry.toFixed(1)
+        +'" stroke="rgba(234,233,229,.09)"/>';
+      o+='<text x="'+(L-7)+'" y="'+(ry+3.5).toFixed(1)+'" text-anchor="end" fill="#88969C" '
+        +'font-family="IBM Plex Mono, monospace" font-size="8.5">'+v+'%</text>';
+    });
+
+    var pts=[];
+    ROWS.forEach(function(r,i){
+      var x=X(i), op=r.est?'.22':'.45';
+      var y1=Y(r.hi), y2=Y(r.lo), bw=Math.max(8,step*0.44);
+      o+='<rect x="'+(x-bw/2).toFixed(1)+'" y="'+y1.toFixed(1)+'" width="'+bw.toFixed(1)
+        +'" height="'+Math.max(3,y2-y1).toFixed(1)+'" rx="'+(bw/2).toFixed(1)
+        +'" fill="'+r.p.col+'" opacity="'+op+'"/>';
+      o+='<text x="'+x.toFixed(1)+'" y="'+(y1-5).toFixed(1)+'" text-anchor="middle" fill="#EAE9E5" '
+        +'font-family="IBM Plex Mono, monospace" font-size="8.5" opacity="'+(r.est?'.5':'.9')+'">'+Math.round(r.hi)+'</text>';
+      o+='<text x="'+x.toFixed(1)+'" y="'+(y2+11).toFixed(1)+'" text-anchor="middle" fill="#88969C" '
+        +'font-family="IBM Plex Mono, monospace" font-size="8.5" opacity="'+(r.est?'.5':'.9')+'">'+Math.round(r.lo)+'</text>';
+      pts.push({x:x,y:Y(r.noon),col:r.p.col,est:r.est});
+
+      var rp=Math.max(0,Math.min(100,Math.round(r.rain)));
+      var rh=Math.max(1.5,(rp/100)*H2), ry=YR(rp), rw=Math.max(7,step*0.40);
+      var rop=r.est?'.30':(rp>=60?'.95':(rp>=30?'.7':'.35'));
+      o+='<rect x="'+(x-rw/2).toFixed(1)+'" y="'+ry.toFixed(1)+'" width="'+rw.toFixed(1)
+        +'" height="'+rh.toFixed(1)+'" rx="1.5" fill="#7FC4D8" opacity="'+rop+'"/>';
+      if(rp>=30)
+        o+='<text x="'+x.toFixed(1)+'" y="'+(ry-4).toFixed(1)+'" text-anchor="middle" fill="#7FC4D8" '
+          +'font-family="IBM Plex Mono, monospace" font-size="8" opacity="'+(r.est?'.55':'1')+'">'+rp+'</text>';
+
+      var dt=new Date(Date.UTC(2026,9,r.d));
+      o+='<text x="'+x.toFixed(1)+'" y="'+(H0-36)+'" text-anchor="middle" fill="#EAE9E5" '
+        +'font-family="IBM Plex Mono, monospace" font-size="10">'+r.d+'</text>';
+      o+='<text x="'+x.toFixed(1)+'" y="'+(H0-25)+'" text-anchor="middle" fill="#88969C" '
+        +'font-family="IBM Plex Mono, monospace" font-size="7.5">'+DOW[dt.getUTCDay()].toUpperCase()+'</text>';
+    });
+
+    var dp='';
+    pts.forEach(function(q,i){ dp+=(i?' L':'M')+q.x.toFixed(1)+' '+q.y.toFixed(1); });
+    o+='<path d="'+dp+'" fill="none" stroke="rgba(234,233,229,.40)" stroke-width="1.4"/>';
+    pts.forEach(function(q){
+      o+='<circle cx="'+q.x.toFixed(1)+'" cy="'+q.y.toFixed(1)+'" r="3.4" fill="'+q.col
+        +'" stroke="#0D1214" stroke-width="1.4" opacity="'+(q.est?'.5':'1')+'"/>';
+    });
+    o+='<text x="'+L+'" y="'+(H0-8)+'" fill="#88969C" font-family="IBM Plex Mono, monospace" '
+      +'font-size="8" letter-spacing="1.2">OCTOBER 2026</text>';
+    svg.innerHTML=o;
+
+    document.getElementById('chartNote').innerHTML = est
+      ? '<b>Solid bars are the live forecast; faded bars are October normals.</b> The model reaches about sixteen days ahead, so the last '
+        +est+' day'+(est===1?'':'s')+' '+(est===1?'is':'are')+' filled with the long-run average until the forecast catches up. Reload nearer the time.'
+      : '<b>All sixteen days are inside the forecast window now.</b> Reload to refresh.';
+  }
+
+  function drawDays(){
+    var h='';
+    ROWS.forEach(function(r){
+      var dt=new Date(Date.UTC(2026,9,r.d));
+      var k=(r.code===null?'cloud':kind(r.code));
+      var sky=(r.code===null?'Oct normal':(W[r.code]||'—'));
+      var rp=Math.round(r.rain);
+      var rain=(rp>=30?' <em>☂ '+rp+'%</em>':'');
+      h+='<div class="dr'+(r.est?' est':'')+'">'
+        +'<div class="dt"><b>'+pad(r.d)+'</b>'+DOW[dt.getUTCDay()]+'</div>'
+        +'<div class="pl"><div class="nm">'+r.t+'</div><div class="sky">'+sky+rain+'</div></div>'
+        +'<div class="ic" title="'+sky+'">'+icon(k)+'</div>'
+        +'<div class="tp">'+Math.round(r.hi)+'°<s>/'+Math.round(r.lo)+'°</s></div>'
+        +'</div>';
+    });
+    document.getElementById('days').innerHTML=h;
+  }
+
+  SUM.forEach(function(m){
+    var u='https://api.open-meteo.com/v1/forecast?latitude='+m.lat+'&longitude='+m.lon
+      +'&elevation='+m.elev+'&hourly=temperature_2m,apparent_temperature,wind_speed_10m'
+      +'&forecast_days=16&timezone='+encodeURIComponent(m.tz);
+    fetch(u).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){
+      var t=[],f=[],w=[];
+      d.hourly.time.forEach(function(ts,i){
+        if(ts.slice(11)!=='12:00') return;
+        var mo=parseInt(ts.slice(5,7),10), day=parseInt(ts.slice(8,10),10);
+        if(mo!==10||day<m.from||day>m.to) return;
+        t.push(d.hourly.temperature_2m[i]);
+        f.push(d.hourly.apparent_temperature[i]);
+        w.push(d.hourly.wind_speed_10m[i]);
+      });
+      var el=document.getElementById(m.id);
+      if(!t.length){ el.textContent='Those dates are beyond the forecast for now — check again nearer the time.'; return; }
+      var tMin=Math.round(Math.min.apply(null,t)), tMax=Math.round(Math.max.apply(null,t));
+      var fMin=Math.round(Math.min.apply(null,f)), wMax=Math.round(Math.max.apply(null,w));
+      var rng=(tMin===tMax? tMin+'°' : tMin+'° to '+tMax+'°');
+      el.innerHTML='Step outside at noon and it is <b class="frz">'+rng+'</b>, feeling like <b class="frz">'
+        +fMin+'°</b> in wind up to '+wMax+' km/h. '
+        +(fMin<=-5?'Gloves, hat and a proper jacket in hand luggage, not in the suitcase.'
+                  :'Still worth carrying a warm layer and gloves up.');
+    }).catch(function(){
+      document.getElementById(m.id).textContent='Forecast unavailable — reload to retry.';
+    });
+  });
+})();
+</script>
+</body>
+</html>

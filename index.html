@@ -33,12 +33,22 @@
   .intro{margin:0;color:var(--dim);font-size:13.5px;max-width:46ch;line-height:1.45;}
   .intro b{color:var(--chalk);font-weight:600;}
 
-  .wxstrip{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:14px;}
-  .wxc{background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:8px 8px;text-align:center;}
-  .wxc .p{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:.14em;
-    text-transform:uppercase;color:var(--dim);margin:0 0 5px;}
-  .wxc .t{font-family:'Syne',sans-serif;font-weight:800;font-size:16px;margin:0;color:var(--chalk);}
-  .wxc .d{font-size:10.5px;color:var(--dim);margin:2px 0 0;}
+  .wxstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:14px;}
+  .wxc{background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+    padding:7px 3px 8px;text-align:center;overflow:hidden;}
+  .wxc .p{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:7.5px;letter-spacing:.03em;
+    text-transform:uppercase;color:var(--dim);margin:0 0 3px;white-space:nowrap;}
+  .wxc .t{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;margin:0;
+    color:var(--chalk);line-height:1.1;}
+  .wxc .d{font-size:8px;color:var(--dim);margin:2px 0 0;white-space:nowrap;
+    overflow:hidden;text-overflow:ellipsis;}
+  a.wxc{display:flex;flex-direction:column;justify-content:center;text-decoration:none;
+    background:var(--raise2);border-color:rgba(142,205,236,.3);}
+  a.wxc:hover{background:#243036;}
+  a.wxc .big{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;margin:0;
+    color:var(--alp);line-height:1.15;}
+  a.wxc .sub{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:7.5px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--dim);margin:5px 0 0;white-space:nowrap;}
 
   section{margin-top:20px;padding-top:16px;border-top:1px solid var(--rule);}
   .sechead{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
@@ -93,6 +103,14 @@
   .note p{margin:0;font-size:14px;color:var(--dim);}
   .note b{color:var(--chalk);font-weight:600;}
 
+  .wxc .clk{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;color:var(--chalk);
+    margin:0 0 4px;letter-spacing:.02em;}
+  .wxc .mm{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8.5px;margin:4px 0 0;
+    color:var(--dim);white-space:nowrap;}
+  .wxc .mm b{color:var(--chalk);font-weight:600;}
+  .wxc .lo{color:var(--alp);}
+  .wxc .hi{color:var(--cham);}
+
   footer{margin-top:22px;padding-top:16px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--dim);}
   .sig{margin-top:20px;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
     font-size:13px;color:var(--dim);opacity:.35;user-select:none;}
@@ -107,9 +125,10 @@
     <p class="intro"><b>Save this link.</b> Every day below opens its own page with times, maps and one-tap directions.</p>
 
     <div class="wxstrip">
-      <div class="wxc"><p class="p">Grindelwald</p><p class="t" id="w1">—</p><p class="d" id="d1">checking</p></div>
-      <div class="wxc"><p class="p">Chamonix</p><p class="t" id="w2">—</p><p class="d" id="d2">checking</p></div>
-      <div class="wxc"><p class="p">Donostia</p><p class="t" id="w3">—</p><p class="d" id="d3">checking</p></div>
+      <div class="wxc"><p class="p">Grindelwald</p><p class="clk" id="c1">--:--</p><p class="t" id="w1">—</p><p class="d" id="d1">checking</p><p class="mm" id="m1">—</p></div>
+      <div class="wxc"><p class="p">Chamonix</p><p class="clk" id="c2">--:--</p><p class="t" id="w2">—</p><p class="d" id="d2">checking</p><p class="mm" id="m2">—</p></div>
+      <div class="wxc"><p class="p">Donostia</p><p class="clk" id="c3">--:--</p><p class="t" id="w3">—</p><p class="d" id="d3">checking</p><p class="mm" id="m3">—</p></div>
+      <a class="wxc" href="weather.html"><p class="p">Forecast</p><p class="big">16<br>days</p><p class="sub">Open →</p></a>
     </div>
   </header>
 
@@ -215,22 +234,35 @@
 
 <script>
 (function(){
-  var P=[{id:1,lat:46.6242,lon:8.0341,tz:'Europe/Zurich'},
-         {id:2,lat:45.9237,lon:6.8694,tz:'Europe/Paris'},
-         {id:3,lat:43.3183,lon:-1.9812,tz:'Europe/Madrid'}];
   var W={0:'clear',1:'mostly clear',2:'partly cloudy',3:'overcast',45:'fog',48:'freezing fog',
     51:'light drizzle',53:'drizzle',55:'heavy drizzle',61:'light rain',63:'rain',65:'heavy rain',
     71:'light snow',73:'snow',75:'heavy snow',80:'showers',81:'showers',82:'heavy showers',
     85:'snow showers',86:'snow showers',95:'thunderstorm',96:'thunderstorm',99:'thunderstorm'};
+  var P=[{id:1,lat:46.6242,lon:8.0341,tz:'Europe/Zurich'},
+         {id:2,lat:45.9237,lon:6.8694,tz:'Europe/Paris'},
+         {id:3,lat:43.3183,lon:-1.9812,tz:'Europe/Madrid'}];
+
+  function ticks(){
+    P.forEach(function(p){
+      try{document.getElementById('c'+p.id).textContent=
+        new Intl.DateTimeFormat('en-GB',{timeZone:p.tz,hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());}catch(e){}
+    });
+  }
+  ticks(); setInterval(ticks,20000);
+
   P.forEach(function(p){
     var u='https://api.open-meteo.com/v1/forecast?latitude='+p.lat+'&longitude='+p.lon
-      +'&current=temperature_2m,weather_code&forecast_days=1&timezone='+encodeURIComponent(p.tz);
+      +'&current=temperature_2m,weather_code'
+      +'&daily=temperature_2m_max,temperature_2m_min&forecast_days=1&timezone='+encodeURIComponent(p.tz);
     fetch(u).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){
       document.getElementById('w'+p.id).textContent=Math.round(d.current.temperature_2m)+'\u00b0';
       document.getElementById('d'+p.id).textContent=W[d.current.weather_code]||'\u2014';
+      document.getElementById('m'+p.id).innerHTML='today <b class="lo">'+Math.round(d.daily.temperature_2m_min[0])
+        +'\u00b0</b> / <b class="hi">'+Math.round(d.daily.temperature_2m_max[0])+'\u00b0</b>';
     }).catch(function(){
       document.getElementById('w'+p.id).textContent='\u2014';
       document.getElementById('d'+p.id).textContent='no feed';
+      document.getElementById('m'+p.id).textContent='no feed';
     });
   });
 })();
