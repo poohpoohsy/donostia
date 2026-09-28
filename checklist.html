@@ -56,6 +56,10 @@
     text-decoration:none;line-height:1.45;}
   .cb .body a{color:var(--alp);}
   .cb .body .tel{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12.5px;color:var(--alp);}
+  .dt{display:inline-block;margin-right:8px;padding:2px 7px;border-radius:2px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;letter-spacing:.08em;
+    text-transform:uppercase;background:rgba(142,205,236,.12);color:var(--alp);
+    border:1px solid rgba(142,205,236,.28);vertical-align:2px;}
   .dead{display:inline-block;margin-top:5px;padding:2px 7px;border-radius:2px;
     font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:.1em;
     text-transform:uppercase;background:rgba(212,97,78,.15);color:#EA9482;
@@ -84,7 +88,7 @@
   <section>
     <p class="when now">Do it now · deadlines already close</p>
     <h2>This week</h2>
-    <p class="why">Transfer confirmed. Saturday 3rd dinner is a deliberate walk-in. Short list now.</p>
+    <p class="why">We fly Wednesday night. Two live items and one phone call.</p>
     <div class="list">
 
 
@@ -101,70 +105,79 @@
     </div>
   </section>
 
-  <!-- ===== 1 SEPT ===== -->
+  <!-- ===== SEPT DEADLINES ===== -->
   <section>
-    <p class="when soon">1 September · the morning it opens</p>
-    <h2>Aiguille du Midi</h2>
-    <p class="why">The booking window opens on the 1st for October. Do it that morning, not that evening.</p>
+    <p class="when now">Two windows still open</p>
+    <h2>Free-cancel dates</h2>
+    <p class="why">Everything else has passed and is now committed. These two have not.</p>
     <div class="list">
-      <label class="cb"><input type="checkbox" data-k="b1"><div class="body">
-        Book <b>6 adults, Tue 6 Oct, 08:10 departure</b>, round trip
-        <small>Reservation is free but mandatory. Pricing is dynamic — €60.20 to €83.00 each, and the cheap end goes first. <a href="https://aiguilledumidi.montblancnaturalresort.com/en/timetables-rates" target="_blank" rel="noopener">Book ↗</a></small>
-        <span class="dead a">08:10 is the slot everyone wants</span></div></label>
-
-      <label class="cb"><input type="checkbox" data-k="b2"><div class="body">
-        Ask first: does anyone want <b>Plan de l'Aiguille only</b>?
-        <small>€43 instead of €60–83, and we go there anyway on the Wednesday. A real option for anyone uneasy about 3,842m.</small></div></label>
-
-      <label class="cb"><input type="checkbox" data-k="b3"><div class="body">
-        If 08:10 is gone — set a reminder for <b>3 October</b>
-        <small>The operator releases a further batch at J-3. Box office at 07:45 on the day is the last resort, subject to availability.</small></div></label>
+      <label class="cb"><input type="checkbox" data-k="c2b"><div class="body">
+        <b>San Sebastián hotel</b>, the 14–15 Oct nights — free cancel to <b>30 Sept</b>
+        <small>Tomorrow. Last chance to change anything about the final two nights.</small>
+        <span class="dead">Closes 30 Sept</span></div></label>
+      <label class="cb"><input type="checkbox" data-k="c3"><div class="body">
+        <b>Grindelwald → Chamonix taxi</b> — free cancel to <b>3 Oct</b>
+        <small>Zou Taxi, €800, 14:00 pickup on the 5th. Keep it; noted only because the window is still live.</small>
+        <span class="dead a">Closes 3 Oct</span></div></label>
+      <label class="cb"><input type="checkbox" data-k="c4"><div class="body">
+        <b>Zurich airport hotel</b> — free cancel to <b>14 Oct</b></div></label>
+      <label class="cb"><input type="checkbox" data-k="c6"><div class="body">
+        <b>Committed:</b> Grindelwald hotel, San Sebastián 9–14 Oct, Chamonix apartment
+        <small>All past their windows or non-refundable. Nothing to do.</small></div></label>
     </div>
   </section>
 
-  <!-- ===== SEPT DEADLINES ===== -->
+  <!-- ===== BEFORE WE FLY ===== -->
   <section>
-    <p class="when soon">September · cancellation windows</p>
-    <h2>Free-cancel dates</h2>
-    <p class="why">After these, the money is gone. Worth a diary entry each.</p>
+    <p class="when now">Next 48 hours</p>
+    <h2>Before we fly</h2>
+    <p class="why">Small, dull, and each one is a real problem if it is skipped.</p>
     <div class="list">
-      <label class="cb"><input type="checkbox" data-k="c1"><div class="body">
-        <b>Grindelwald hotel</b> — free cancel to <b>26 Sept</b></div></label>
-      <label class="cb"><input type="checkbox" data-k="c2"><div class="body">
-        <b>San Sebastián hotel</b> — free cancel to <b>23 Sept</b>, and <b>30 Sept</b> for the 14–15 Oct nights</div></label>
-      <label class="cb"><input type="checkbox" data-k="c3"><div class="body">
-        <b>Grindelwald → Chamonix taxi</b> — free cancel to <b>3 Oct</b></div></label>
-      <label class="cb"><input type="checkbox" data-k="c4"><div class="body">
-        <b>Zurich airport hotel</b> — free cancel to <b>14 Oct</b></div></label>
-      <label class="cb"><input type="checkbox" data-k="c5"><div class="body">
-        <b>Chamonix apartment</b> — <b>non-refundable</b>, already paid
-        <small>Nothing to do. Listed so it isn't mistaken for one of the others.</small></div></label>
+      <label class="cb"><input type="checkbox" data-k="f1"><div class="body">
+        <span class="dt">30 Sept</span><b>Online check-in for CX383</b>, all six
+        <small>Opens 48 hours out. Get seats together now rather than at the airport &mdash; it is a night flight and nobody wants to be split up.</small></div></label>
+
+      <label class="cb"><input type="checkbox" data-k="f2"><div class="body">
+        <span class="dt">30 Sept</span>Sort <b>data for three countries</b>
+        <small>Switzerland is <b>not in the EU</b>, so an EU-only roaming plan or eSIM will not cover the first five days. Check your plan covers CH, FR and ES, or buy a regional eSIM that lists Switzerland explicitly.</small>
+        <span class="dead a">Easy to get wrong</span></div></label>
+
+      <label class="cb"><input type="checkbox" data-k="f3"><div class="body">
+        <span class="dt">30 Sept</span>Tell your <b>bank</b> you are travelling, and carry some cash
+        <small>CHF for Switzerland, EUR for France and Spain. Mountain huts and small pintxos bars are card-shy.</small></div></label>
+
+      <label class="cb"><input type="checkbox" data-k="f7"><div class="body">
+        <span class="dt">30 Sept</span>Put the <b>emergency numbers</b> in your phone, and in the group chat
+        <small><b>112</b> works in Switzerland, France and Spain, from any phone, in English.<br>
+        <b>1414</b> is Rega, Swiss mountain rescue &mdash; the one to call on the Panorama Trail or the Balcon, not 112.<br>
+        <b>04 65 60 00 80</b> Montenvers &middot; <b>+33 6 15 82 09 88</b> Zou Taxi &middot; <b>+34 943 21 35 25</b> Monte Igueldo.</small></div></label>
+
+      <label class="cb"><input type="checkbox" data-k="f4"><div class="body">
+        <span class="dt">30 Sept</span>Download <b>offline maps</b> for all four bases
+        <small>Lauterbrunnen, Grindelwald, Chamonix, San Sebasti&aacute;n. Signal dies on the mountains.</small></div></label>
+
+      <label class="cb"><input type="checkbox" data-k="f5"><div class="body">
+        <span class="dt">1 Oct</span>Buy the <b>Z&uuml;rich Flughafen &rarr; Interlaken Ost</b> tickets
+        <small>The Jungfrau pass starts at Interlaken Ost, so this leg is separate. <b>Buy flexible, not a fixed-train Supersaver</b> &mdash; if EES holds us at immigration a locked ticket is wasted.</small></div></label>
+
+      <label class="cb"><input type="checkbox" data-k="f6"><div class="body">
+        <span class="dt">4 Oct</span>Confirm the <b>Zou Taxi pickup</b> for the 5th
+        <small>&euro;800, 14:00 from Hotel Pinte, six passengers and twelve pieces of luggage. A WhatsApp the day before costs nothing and removes the only single point of failure that day.</small></div></label>
     </div>
   </section>
 
   <!-- ===== 24 SEPT ===== -->
   <section>
-    <p class="when soon">~24 September · one week out</p>
-    <h2>Are the lifts running</h2>
-    <p class="why">Shoulder season. This is the single most likely thing to break a day, and it's knowable in advance.</p>
+    <p class="when now">Before Wednesday</p>
+    <h2>One phone call</h2>
+    <p class="why"><b>Good news first:</b> Grindelwald&ndash;First, Grindelwald&ndash;M&auml;nnlichen and Lauterbrunnen&ndash;Gr&uuml;tschalp all run until <b>26 October</b>, three weeks after we leave. Saturday the 3rd is no longer the risk we thought. The lift-status links now live on the day pages themselves — beside each day's map link, where you'll actually look. This is the bit a website won't answer.</p>
     <div class="list">
-      <label class="cb"><input type="checkbox" data-k="d1"><div class="body">
-        <b>Switzerland:</b> First Cable Car, Grindelwald–Männlichen, Lauterbrunnen–Grütschalp
-        <small>Saturday 3 Oct needs all three and <b>cannot be moved</b> — Monday has the transfer. <a href="https://www.jungfrau.ch/en-gb/live/operating-info/" target="_blank" rel="noopener">Operating info ↗</a></small>
-        <span class="dead">Highest-risk day of the trip</span></div></label>
-
-      <label class="cb"><input type="checkbox" data-k="d2"><div class="body">
-        <b>Chamonix:</b> Aiguille du Midi, Montenvers train, Brévent
-        <small>All three showed open for our dates, but confirm. <a href="https://www.montblancnaturalresort.com/en/info-live" target="_blank" rel="noopener">Live status ↗</a></small></div></label>
-
       <label class="cb"><input type="checkbox" data-k="d3"><div class="body">
-        Call <b>Montenvers</b>: is the Glaciorium open in October?
-        <small>The ice cave and gondola are definitely shut. The museum probably isn't — but it's the difference between a 45-minute stop and a 15-minute one.</small>
-        <span class="tel">04 65 60 00 80</span></div></label>
-
-      <label class="cb"><input type="checkbox" data-k="d4"><div class="body">
-        Check <b>Montenvers last train</b> and <b>Wednesday's first cable car</b>
-        <small>Train published as running to 17:30 between 14 Sept and 1 Nov. Cable car opens 08:10. Confirm both.</small></div></label>
+        Call <b>Montenvers</b> — two questions in one call
+        <small><b>1 ·</b> What is the <b>last train down</b> from Montenvers on 7 Oct? The published window is 08:30 with last ascent 16:00 — earlier than the 17:30 we had written, so Day 7's cushion is thinner than we thought.<br>
+        <b>2 ·</b> Are the <b>Glaciorium and Temple de la Nature</b> open? The ice cave and glacier gondola are shut 28 Sept – 16 Oct either way.</small>
+        <span class="tel">04 65 60 00 80</span>
+        <span class="dead">Day 7 depends on this</span></div></label>
     </div>
   </section>
 
@@ -198,25 +211,21 @@
     <p class="when later">Whenever · smaller things</p>
     <h2>Loose ends</h2>
     <div class="list">
-      <label class="cb"><input type="checkbox" data-k="e1"><div class="body">
-        Confirm the <b>07:00 pick-up on 3 Oct</b> from the Lauterbrunnen chalet
-        <small>Four passengers plus luggage. This is what makes the Saturday morning move work.</small></div></label>
-      <label class="cb"><input type="checkbox" data-k="e2"><div class="body">
-        Confirm <b>Eiger Stübli, Mürren, 12:00 on 2 Oct</b></div></label>
-      <label class="cb"><input type="checkbox" data-k="e3"><div class="body">
-        Confirm <b>dinner 18:00 on 4 Oct</b>
-        <small>Check it isn't double-booked — the notes have two entries for the same evening.</small></div></label>
+      <label class="cb"><input type="checkbox" data-k="e9"><div class="body">
+<span class="dt">By 2 Oct</span>Book <b>Saturday 3 Oct dinner</b> in Grindelwald
+        <small>First meal with all six. A Saturday night in October wants a table reserved rather than found.</small>
+        <span class="dead a">Only unbooked meal left</span></div></label>
       <label class="cb"><input type="checkbox" data-k="e8"><div class="body">
-        Check the <b>Bilbao return coach</b> for Tue 13 Oct
+<span class="dt">By 12 Oct</span>Check the <b>Bilbao return coach</b> for Tue 13 Oct
         <small>Last departure from Bilbao Intermodal. Last departure from Bilbao Intermodal — the only fixed thing left on that day.</small></div></label>
       <label class="cb"><input type="checkbox" data-k="e5"><div class="body">
-        Set up the <b>shared photo album</b> and put the link in the group
+<span class="dt">Before 1 Oct</span>Set up the <b>shared photo album</b> and put the link in the group
         <small>Before departure. Six people over sixteen days — otherwise you're chasing everyone in November.</small></div></label>
       <label class="cb"><input type="checkbox" data-k="e6"><div class="body">
-        Download <b>all tickets to Apple Wallet</b>
+<span class="dt">Before 1 Oct</span>Download <b>all tickets to Apple Wallet</b>
         <small>No signal inside mountains, and it's the thing most likely to be forgotten.</small></div></label>
       <label class="cb"><input type="checkbox" data-k="e7"><div class="body">
-        Buy <b>Wednesday's packed lunch</b> in Chamonix on Tuesday evening
+<span class="dt">6 Oct pm</span>Buy <b>Wednesday's packed lunch</b> in Chamonix
         <small>Six people hunting a boulangerie at eight in the morning is how a hike starts late.</small></div></label>
     </div>
 

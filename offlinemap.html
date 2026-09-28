@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Offline maps — three apps to download</title>
+<meta name="description" content="Google Maps offline gives you driving directions only. These three cover the rest.">
+<meta property="og:title" content="Offline maps — three apps to download">
+<meta property="og:description" content="Free, quick, and they work with no signal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#0D1214; --raise:#161D21; --raise2:#1D262B;
+    --chalk:#EAE9E5; --dim:#8A979D;
+    --alp:#8ECDEC; --go:#7FB98A;
+    --rule:rgba(234,233,229,.13); --pad:clamp(18px,5.5vw,40px);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--ground);color:var(--chalk);
+    font-family:'Archivo',system-ui,-apple-system,sans-serif;font-size:16.5px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:640px;margin:0 auto;padding:0 var(--pad) 60px;}
+
+  .back{display:inline-block;margin:clamp(20px,5vw,32px) 0 0;text-decoration:none;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--dim);}
+  .back:hover{color:var(--chalk);}
+
+  .top{padding:14px 0 0;}
+  .kicker{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:600;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--alp);margin:0 0 12px;}
+  h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(30px,8.4vw,44px);
+    line-height:.99;letter-spacing:-.025em;margin:0 0 14px;}
+  .intro{margin:0;color:var(--dim);font-size:15.5px;}
+  .intro b{color:var(--chalk);font-weight:600;}
+
+  section{margin-top:28px;padding-top:22px;border-top:1px solid var(--rule);}
+  .sechead{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:0 0 4px;}
+  h2{font-family:'Syne',sans-serif;font-weight:800;font-size:21px;letter-spacing:-.02em;margin:0 0 4px;}
+  .why{margin:0 0 16px;font-size:14px;color:var(--dim);}
+
+  .app{display:block;text-decoration:none;color:inherit;background:var(--raise);
+    border:1px solid var(--rule);border-radius:3px;padding:14px 16px;margin-bottom:8px;}
+  .app:hover{background:var(--raise2);}
+  .app .an{font-family:'Syne',sans-serif;font-weight:700;font-size:16px;margin:0;}
+  .app .free{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--go);margin-left:8px;vertical-align:2px;}
+  .app p{margin:5px 0 0;font-size:13.5px;color:var(--dim);line-height:1.5;}
+  .app p b{color:var(--chalk);font-weight:600;}
+  .app .go{color:var(--alp);font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.1em;text-transform:uppercase;display:block;margin-top:9px;}
+
+  footer{margin-top:28px;padding-top:18px;border-top:1px solid var(--rule);}
+  .sig{margin:0;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:13px;color:var(--dim);opacity:.35;user-select:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="index.html">← All days</a>
+
+  <header class="top">
+    <p class="kicker">Free · install before we fly</p>
+    <h1>Three apps<br>to download.</h1>
+    <p class="intro">Google Maps offline gives you <b>driving directions only</b> — no walking, no transit, no trails. These three cover what it can't, and all work with no signal.</p>
+  </header>
+
+  <section>
+    <p class="sechead">In order of how much you'll use them</p>
+    <h2>Get these on your phone</h2>
+    <p class="why">Ten minutes on wifi. Download the maps inside each app, not on the mountain.</p>
+
+    <a class="app" href="https://organicmaps.app/" target="_blank" rel="noopener">
+      <p class="an">Organic Maps<span class="free">free · no account</span></p>
+      <p><b>The important one.</b> Fully offline and it <b>routes you along footpaths</b> — the thing Google won't do. Download Switzerland, France and Spain inside the app. Alpine trails, hut names and waymarks all show.</p>
+      <span class="go">organicmaps.app →</span>
+    </a>
+
+    <a class="app" href="https://www.schweizmobil.ch/en" target="_blank" rel="noopener">
+      <p class="an">SwitzerlandMobility<span class="free">free</span></p>
+      <p>The official Swiss hiking network — every yellow signpost and route number on the real Swisstopo map. Best way to check a trail is open and how long it takes.</p>
+      <span class="go">schweizmobil.ch →</span>
+    </a>
+
+    <a class="app" href="https://www.sbb.ch/en/travel-information/apps/sbb-mobile.html" target="_blank" rel="noopener">
+      <p class="an">SBB Mobile<span class="free">free</span></p>
+      <p>Swiss trains, buses and mountain lifts minute by minute, and it holds our tickets. Needs signal to look up a connection — so screenshot the day's plan the night before.</p>
+      <span class="go">sbb.ch →</span>
+    </a>
+  </section>
+
+  <footer>
+    <p class="sig">¯\_(ツ)_/¯</p>
+  </footer>
+
+</div>
+</body>
+</html>

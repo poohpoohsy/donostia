@@ -94,10 +94,12 @@
   .tool .go{color:var(--alp);font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
     letter-spacing:.1em;text-transform:uppercase;display:block;margin-top:8px;}
 
-  .lead{margin:14px 0 0;text-align:right;font-family:'IBM Plex Mono',ui-monospace,monospace;
-    font-size:10px;letter-spacing:.1em;}
+  .lead{margin:14px 0 0;display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.1em;}
   .lead a{color:var(--dim);text-decoration:none;opacity:.55;}
   .lead a:hover{color:var(--chalk);opacity:1;}
+  .lead a.mapl{color:var(--alp);opacity:.85;}
+  .lead a.mapl:hover{opacity:1;}
 
   .note{background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:15px 17px;margin-top:10px;}
   .note p{margin:0;font-size:14px;color:var(--dim);}
@@ -221,7 +223,7 @@
         </a>
       </div>
     </div>
-    <p class="lead"><a href="checklist.html">團長 checklist ↗</a></p>
+    <p class="lead"><a class="mapl" href="offlinemap.html">Offline Google Maps ↗</a><a href="checklist.html">團長 checklist ↗</a></p>
   </section>
 
 
