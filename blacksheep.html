@@ -164,6 +164,15 @@
     color:var(--sea);margin-bottom:5px;
   }
   .note{margin:0;font-size:14.5px;color:var(--dim);}
+  .ham,.opt{
+    display:inline-block;padding:3px 9px;border-radius:2px;vertical-align:2px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+  }
+  .ham{background:rgba(233,180,76,.16);color:var(--gold);border:1px solid rgba(233,180,76,.42);}
+  .opt{background:transparent;color:var(--dim);border:1px solid var(--rule);}
+  .stop.is-opt{opacity:.9;}
+  .stop.is-opt h3{color:var(--dim);}
   .warn{
     display:inline-block;margin-top:9px;padding:5px 10px;border-radius:2px;
     font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
@@ -304,8 +313,8 @@
 
   <header class="top">
     <p class="kicker">Saturday 10 October · Donostia</p>
-    <h1>Seven by two,<br>the park at four.</h1>
-    <p class="intro" style="margin:16px 0 0;color:var(--dim);font-size:15.5px;">We leave the hotel together at <b style="color:var(--chalk)">09:10</b>. Seven stops done by lunch, <b style="color:var(--chalk)">hard stop at Manojo at 15:00</b>, up Monte Igueldo for the boat and the cart, then back out for the tortilla at quarter past six.</p>
+    <h1>Ham by noon,<br>the park at four.</h1>
+    <p class="intro" style="margin:16px 0 0;color:var(--dim);font-size:15.5px;">Cheese, chocolate, then <b style="color:var(--chalk)">two stops for ibérico ham</b> before lunch. <b style="color:var(--chalk)">Hard stop at Manojo at 15:00</b>, up Monte Igueldo for the boat and the cart, then the tortilla at quarter past six. <b style="color:var(--chalk)">Gold ★ means ham. Grey means optional — drop it if you are behind.</b></p>
 
     <div class="today">
       <span class="tdot" id="tdot"></span>
@@ -317,7 +326,7 @@
     </div>
     <div class="routebox">
       <p>The food route in Google Maps — all nine stops, walking, in order. Save it before you lose signal. The afternoon leg out to the <b>Monte Igueldo amusement park</b> is the second button.</p>
-      <a class="routebtn" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Motx%20Coffee%2C%20Donostia&origin_place_id=ChIJDzdE7EqlUQ0RyXoCIS0CdnA&destination=SUA.MUKA.%2C%20Donostia&destination_place_id=ChIJ0V8LmealUQ0R6U7aRwwkhPM&waypoints=Elkano%201%20-%20Gaztagune%2C%20Donostia%7CRafa%20Gorrotxategi%2C%20Donostia%7CSan%20Martin%20Merkatua%2C%20Donostia%7CBouiboui%20Shop%2C%20Donostia%7CBodega%20Klandestina%2C%20Donostia%7CManojo%2C%20Donostia%7CAntonio%20taberna%2C%20Donostia&waypoint_place_ids=ChIJwSQUAE6lUQ0RI-pk5m8e6VQ%7CChIJZar6yM-lUQ0REfKvZcuEXY8%7CChIJNbKD4VOlUQ0RA0e4gEExwJI%7CChIJM87Iwf30XIsR8Ot1wd2iB0I%7CChIJD_K7jNqlUQ0R5hgFyMuzk0M%7CChIJz3U4SRWlUQ0R4SAgDpt0FpQ%7CChIJ6T6eVVClUQ0Rr67NXUZTqSw" target="_blank" rel="noopener">Open the full route ↗</a>
+      <a class="routebtn" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Motx%20Coffee%2C%20Donostia&origin_place_id=ChIJDzdE7EqlUQ0RyXoCIS0CdnA&destination=La%20Cuchara%20de%20San%20Telmo%2C%20Donostia&destination_place_id=ChIJ7WeBrE2lUQ0R8b8U5UpHiQE&waypoints=Elkano%201%20-%20Gaztagune%2C%20Donostia%7CRafa%20Gorrotxategi%2C%20Donostia%7CZapore%20Jai%2C%20Donostia%7CLa%20Cepa%20de%20Bernardo%2C%20Donostia%7CBouiboui%20Shop%2C%20Donostia%7CBodega%20Klandestina%2C%20Donostia%7CManojo%2C%20Donostia%7CAntonio%20taberna%2C%20Donostia&waypoint_place_ids=ChIJwSQUAE6lUQ0RI-pk5m8e6VQ%7CChIJZar6yM-lUQ0REfKvZcuEXY8%7CChIJZZzapk2lUQ0RKdE3ppk-2cI%7CChIJMevYsk2lUQ0R7ABFE3h8DBQ%7CChIJM87Iwf30XIsR8Ot1wd2iB0I%7CChIJD_K7jNqlUQ0R5hgFyMuzk0M%7CChIJz3U4SRWlUQ0R4SAgDpt0FpQ%7CChIJ6T6eVVClUQ0Rr67NXUZTqSw" target="_blank" rel="noopener">Open the full route ↗</a>
       <a class="routebtn" style="margin-top:10px;background:var(--sea)" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Manojo%2C%20Donostia&destination=Parque%20de%20Atracciones%20Monte%20Igueldo&destination_place_id=ChIJ96pnLpi6UQ0Rwshthamc4qg&waypoints=Peine%20del%20Viento%2C%20Donostia%7CFunicular%20Monte%20Igueldo" target="_blank" rel="noopener">Open the Igueldo route ↗</a>
     </div>
     </header>
@@ -402,58 +411,77 @@
       <span class="warn">Want a sit-down breakfast instead? Vincent's Café, old town, opens 09:00</span>
     </article>
 
-    <article class="stop" data-start="10:00" data-end="10:30">
+    <article class="stop" data-start="10:00" data-end="10:25">
       <p class="clock">10:00</p>
       <h3>1 · Elkano 1 Gaztagune</h3>
       <p class="addr">Elkano Kalea 1 · cheese  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Elkano%201%20-%20Gaztagune%2C%20Donostia&query_place_id=ChIJwSQUAE6lUQ0RI-pk5m8e6VQ" target="_blank" rel="noopener">Map ↗</a></p>
       <p class="order"><span class="tag">Order this</span>The Teyedu, with an Idiazabal to compare.</p>
-      <p class="note">Opens at ten on a Saturday. A cheese shop that looks well past the Basque country for what it stocks — the right place to start while everyone can still taste properly.</p>
-      <span class="warn">Closed Sun–Mon</span>
+      <p class="note">Opens at ten on a Saturday. Taste properly now, while everyone still can.</p>
+      <span class="warn">Closed Sun–Mon · shuts 14:00</span>
     </article>
 
-    <article class="stop" data-start="10:30" data-end="11:00">
-      <p class="clock">10:30 <span class="walk">2 MIN WALK · TWO DOORS</span></p>
-      <h3>2 · Gorrotxategi &amp; Garrarte</h3>
-      <p class="addr">Narrika Kalea 6 and 4 · chocolate  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Rafa%20Gorrotxategi%20Donostia&query_place_id=ChIJZar6yM-lUQ0REfKvZcuEXY8" target="_blank" rel="noopener">Gorrotxategi ↗</a><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Garrarte%20Donostia%20Gozogintza%20Artisaua&query_place_id=ChIJrf76CU2lUQ0RwOFhPWGxrV0" target="_blank" rel="noopener">Garrarte ↗</a></p>
-      <p class="order"><span class="tag">Order this</span>A drinking chocolate at Gorrotxategi. Then buy next door at Garrarte.</p>
-      <p class="note"><b>Rafa Gorrotxategi</b> — a reviewer describes it as drinking properly melted dark chocolate rather than watery hot chocolate, and says a small one is plenty. Also does the Basque classics: cigarillos, tejas de almendra, pastel vasco, goxua. Open daily 09:00–20:00.</p>
-      <p class="note"><b>Garrarte</b>, forty metres away — <b>4.9 from 577 reviews</b>, the highest-rated sweet shop in the old town. They hand out samples, and the coated almonds come up again and again. Open 10:30. <b>This is where the take-home purchase happens.</b></p>
-      <span class="warn">Lurka, which used to be here, has closed permanently</span>
+    <article class="stop" data-start="10:25" data-end="10:50">
+      <p class="clock">10:25 <span class="walk">4 MIN WALK</span></p>
+      <h3>2 · Rafa Gorrotxategi</h3>
+      <p class="addr">Narrika Kalea 6 · chocolate  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Rafa%20Gorrotxategi%20Donostia&query_place_id=ChIJZar6yM-lUQ0REfKvZcuEXY8" target="_blank" rel="noopener">Map ↗</a></p>
+      <p class="order"><span class="tag">Order this</span>A <b>small</b> drinking chocolate. One reviewer: properly melted dark chocolate, not watery — and a small is plenty.</p>
+      <p class="note">Also the Basque classics: cigarillos, tejas de almendra, pastel vasco, goxua. Open daily 09:00–20:00, so no rush on this one.</p>
+      <span class="warn">Don't fill up — two ham stops are next</span>
     </article>
 
-    <article class="stop" data-start="11:00" data-end="11:45">
-      <p class="clock">11:00 <span class="walk">6 MIN WALK</span></p>
-      <h3>3 · San Martín Market</h3>
-      <p class="addr">Urbieta Kalea 9 · market  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=San%20Martin%20Merkatua%2C%20Donostia&query_place_id=ChIJNbKD4VOlUQ0RA0e4gEExwJI" target="_blank" rel="noopener">Map ↗</a></p>
-      <p class="note">Twenty minutes, nothing to buy. <b>Saturday morning is when this place is alive</b> — by evening it's half shut. Look for kokotxas at the fish counters: cod and hake throats, sold by the kilo to chefs and grandmothers in the same queue.</p>
-      <p class="note"><b>Watch for</b> the all-women fishmonger stall, and the queue in front of it.</p>
+    <article class="stop" data-start="10:50" data-end="11:20">
+      <p class="clock">10:50 <span class="walk">5 MIN WALK</span> <span class="ham">★ Jamón</span></p>
+      <h3>3 · Zapore Jai</h3>
+      <p class="addr">C. de San Jerónimo 21 · hand-carved ibérico  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Zapore%20Jai%20Donostia&query_place_id=ChIJZZzapk2lUQ0RKdE3ppk-2cI" target="_blank" rel="noopener">Map ↗</a></p>
+      <p class="order"><span class="tag">Ask for this</span><b>Jamón de bellota 100% ibérico, cortado a cuchillo.</b> 100%純種、橡果飼養、手切伊比利亞黑毛豬火腿。</p>
+      <p class="note"><b>4.8 from 129 reviews</b> — the best ham in the old town, and <b>seven doors from where we started this morning</b>. Reviewers: <i>"sliced paper thin and practically melts in your mouth"</i>, and one went specifically for <b>Cinco Jotas</b>, the top ibérico house. Husband-and-wife shop, fluent English, carved fresh in front of you.</p>
+      <p class="note"><b>This is also the take-home stop.</b> Vacuum packs travel; buy here rather than at the airport. They do conservas and olive oil too.</p>
+      <span class="warn">Opens 10:30 · closed Sun–Mon — today or Wednesday, nothing else</span>
     </article>
 
-    <article class="stop" data-start="11:45" data-end="12:15">
-      <p class="clock">11:45 <span class="walk">12 MIN — OVER THE BRIDGE</span></p>
-      <h3>4 · Bouiboui</h3>
-      <p class="addr">Calle Trueba 4 · shop  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bouiboui%20Shop%2C%20Donostia&query_place_id=ChIJM87Iwf30XIsR8Ot1wd2iB0I" target="_blank" rel="noopener">Map ↗</a></p>
-      <p class="order"><span class="tag">Order this</span>The grilled cheese, and something to carry home.</p>
-      <p class="note">We cross the Kursaal bridge into Gros. <b>Highest-rated stop of the day at 4.9</b> — a specialty food and natural wine shop rather than a bar. Sauces, artisan pasta, crisps, and an owner who hands out recommendations freely. Small — we'll be shoulder to shoulder, which is half the fun.</p>
-      <span class="warn">Shuts at 14:00</span>
+    <article class="stop" data-start="11:20" data-end="12:00">
+      <p class="clock">11:25 <span class="walk">4 MIN WALK</span> <span class="ham">★ Jamón</span></p>
+      <h3>4 · La Cepa de Bernardo</h3>
+      <p class="addr">31 de Agosto Kalea 7 · ham platter  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=La%20Cepa%20de%20Bernardo%20Donostia&query_place_id=ChIJMevYsk2lUQ0R7ABFE3h8DBQ" target="_blank" rel="noopener">Map ↗</a></p>
+      <p class="order"><span class="tag">Order this</span>The <b>jamón ibérico plate, €25</b>, one between the six of us. Ask whether it is bellota before you order.</p>
+      <p class="note"><b>On your wish list, never visited.</b> 4.3 from 3,222. Zapore Jai is the better <i>ham</i>; this is the better <i>bar</i> — you stand at the counter with a glass and a plate, which is the thing the morning has been missing.</p>
+      <p class="note">Reviewers also name the <b>jamón croqueta</b>, the fried calamari and the galician octopus. Soft fresh bread rather than toasted baguette, which people single out.</p>
+      <span class="warn">Open 11:00–23:00 every day — easy to come back to tonight instead</span>
     </article>
 
-    <article class="stop" data-start="12:15" data-end="12:45">
-      <p class="clock">12:15 <span class="walk">2 MIN WALK</span></p>
-      <h3>5 · Bodega Klandestina</h3>
-      <p class="addr">Kale Berria 18 · natural wine  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bodega%20Klandestina%2C%20Donostia&query_place_id=ChIJD_K7jNqlUQ0R5hgFyMuzk0M" target="_blank" rel="noopener">Map ↗</a></p>
-      <p class="order"><span class="tag">Order this</span>Tell the owner what you've liked so far and let him choose.</p>
-      <p class="note">Also 4.9, and he's very good at this. If you want to bring wine home, buy it here rather than at the airport.</p>
-      <span class="warn">Shuts at 14:00</span>
+    <article class="stop is-opt" data-start="12:00" data-end="12:15">
+      <p class="clock">12:05 <span class="walk">5 MIN WALK</span> <span class="opt">Optional</span></p>
+      <h3>5 · Garrarte</h3>
+      <p class="addr">Narrika Kalea 4 · sweets  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Garrarte%20Donostia%20Gozogintza%20Artisaua&query_place_id=ChIJrf76CU2lUQ0RwOFhPWGxrV0" target="_blank" rel="noopener">Map ↗</a></p>
+      <p class="order"><span class="tag">Buy this</span>The coated almonds. Reviewer after reviewer. They hand out samples, so taste first.</p>
+      <p class="note"><b>4.9 from 586</b> — highest-rated sweet shop in the old town. Five minutes, grab and go; it is on the way out towards the bridge.</p>
+      <span class="warn">Corrected: opens 11:00, not 10:30 · open till 22:00 today, so tonight works too</span>
+      <span class="warn">Lurka, which used to be on this street, has closed permanently</span>
+    </article>
+
+    <article class="stop is-opt" data-start="12:15" data-end="12:45">
+      <p class="clock">12:20 <span class="walk">12 MIN — OVER THE BRIDGE</span> <span class="opt">Optional · both</span></p>
+      <h3>6 · Bouiboui + Klandestina</h3>
+      <p class="addr">Calle Trueba 4 and Kale Berria 18 · Gros  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bouiboui%20Shop%2C%20Donostia&query_place_id=ChIJM87Iwf30XIsR8Ot1wd2iB0I" target="_blank" rel="noopener">Bouiboui ↗</a><a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bodega%20Klandestina%2C%20Donostia&query_place_id=ChIJD_K7jNqlUQ0R5hgFyMuzk0M" target="_blank" rel="noopener">Klandestina ↗</a></p>
+      <p class="order"><span class="tag">If you stop</span>Grilled cheese at Bouiboui. At Klandestina, tell him what you have drunk today and let him choose — <b>and buy your bottles here rather than at the airport</b>.</p>
+      <p class="note">Both <b>4.9</b>, two minutes apart, and genuinely on the way to Manojo — not a detour. <b>But they are shops, not bars</b>, and after two ham stops you may be fuller than you think.</p>
+      <p class="note"><b>Skip without regret if you are behind.</b> Both reopen this afternoon (16:00 and 17:00) and both are open Wednesday, which is already your buy-things-to-take-home day.</p>
+      <span class="warn">Shut 14:00 · Manojo is 6 min from Klandestina</span>
     </article>
 
     <article class="stop" data-start="12:45" data-end="15:00">
       <p class="clock">12:45 <span class="walk">6 MIN WALK</span></p>
-      <h3>6 · Manojo</h3>
+      <h3>7 · Manojo</h3>
       <p class="addr">José Arana Kalea 13 · lunch  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Manojo%2C%20Donostia&query_place_id=ChIJz3U4SRWlUQ0R4SAgDpt0FpQ" target="_blank" rel="noopener">Map ↗</a></p>
       <p class="order"><span class="tag">Order this</span>Navajas — razor clams — then share three or four plates.</p>
       <p class="note"><b>Only possible on a Saturday</b>: every other day this place opens at five. We finally sit down. Short market-driven menu that changes on whatever came in that morning, plus bonito with leche de tigre and handmade tagliatelle with clams.</p>
       <span class="warn">Book ahead · shut Wednesdays · we leave at 15:00 sharp</span>
+    </article>
+
+    <article class="stop is-opt" data-start="15:00" data-end="15:00">
+      <p class="clock">Dropped <span class="opt">Cut from today</span></p>
+      <h3>San Martín Market</h3>
+      <p class="note">Cut to make room for the ham. It was twenty minutes inside plus twelve walking for something this page itself called <i>"nothing to buy"</i>. Open 7:30–23:30 Monday to Saturday, so it keeps. <b>Wander in on Wednesday</b> and look at the fish counters — kokotxas, cod and hake throats sold by the kilo to chefs and grandmothers in the same queue, and the all-women fishmonger stall with the longest line in the building.</p>
     </article>
 
     <article class="stop" data-start="15:00" data-end="17:45">
@@ -467,14 +495,15 @@
       <div class="sc">
         <h4>The two rides</h4>
         <p class="lede">This is the whole reason we're on the hill. Do them in this order — the boat while the light is still high, the cart after.</p>
+        <p class="lede" style="color:var(--gold)"><b>Corrected timing.</b> This page used to say 16:05, which was impossible — you cannot be at the bottom of the hill at 16:00 and on a ride at the top five minutes later. The funicular runs every 15 min, takes 3, then it is a walk to the gate. <b>Realistically 16:25.</b> Still plenty: you have until 17:20.</p>
 
-      <div class="scr"><div class="sct">16:05</div><div class="scb">
+      <div class="scr"><div class="sct">16:25</div><div class="scb">
         <b>Río Misterioso 小船</b><p>The wooden boat. It runs along the outside of the cliff with the whole bay below you, then ducks into a tunnel and comes out the other side. Two minutes, about €3, and it is the shot everybody sent each other. <b>Sit at the back for the view over the bow.</b></p>
       </div></div>
-      <div class="scr"><div class="sct">16:30</div><div class="scb">
+      <div class="scr"><div class="sct">16:50</div><div class="scb">
         <b>Montaña Suiza 小火車</b><p>The little blue carts, open-topped, on a track that runs right along the cliff edge. Built 1928 and it feels it. 400m, about 50km/h, ninety seconds, roughly €2.50. <b>Hold onto your phone properly</b> — there is nothing between you and the sea.</p>
       </div></div>
-      <div class="scr"><div class="sct">16:45</div><div class="scb">
+      <div class="scr"><div class="sct">17:05</div><div class="scb">
         <b>The terrace, and the group photo</b><p>Free once you're in. The classic frame is the whole of La Concha with Santa Clara island in the middle. This is the postcard everybody recognises. The Torreón tower costs €3 or €4 extra and you do not need it.</p>
       </div></div>
       <div class="scr"><div class="sct">17:20</div><div class="scb">
@@ -516,7 +545,7 @@
 
       <div class="sc">
         <h4>Getting there · 交通</h4>
-        <p class="lede">We are aiming for <b>Funicular Plaza</b>, at the bottom of the hill behind Ondarreta beach. Meet there at 16:00.</p>
+        <p class="lede">We are aiming for <b>Funicular Plaza</b>, at the bottom of the hill behind Ondarreta beach. <b>Be there by 16:00.</b> If you want the rides earlier, take bus 16 instead of walking and be at the top by 15:45, waiting when the gate reopens.</p>
 
       <div class="scr"><div class="sct">行路</div><div class="scb">
         <b>Walk it — 60 min, free</b><p>Leave Manojo at 15:00. West over the Kursaal bridge, along La Concha, past Ondarreta, and you arrive at the funicular square. Flat the whole way, and it walks off the lunch.</p>
@@ -569,20 +598,37 @@
 
     <article class="stop" data-start="18:15" data-end="19:15">
       <p class="clock">18:15 <span class="walk">AFTERNOON OFF FIRST</span></p>
-      <h3>7 · Antonio Taberna</h3>
+      <h3>8 · Antonio Taberna</h3>
       <p class="addr">Bergara Kalea 3 · tortilla  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Antonio%20taberna%2C%20Donostia&query_place_id=ChIJ6T6eVVClUQ0Rr67NXUZTqSw" target="_blank" rel="noopener">Map ↗</a></p>
       <p class="order"><span class="tag">Order this</span>Tortilla de patata and a house vermouth.</p>
       <p class="note">The best tortilla in the city, and the reason we come back out in the evening. <b>A fresh one lands around 18:30 and sells out</b> — one reviewer suggests being there by 18:15. I'll queue; the rest of us hold standing room at the bar. The txuleta and the meatball pintxo are both worth ordering too.</p>
       <span class="warn">Be there by 18:15</span>
-      <p class="note"><b>Sunset is around 19:45</b> — leave here at 19:15 and walk five minutes to the <b>La Concha promenade</b>. It faces west across the bay. Muka is the opposite direction and faces north, so do the promenade first and decide about Muka after.</p>
+      <p class="note"><b>Sunset is 19:37 today</b> — computed for Donostia, not guessed. Good light from about 19:00. Leave here at 19:10 and walk five minutes to the <b>La Concha promenade</b>. It faces west across the bay. Muka is the opposite direction and faces north, so do the promenade first and decide about Muka after.</p>
     </article>
 
-    <article class="stop" data-start="20:00" data-end="23:00">
-      <p class="clock">20:00 <span class="walk">10 MIN WALK · OPTIONAL</span></p>
-      <h3>8 · SUA.MUKA</h3>
-      <p class="addr">Zurriola Hiribidea 1 · optional  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=SUA.MUKA.%2C%20Donostia&query_place_id=ChIJ0V8LmealUQ0R6U7aRwwkhPM" target="_blank" rel="noopener">Map ↗</a></p>
-      <p class="order"><span class="tag">Order this</span>A txakoli, standing at the bar.</p>
-      <p class="note">Where the river meets the sea. Lowest-rated of the eight at 4.1 — food and setting get praise, service and price don't. <b>Come for the terrace and a drink, not a meal.</b> Anyone done for the day, the old town is fifteen minutes on foot.</p>
+    <article class="stop is-opt" data-start="20:00" data-end="23:00">
+      <p class="clock">20:00 <span class="walk">5 MIN FROM ANTONIO</span> <span class="opt">Optional · pick one</span></p>
+      <h3>9 · La Cuchara de San Telmo</h3>
+      <p class="addr">Santa Korda Kalea 4 · pintxos  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=La%20Cuchara%20de%20San%20Telmo%20Donostia&query_place_id=ChIJ7WeBrE2lUQ0R8b8U5UpHiQE" target="_blank" rel="noopener">Map ↗</a></p>
+      <p class="order"><span class="tag">Order this</span>Pork belly, beef cheek, cod cheeks. Small plates, order at the bar, pay as you go.</p>
+      <p class="note"><b>On your wish list, never visited.</b> 4.6 from 6,277 — one of the two most famous pintxos bars in the city. Organised chaos; the queue moves fast. <b>Open till 23:00</b>, so after the tortilla and the sunset there is no rush.</p>
+      <p class="note"><b>This replaces SUA.MUKA</b>, which sat at 4.1 with repeated complaints about service and price. The terrace is nice; nothing else was.</p>
+      <span class="warn">Instead of — or as well as — the two below</span>
+    </article>
+
+    <article class="stop is-opt" data-start="20:00" data-end="22:00">
+      <p class="clock">Anytime <span class="walk">OLD TOWN</span> <span class="opt">Optional</span> <span class="ham">★ Jamón</span></p>
+      <h3>Gorriti Taberna</h3>
+      <p class="addr">San Juan Kalea 3 · locals' bar  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Gorriti%20Taberna%20Donostia&query_place_id=ChIJp7xBck6lUQ0RYFeaEckmNX0" target="_blank" rel="noopener">Map ↗</a></p>
+      <p class="order"><span class="tag">Order this</span>The <b>jamón roll</b>, and the gilda with octopus.</p>
+      <p class="note"><b>On your wish list, never visited.</b> 4.5 from 1,925 and the <b>cheapest thing on this page</b>. A reviewer: <i>"the warm egg omelette and Jamon in a roll — it was utterly delicious."</i> Locals' bar, high turnover so everything is fresh. Open 08:00–22:00 today — it fits anywhere, including a gap this morning.</p>
+    </article>
+
+    <article class="stop is-opt" data-start="20:00" data-end="23:00">
+      <p class="clock">Anytime <span class="walk">OLD TOWN</span> <span class="opt">Fallback</span></p>
+      <h3>SUA.MUKA</h3>
+      <p class="addr">Zurriola Hiribidea 1 · river meets sea  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=SUA.MUKA.%2C%20Donostia&query_place_id=ChIJ0V8LmealUQ0R6U7aRwwkhPM" target="_blank" rel="noopener">Map ↗</a></p>
+      <p class="note">Kept only as a fallback. <b>4.1</b> — the setting is the draw and the service is the complaint. If you want one drink looking at water, fine. Otherwise La Cuchara is a better last hour.</p>
     </article>
   </section>
 
@@ -591,7 +637,7 @@
     <h2>Opening hours, whole week</h2>
     <p class="lede">Checked on Google, plus the <b>Monte Igueldo amusement park</b> and its funicular at the bottom. Swipe the table sideways. <b>Saturday is the column that matters</b> — everything else is here in case we shuffle.</p>
     <div class="tblwrap">
-      <table><tr><th class="v">&nbsp;</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th class="go">Sat</th><th>Sun</th></tr><tr><td class="v">Motx</td><td>8–17</td><td>8–19</td><td>8–19</td><td>8–19</td><td>8–19</td><td class="go">8–19</td><td>8–19</td></tr><tr><td class="v">Elkano 1</td><td class="shut">shut</td><td>10–14<br>16:30–20</td><td>10–14<br>16:30–20</td><td>10–14<br>16:30–20</td><td>10–14<br>16:30–20</td><td class="go">10–14<br>16:30–20</td><td class="shut">shut</td></tr><tr><td class="v">Gorrotxategi</td><td>9–20</td><td>9–20</td><td>9–20</td><td>9–20</td><td>9–20</td><td class="go">9–20</td><td>9–20</td></tr><tr><td class="v">Garrarte</td><td>10:30–22</td><td>10:30–22</td><td>10:30–22</td><td>10:30–22</td><td>10:30–22</td><td class="go">10:30–22</td><td>10:30–22</td></tr><tr><td class="v">San Martín</td><td>7:30–23:30</td><td>7:30–23:30</td><td>7:30–23:30</td><td>7:30–23:30</td><td>7:30–23:30</td><td class="go">7:30–23:30</td><td>8–14</td></tr><tr><td class="v">Bouiboui</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td class="go">11–14<br>16–19:30</td><td class="shut">shut</td></tr><tr><td class="v">Klandestina</td><td>10:30–14<br>17–20</td><td>11:30–14<br>17–20</td><td>10:30–14<br>17–20</td><td>10:30–14<br>17–20</td><td>10:30–14<br>17–20</td><td class="go">11:30–14<br>17–20</td><td class="shut">shut</td></tr><tr><td class="v">Manojo</td><td>17–24</td><td>17–24</td><td class="shut">shut</td><td>17–24</td><td>17–00:45</td><td class="go">12:30–00:45</td><td>17–24</td></tr><tr><td class="v">Antonio</td><td>9–23</td><td>9–23</td><td>9–23</td><td>9–23</td><td>9–23</td><td class="go">9–23</td><td class="shut">shut</td></tr><tr><td class="v">Igueldo park</td><td>11:15–14<br>16–20</td><td>11:15–14<br>16–20</td><td>11:15–14<br>16–20</td><td>11:15–14<br>16–20</td><td>11:15–14<br>16–20</td><td class="go">11:15–14<br>16–20</td><td>11:15–14<br>16–20</td></tr><tr><td class="v">Funicular</td><td>10:30–21</td><td>10:30–21</td><td>10:30–21</td><td>10:30–21</td><td>10:30–21</td><td class="go">10:30–21</td><td>10:30–21</td></tr><tr><td class="v">SUA.MUKA</td><td>12–23</td><td>12–23</td><td>12–23</td><td>12–23</td><td>12–23</td><td class="go">12–23</td><td>12–20</td></tr></table>
+      <table><tr><th class="v">&nbsp;</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th class="go">Sat</th><th>Sun</th></tr><tr><td class="v">Motx</td><td>8–17</td><td>8–19</td><td>8–19</td><td>8–19</td><td>8–19</td><td class="go">8–19</td><td>8–19</td></tr><tr><td class="v">Elkano 1</td><td class="shut">shut</td><td>10–14<br>16:30–20</td><td>10–14<br>16:30–20</td><td>10–14<br>16:30–20</td><td>10–14<br>16:30–20</td><td class="go">10–14<br>16:30–20</td><td class="shut">shut</td></tr><tr><td class="v">Gorrotxategi</td><td>9–20</td><td>9–20</td><td>9–20</td><td>9–20</td><td>9–20</td><td class="go">9–20</td><td>9–20</td></tr><tr><td class="v">Garrarte</td><td>11–20:30</td><td>11–20:30</td><td>11–20:30</td><td>11–20:30</td><td>11–20:30</td><td class="go">11–22</td><td>11–21</td></tr><tr><td class="v">Zapore Jai</td><td class="shut">shut</td><td>10:30–19:30</td><td>10:30–19:30</td><td>10:30–19:30</td><td>10:30–19:30</td><td class="go">10:30–19:30</td><td class="shut">shut</td></tr><tr><td class="v">La Cepa</td><td>11–23</td><td>11–23</td><td>11–23</td><td>11–23</td><td>11–23</td><td class="go">11–23</td><td>11–23</td></tr><tr><td class="v">Gorriti</td><td class="shut">shut</td><td>7–22</td><td>7–22</td><td>7–22</td><td>7–22</td><td class="go">8–22</td><td class="shut">shut</td></tr><tr><td class="v">La Cuchara</td><td class="shut">shut</td><td>12:30–15:30<br>19–23</td><td>12:30–15:30<br>19–23</td><td>12:30–15:30<br>19–23</td><td>12:30–15:30<br>19–23</td><td class="go">12:30–15:30<br>19–23</td><td>12:30–15:30<br>19–23</td></tr><tr><td class="v">San Martín</td><td>7:30–23:30</td><td>7:30–23:30</td><td>7:30–23:30</td><td>7:30–23:30</td><td>7:30–23:30</td><td class="go">7:30–23:30</td><td>8–14</td></tr><tr><td class="v">Bouiboui</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td>10:30–14<br>16–20</td><td class="go">11–14<br>16–19:30</td><td class="shut">shut</td></tr><tr><td class="v">Klandestina</td><td>10:30–14<br>17–20</td><td>11:30–14<br>17–20</td><td>10:30–14<br>17–20</td><td>10:30–14<br>17–20</td><td>10:30–14<br>17–20</td><td class="go">11:30–14<br>17–20</td><td class="shut">shut</td></tr><tr><td class="v">Manojo</td><td>17–24</td><td>17–24</td><td class="shut">shut</td><td>17–24</td><td>17–00:45</td><td class="go">12:30–00:45</td><td>17–24</td></tr><tr><td class="v">Antonio</td><td>9–23</td><td>9–23</td><td>9–23</td><td>9–23</td><td>9–23</td><td class="go">9–23</td><td class="shut">shut</td></tr><tr><td class="v">Igueldo park</td><td>11:15–14<br>16–20</td><td>11:15–14<br>16–20</td><td>11:15–14<br>16–20</td><td>11:15–14<br>16–20</td><td>11:15–14<br>16–20</td><td class="go">11:15–14<br>16–20</td><td>11:15–14<br>16–20</td></tr><tr><td class="v">Funicular</td><td>10:30–21</td><td>10:30–21</td><td>10:30–21</td><td>10:30–21</td><td>10:30–21</td><td class="go">10:30–21</td><td>10:30–21</td></tr><tr><td class="v">SUA.MUKA</td><td>12–23</td><td>12–23</td><td>12–23</td><td>12–23</td><td>12–23</td><td class="go">12–23</td><td>12–20</td></tr></table>
     </div>
     <p class="hnote">⚠️ <b>The Igueldo row is the summer schedule and is the one thing here I could not verify for October.</b> Ring +34 943 213 525 before we go. Everything else was checked on Google.</p>
     <p class="hnote"><b>Sunday is dead</b> — five of the eight are shut. <b>Wednesday</b> loses Manojo. <b>Saturday is the only day Manojo opens at 12:30</b> instead of five, which is what makes a lunch stop possible and the whole morning shape work. Lurka has closed permanently — Gorrotxategi and Garrarte replace it, and both open every day.</p>
@@ -615,9 +661,27 @@
     </div>
 
     <div class="dish">
-      <div class="dishtop"><h3>San Martín Market</h3><span class="score"><span class="star">★</span> 4.3 · 6,138</span></div>
-      <p>Nothing to buy. Look at the <b>fish counters</b> — reviewers single out the all-women fishmonger stall and the queue in front of it. That's the thing to watch, not the produce.</p>
-      <div class="pics"><a class="pic" href="https://www.google.com/search?tbm=isch&q=kokotxas%20de%20merluza%20bacalao%20Basque" target="_blank" rel="noopener">Kokotxas ↗</a><a class="pic" href="https://www.google.com/maps/search/?api=1&query=San%20Martin%20Merkatua%2C%20Donostia&query_place_id=ChIJNbKD4VOlUQ0RA0e4gEExwJI" target="_blank" rel="noopener">The market ↗</a></div>
+      <div class="dishtop"><h3>Zapore Jai <span class="ham">★ Jamón</span></h3><span class="score"><span class="star">★</span> 4.8 · 129</span></div>
+      <p><b>Jamón de bellota 100% ibérico, cortado a cuchillo.</b> Reviewers: <i>"sliced paper thin and practically melts in your mouth"</i>, <i>"the hand-carved ham melts in your mouth"</i>. One went specifically for <b>Cinco Jotas</b>. The husband-and-wife owners speak English and will explain the grades — let them. Also <b>conservas and olive oil</b>, both praised, and this is the right place to buy a vacuum pack to carry home.</p>
+      <div class="pics"><a class="pic" href="https://www.google.com/search?tbm=isch&q=jamon%20iberico%20bellota%20cortado%20a%20cuchillo" target="_blank" rel="noopener">Hand-carved bellota ↗</a><a class="pic" href="https://www.google.com/maps/search/?api=1&query=Zapore%20Jai%20Donostia&query_place_id=ChIJZZzapk2lUQ0RKdE3ppk-2cI" target="_blank" rel="noopener">The shop ↗</a></div>
+    </div>
+
+    <div class="dish">
+      <div class="dishtop"><h3>La Cepa de Bernardo <span class="ham">★ Jamón</span></h3><span class="score"><span class="star">★</span> 4.3 · 3,222</span></div>
+      <p>The <b>ibérico ham plate at €25</b> is named outright in reviews — <i>"iberico ham for 25€"</i>, <i>"We love the ham"</i>. <b>Ask whether it is bellota</b> before ordering; the listed Jabugo is not necessarily that grade. Also strong: the <b>jamón croqueta</b>, fried calamari, galician octopus, mushrooms. People single out that the bread is <b>soft and fresh rather than toasted baguette</b>. Open 11:00–23:00 daily, so it works tonight too.</p>
+      <div class="pics"><a class="pic" href="https://www.google.com/search?tbm=isch&q=La%20Cepa%20Donostia%20jamon%20iberico%20plate" target="_blank" rel="noopener">The ham plate ↗</a><a class="pic" href="https://www.google.com/maps/search/?api=1&query=La%20Cepa%20de%20Bernardo%20Donostia&query_place_id=ChIJMevYsk2lUQ0R7ABFE3h8DBQ" target="_blank" rel="noopener">The bar ↗</a></div>
+    </div>
+
+    <div class="dish">
+      <div class="dishtop"><h3>Gorriti Taberna <span class="ham">★ Jamón</span></h3><span class="score"><span class="star">★</span> 4.5 · 1,925</span></div>
+      <p>The <b>jamón roll</b> and the <b>gilda with octopus</b>. A reviewer: <i>"the warm egg omelette and Jamon in a roll — it was utterly delicious. The eggs are good quality and it was still warm."</i> High turnover, so the pintxos are replenished constantly. <b>Cheapest place on this page</b>, full of locals, quiet in the morning and packed by evening. Open 08:00–22:00 today.</p>
+      <div class="pics"><a class="pic" href="https://www.google.com/search?tbm=isch&q=gilda%20pintxo%20Basque%20olive%20anchovy" target="_blank" rel="noopener">Gilda ↗</a><a class="pic" href="https://www.google.com/maps/search/?api=1&query=Gorriti%20Taberna%20Donostia&query_place_id=ChIJp7xBck6lUQ0RYFeaEckmNX0" target="_blank" rel="noopener">The bar ↗</a></div>
+    </div>
+
+    <div class="dish">
+      <div class="dishtop"><h3>La Cuchara de San Telmo</h3><span class="score"><span class="star">★</span> 4.6 · 6,277</span></div>
+      <p><b>Pork belly</b> comes up more than anything else — <i>"probably the best I've ever had"</i>. Then <b>beef cheek</b>, <b>cod cheeks</b>, octopus, entrecôte. The pig's ear divides people. <b>Order at the bar and pay as you go</b>; the staff call your name when a plate is ready. Organised chaos, the queue moves fast, and small portions are available so you can try more. Open till 23:00.</p>
+      <div class="pics"><a class="pic" href="https://www.google.com/search?tbm=isch&q=La%20Cuchara%20de%20San%20Telmo%20pork%20belly" target="_blank" rel="noopener">Pork belly ↗</a><a class="pic" href="https://www.google.com/maps/search/?api=1&query=La%20Cuchara%20de%20San%20Telmo%20Donostia&query_place_id=ChIJ7WeBrE2lUQ0R8b8U5UpHiQE" target="_blank" rel="noopener">The bar ↗</a></div>
     </div>
 
     <div class="dish">
