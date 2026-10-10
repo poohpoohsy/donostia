@@ -101,7 +101,7 @@
   .track{position:relative;flex:1;height:100%;}
   .track::before{
     content:"";position:absolute;inset:0;
-    background:repeating-linear-gradient(90deg,var(--rule) 0 1px,transparent 1px 18.1818%);
+    background:repeating-linear-gradient(90deg,var(--rule) 0 1px,transparent 1px 16.6667%);
   }
   .open{
     position:absolute;top:11px;height:8px;border-radius:1px;
@@ -109,6 +109,10 @@
   }
   .open.tight{background:var(--alarm);opacity:.72;}
   .hit{position:absolute;top:5px;width:4px;height:20px;background:var(--gold);border-radius:1px;}
+  .hit.hamhit{width:6px;background:#F2809F;box-shadow:0 0 0 1px rgba(242,128,159,.45);}
+  .hit.hamhit::after{color:#F2809F;}
+  .sw-ham{background:#F2809F;width:6px;height:13px;}
+  .row-name.isham{color:#F2809F;}
   .hit::after{
     content:attr(data-n);position:absolute;top:-13px;left:50%;transform:translateX(-50%);
     font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;color:var(--gold);
@@ -164,6 +168,13 @@
     color:var(--sea);margin-bottom:5px;
   }
   .note{margin:0;font-size:14.5px;color:var(--dim);}
+  .vis{display:inline-block;padding:3px 9px;border-radius:2px;vertical-align:2px;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.12em;text-transform:uppercase;font-weight:600;
+    background:rgba(120,179,169,.16);color:var(--sea);border:1px solid rgba(120,179,169,.42);}
+  .stop.done{border-left:2px solid rgba(120,179,169,.45);padding-left:14px;
+    margin-left:-16px;padding-right:2px;}
+  .stop.done h3{color:var(--sea);}
   .ham,.opt{
     display:inline-block;padding:3px 9px;border-radius:2px;vertical-align:2px;
     font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
@@ -179,6 +190,82 @@
     letter-spacing:.04em;background:rgba(232,84,124,.13);color:#F2809F;
     border:1px solid rgba(232,84,124,.3);
   }
+
+
+  /* ===== FOOD JOURNEY ===== */
+  .fj{margin-top:38px;padding-top:26px;border-top:1px solid var(--rule);}
+  .fj h2{font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:22px;
+    letter-spacing:-.02em;margin:0 0 6px;}
+  .fj .sub{margin:0 0 6px;font-size:15px;color:var(--dim);}
+  .fjtot{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px;}
+  .fjtot span{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--dim);
+    border:1px solid var(--rule);border-radius:2px;padding:5px 10px;}
+  .fjtot b{color:var(--chalk);}
+  .fjday{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--pink);
+    margin:30px 0 12px;padding-bottom:10px;border-bottom:1px solid var(--rule);}
+
+  .vcard{background:var(--raise);border:1px solid var(--rule);border-radius:4px;
+    overflow:hidden;margin-bottom:12px;}
+  .vcard.best{border-color:rgba(233,180,76,.45);}
+  .shot{position:relative;width:100%;aspect-ratio:4/3;background:#101d22;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+    border-bottom:1px solid var(--rule);overflow:hidden;}
+  .shot img{width:100%;height:100%;object-fit:cover;display:block;}
+  .shot .ph{text-align:center;padding:18px;pointer-events:none;}
+  .shot .ph .ic{font-size:26px;display:block;margin-bottom:8px;opacity:.5;}
+  .shot .ph span{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--dim);}
+  .shot input[type=file]{display:none;}
+  .shotbtns{position:absolute;right:8px;bottom:8px;display:none;gap:6px;}
+  .vcard.hasimg .shotbtns{display:flex;}
+  .shotbtns button{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.1em;text-transform:uppercase;padding:7px 11px;border-radius:3px;
+    border:1px solid rgba(236,231,220,.3);background:rgba(14,27,32,.82);
+    color:var(--chalk);cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);}
+  .vbody{padding:14px 16px 16px;}
+  .vname{font-family:'Syne','Archivo',sans-serif;font-weight:700;font-size:18px;
+    margin:0 0 3px;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;}
+  .vmeta{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+    color:var(--dim);margin:0 0 10px;}
+  .vmemo{margin:0 0 10px;font-size:14px;color:var(--dim);
+    border-left:2px solid rgba(233,180,76,.5);padding-left:11px;}
+  .vmemo b{color:var(--chalk);font-weight:600;}
+  .bestbadge{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:2px;
+    background:rgba(233,180,76,.16);color:var(--gold);
+    border:1px solid rgba(233,180,76,.42);vertical-align:2px;}
+  .stars{display:flex;align-items:center;gap:2px;}
+  .stars button{background:none;border:0;padding:5px 3px;cursor:pointer;line-height:1;
+    font-size:27px;color:rgba(236,231,220,.22);transition:color .12s;}
+  .stars button.on{color:var(--gold);}
+  .stars .clr{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.1em;text-transform:uppercase;color:var(--dim);
+    border:1px solid var(--rule);border-radius:2px;padding:5px 9px;margin-left:9px;
+    font-size:9.5px;display:none;}
+  .vcard.rated .stars .clr{display:inline-block;}
+  .unrated{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-left:9px;}
+  .vcard.rated .unrated{display:none;}
+
+  .fjbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px;}
+  .fjbar button{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+    letter-spacing:.12em;text-transform:uppercase;padding:11px 15px;border-radius:3px;
+    border:1px solid var(--rule);background:none;color:var(--dim);cursor:pointer;}
+  .fjbar button:hover{color:var(--chalk);border-color:rgba(236,231,220,.3);}
+  .fjnote{margin-top:16px;background:var(--raise);border:1px solid var(--rule);
+    border-left:3px solid var(--alarm);border-radius:3px;padding:14px 16px;}
+  .fjnote p{margin:0 0 8px;font-size:14px;color:var(--dim);}
+  .fjnote p:last-child{margin:0;}
+  .fjnote b{color:var(--chalk);font-weight:600;}
+  .fjtips{margin-top:12px;background:var(--raise);border:1px solid var(--rule);
+    border-left:3px solid var(--sea);border-radius:3px;padding:14px 16px;}
+  .fjtips h4{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin:0 0 9px;}
+  .fjtips ul{margin:0;padding-left:18px;}
+  .fjtips li{font-size:14px;color:var(--dim);margin-bottom:7px;line-height:1.5;}
+  .fjtips li:last-child{margin-bottom:0;}
+  .fjtips b{color:var(--chalk);font-weight:600;}
 
   /* live "now" state */
   .stop.now{background:rgba(232,84,124,.05);margin:0 calc(var(--pad) * -.5);padding-left:calc(var(--pad) * .5);padding-right:calc(var(--pad) * .5);border-radius:3px;}
@@ -326,7 +413,7 @@
     </div>
     <div class="routebox">
       <p>The food route in Google Maps — all nine stops, walking, in order. Save it before you lose signal. The afternoon leg out to the <b>Monte Igueldo amusement park</b> is the second button.</p>
-      <a class="routebtn" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Motx%20Coffee%2C%20Donostia&origin_place_id=ChIJDzdE7EqlUQ0RyXoCIS0CdnA&destination=La%20Cuchara%20de%20San%20Telmo%2C%20Donostia&destination_place_id=ChIJ7WeBrE2lUQ0R8b8U5UpHiQE&waypoints=Elkano%201%20-%20Gaztagune%2C%20Donostia%7CRafa%20Gorrotxategi%2C%20Donostia%7CZapore%20Jai%2C%20Donostia%7CLa%20Cepa%20de%20Bernardo%2C%20Donostia%7CBouiboui%20Shop%2C%20Donostia%7CBodega%20Klandestina%2C%20Donostia%7CManojo%2C%20Donostia%7CAntonio%20taberna%2C%20Donostia&waypoint_place_ids=ChIJwSQUAE6lUQ0RI-pk5m8e6VQ%7CChIJZar6yM-lUQ0REfKvZcuEXY8%7CChIJZZzapk2lUQ0RKdE3ppk-2cI%7CChIJMevYsk2lUQ0R7ABFE3h8DBQ%7CChIJM87Iwf30XIsR8Ot1wd2iB0I%7CChIJD_K7jNqlUQ0R5hgFyMuzk0M%7CChIJz3U4SRWlUQ0R4SAgDpt0FpQ%7CChIJ6T6eVVClUQ0Rr67NXUZTqSw" target="_blank" rel="noopener">Open the full route ↗</a>
+      <a class="routebtn" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Motx%20Coffee%2C%20Donostia&origin_place_id=ChIJDzdE7EqlUQ0RyXoCIS0CdnA&destination=La%20Cuchara%20de%20San%20Telmo%2C%20Donostia&destination_place_id=ChIJ7WeBrE2lUQ0R8b8U5UpHiQE&waypoints=Elkano%201%20-%20Gaztagune%2C%20Donostia%7CRafa%20Gorrotxategi%2C%20Donostia%7CZapore%20Jai%2C%20Donostia%7CLa%20Cepa%20de%20Bernardo%2C%20Donostia%7CGarrarte%20Donostia%20Gozogintza%20Artisaua%7CBouiboui%20Shop%2C%20Donostia%7CBodega%20Klandestina%2C%20Donostia%7CManojo%2C%20Donostia%7CAntonio%20taberna%2C%20Donostia&waypoint_place_ids=ChIJwSQUAE6lUQ0RI-pk5m8e6VQ%7CChIJZar6yM-lUQ0REfKvZcuEXY8%7CChIJZZzapk2lUQ0RKdE3ppk-2cI%7CChIJMevYsk2lUQ0R7ABFE3h8DBQ%7CChIJrf76CU2lUQ0RwOFhPWGxrV0%7CChIJM87Iwf30XIsR8Ot1wd2iB0I%7CChIJD_K7jNqlUQ0R5hgFyMuzk0M%7CChIJz3U4SRWlUQ0R4SAgDpt0FpQ%7CChIJ6T6eVVClUQ0Rr67NXUZTqSw" target="_blank" rel="noopener">Open the full route ↗</a>
       <a class="routebtn" style="margin-top:10px;background:var(--sea)" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Manojo%2C%20Donostia&destination=Parque%20de%20Atracciones%20Monte%20Igueldo&destination_place_id=ChIJ96pnLpi6UQ0Rwshthamc4qg&waypoints=Peine%20del%20Viento%2C%20Donostia%7CFunicular%20Monte%20Igueldo" target="_blank" rel="noopener">Open the Igueldo route ↗</a>
     </div>
     </header>
@@ -343,67 +430,80 @@
 
   <section class="clockbox">
     <h2>Why we go early</h2>
-    <p class="why">Each bar is how long a place stays open on a Saturday. The gold marks are when we arrive. <b>The red ones shut at two</b> — that's why the morning is packed. The bottom row is the <b>Monte Igueldo amusement park</b>, and its own two-hour siesta gap is why the afternoon lands where it does.</p>
+    <p class="why">Each bar is how long a place stays open on a Saturday. The gold marks are when we arrive. <b>The red ones shut at two</b> — that's why they are the optional ones. <b>Pink is jamón.</b> The bottom row is the <b>Monte Igueldo amusement park</b>, and its own two-hour siesta gap is why the afternoon lands where it does.</p>
 
     <div class="chart">
       <div class="chart-inner">
         <div class="axis" aria-hidden="true">
-          <span style="left:0%">09:00</span><span style="left:18.18%">11:00</span><span style="left:36.36%">13:00</span><span style="left:54.55%">15:00</span><span style="left:72.73%">17:00</span><span style="left:90.91%">19:00</span>
+          <span style="left:0%">09:00</span><span style="left:16.67%">11:00</span><span style="left:33.33%">13:00</span><span style="left:50%">15:00</span><span style="left:66.67%">17:00</span><span style="left:83.33%">19:00</span>
         </div>
 
         <div class="row"><div class="row-name">Motx</div><div class="track">
-          <div class="open" style="left:0%;width:90.9%;animation-delay:.0s"></div>
-          <div class="hit" data-n="0" style="left:2.3%;animation-delay:.4s"></div></div></div>
+          <div class="open" style="left:0.00%;width:83.33%;animation-delay:.0s"></div>
+          <div class="hit" data-n="0" style="left:2.08%;animation-delay:.2s"></div></div></div>
 
         <div class="row"><div class="row-name">Elkano 1</div><div class="track">
-          <div class="open" style="left:9.1%;width:90.9%;animation-delay:.1s"></div>
-          <div class="hit" data-n="1" style="left:9.1%;animation-delay:.5s"></div></div></div>
+          <div class="open tight" style="left:8.33%;width:33.34%;animation-delay:.1s"></div>
+          <div class="hit" data-n="1" style="left:8.33%;animation-delay:.3s"></div></div></div>
 
-        <div class="row"><div class="row-name">Chocolate</div><div class="track">
-          <div class="open" style="left:0%;width:100%;animation-delay:.2s"></div>
-          <div class="hit" data-n="2" style="left:13.6%;animation-delay:.6s"></div></div></div>
+        <div class="row"><div class="row-name">Gorrotxategi</div><div class="track">
+          <div class="open" style="left:0.00%;width:91.67%;animation-delay:.2s"></div>
+          <div class="hit" data-n="2" style="left:11.81%;animation-delay:.4s"></div></div></div>
 
-        <div class="row"><div class="row-name">San Martín</div><div class="track">
-          <div class="open" style="left:0%;width:100%;animation-delay:.3s"></div>
-          <div class="hit" data-n="3" style="left:18.2%;animation-delay:.7s"></div></div></div>
+        <div class="row"><div class="row-name isham">Zapore Jai</div><div class="track">
+          <div class="open" style="left:12.50%;width:75.00%;animation-delay:.3s"></div>
+          <div class="hit hamhit" data-n="3" style="left:15.28%;animation-delay:.5s"></div></div></div>
+
+        <div class="row"><div class="row-name isham">La Cepa</div><div class="track">
+          <div class="open" style="left:16.67%;width:83.33%;animation-delay:.4s"></div>
+          <div class="hit hamhit" data-n="4" style="left:20.14%;animation-delay:.6s"></div></div></div>
+
+        <div class="row"><div class="row-name">Garrarte</div><div class="track">
+          <div class="open" style="left:16.67%;width:83.33%;animation-delay:.5s"></div>
+          <div class="hit" data-n="5" style="left:25.69%;animation-delay:.7s"></div></div></div>
 
         <div class="row"><div class="row-name">Bouiboui</div><div class="track">
-          <div class="open tight" style="left:18.2%;width:27.3%;animation-delay:.4s"></div>
-          <div class="hit" data-n="4" style="left:25.0%;animation-delay:.8s"></div></div></div>
+          <div class="open tight" style="left:16.67%;width:25.00%;animation-delay:.6s"></div>
+          <div class="hit" data-n="6" style="left:27.78%;animation-delay:.8s"></div></div></div>
 
         <div class="row"><div class="row-name">Klandestina</div><div class="track">
-          <div class="open tight" style="left:22.7%;width:22.8%;animation-delay:.5s"></div>
-          <div class="hit" data-n="5" style="left:29.5%;animation-delay:.9s"></div></div></div>
+          <div class="open tight" style="left:20.83%;width:20.84%;animation-delay:.7s"></div>
+          <div class="hit" data-n="6" style="left:29.17%;animation-delay:.9s"></div></div></div>
 
         <div class="row"><div class="row-name">Manojo</div><div class="track">
-          <div class="open" style="left:31.8%;width:68.2%;animation-delay:.6s"></div>
-          <div class="hit" data-n="6" style="left:34.1%;animation-delay:.10s"></div></div></div>
+          <div class="open" style="left:29.17%;width:70.83%;animation-delay:.8s"></div>
+          <div class="hit" data-n="7" style="left:31.25%;animation-delay:.10s"></div></div></div>
 
         <div class="row"><div class="row-name">Igueldo</div><div class="track">
-          <div class="open tight" style="left:20.5%;width:25.0%;animation-delay:.7s"></div>
-          <div class="open" style="left:63.6%;width:36.4%;animation-delay:.7s"></div>
-          <div class="hit" data-n="山" style="left:63.6%;animation-delay:.11s"></div></div></div>
+          <div class="open tight" style="left:18.75%;width:22.92%;animation-delay:.9s"></div>
+          <div class="open" style="left:58.33%;width:33.34%;animation-delay:.9s"></div>
+          <div class="hit" data-n="山" style="left:61.81%;animation-delay:.11s"></div></div></div>
 
         <div class="row"><div class="row-name">Antonio</div><div class="track">
-          <div class="open" style="left:0%;width:100%;animation-delay:.8s"></div>
-          <div class="hit" data-n="7" style="left:84.1%;animation-delay:.12s"></div></div></div>
+          <div class="open" style="left:0.00%;width:100.00%;animation-delay:.10s"></div>
+          <div class="hit" data-n="8" style="left:77.08%;animation-delay:.12s"></div></div></div>
+
+        <div class="row"><div class="row-name">La Cuchara</div><div class="track">
+          <div class="open" style="left:29.17%;width:25.00%;animation-delay:.11s"></div>
+          <div class="open" style="left:83.33%;width:16.67%;animation-delay:.11s"></div>
+          <div class="hit" data-n="9" style="left:91.67%;animation-delay:.13s"></div></div></div>
 
         <div class="legend">
           <span><i class="sw-open"></i>Open</span>
           <span><i class="sw-tight"></i>Shuts at 14:00</span>
-          <span><i class="sw-gap"></i>Igueldo siesta</span>
           <span><i class="sw-hit"></i>We arrive</span>
+          <span><i class="sw-ham"></i>Jamón ibérico</span>
         </div>
       </div>
     </div>
-    <p class="crunch">Stops <b>4 and 5</b> are the tight ones — three places that close at two. Everything before is paced to get us there. <b>Igueldo shuts 14:00–16:00 for siesta</b>, which is exactly why we eat until three and go up at four, and <b>stop 7 waits until six</b> because that's when the tortilla comes out.</p>
+    <p class="crunch"><b>Stop 6 is the only tight one now</b> — Bouiboui and Klandestina both shut at two, and Elkano goes with them. That is why stop 6 is optional: miss it and nothing else moves. <b>The two ham stops are the relaxed part</b> — Zapore Jai runs to 19:30 and La Cepa to 23:00, so neither is a race. <b>Igueldo shuts 14:00–16:00 for siesta</b>, which is why we eat until three and go up after four, and <b>stop 8 waits until six</b> because that is when the tortilla comes out.</p>
   </section>
 
   <section class="stops">
     <p class="stops-h">The route · Saturday</p>
 
-    <article class="stop" data-start="09:15" data-end="09:55">
-      <p class="clock">09:15 <span class="walk">BEFORE WE START</span></p>
+    <article class="stop done" data-start="09:15" data-end="09:55">
+      <p class="clock">09:15 <span class="vis">✓ Visited</span></p>
       <h3>0 · Motx Coffee</h3>
       <p class="addr">C. de San Jerónimo 14 · coffee  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Motx%20Coffee%2C%20Donostia&query_place_id=ChIJDzdE7EqlUQ0RyXoCIS0CdnA" target="_blank" rel="noopener">Map ↗</a></p>
       <p class="order"><span class="tag">Order this</span>A cortado. Reviewers rate it the best coffee in the city.</p>
@@ -417,11 +517,11 @@
       <p class="addr">Elkano Kalea 1 · cheese  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Elkano%201%20-%20Gaztagune%2C%20Donostia&query_place_id=ChIJwSQUAE6lUQ0RI-pk5m8e6VQ" target="_blank" rel="noopener">Map ↗</a></p>
       <p class="order"><span class="tag">Order this</span>The Teyedu, with an Idiazabal to compare.</p>
       <p class="note">Opens at ten on a Saturday. Taste properly now, while everyone still can.</p>
-      <span class="warn">Closed Sun–Mon · shuts 14:00</span>
+      <span class="warn">Closed Sun–Mon · <b>shuts 14:00 — nearly gone today</b></span>
     </article>
 
-    <article class="stop" data-start="10:25" data-end="10:50">
-      <p class="clock">10:25 <span class="walk">4 MIN WALK</span></p>
+    <article class="stop done" data-start="10:25" data-end="10:50">
+      <p class="clock">10:25 <span class="vis">✓ Visited</span></p>
       <h3>2 · Rafa Gorrotxategi</h3>
       <p class="addr">Narrika Kalea 6 · chocolate  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Rafa%20Gorrotxategi%20Donostia&query_place_id=ChIJZar6yM-lUQ0REfKvZcuEXY8" target="_blank" rel="noopener">Map ↗</a></p>
       <p class="order"><span class="tag">Order this</span>A <b>small</b> drinking chocolate. One reviewer: properly melted dark chocolate, not watery — and a small is plenty.</p>
@@ -429,14 +529,21 @@
       <span class="warn">Don't fill up — two ham stops are next</span>
     </article>
 
-    <article class="stop" data-start="10:50" data-end="11:20">
-      <p class="clock">10:50 <span class="walk">5 MIN WALK</span> <span class="ham">★ Jamón</span></p>
+    <article class="stop done" data-start="10:50" data-end="11:20">
+      <p class="clock">10:50 <span class="vis">✓ Visited</span> <span class="ham">★ Jamón</span></p>
       <h3>3 · Zapore Jai</h3>
       <p class="addr">C. de San Jerónimo 21 · hand-carved ibérico  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Zapore%20Jai%20Donostia&query_place_id=ChIJZZzapk2lUQ0RKdE3ppk-2cI" target="_blank" rel="noopener">Map ↗</a></p>
       <p class="order"><span class="tag">Ask for this</span><b>Jamón de bellota 100% ibérico, cortado a cuchillo.</b> 100%純種、橡果飼養、手切伊比利亞黑毛豬火腿。</p>
       <p class="note"><b>4.8 from 129 reviews</b> — the best ham in the old town, and <b>seven doors from where we started this morning</b>. Reviewers: <i>"sliced paper thin and practically melts in your mouth"</i>, and one went specifically for <b>Cinco Jotas</b>, the top ibérico house. Husband-and-wife shop, fluent English, carved fresh in front of you.</p>
       <p class="note"><b>This is also the take-home stop.</b> Vacuum packs travel; buy here rather than at the airport. They do conservas and olive oil too.</p>
       <span class="warn">Opens 10:30 · closed Sun–Mon — today or Wednesday, nothing else</span>
+    </article>
+
+    <article class="stop done" data-start="11:00" data-end="11:20">
+      <p class="clock">This morning <span class="vis">✓ Visited · off-plan</span></p>
+      <h3>Galparsoro Okindegia &amp; La Viña</h3>
+      <p class="addr">C. Mayor 6 and 31 de Agosto Kalea 3</p>
+      <p class="note">Not on the plan, went anyway — which is how it should work. Both are in the food journey at the bottom of this page. <b>La Viña is now your second visit</b>, so it has its own card and its own stars.</p>
     </article>
 
     <article class="stop" data-start="11:20" data-end="12:00">
@@ -446,7 +553,7 @@
       <p class="order"><span class="tag">Order this</span>The <b>jamón ibérico plate, €25</b>, one between the six of us. Ask whether it is bellota before you order.</p>
       <p class="note"><b>On your wish list, never visited.</b> 4.3 from 3,222. Zapore Jai is the better <i>ham</i>; this is the better <i>bar</i> — you stand at the counter with a glass and a plate, which is the thing the morning has been missing.</p>
       <p class="note">Reviewers also name the <b>jamón croqueta</b>, the fried calamari and the galician octopus. Soft fresh bread rather than toasted baguette, which people single out.</p>
-      <span class="warn">Open 11:00–23:00 every day — easy to come back to tonight instead</span>
+      <span class="warn">Not done yet · open till 23:00 — <b>the ham plate is still catchable after dinner</b></span>
     </article>
 
     <article class="stop is-opt" data-start="12:00" data-end="12:15">
@@ -606,14 +713,14 @@
       <p class="note"><b>Sunset is 19:37 today</b> — computed for Donostia, not guessed. Good light from about 19:00. Leave here at 19:10 and walk five minutes to the <b>La Concha promenade</b>. It faces west across the bay. Muka is the opposite direction and faces north, so do the promenade first and decide about Muka after.</p>
     </article>
 
-    <article class="stop is-opt" data-start="20:00" data-end="23:00">
-      <p class="clock">20:00 <span class="walk">5 MIN FROM ANTONIO</span> <span class="opt">Optional · pick one</span></p>
+    <article class="stop done" data-start="12:30" data-end="15:30">
+      <p class="clock">Lunch today <span class="vis">✓ Visited</span></p>
       <h3>9 · La Cuchara de San Telmo</h3>
       <p class="addr">Santa Korda Kalea 4 · pintxos  <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=La%20Cuchara%20de%20San%20Telmo%20Donostia&query_place_id=ChIJ7WeBrE2lUQ0R8b8U5UpHiQE" target="_blank" rel="noopener">Map ↗</a></p>
       <p class="order"><span class="tag">Order this</span>Pork belly, beef cheek, cod cheeks. Small plates, order at the bar, pay as you go.</p>
       <p class="note"><b>On your wish list, never visited.</b> 4.6 from 6,277 — one of the two most famous pintxos bars in the city. Organised chaos; the queue moves fast. <b>Open till 23:00</b>, so after the tortilla and the sunset there is no rush.</p>
-      <p class="note"><b>This replaces SUA.MUKA</b>, which sat at 4.1 with repeated complaints about service and price. The terrace is nice; nothing else was.</p>
-      <span class="warn">Instead of — or as well as — the two below</span>
+      <p class="note"><b>Done at lunch instead of tonight</b> — which frees the evening completely. Tonight is now just <b>Antonio Boulevard at 19:00</b>, nothing after it.</p>
+      <span class="warn">Wish list · ticked</span>
     </article>
 
     <article class="stop is-opt" data-start="20:00" data-end="22:00">
@@ -724,6 +831,286 @@
     <p><b>Book Manojo.</b> Saturday lunch for six isn't a walk-in.</p>
   </div>
 
+
+  <section class="fj" id="foodjourney">
+    <h2>Food journey</h2>
+    <p class="sub">Where we actually ate. Add a photo, give it stars. Everything saves on this phone.</p>
+    <div class="fjtot">
+      <span><b>10</b> visits</span><span><b>9</b> places</span><span>La Viña twice</span>
+    </div>
+
+    <p class="fjday">Fri 9 October · dinner</p>
+      <div class="vcard" data-v="2026-10-09-txepetxa">
+        <label class="shot">
+          <div class="ph"><span class="ic">▢</span><span>Tap to add a photo</span></div>
+          <img alt="" hidden>
+          <input type="file" accept="image/*" class="pick">
+        </label>
+        <div class="shotbtns">
+          <button type="button" class="swap">Replace</button>
+          <button type="button" class="drop">Remove</button>
+        </div>
+      <div class="vbody">
+        <p class="vname">Bar Txepetxa </p>
+        <p class="vmeta">Arrandegi Kalea 5</p>
+        <div class="stars" role="group" aria-label="Rate Bar Txepetxa">
+          <button type="button" data-s="1" aria-label="1 star">★</button>
+          <button type="button" data-s="2" aria-label="2 stars">★</button>
+          <button type="button" data-s="3" aria-label="3 stars">★</button>
+          <button type="button" data-s="4" aria-label="4 stars">★</button>
+          <button type="button" data-s="5" aria-label="5 stars">★</button>
+          <span class="unrated">Not rated</span>
+          <button type="button" class="clr">Clear</button>
+        </div>
+      </div>
+      </div>
+      <div class="vcard" data-v="2026-10-09-irulegi">
+        <label class="shot">
+          <div class="ph"><span class="ic">▢</span><span>Tap to add a photo</span></div>
+          <img alt="" hidden>
+          <input type="file" accept="image/*" class="pick">
+        </label>
+        <div class="shotbtns">
+          <button type="button" class="swap">Replace</button>
+          <button type="button" class="drop">Remove</button>
+        </div>
+      <div class="vbody">
+        <p class="vname">Irulegi </p>
+        <p class="vmeta">31 de Agosto Kalea 28</p>
+        <div class="stars" role="group" aria-label="Rate Irulegi">
+          <button type="button" data-s="1" aria-label="1 star">★</button>
+          <button type="button" data-s="2" aria-label="2 stars">★</button>
+          <button type="button" data-s="3" aria-label="3 stars">★</button>
+          <button type="button" data-s="4" aria-label="4 stars">★</button>
+          <button type="button" data-s="5" aria-label="5 stars">★</button>
+          <span class="unrated">Not rated</span>
+          <button type="button" class="clr">Clear</button>
+        </div>
+      </div>
+      </div>
+      <div class="vcard" data-v="2026-10-09-gandarias">
+        <label class="shot">
+          <div class="ph"><span class="ic">▢</span><span>Tap to add a photo</span></div>
+          <img alt="" hidden>
+          <input type="file" accept="image/*" class="pick">
+        </label>
+        <div class="shotbtns">
+          <button type="button" class="swap">Replace</button>
+          <button type="button" class="drop">Remove</button>
+        </div>
+      <div class="vbody">
+        <p class="vname">Gandarias <span class="bestbadge">Best pick · 9 Oct</span></p>
+        <p class="vmeta">31 de Agosto Kalea 23</p>
+        <p class="vmemo">Loved the <b>Iberian jamón</b>. Trying the <b>beef</b> next time.</p>
+        <div class="stars" role="group" aria-label="Rate Gandarias">
+          <button type="button" data-s="1" aria-label="1 star">★</button>
+          <button type="button" data-s="2" aria-label="2 stars">★</button>
+          <button type="button" data-s="3" aria-label="3 stars">★</button>
+          <button type="button" data-s="4" aria-label="4 stars">★</button>
+          <button type="button" data-s="5" aria-label="5 stars">★</button>
+          <span class="unrated">Not rated</span>
+          <button type="button" class="clr">Clear</button>
+        </div>
+      </div>
+      </div>
+      <div class="vcard" data-v="2026-10-09-la-vina">
+        <label class="shot">
+          <div class="ph"><span class="ic">▢</span><span>Tap to add a photo</span></div>
+          <img alt="" hidden>
+          <input type="file" accept="image/*" class="pick">
+        </label>
+        <div class="shotbtns">
+          <button type="button" class="swap">Replace</button>
+          <button type="button" class="drop">Remove</button>
+        </div>
+      <div class="vbody">
+        <p class="vname">La Viña </p>
+        <p class="vmeta">31 de Agosto Kalea 3 · first visit</p>
+        <div class="stars" role="group" aria-label="Rate La Viña">
+          <button type="button" data-s="1" aria-label="1 star">★</button>
+          <button type="button" data-s="2" aria-label="2 stars">★</button>
+          <button type="button" data-s="3" aria-label="3 stars">★</button>
+          <button type="button" data-s="4" aria-label="4 stars">★</button>
+          <button type="button" data-s="5" aria-label="5 stars">★</button>
+          <span class="unrated">Not rated</span>
+          <button type="button" class="clr">Clear</button>
+        </div>
+      </div>
+      </div>
+    <p class="fjday">Sat 10 October · morning</p>
+      <div class="vcard" data-v="2026-10-10-motx">
+        <label class="shot">
+          <div class="ph"><span class="ic">▢</span><span>Tap to add a photo</span></div>
+          <img alt="" hidden>
+          <input type="file" accept="image/*" class="pick">
+        </label>
+        <div class="shotbtns">
+          <button type="button" class="swap">Replace</button>
+          <button type="button" class="drop">Remove</button>
+        </div>
+      <div class="vbody">
+        <p class="vname">Motx Coffee </p>
+        <p class="vmeta">C. de San Jerónimo 14</p>
+        <div class="stars" role="group" aria-label="Rate Motx Coffee">
+          <button type="button" data-s="1" aria-label="1 star">★</button>
+          <button type="button" data-s="2" aria-label="2 stars">★</button>
+          <button type="button" data-s="3" aria-label="3 stars">★</button>
+          <button type="button" data-s="4" aria-label="4 stars">★</button>
+          <button type="button" data-s="5" aria-label="5 stars">★</button>
+          <span class="unrated">Not rated</span>
+          <button type="button" class="clr">Clear</button>
+        </div>
+      </div>
+      </div>
+      <div class="vcard" data-v="2026-10-10-galparsoro">
+        <label class="shot">
+          <div class="ph"><span class="ic">▢</span><span>Tap to add a photo</span></div>
+          <img alt="" hidden>
+          <input type="file" accept="image/*" class="pick">
+        </label>
+        <div class="shotbtns">
+          <button type="button" class="swap">Replace</button>
+          <button type="button" class="drop">Remove</button>
+        </div>
+      <div class="vbody">
+        <p class="vname">Galparsoro Okindegia </p>
+        <p class="vmeta">C. Mayor 6</p>
+        <div class="stars" role="group" aria-label="Rate Galparsoro Okindegia">
+          <button type="button" data-s="1" aria-label="1 star">★</button>
+          <button type="button" data-s="2" aria-label="2 stars">★</button>
+          <button type="button" data-s="3" aria-label="3 stars">★</button>
+          <button type="button" data-s="4" aria-label="4 stars">★</button>
+          <button type="button" data-s="5" aria-label="5 stars">★</button>
+          <span class="unrated">Not rated</span>
+          <button type="button" class="clr">Clear</button>
+        </div>
+      </div>
+      </div>
+      <div class="vcard" data-v="2026-10-10-zapore-jai">
+        <label class="shot">
+          <div class="ph"><span class="ic">▢</span><span>Tap to add a photo</span></div>
+          <img alt="" hidden>
+          <input type="file" accept="image/*" class="pick">
+        </label>
+        <div class="shotbtns">
+          <button type="button" class="swap">Replace</button>
+          <button type="button" class="drop">Remove</button>
+        </div>
+      <div class="vbody">
+        <p class="vname">Zapore Jai </p>
+        <p class="vmeta">C. de San Jerónimo 21</p>
+        <p class="vmemo">We liked it — rating still open.</p>
+        <div class="stars" role="group" aria-label="Rate Zapore Jai">
+          <button type="button" data-s="1" aria-label="1 star">★</button>
+          <button type="button" data-s="2" aria-label="2 stars">★</button>
+          <button type="button" data-s="3" aria-label="3 stars">★</button>
+          <button type="button" data-s="4" aria-label="4 stars">★</button>
+          <button type="button" data-s="5" aria-label="5 stars">★</button>
+          <span class="unrated">Not rated</span>
+          <button type="button" class="clr">Clear</button>
+        </div>
+      </div>
+      </div>
+      <div class="vcard" data-v="2026-10-10-gorrotxategi">
+        <label class="shot">
+          <div class="ph"><span class="ic">▢</span><span>Tap to add a photo</span></div>
+          <img alt="" hidden>
+          <input type="file" accept="image/*" class="pick">
+        </label>
+        <div class="shotbtns">
+          <button type="button" class="swap">Replace</button>
+          <button type="button" class="drop">Remove</button>
+        </div>
+      <div class="vbody">
+        <p class="vname">Rafa Gorrotxategi </p>
+        <p class="vmeta">Narrika Kalea 6</p>
+        <div class="stars" role="group" aria-label="Rate Rafa Gorrotxategi">
+          <button type="button" data-s="1" aria-label="1 star">★</button>
+          <button type="button" data-s="2" aria-label="2 stars">★</button>
+          <button type="button" data-s="3" aria-label="3 stars">★</button>
+          <button type="button" data-s="4" aria-label="4 stars">★</button>
+          <button type="button" data-s="5" aria-label="5 stars">★</button>
+          <span class="unrated">Not rated</span>
+          <button type="button" class="clr">Clear</button>
+        </div>
+      </div>
+      </div>
+      <div class="vcard" data-v="2026-10-10-la-vina">
+        <label class="shot">
+          <div class="ph"><span class="ic">▢</span><span>Tap to add a photo</span></div>
+          <img alt="" hidden>
+          <input type="file" accept="image/*" class="pick">
+        </label>
+        <div class="shotbtns">
+          <button type="button" class="swap">Replace</button>
+          <button type="button" class="drop">Remove</button>
+        </div>
+      <div class="vbody">
+        <p class="vname">La Viña </p>
+        <p class="vmeta">31 de Agosto Kalea 3 · second visit</p>
+        <div class="stars" role="group" aria-label="Rate La Viña">
+          <button type="button" data-s="1" aria-label="1 star">★</button>
+          <button type="button" data-s="2" aria-label="2 stars">★</button>
+          <button type="button" data-s="3" aria-label="3 stars">★</button>
+          <button type="button" data-s="4" aria-label="4 stars">★</button>
+          <button type="button" data-s="5" aria-label="5 stars">★</button>
+          <span class="unrated">Not rated</span>
+          <button type="button" class="clr">Clear</button>
+        </div>
+      </div>
+      </div>
+
+    <p class="fjday">Sat 10 October · lunch</p>
+      <div class="vcard" data-v="2026-10-10-la-cuchara">
+        <label class="shot">
+          <div class="ph"><span class="ic">▢</span><span>Tap to add a photo</span></div>
+          <img alt="" hidden>
+          <input type="file" accept="image/*" class="pick">
+        </label>
+        <div class="shotbtns">
+          <button type="button" class="swap">Replace</button>
+          <button type="button" class="drop">Remove</button>
+        </div>
+      <div class="vbody">
+        <p class="vname">La Cuchara de San Telmo </p>
+        <p class="vmeta">Santa Korda Kalea 4 · lunch</p>
+        <div class="stars" role="group" aria-label="Rate La Cuchara de San Telmo">
+          <button type="button" data-s="1" aria-label="1 star">★</button>
+          <button type="button" data-s="2" aria-label="2 stars">★</button>
+          <button type="button" data-s="3" aria-label="3 stars">★</button>
+          <button type="button" data-s="4" aria-label="4 stars">★</button>
+          <button type="button" data-s="5" aria-label="5 stars">★</button>
+          <span class="unrated">Not rated</span>
+          <button type="button" class="clr">Clear</button>
+        </div>
+      </div>
+      </div>
+
+    <div class="fjbar">
+      <button type="button" id="fjExport">Export backup</button>
+      <button type="button" id="fjImport">Import backup</button>
+      <input type="file" id="fjFile" accept="application/json" style="display:none">
+    </div>
+
+    <div class="fjnote">
+      <p><b>This lives on one phone only.</b> Photos and stars are saved in this browser — they do not reach anyone else's phone, and they are gone if you clear site data or switch browser.</p>
+      <p><b>So export after each meal.</b> One file, photos included. Send it to yourself.</p>
+    </div>
+
+    <div class="fjtips">
+      <h4>Shooting the day without anyone's face</h4>
+      <ul>
+        <li><b>Hands, not faces.</b> Six hands going for the same plate, glasses meeting, the txakoli poured from height. Reads as friends, shows nobody.</li>
+        <li><b>Shoot the empty plate.</b> At the end, not the start. It says more than the full one did.</li>
+        <li><b>Pick one angle and keep it.</b> Straight down, or 45° — same every time. Nine photos in one frame becomes a set; nine different angles stays a pile of snaps.</li>
+        <li><b>Shoot along the bar</b>, not at one pintxo. The row going away from you, out of focus at the end, is the Basque photograph.</li>
+        <li><b>Backs and silhouettes.</b> The five of them walking off down a narrow street is a portrait with no portrait in it.</li>
+        <li><b>No flash in dark bars.</b> Rest the phone on the counter and tap to focus — the counter is your tripod.</li>
+        <li><b>Keep one scrap per place.</b> The napkin, the little sign, the receipt. Those photograph better than you expect and date the day.</li>
+      </ul>
+    </div>
+  </section>
+
   <footer>
       <p class="sig">¯\_(ツ)_/¯</p>
   </footer>
@@ -778,6 +1165,204 @@
     val.textContent='Feed not reachable from here';
     note.innerHTML='This usually means the page is being previewed inside an app that blocks outside requests. <b>Open it at poohpoohsy.github.io and it will fill in.</b> If it still fails there, the forecast service is down — use the links instead.';
   });
+})();
+</script>
+
+
+<script>
+(function(){
+  var RK = 'fj-ratings-v1', DBN = 'fjPhotos', STORE = 'shots';
+  var db = null, urls = {};
+
+  function openDB(){
+    return new Promise(function(res, rej){
+      if (db) return res(db);
+      var r;
+      try { r = indexedDB.open(DBN, 1); } catch(e){ return rej(e); }
+      r.onupgradeneeded = function(){
+        var d = r.result;
+        if (!d.objectStoreNames.contains(STORE)) d.createObjectStore(STORE);
+      };
+      r.onsuccess = function(){ db = r.result; res(db); };
+      r.onerror = function(){ rej(r.error); };
+    });
+  }
+  function put(id, blob){
+    return openDB().then(function(d){
+      return new Promise(function(res, rej){
+        var t = d.transaction(STORE, 'readwrite');
+        t.objectStore(STORE).put(blob, id);
+        t.oncomplete = res; t.onerror = function(){ rej(t.error); };
+      });
+    });
+  }
+  function get(id){
+    return openDB().then(function(d){
+      return new Promise(function(res, rej){
+        var t = d.transaction(STORE, 'readonly'), q = t.objectStore(STORE).get(id);
+        q.onsuccess = function(){ res(q.result || null); };
+        q.onerror = function(){ rej(q.error); };
+      });
+    });
+  }
+  function del(id){
+    return openDB().then(function(d){
+      return new Promise(function(res, rej){
+        var t = d.transaction(STORE, 'readwrite');
+        t.objectStore(STORE).delete(id);
+        t.oncomplete = res; t.onerror = function(){ rej(t.error); };
+      });
+    });
+  }
+
+  function ratings(){
+    try { return JSON.parse(localStorage.getItem(RK) || '{}') || {}; }
+    catch(e){ return {}; }
+  }
+  function saveRatings(o){
+    try { localStorage.setItem(RK, JSON.stringify(o)); } catch(e){}
+  }
+
+  // shrink to max 1400px long edge, jpeg
+  function shrink(file){
+    return new Promise(function(res){
+      var fr = new FileReader();
+      fr.onload = function(){
+        var im = new Image();
+        im.onload = function(){
+          var w = im.width, h = im.height, M = 1400;
+          if (w > M || h > M){ var k = Math.min(M/w, M/h); w = Math.round(w*k); h = Math.round(h*k); }
+          try {
+            var c = document.createElement('canvas');
+            c.width = w; c.height = h;
+            c.getContext('2d').drawImage(im, 0, 0, w, h);
+            c.toBlob(function(b){ res(b || file); }, 'image/jpeg', 0.82);
+          } catch(e){ res(file); }
+        };
+        im.onerror = function(){ res(file); };
+        im.src = fr.result;
+      };
+      fr.onerror = function(){ res(file); };
+      fr.readAsDataURL(file);
+    });
+  }
+
+  function showPhoto(card, blob){
+    var img = card.querySelector('.shot img'), id = card.getAttribute('data-v');
+    if (urls[id]) { try { URL.revokeObjectURL(urls[id]); } catch(e){} }
+    if (!blob){ img.hidden = true; img.removeAttribute('src'); card.classList.remove('hasimg'); return; }
+    urls[id] = URL.createObjectURL(blob);
+    img.src = urls[id]; img.hidden = false; card.classList.add('hasimg');
+  }
+
+  function paintStars(card, n){
+    var btns = card.querySelectorAll('.stars button[data-s]');
+    for (var i = 0; i < btns.length; i++){
+      btns[i].classList.toggle('on', n > 0 && (i + 1) <= n);
+    }
+    card.classList.toggle('rated', n > 0);
+  }
+
+  var cards = [].slice.call(document.querySelectorAll('.vcard[data-v]'));
+  var R = ratings();
+
+  cards.forEach(function(card){
+    var id = card.getAttribute('data-v');
+    paintStars(card, R[id] || 0);
+    get(id).then(function(b){ if (b) showPhoto(card, b); }).catch(function(){});
+
+    card.querySelector('.pick').addEventListener('change', function(e){
+      var f = e.target.files && e.target.files[0];
+      if (!f) return;
+      shrink(f).then(function(b){
+        showPhoto(card, b);
+        return put(id, b);
+      }).catch(function(){ alert('Could not save that photo on this phone.'); });
+      e.target.value = '';
+    });
+
+    card.querySelector('.swap').addEventListener('click', function(){
+      card.querySelector('.pick').click();
+    });
+    card.querySelector('.drop').addEventListener('click', function(){
+      showPhoto(card, null);
+      del(id).catch(function(){});
+    });
+
+    card.querySelectorAll('.stars button[data-s]').forEach(function(b){
+      b.addEventListener('click', function(){
+        var n = parseInt(b.getAttribute('data-s'), 10);
+        R = ratings();
+        R[id] = (R[id] === n) ? 0 : n;
+        if (!R[id]) delete R[id];
+        saveRatings(R);
+        paintStars(card, R[id] || 0);
+      });
+    });
+    card.querySelector('.clr').addEventListener('click', function(){
+      R = ratings(); delete R[id]; saveRatings(R); paintStars(card, 0);
+    });
+  });
+
+  function b64(blob){
+    return new Promise(function(res){
+      var fr = new FileReader();
+      fr.onload = function(){ res(fr.result); };
+      fr.onerror = function(){ res(null); };
+      fr.readAsDataURL(blob);
+    });
+  }
+
+  var ex = document.getElementById('fjExport');
+  if (ex) ex.addEventListener('click', function(){
+    ex.textContent = 'Packing\u2026';
+    var out = { kind: 'donostia-food-journey', v: 1, saved: new Date().toISOString(),
+                ratings: ratings(), photos: {} };
+    var jobs = cards.map(function(card){
+      var id = card.getAttribute('data-v');
+      return get(id).then(function(b){ return b ? b64(b).then(function(d){ if (d) out.photos[id] = d; }) : null; })
+                    .catch(function(){});
+    });
+    Promise.all(jobs).then(function(){
+      var blob = new Blob([JSON.stringify(out)], {type:'application/json'});
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'food-journey-' + new Date().toISOString().slice(0,10) + '.json';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function(){ URL.revokeObjectURL(a.href); }, 4000);
+      ex.textContent = 'Export backup';
+    });
+  });
+
+  var imb = document.getElementById('fjImport'), imf = document.getElementById('fjFile');
+  if (imb && imf){
+    imb.addEventListener('click', function(){ imf.click(); });
+    imf.addEventListener('change', function(e){
+      var f = e.target.files && e.target.files[0];
+      if (!f) return;
+      var fr = new FileReader();
+      fr.onload = function(){
+        var data;
+        try { data = JSON.parse(fr.result); } catch(err){ alert('That file is not a backup.'); return; }
+        if (!data || data.kind !== 'donostia-food-journey'){ alert('That file is not a backup.'); return; }
+        if (data.ratings) saveRatings(data.ratings);
+        var jobs = [];
+        Object.keys(data.photos || {}).forEach(function(id){
+          jobs.push(fetch(data.photos[id]).then(function(r){ return r.blob(); }).then(function(b){ return put(id, b); }));
+        });
+        Promise.all(jobs).then(function(){
+          cards.forEach(function(card){
+            var id = card.getAttribute('data-v');
+            paintStars(card, (data.ratings || {})[id] || 0);
+            get(id).then(function(b){ showPhoto(card, b); }).catch(function(){});
+          });
+          alert('Backup restored.');
+        }).catch(function(){ alert('Some photos could not be restored.'); });
+      };
+      fr.readAsText(f);
+      e.target.value = '';
+    });
+  }
 })();
 </script>
 
