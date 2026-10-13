@@ -113,24 +113,25 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
   color:var(--cream);margin-top:44px;opacity:.9;}
 
 /* ---------- pins ---------- */
-.pin{width:30px;height:30px;position:relative;cursor:default;
+.pin{position:absolute;top:0;left:0;will-change:transform;
+  width:30px;height:30px;cursor:default;}
+.pinin{position:relative;width:100%;height:100%;
   animation:drop .52s cubic-bezier(.22,1.3,.36,1) both;}
-.pin b{position:absolute;inset:0;border-radius:50%;display:block;
+.pinin b{position:absolute;inset:0;border-radius:50%;display:block;
   border:3.5px solid rgba(255,255,255,.95);box-shadow:0 3px 10px rgba(0,0,0,.45);}
-.pin::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:3px solid currentColor;
+.pinin::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:3px solid currentColor;
   opacity:0;animation:pulse 1.25s ease-out .18s 1;}
-.pin.again::after{animation:pulse 1.1s ease-out 0s 3;}
-.pin .x2{position:absolute;top:-13px;right:-20px;background:var(--gold);color:#10171C;
+.pin.again .pinin::after{animation:pulse 1.1s ease-out 0s 3;}
+.pinin .x2{position:absolute;top:-13px;right:-20px;background:var(--gold);color:#10171C;
   font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;font-size:14px;
   padding:2px 6px;border-radius:3px;box-shadow:0 2px 6px rgba(0,0,0,.4);}
 @keyframes drop{from{opacity:0;transform:translateY(-40px) scale(.5);}to{opacity:1;transform:none;}}
 @keyframes pulse{from{opacity:.85;transform:scale(.55);}to{opacity:0;transform:scale(2.1);}}
-.c-rest{color:var(--terra);} .c-rest b{background:var(--terra);}
-.c-bar{color:var(--gold);}   .c-bar b{background:var(--gold);}
-.c-cafe{color:var(--ocean);} .c-cafe b{background:var(--ocean);}
-.c-bake{color:var(--sand);}  .c-bake b{background:var(--sand);}
-.c-deli{color:var(--deli);}  .c-deli b{background:var(--deli);}
-.c-shop{color:var(--slate);} .c-shop b{background:var(--slate);}
+.c-rest .pinin{color:var(--terra);} .c-rest b{background:var(--terra);}
+.c-bar .pinin{color:var(--gold);}   .c-bar b{background:var(--gold);}
+.c-cafe .pinin{color:var(--ocean);} .c-cafe b{background:var(--ocean);}
+.c-bake .pinin{color:var(--sand);}  .c-bake b{background:var(--sand);}
+.c-deli .pinin{color:var(--deli);}  .c-deli b{background:var(--deli);}
 
 /* ---------- controls (outside the recording frame) ---------- */
 #panel{position:fixed;left:0;right:0;bottom:0;z-index:100;padding:11px 14px;
@@ -289,7 +290,7 @@ function makeMarkers(){
     seen[p.uid] = 1;
     var el = document.createElement("div");
     el.className = "pin c-" + p.c;
-    el.innerHTML = "<b></b>";
+    el.innerHTML = '<div class="pinin"><b></b></div>';
     el.style.display = "none";
     var m = new maplibregl.Marker({element:el, anchor:"center"})
               .setLngLat([p.lon, p.lat]).addTo(map);
@@ -428,13 +429,15 @@ function doCue(c, instant){
     if(m){
       m.el.style.display = "block";
       m.el.classList.remove("again");
-      void m.el.offsetWidth;                       // restart animations
-      m.el.style.animation = "none"; void m.el.offsetWidth; m.el.style.animation = "";
+      var inner = m.el.querySelector(".pinin");
+      if(inner){                                   // restart the drop + pulse
+        inner.style.animation = "none"; void inner.offsetWidth; inner.style.animation = "";
+      }
       if(c.p.again){
         m.el.classList.add("again");
-        if(!m.el.querySelector(".x2")){
+        if(inner && !inner.querySelector(".x2")){
           var b = document.createElement("span"); b.className = "x2"; b.textContent = "×2";
-          m.el.appendChild(b);
+          inner.appendChild(b);
         }
       }
     }
