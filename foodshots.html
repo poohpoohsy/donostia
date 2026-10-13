@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Food Journey Stills</title>
+<meta name="description" content="Builds four cumulative map pictures of where we ate, 10 to 13 October, and saves them as PNGs.">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.css" rel="stylesheet">
+<style>
+:root{--cream:#F6EFE3;--gold:#D9A441;--terra:#D2663F;--ocean:#2E7D9A;--sand:#E0A96D;--deli:#B4544A;}
+*{box-sizing:border-box;}
+body{margin:0;background:#070C0F;color:var(--cream);
+  font-family:'Archivo',system-ui,-apple-system,sans-serif;-webkit-text-size-adjust:100%;}
+/* the map renders offscreen at full size; the canvas is what you see and what you save */
+#map{position:absolute;left:-20000px;top:0;width:1080px;height:1920px;}
+#wrap{display:flex;flex-direction:column;align-items:center;gap:12px;padding:12px 12px 24px;}
+#out{width:100%;max-width:min(430px,92vw);height:auto;aspect-ratio:9/16;display:block;
+  background:#11181D;border-radius:6px;box-shadow:0 8px 28px rgba(0,0,0,.5);}
+.bar{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;max-width:460px;}
+button,select{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;padding:10px 13px;border-radius:4px;border:1px solid rgba(246,239,227,.26);
+  background:rgba(246,239,227,.05);color:var(--cream);cursor:pointer;}
+button.on{background:var(--gold);color:#10171C;border-color:var(--gold);font-weight:600;}
+button.go{background:var(--terra);color:#fff;border-color:var(--terra);font-weight:600;}
+button[disabled]{opacity:.45;cursor:default;}
+.lbl{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(246,239,227,.5);width:100%;text-align:center;margin-top:6px;}
+#msg{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+  color:rgba(246,239,227,.62);text-align:center;max-width:430px;line-height:1.6;min-height:34px;}
+#msg b{color:var(--cream);}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="wrap">
+  <canvas id="out" width="1080" height="1920"></canvas>
+  <p class="lbl">Which date</p>
+  <div class="bar" id="days"></div>
+  <p class="lbl">Framing — keep it the same for all four</p>
+  <div class="bar">
+    <button id="fDon" class="on">Donostia</button>
+    <button id="fCoast">Whole coast</button>
+  </div>
+  <div class="bar" style="margin-top:8px">
+    <button class="go" id="one">↓ Save this PNG</button>
+    <button class="go" id="all">↓ Save all 4</button>
+  </div>
+  <p id="msg">Loading the map…</p>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.js"></script>
+<script>
+(function(){
+"use strict";
+var F = [{"n":"Casa Cámara","lat":43.326594,"lon":-1.919811,"c":"rest","d":0},{"n":"Bar Txepetxa","lat":43.3237381,"lon":-1.9840577,"c":"bar","d":0},{"n":"Irulegi","lat":43.3243534,"lon":-1.9851132,"c":"bar","d":0},{"n":"Gandarias","lat":43.3240228,"lon":-1.9857835,"c":"bar","d":0},{"n":"La Viña","lat":43.3243861,"lon":-1.9847944,"c":"bar","d":0},{"n":"Motx Coffee","lat":43.3229969,"lon":-1.9852295,"c":"cafe","d":1},{"n":"Galparsoro Okindegia","lat":43.322728,"lon":-1.9857891,"c":"bake","d":1},{"n":"Zapore Jai","lat":43.3234772,"lon":-1.9855479,"c":"deli","d":1},{"n":"Rafa Gorrotxategi","lat":43.3230272,"lon":-1.9840703,"c":"bake","d":1},{"n":"La Cuchara de San Telmo","lat":43.3245016,"lon":-1.9853227,"c":"bar","d":1},{"n":"Plaza Berri Taberna","lat":43.3238692,"lon":-1.9848618,"c":"bar","d":1},{"n":"Antonio Boulevard","lat":43.3222357,"lon":-1.9854447,"c":"rest","d":1},{"n":"Gelatería Boulevard","lat":43.3225619,"lon":-1.9838896,"c":"bake","d":1},{"n":"Pil Pil Enea","lat":43.387405,"lon":-1.658988,"c":"rest","d":2},{"n":"Maison Adam","lat":43.3879957,"lon":-1.6638807,"c":"bake","d":2},{"n":"EPELA","lat":43.3881861,"lon":-1.6635214,"c":"cafe","d":2},{"n":"Bar KBZÓNa","lat":43.3240469,"lon":-1.9843733,"c":"bar","d":2},{"n":"Old Town Coffee","lat":43.3153205,"lon":-1.980453,"c":"cafe","d":3},{"n":"Kaia Kaipe","lat":43.3047282,"lon":-2.2034138,"c":"rest","d":3},{"n":"La Cepa de Bernardo","lat":43.3243034,"lon":-1.9850321,"c":"rest","d":3},{"n":"La Issla","lat":43.3163643,"lon":-1.9843653,"c":"cafe","d":3},{"n":"Chez Croissant","lat":43.3178089,"lon":-1.984437,"c":"cafe","d":4},{"n":"Nüda Café","lat":43.3135252,"lon":-1.9805106,"c":"cafe","d":4},{"n":"Ganbara","lat":43.3234339,"lon":-1.9855011,"c":"bar","d":4},{"n":"Oiartzun","lat":43.3221239,"lon":-1.9854938,"c":"bake","d":4},{"n":"Aitana Donostia","lat":43.317584,"lon":-1.9844706,"c":"rest","d":4}];
+
+var COL = {rest:"#D2663F", bar:"#D9A441", cafe:"#2E7D9A", bake:"#E0A96D", deli:"#B4544A"};
+var LEG = [["Restaurants","#D2663F"],["Pintxos bars","#D9A441"],["Caf\u00e9s","#2E7D9A"],
+           ["Bakeries & sweets","#E0A96D"],["Food shops","#B4544A"]];
+
+var DAYS = [
+  {i:1, key:"10", label:"10 OCT", sub:"Pasaia & the Old Town", visits:14, places:13},
+  {i:2, key:"11", label:"11 OCT", sub:"Saint-Jean-de-Luz",     visits:18, places:17},
+  {i:3, key:"12", label:"12 OCT", sub:"Getaria & the turbot",  visits:22, places:21},
+  {i:4, key:"13", label:"13 OCT", sub:"The last full day",     visits:27, places:26}
+];
+
+/* fixed frames, so all four pictures line up exactly */
+var FRAMES = {
+  don:   {bounds:[[-1.9895,43.3118],[-1.9785,43.3268]], pad:54,  name:"Donostia"},
+  coast: {bounds:[[-2.2180,43.2930],[-1.6450,43.3960]], pad:40,  name:"Whole coast"}
+};
+
+var map, ready = false, frame = "don", day = 0, cam = {};
+var out = document.getElementById("out"), ctx = out.getContext("2d");
+var msg = document.getElementById("msg");
+function say(h){ msg.innerHTML = h; }
+
+/* ---------- day buttons ---------- */
+var daysBar = document.getElementById("days");
+DAYS.forEach(function(d, k){
+  var b = document.createElement("button");
+  b.textContent = "Through " + d.key + " Oct";
+  b.onclick = function(){ day = k; paintButtons(); render(); };
+  daysBar.appendChild(b);
+});
+function paintButtons(){
+  Array.prototype.forEach.call(daysBar.children, function(b, k){ b.classList.toggle("on", k === day); });
+  document.getElementById("fDon").classList.toggle("on", frame === "don");
+  document.getElementById("fCoast").classList.toggle("on", frame === "coast");
+}
+document.getElementById("fDon").onclick   = function(){ frame = "don";   paintButtons(); setFrame(render); };
+document.getElementById("fCoast").onclick = function(){ frame = "coast"; paintButtons(); setFrame(render); };
+
+/* ---------- map ---------- */
+var RASTER = {version:8,
+  sources:{c:{type:"raster",tileSize:256,
+    tiles:["https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png",
+           "https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png",
+           "https://c.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png"],
+    attribution:"\u00a9 OpenStreetMap contributors \u00b7 \u00a9 CARTO"}},
+  layers:[{id:"bg",type:"background",paint:{"background-color":"#E8E4DC"}},
+          {id:"c",type:"raster",source:"c"}]};
+
+function geo(upto){
+  return {type:"FeatureCollection", features: F.filter(function(f){ return f.d <= upto + 1; })
+    .map(function(f){ return {type:"Feature", properties:{c:f.c},
+      geometry:{type:"Point", coordinates:[f.lon, f.lat]}}; })};
+}
+
+function boot(style){
+  map = new maplibregl.Map({container:"map", style:style, center:[-1.984,43.32], zoom:14,
+    interactive:false, attributionControl:false, preserveDrawingBuffer:true, fadeDuration:0});
+  map.on("load", function(){
+    map.addSource("pins", {type:"geojson", data:geo(0)});
+    map.addLayer({id:"pinsHalo", type:"circle", source:"pins",
+      paint:{"circle-radius":15, "circle-color":"#ffffff", "circle-opacity":.95}});
+    map.addLayer({id:"pinsDot", type:"circle", source:"pins",
+      paint:{"circle-radius":11,
+        "circle-color":["match",["get","c"],
+          "rest",COL.rest,"bar",COL.bar,"cafe",COL.cafe,"bake",COL.bake,"deli",COL.deli,"#888"]}});
+    ready = true;
+    paintButtons();
+    setFrame(render);
+  });
+  map.on("error", function(e){ if(e && e.error) console.warn(e.error.message || e.error); });
+}
+
+fetch("https://tiles.openfreemap.org/styles/positron", {mode:"cors"})
+  .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+  .then(boot).catch(function(){ boot(RASTER); });
+
+function setFrame(then){
+  if(!ready) return;
+  var f = FRAMES[frame];
+  var c = map.cameraForBounds(f.bounds, {padding:f.pad});
+  cam = {center:c.center, zoom:c.zoom};
+  map.jumpTo(cam);
+  if(then) then();
+}
+
+/* ---------- draw ---------- */
+function drawHud(d){
+  var W = 1080, H = 1920;
+  // top and bottom scrims
+  var g1 = ctx.createLinearGradient(0,0,0,460);
+  g1.addColorStop(0,"rgba(7,12,15,.90)"); g1.addColorStop(1,"rgba(7,12,15,0)");
+  ctx.fillStyle = g1; ctx.fillRect(0,0,W,460);
+  var g2 = ctx.createLinearGradient(0,H-980,0,H);
+  g2.addColorStop(0,"rgba(7,12,15,0)"); g2.addColorStop(.55,"rgba(7,12,15,.62)");
+  g2.addColorStop(1,"rgba(7,12,15,.95)");
+  ctx.fillStyle = g2; ctx.fillRect(0,H-980,W,980);
+
+  ctx.textBaseline = "alphabetic";
+  // brand, top left
+  ctx.fillStyle = "rgba(246,239,227,.62)";
+  ctx.font = "600 19px 'IBM Plex Mono', monospace";
+  ctx.textAlign = "left";
+  ctx.fillText("O U R   F O O D", 72, 150);
+  ctx.fillText("J O U R N E Y", 72, 182);
+
+  // day, top right
+  ctx.textAlign = "right";
+  ctx.fillStyle = "#F6EFE3";
+  ctx.font = "800 54px Syne, Archivo, sans-serif";
+  ctx.fillText(d.label, W-136, 168);
+  ctx.fillStyle = "#D9A441";
+  ctx.font = "500 19px 'IBM Plex Mono', monospace";
+  ctx.fillText(d.sub.toUpperCase(), W-136, 200);
+
+  // count, bottom left
+  ctx.textAlign = "left";
+  ctx.fillStyle = "#F6EFE3";
+  ctx.font = "800 150px Syne, Archivo, sans-serif";
+  ctx.fillText(String(d.visits), 72, H-560);
+  ctx.fillStyle = "rgba(246,239,227,.62)";
+  ctx.font = "500 21px 'IBM Plex Mono', monospace";
+  ctx.fillText("V I S I T S", 76, H-512);
+  ctx.fillStyle = "#D9A441";
+  ctx.font = "500 19px 'IBM Plex Mono', monospace";
+  ctx.fillText(d.places + " PLACES", 76, H-478);
+
+  // legend, bottom right
+  ctx.textAlign = "right";
+  ctx.font = "500 17px 'IBM Plex Mono', monospace";
+  for(var i = 0; i < LEG.length; i++){
+    var y = H - 620 + i * 30;
+    ctx.fillStyle = "rgba(246,239,227,.62)";
+    ctx.fillText(LEG[i][0].toUpperCase(), W-166, y);
+    ctx.beginPath(); ctx.arc(W-146, y-6, 7, 0, 6.2832);
+    ctx.fillStyle = LEG[i][1]; ctx.fill();
+  }
+
+  // attribution, inside the safe area
+  ctx.textAlign = "right";
+  ctx.font = "500 15px 'IBM Plex Mono', monospace";
+  ctx.fillStyle = "rgba(246,239,227,.45)";
+  ctx.fillText("\u00a9 OpenStreetMap contributors", W-136, H-390);
+}
+
+function render(cb){
+  if(!ready){ if(cb) cb(); return; }
+  var d = DAYS[day];
+  map.getSource("pins").setData(geo(day));
+  map.jumpTo(cam);
+  say("Drawing <b>" + d.label + "</b>\u2026");
+  map.once("idle", function(){
+    var mc = map.getCanvas();
+    ctx.clearRect(0,0,1080,1920);
+    ctx.drawImage(mc, 0, 0, mc.width, mc.height, 0, 0, 1080, 1920);
+    drawHud(d);
+    say("<b>" + d.label + "</b> \u00b7 " + d.visits + " visits at " + d.places +
+        " places \u00b7 " + FRAMES[frame].name + " framing");
+    if(cb) cb();
+  });
+}
+
+/* ---------- save ---------- */
+function save(name, cb){
+  out.toBlob(function(b){
+    if(!b){ say("This browser would not export the picture."); if(cb) cb(); return; }
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(b); a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 6000);
+    if(cb) cb();
+  }, "image/png");
+}
+
+document.getElementById("one").onclick = function(){
+  var d = DAYS[day];
+  save("food-" + d.key + "Oct-" + frame + ".png", function(){
+    say("Saved <b>food-" + d.key + "Oct-" + frame + ".png</b>");
+  });
+};
+
+document.getElementById("all").onclick = function(){
+  var btns = document.querySelectorAll("button");
+  Array.prototype.forEach.call(btns, function(b){ b.disabled = true; });
+  var k = 0;
+  (function step(){
+    if(k >= DAYS.length){
+      Array.prototype.forEach.call(btns, function(b){ b.disabled = false; });
+      say("All four saved. Check your Downloads or Files app.");
+      return;
+    }
+    day = k; paintButtons();
+    render(function(){
+      save("food-" + DAYS[k].key + "Oct-" + frame + ".png", function(){
+        k++; setTimeout(step, 700);
+      });
+    });
+  })();
+};
+
+setTimeout(function(){ if(!ready) say("Still loading the map \u2014 check the connection."); }, 9000);
+})();
+</script>
+</body>
+</html>
