@@ -14,16 +14,17 @@ body{margin:0;background:#070C0F;color:var(--cream);
   font-family:'Archivo',system-ui,-apple-system,sans-serif;-webkit-text-size-adjust:100%;}
 /* the map renders offscreen at full size; the canvas is what you see and what you save */
 #map{position:absolute;left:-20000px;top:0;width:1080px;height:1920px;}
-#wrap{display:flex;flex-direction:column;align-items:center;gap:12px;padding:12px 12px 24px;}
+#wrap{display:flex;flex-direction:column;align-items:center;gap:8px;padding:10px 12px 22px;}
 #out{width:100%;max-width:min(430px,92vw);height:auto;aspect-ratio:9/16;display:block;
   background:#11181D;border-radius:6px;box-shadow:0 8px 28px rgba(0,0,0,.5);}
 .bar{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;max-width:460px;}
-button,select{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.1em;
-  text-transform:uppercase;padding:10px 13px;border-radius:4px;border:1px solid rgba(246,239,227,.26);
-  background:rgba(246,239,227,.05);color:var(--cream);cursor:pointer;}
+button,select{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;letter-spacing:.07em;
+  text-transform:uppercase;padding:9px 10px;border-radius:4px;border:1px solid rgba(246,239,227,.26);
+  background:rgba(246,239,227,.05);color:var(--cream);cursor:pointer;white-space:nowrap;}
 button.on{background:var(--gold);color:#10171C;border-color:var(--gold);font-weight:600;}
 button.go{background:var(--terra);color:#fff;border-color:var(--terra);font-weight:600;}
 button[disabled]{opacity:.45;cursor:default;}
+.sep{width:1px;height:20px;background:rgba(246,239,227,.2);margin:0 2px;flex:0 0 auto;}
 .lbl{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.18em;
   text-transform:uppercase;color:rgba(246,239,227,.5);width:100%;text-align:center;margin-top:6px;}
 #msg{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
@@ -35,21 +36,17 @@ button[disabled]{opacity:.45;cursor:default;}
 <div id="map"></div>
 <div id="wrap">
   <canvas id="out" width="1080" height="1920"></canvas>
-  <p class="lbl">Which date</p>
   <div class="bar" id="days"></div>
-  <p class="lbl">What to show</p>
   <div class="bar">
-    <button id="mCum" class="on">Building up</button>
-    <button id="mOne">That day only</button>
-  </div>
-  <p class="lbl">Framing — keep it the same for every shot</p>
-  <div class="bar">
+    <button id="mCum" class="on">Build up</button>
+    <button id="mOne">One day</button>
+    <span class="sep"></span>
     <button id="fDon" class="on">Donostia</button>
-    <button id="fCoast">Whole coast</button>
+    <button id="fCoast">Coast</button>
   </div>
-  <div class="bar" style="margin-top:8px">
-    <button class="go" id="one">↓ Save this PNG</button>
-    <button class="go" id="all">↓ Save all 5</button>
+  <div class="bar">
+    <button class="go" id="one">↓ This PNG</button>
+    <button class="go" id="all">↓ All 5</button>
   </div>
   <p id="msg">Loading the map…</p>
 </div>
@@ -100,7 +97,7 @@ function say(h){ msg.innerHTML = h; }
 var daysBar = document.getElementById("days");
 DAYS.forEach(function(d, k){
   var b = document.createElement("button");
-  b.textContent = DLBL[k];
+  b.textContent = DLBL[k].replace(" Oct", "");
   b.onclick = function(){ day = k; showAll = false; paintButtons(); render(); };
   daysBar.appendChild(b);
 });
