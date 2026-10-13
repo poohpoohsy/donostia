@@ -122,11 +122,11 @@ document.getElementById("fCoast").onclick = function(){ frame = "coast"; paintBu
 /* ---------- map ---------- */
 var RASTER = {version:8,
   sources:{c:{type:"raster",tileSize:256,
-    tiles:["https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png",
-           "https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png",
-           "https://c.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png"],
+    tiles:["https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
+           "https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
+           "https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png"],
     attribution:"\u00a9 OpenStreetMap contributors \u00b7 \u00a9 CARTO"}},
-  layers:[{id:"bg",type:"background",paint:{"background-color":"#E8E4DC"}},
+  layers:[{id:"bg",type:"background",paint:{"background-color":"#0C1216"}},
           {id:"c",type:"raster",source:"c"}]};
 
 function geo(){
@@ -141,7 +141,7 @@ function boot(style){
   map.on("load", function(){
     map.addSource("pins", {type:"geojson", data:geo()});
     map.addLayer({id:"pinsHalo", type:"circle", source:"pins",
-      paint:{"circle-radius":15, "circle-color":"#ffffff", "circle-opacity":.95}});
+      paint:{"circle-radius":16, "circle-color":"#ffffff", "circle-opacity":.92}});
     map.addLayer({id:"pinsDot", type:"circle", source:"pins",
       paint:{"circle-radius":11,
         "circle-color":["match",["get","d"],
@@ -153,9 +153,7 @@ function boot(style){
   map.on("error", function(e){ if(e && e.error) console.warn(e.error.message || e.error); });
 }
 
-fetch("https://tiles.openfreemap.org/styles/positron", {mode:"cors"})
-  .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-  .then(boot).catch(function(){ boot(RASTER); });
+boot(RASTER);
 
 function setFrame(then){
   if(!ready) return;
@@ -170,13 +168,13 @@ function setFrame(then){
 function drawHud(d){
   var W = 1080, H = 1920;
   // top and bottom scrims
-  var g1 = ctx.createLinearGradient(0,0,0,460);
-  g1.addColorStop(0,"rgba(7,12,15,.90)"); g1.addColorStop(1,"rgba(7,12,15,0)");
-  ctx.fillStyle = g1; ctx.fillRect(0,0,W,460);
-  var g2 = ctx.createLinearGradient(0,H-980,0,H);
-  g2.addColorStop(0,"rgba(7,12,15,0)"); g2.addColorStop(.55,"rgba(7,12,15,.62)");
-  g2.addColorStop(1,"rgba(7,12,15,.95)");
-  ctx.fillStyle = g2; ctx.fillRect(0,H-980,W,980);
+  var g1 = ctx.createLinearGradient(0,0,0,420);
+  g1.addColorStop(0,"rgba(7,12,15,.92)"); g1.addColorStop(1,"rgba(7,12,15,0)");
+  ctx.fillStyle = g1; ctx.fillRect(0,0,W,420);
+  var g2 = ctx.createLinearGradient(0,H-900,0,H);
+  g2.addColorStop(0,"rgba(7,12,15,0)"); g2.addColorStop(.5,"rgba(7,12,15,.52)");
+  g2.addColorStop(1,"rgba(7,12,15,.92)");
+  ctx.fillStyle = g2; ctx.fillRect(0,H-900,W,900);
 
   ctx.textBaseline = "alphabetic";
   // brand, top left
