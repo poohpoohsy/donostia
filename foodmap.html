@@ -127,11 +127,7 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
   padding:2px 6px;border-radius:3px;box-shadow:0 2px 6px rgba(0,0,0,.4);}
 @keyframes drop{from{opacity:0;transform:translateY(-40px) scale(.5);}to{opacity:1;transform:none;}}
 @keyframes pulse{from{opacity:.85;transform:scale(.55);}to{opacity:0;transform:scale(2.1);}}
-.c-rest .pinin{color:var(--terra);} .c-rest b{background:var(--terra);}
-.c-bar .pinin{color:var(--gold);}   .c-bar b{background:var(--gold);}
-.c-cafe .pinin{color:var(--ocean);} .c-cafe b{background:var(--ocean);}
-.c-bake .pinin{color:var(--sand);}  .c-bake b{background:var(--sand);}
-.c-deli .pinin{color:var(--deli);}  .c-deli b{background:var(--deli);}
+.pinin{color:var(--gold);} .pinin b{background:var(--gold);}
 
 /* ---------- controls (outside the recording frame) ---------- */
 #panel{position:fixed;left:0;right:0;bottom:0;z-index:100;padding:11px 14px;
@@ -175,11 +171,7 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
       </div>
 
       <div class="legend" id="legend">
-        <span><i style="background:var(--terra)"></i>Restaurants</span>
-        <span><i style="background:var(--gold)"></i>Pintxos bars</span>
-        <span><i style="background:var(--ocean)"></i>Cafés</span>
-        <span><i style="background:var(--sand)"></i>Bakeries &amp; sweets</span>
-        <span><i style="background:var(--deli)"></i>Food shops</span>
+        <span><i style="background:var(--gold)"></i>Where we ate</span>
       </div>
 
       <div class="ticker" id="ticker"><div class="nm" id="tnm"></div><div class="nt" id="tnt"></div></div>
@@ -213,8 +205,8 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
   <button data-jump="13">13</button>
   <div class="sep"></div>
   <select id="speed" aria-label="Speed">
-    <option value="0.5">0.5×</option><option value="1" selected>1×</option>
-    <option value="1.5">1.5×</option><option value="2">2×</option>
+    <option value="0.5">0.5×</option><option value="1">1×</option>
+    <option value="1.5">1.5×</option><option value="2" selected>2×</option>
   </select>
   <button id="bClean">⛶ Clean</button>
   <button class="rec" id="bRec">● Record</button>
@@ -416,7 +408,7 @@ function lastPinTime(p){
 }
 
 /* ---------- clock ---------- */
-var clock = 0, playing = false, raf = null, prev = 0, speed = 1, fired = -1;
+var clock = 0, playing = false, raf = null, prev = 0, speed = 2, fired = -1;
 
 function doCue(c, instant){
   if(c.k === "cam"){
