@@ -56,15 +56,16 @@
   h2{font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:20px;
     letter-spacing:-.02em;margin:0 0 6px;}
 
-  .leg{display:flex;align-items:center;gap:9px;margin:16px 0 8px;}
+  .leg{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:16px 0 8px;}
   .leg:first-of-type{margin-top:0;}
   .leg i{width:9px;height:9px;border-radius:50%;flex:0 0 auto;}
   .leg span{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
     letter-spacing:.18em;text-transform:uppercase;color:var(--dim);}
-  .leg a.fmap{margin-left:auto;flex:0 0 auto;text-decoration:none;
-    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
-    letter-spacing:.14em;text-transform:uppercase;color:#E8547C;
-    border:1px solid rgba(232,84,124,.42);border-radius:2px;padding:4px 9px;}
+  .leg .fmaps{margin-left:auto;flex:0 0 auto;display:flex;gap:6px;}
+  .leg a.fmap{flex:0 0 auto;white-space:nowrap;text-decoration:none;
+    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;
+    letter-spacing:.1em;text-transform:uppercase;color:#E8547C;
+    border:1px solid rgba(232,84,124,.42);border-radius:2px;padding:3px 7px;}
 
   .day{display:block;text-decoration:none;color:inherit;background:var(--raise);
     border:1px solid var(--rule);border-left:3px solid var(--dim);border-radius:3px;
@@ -155,7 +156,7 @@
       <p>Aiguille du Midi at 3,842m, the Grand Balcon Nord, then Brévent from the other side of the valley.</p>
     </a>
 
-    <div class="leg"><i style="background:#E8547C"></i><span>9–16 Oct · Basque country</span><a class="fmap" href="foodshots.html">🥐 Food map ↗</a></div>
+    <div class="leg"><i style="background:#E8547C"></i><span>9–16 Oct · Basque country</span><span class="fmaps"><a class="fmap" href="foodshots.html">🥐 Pictures</a><a class="fmap" href="foodmap.html">▶ Video</a></span></div>
 
     <a class="day bask" href="san_sebastian_9Oct.html">
       <div class="dtop"><span class="dwhen">Fri 9</span><span class="dtag ok">Set</span></div>

@@ -55,9 +55,8 @@ button[disabled]{opacity:.45;cursor:default;}
 "use strict";
 var F = [{"n":"Casa Cámara","lat":43.326594,"lon":-1.919811,"c":"rest","d":0},{"n":"Bar Txepetxa","lat":43.3237381,"lon":-1.9840577,"c":"bar","d":0},{"n":"Irulegi","lat":43.3243534,"lon":-1.9851132,"c":"bar","d":0},{"n":"Gandarias","lat":43.3240228,"lon":-1.9857835,"c":"bar","d":0},{"n":"La Viña","lat":43.3243861,"lon":-1.9847944,"c":"bar","d":0},{"n":"Motx Coffee","lat":43.3229969,"lon":-1.9852295,"c":"cafe","d":1},{"n":"Galparsoro Okindegia","lat":43.322728,"lon":-1.9857891,"c":"bake","d":1},{"n":"Zapore Jai","lat":43.3234772,"lon":-1.9855479,"c":"deli","d":1},{"n":"Rafa Gorrotxategi","lat":43.3230272,"lon":-1.9840703,"c":"bake","d":1},{"n":"La Cuchara de San Telmo","lat":43.3245016,"lon":-1.9853227,"c":"bar","d":1},{"n":"Plaza Berri Taberna","lat":43.3238692,"lon":-1.9848618,"c":"bar","d":1},{"n":"Antonio Boulevard","lat":43.3222357,"lon":-1.9854447,"c":"rest","d":1},{"n":"Gelatería Boulevard","lat":43.3225619,"lon":-1.9838896,"c":"bake","d":1},{"n":"Pil Pil Enea","lat":43.387405,"lon":-1.658988,"c":"rest","d":2},{"n":"Maison Adam","lat":43.3879957,"lon":-1.6638807,"c":"bake","d":2},{"n":"EPELA","lat":43.3881861,"lon":-1.6635214,"c":"cafe","d":2},{"n":"Bar KBZÓNa","lat":43.3240469,"lon":-1.9843733,"c":"bar","d":2},{"n":"Old Town Coffee","lat":43.3153205,"lon":-1.980453,"c":"cafe","d":3},{"n":"Kaia Kaipe","lat":43.3047282,"lon":-2.2034138,"c":"rest","d":3},{"n":"La Cepa de Bernardo","lat":43.3243034,"lon":-1.9850321,"c":"rest","d":3},{"n":"La Issla","lat":43.3163643,"lon":-1.9843653,"c":"cafe","d":3},{"n":"Chez Croissant","lat":43.3178089,"lon":-1.984437,"c":"cafe","d":4},{"n":"Nüda Café","lat":43.3135252,"lon":-1.9805106,"c":"cafe","d":4},{"n":"Ganbara","lat":43.3234339,"lon":-1.9855011,"c":"bar","d":4},{"n":"Oiartzun","lat":43.3221239,"lon":-1.9854938,"c":"bake","d":4},{"n":"Aitana Donostia","lat":43.317584,"lon":-1.9844706,"c":"rest","d":4}];
 
-var COL = {rest:"#D2663F", bar:"#D9A441", cafe:"#2E7D9A", bake:"#E0A96D", deli:"#B4544A"};
-var LEG = [["Restaurants","#D2663F"],["Pintxos bars","#D9A441"],["Caf\u00e9s","#2E7D9A"],
-           ["Bakeries & sweets","#E0A96D"],["Food shops","#B4544A"]];
+var PIN = "#D9A441";
+var LEG = [["Where we ate", PIN]];
 
 var DAYS = [
   {i:1, key:"10", label:"10 OCT", sub:"Pasaia & the Old Town", visits:14, places:13},
@@ -118,8 +117,7 @@ function boot(style){
       paint:{"circle-radius":15, "circle-color":"#ffffff", "circle-opacity":.95}});
     map.addLayer({id:"pinsDot", type:"circle", source:"pins",
       paint:{"circle-radius":11,
-        "circle-color":["match",["get","c"],
-          "rest",COL.rest,"bar",COL.bar,"cafe",COL.cafe,"bake",COL.bake,"deli",COL.deli,"#888"]}});
+        "circle-color":PIN}});
     ready = true;
     paintButtons();
     setFrame(render);

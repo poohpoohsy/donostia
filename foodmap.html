@@ -102,13 +102,19 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
   background:radial-gradient(ellipse at center,rgba(7,12,15,.42),rgba(7,12,15,.86));
   opacity:0;transition:opacity 1s;}
 #final.on{opacity:1;}
-#final .big{font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:132px;line-height:.9;
-  letter-spacing:-.045em;}
-#final .mid{font-family:'Syne','Archivo',sans-serif;font-weight:700;font-size:54px;
-  letter-spacing:-.02em;margin-top:30px;color:var(--terra);}
-#final .sm{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:23px;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--cream-dim);margin-top:38px;
-  border-top:1px solid var(--rule);padding-top:28px;}
+#final .ftitle{font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:62px;
+  letter-spacing:-.03em;line-height:1;margin:0 0 30px;}
+#final .flist{list-style:none;margin:0;padding:0;width:600px;max-width:84%;}
+#final .flist li{display:flex;align-items:baseline;justify-content:space-between;gap:20px;
+  padding:15px 0;border-bottom:1px solid var(--rule);}
+#final .flist li:last-child{border-bottom:0;}
+#final .flist span{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:25px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dim);}
+#final .flist b{font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:46px;
+  letter-spacing:-.02em;color:var(--gold);line-height:1;}
+#final .ftot{width:600px;max-width:84%;margin-top:26px;padding-top:24px;
+  border-top:2px solid rgba(246,239,227,.34);
+  font-family:'Syne','Archivo',sans-serif;font-weight:700;font-size:38px;letter-spacing:-.015em;}
 #final .sig{font-family:'Archivo',sans-serif;font-style:italic;font-size:34px;
   color:var(--cream);margin-top:44px;opacity:.9;}
 
@@ -185,9 +191,15 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
       </div>
 
       <div id="final">
-        <div class="big">5 DAYS<br>27 VISITS</div>
-        <div class="mid">26 places we ate</div>
-        <div class="sm">Donostia · Pasaia · Getaria · Saint-Jean-de-Luz</div>
+        <p class="ftitle">Where we ate</p>
+        <ul class="flist">
+          <li><span>9 Oct</span><b>5</b></li>
+          <li><span>10 Oct</span><b>9</b></li>
+          <li><span>11 Oct</span><b>4</b></li>
+          <li><span>12 Oct</span><b>4</b></li>
+          <li><span>13 Oct</span><b>5</b></li>
+        </ul>
+        <p class="ftot">27 visits · 26 places</p>
         <div class="sig">So many delicious memories.</div>
       </div>
     </div>
