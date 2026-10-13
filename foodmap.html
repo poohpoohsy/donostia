@@ -20,6 +20,7 @@
   --ink:#10171C; --ink2:#1A242B;
   --ocean:#2E7D9A; --terra:#D2663F; --gold:#D9A441;
   --sand:#E0A96D; --deli:#B4544A; --slate:#8CA0AC;
+  --c0:#D2663F; --c1:#D9A441; --c2:#2E7D9A; --c3:#5FA37A; --c4:#A8578E;
   --rule:rgba(246,239,227,.16);
 }
 *{box-sizing:border-box;}
@@ -82,6 +83,27 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
   color:var(--gold);margin-top:10px;opacity:0;transition:opacity .34s;}
 .ticker.on .nm,.ticker.on .nt{opacity:1;transform:none;}
 
+/* list of places for one date */
+.plist{position:absolute;left:72px;width:620px;bottom:334px;display:none;}
+.plist.on{display:block;}
+.plist .ph{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:20px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);
+    margin:0 0 14px;padding-bottom:12px;border-bottom:1px solid var(--rule);}
+.plist .ph b{color:var(--chalk);font-weight:600;}
+.plist ol{list-style:none;margin:0;padding:0;}
+.plist li{display:flex;align-items:baseline;gap:13px;margin-bottom:11px;
+    font-family:'Syne','Archivo',sans-serif;font-weight:700;font-size:30px;
+    letter-spacing:-.015em;line-height:1.14;}
+.plist li:last-child{margin-bottom:0;}
+.plist li i{flex:0 0 auto;width:13px;height:13px;border-radius:50%;
+    transform:translateY(-4px);box-shadow:0 0 0 2.5px rgba(7,12,15,.5);}
+.plist li small{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-weight:500;font-size:16px;letter-spacing:.06em;color:var(--dim);margin-top:3px;}
+.plist.sum li{font-size:34px;justify-content:space-between;}
+.plist.sum li em{font-style:normal;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:20px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dim);}
+.plist.sum li b{font-family:'Syne',sans-serif;font-weight:800;font-size:40px;}
+
 /* progress */
 .prog{position:absolute;left:72px;right:136px;bottom:334px;height:3px;background:rgba(246,239,227,.18);}
 .prog i{display:block;height:100%;width:0;background:var(--gold);}
@@ -90,7 +112,8 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
 .legend{position:absolute;right:136px;bottom:510px;display:flex;flex-direction:column;
   align-items:flex-end;gap:13px;opacity:0;transition:opacity .6s;}
 .legend.on{opacity:.92;}
-.legend span{display:flex;align-items:center;gap:11px;
+.legend span.off{opacity:.22;}
+.legend span{display:flex;align-items:center;gap:11px;transition:opacity .25s;
   font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:17px;letter-spacing:.09em;
   text-transform:uppercase;color:var(--cream-dim);}
 .legend i{width:13px;height:13px;border-radius:50%;flex:0 0 auto;
@@ -133,7 +156,11 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
   padding:2px 6px;border-radius:3px;box-shadow:0 2px 6px rgba(0,0,0,.4);}
 @keyframes drop{from{opacity:0;transform:translateY(-40px) scale(.5);}to{opacity:1;transform:none;}}
 @keyframes pulse{from{opacity:.85;transform:scale(.55);}to{opacity:0;transform:scale(2.1);}}
-.pinin{color:var(--gold);} .pinin b{background:var(--gold);}
+.c-d0 .pinin{color:var(--c0);} .c-d0 b{background:var(--c0);}
+.c-d1 .pinin{color:var(--c1);} .c-d1 b{background:var(--c1);}
+.c-d2 .pinin{color:var(--c2);} .c-d2 b{background:var(--c2);}
+.c-d3 .pinin{color:var(--c3);} .c-d3 b{background:var(--c3);}
+.c-d4 .pinin{color:var(--c4);} .c-d4 b{background:var(--c4);}
 
 /* ---------- controls (outside the recording frame) ---------- */
 #panel{position:fixed;left:0;right:0;bottom:0;z-index:100;padding:11px 14px;
@@ -177,9 +204,14 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
       </div>
 
       <div class="legend" id="legend">
-        <span><i style="background:var(--gold)"></i>Where we ate</span>
+        <span data-d="0"><i style="background:var(--c0)"></i>9 Oct</span>
+        <span data-d="1"><i style="background:var(--c1)"></i>10 Oct</span>
+        <span data-d="2"><i style="background:var(--c2)"></i>11 Oct</span>
+        <span data-d="3"><i style="background:var(--c3)"></i>12 Oct</span>
+        <span data-d="4"><i style="background:var(--c4)"></i>13 Oct</span>
       </div>
 
+      <div class="plist" id="plist"><p class="ph"></p><ol></ol></div>
       <div class="ticker" id="ticker"><div class="nm" id="tnm"></div><div class="nt" id="tnt"></div></div>
       <div class="prog"><i id="pbar"></i></div>
 
@@ -193,11 +225,11 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
       <div id="final">
         <p class="ftitle">Where we ate</p>
         <ul class="flist">
-          <li><span>9 Oct</span><b>5</b></li>
-          <li><span>10 Oct</span><b>9</b></li>
-          <li><span>11 Oct</span><b>4</b></li>
-          <li><span>12 Oct</span><b>4</b></li>
-          <li><span>13 Oct</span><b>5</b></li>
+          <li><span>9 Oct</span><b style="color:var(--c0)">5</b></li>
+          <li><span>10 Oct</span><b style="color:var(--c1)">9</b></li>
+          <li><span>11 Oct</span><b style="color:var(--c2)">4</b></li>
+          <li><span>12 Oct</span><b style="color:var(--c3)">4</b></li>
+          <li><span>13 Oct</span><b style="color:var(--c4)">5</b></li>
         </ul>
         <p class="ftot">27 visits · 26 places</p>
         <div class="sig">So many delicious memories.</div>
@@ -215,6 +247,7 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
   <button data-jump="11">11</button>
   <button data-jump="12">12</button>
   <button data-jump="13">13</button>
+  <button data-jump="all">All</button>
   <div class="sep"></div>
   <select id="speed" aria-label="Speed">
     <option value="0.5">0.5×</option><option value="1">1×</option>
@@ -229,7 +262,7 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
 <script>
 (function(){
 "use strict";
-var PLACES = [{"d":"09","n":"Casa Cámara","a":"Pasai Donibane","lat":43.326594,"lon":-1.919811,"c":"rest","note":"Lunch across the water by boat","uid":"u0"},{"d":"09","n":"Bar Txepetxa","a":"Arrandegi Kalea 5","lat":43.3237381,"lon":-1.9840577,"c":"bar","note":"Anchovies","uid":"u1"},{"d":"09","n":"Irulegi","a":"31 de Agosto 28","lat":43.3243534,"lon":-1.9851132,"c":"bar","note":"","uid":"u2"},{"d":"09","n":"Gandarias","a":"31 de Agosto 23","lat":43.3240228,"lon":-1.9857835,"c":"bar","note":"Best pick of the night — the jamón","uid":"u3"},{"d":"09","n":"La Viña","a":"31 de Agosto 3","lat":43.3243861,"lon":-1.9847944,"c":"bar","note":"First visit · the cheesecake","uid":"u4"},{"d":"10","n":"Motx Coffee","a":"San Jerónimo 14","lat":43.3229969,"lon":-1.9852295,"c":"cafe","note":"Coffee to start","uid":"u5"},{"d":"10","n":"Galparsoro Okindegia","a":"C. Mayor 6","lat":43.322728,"lon":-1.9857891,"c":"bake","note":"","uid":"u6"},{"d":"10","n":"Zapore Jai","a":"San Jerónimo 21","lat":43.3234772,"lon":-1.9855479,"c":"deli","note":"Hand-carved bellota jamón","uid":"u7"},{"d":"10","n":"Rafa Gorrotxategi","a":"Narrika Kalea 6","lat":43.3230272,"lon":-1.9840703,"c":"bake","note":"","uid":"u8"},{"d":"10","n":"La Viña","a":"31 de Agosto 3","lat":43.3243861,"lon":-1.9847944,"c":"bar","note":"Back again — second visit","uid":"u4"},{"d":"10","n":"La Cuchara de San Telmo","a":"Santa Korda 4","lat":43.3245016,"lon":-1.9853227,"c":"bar","note":"Off the wish list at last","uid":"u9"},{"d":"10","n":"Plaza Berri Taberna","a":"Constitución Plaza 5","lat":43.3238692,"lon":-1.9848618,"c":"bar","note":"Coffee in the square","uid":"u10"},{"d":"10","n":"Antonio Boulevard","a":"C. Mayor 2","lat":43.3222357,"lon":-1.9854447,"c":"rest","note":"Dinner","uid":"u11"},{"d":"10","n":"Gelatería Boulevard","a":"Alameda del Blvd. 10","lat":43.3225619,"lon":-1.9838896,"c":"bake","note":"","uid":"u12"},{"d":"11","n":"Pil Pil Enea","a":"Rue Salagoity 3","lat":43.387405,"lon":-1.658988,"c":"rest","note":"Lunch, 12:30 to 14:30","uid":"u13"},{"d":"11","n":"Maison Adam","a":"Place Louis XIV","lat":43.3879957,"lon":-1.6638807,"c":"bake","note":"Macarons · branch unconfirmed","uid":"u14"},{"d":"11","n":"EPELA","a":"Rue Tourasse 19","lat":43.3881861,"lon":-1.6635214,"c":"cafe","note":"Coffee at half three","uid":"u15"},{"d":"11","n":"Bar KBZÓNa","a":"Narrika Kalea","lat":43.3240469,"lon":-1.9843733,"c":"bar","note":"Carabinero and razor clams","uid":"u16"},{"d":"12","n":"Old Town Coffee","a":"Reyes Católicos 9","lat":43.3153205,"lon":-1.980453,"c":"cafe","note":"Breakfast, 08:30","uid":"u17"},{"d":"12","n":"Kaia Kaipe","a":"General Arnao 4, Getaria","lat":43.3047282,"lon":-2.2034138,"c":"rest","note":"Grilled turbot, clams, oysters","uid":"u18"},{"d":"12","n":"La Cepa de Bernardo","a":"31 de Agosto 7","lat":43.3243034,"lon":-1.9850321,"c":"rest","note":"","uid":"u19"},{"d":"12","n":"La Issla","a":"Manterola Kalea 11","lat":43.3163643,"lon":-1.9843653,"c":"cafe","note":"","uid":"u20"},{"d":"13","n":"Chez Croissant","a":"Easo Kalea","lat":43.3178089,"lon":-1.984437,"c":"cafe","note":"","uid":"u21"},{"d":"13","n":"Nüda Café","a":"Urbieta Kalea 66","lat":43.3135252,"lon":-1.9805106,"c":"cafe","note":"","uid":"u22"},{"d":"13","n":"Ganbara","a":"San Jerónimo 21","lat":43.3234339,"lon":-1.9855011,"c":"bar","note":"The last great lunch","uid":"u23"},{"d":"13","n":"Oiartzun","a":"Ijentea Kalea 2","lat":43.3221239,"lon":-1.9854938,"c":"bake","note":"","uid":"u24"},{"d":"13","n":"Aitana Donostia","a":"Easo Kalea 6","lat":43.317584,"lon":-1.9844706,"c":"rest","note":"Final dinner","uid":"u25"}];
+var PLACES = [{"d":"09","di":0,"n":"Casa Cámara","a":"Pasai Donibane","lat":43.326594,"lon":-1.919811,"c":"rest","note":"Lunch across the water by boat","uid":"u0"},{"d":"09","di":0,"n":"Bar Txepetxa","a":"Arrandegi Kalea 5","lat":43.3237381,"lon":-1.9840577,"c":"bar","note":"Anchovies","uid":"u1"},{"d":"09","di":0,"n":"Irulegi","a":"31 de Agosto 28","lat":43.3243534,"lon":-1.9851132,"c":"bar","note":"","uid":"u2"},{"d":"09","di":0,"n":"Gandarias","a":"31 de Agosto 23","lat":43.3240228,"lon":-1.9857835,"c":"bar","note":"Best pick of the night — the jamón","uid":"u3"},{"d":"09","di":0,"n":"La Viña","a":"31 de Agosto 3","lat":43.3243861,"lon":-1.9847944,"c":"bar","note":"First visit · the cheesecake","uid":"u4"},{"d":"10","di":1,"n":"Motx Coffee","a":"San Jerónimo 14","lat":43.3229969,"lon":-1.9852295,"c":"cafe","note":"Coffee to start","uid":"u5"},{"d":"10","di":1,"n":"Galparsoro Okindegia","a":"C. Mayor 6","lat":43.322728,"lon":-1.9857891,"c":"bake","note":"","uid":"u6"},{"d":"10","di":1,"n":"Zapore Jai","a":"San Jerónimo 21","lat":43.3234772,"lon":-1.9855479,"c":"deli","note":"Hand-carved bellota jamón","uid":"u7"},{"d":"10","di":1,"n":"Rafa Gorrotxategi","a":"Narrika Kalea 6","lat":43.3230272,"lon":-1.9840703,"c":"bake","note":"","uid":"u8"},{"d":"10","di":1,"n":"La Viña","a":"31 de Agosto 3","lat":43.3243861,"lon":-1.9847944,"c":"bar","note":"Back again — second visit","uid":"u4"},{"d":"10","di":1,"n":"La Cuchara de San Telmo","a":"Santa Korda 4","lat":43.3245016,"lon":-1.9853227,"c":"bar","note":"Off the wish list at last","uid":"u9"},{"d":"10","di":1,"n":"Plaza Berri Taberna","a":"Constitución Plaza 5","lat":43.3238692,"lon":-1.9848618,"c":"bar","note":"Coffee in the square","uid":"u10"},{"d":"10","di":1,"n":"Antonio Boulevard","a":"C. Mayor 2","lat":43.3222357,"lon":-1.9854447,"c":"rest","note":"Dinner","uid":"u11"},{"d":"10","di":1,"n":"Gelatería Boulevard","a":"Alameda del Blvd. 10","lat":43.3225619,"lon":-1.9838896,"c":"bake","note":"","uid":"u12"},{"d":"11","di":2,"n":"Pil Pil Enea","a":"Rue Salagoity 3","lat":43.387405,"lon":-1.658988,"c":"rest","note":"Lunch, 12:30 to 14:30","uid":"u13"},{"d":"11","di":2,"n":"Maison Adam","a":"Place Louis XIV","lat":43.3879957,"lon":-1.6638807,"c":"bake","note":"Macarons · branch unconfirmed","uid":"u14"},{"d":"11","di":2,"n":"EPELA","a":"Rue Tourasse 19","lat":43.3881861,"lon":-1.6635214,"c":"cafe","note":"Coffee at half three","uid":"u15"},{"d":"11","di":2,"n":"Bar KBZÓNa","a":"Narrika Kalea","lat":43.3240469,"lon":-1.9843733,"c":"bar","note":"Carabinero and razor clams","uid":"u16"},{"d":"12","di":3,"n":"Old Town Coffee","a":"Reyes Católicos 9","lat":43.3153205,"lon":-1.980453,"c":"cafe","note":"Breakfast, 08:30","uid":"u17"},{"d":"12","di":3,"n":"Kaia Kaipe","a":"General Arnao 4, Getaria","lat":43.3047282,"lon":-2.2034138,"c":"rest","note":"Grilled turbot, clams, oysters","uid":"u18"},{"d":"12","di":3,"n":"La Cepa de Bernardo","a":"31 de Agosto 7","lat":43.3243034,"lon":-1.9850321,"c":"rest","note":"","uid":"u19"},{"d":"12","di":3,"n":"La Issla","a":"Manterola Kalea 11","lat":43.3163643,"lon":-1.9843653,"c":"cafe","note":"","uid":"u20"},{"d":"13","di":4,"n":"Chez Croissant","a":"Easo Kalea","lat":43.3178089,"lon":-1.984437,"c":"cafe","note":"","uid":"u21"},{"d":"13","di":4,"n":"Nüda Café","a":"Urbieta Kalea 66","lat":43.3135252,"lon":-1.9805106,"c":"cafe","note":"","uid":"u22"},{"d":"13","di":4,"n":"Ganbara","a":"San Jerónimo 21","lat":43.3234339,"lon":-1.9855011,"c":"bar","note":"The last great lunch","uid":"u23"},{"d":"13","di":4,"n":"Oiartzun","a":"Ijentea Kalea 2","lat":43.3221239,"lon":-1.9854938,"c":"bake","note":"","uid":"u24"},{"d":"13","di":4,"n":"Aitana Donostia","a":"Easo Kalea 6","lat":43.317584,"lon":-1.9844706,"c":"rest","note":"Final dinner","uid":"u25"}];
 
 var DAYMETA = {
   "09":{label:"9 OCT",  sub:"Pasaia & the first pintxos"},
@@ -293,7 +326,7 @@ function makeMarkers(){
     if(seen[p.uid]) return;
     seen[p.uid] = 1;
     var el = document.createElement("div");
-    el.className = "pin c-" + p.c;
+    el.className = "pin c-d" + p.di;
     el.innerHTML = '<div class="pinin"><b></b></div>';
     el.style.display = "none";
     var m = new maplibregl.Marker({element:el, anchor:"center"})
@@ -315,7 +348,12 @@ var CAM = {
   d12b:   {center:[-2.2034,43.3047], zoom:15.6},
   d12c:   {center:[-1.9825,43.3200], zoom:14.4},
   d13:    {center:[-1.9830,43.3195], zoom:14.2},
-  wide:   {center:[-1.93,43.345], zoom:9.6}
+  wide:   {center:[-1.93,43.345], zoom:9.6},
+  f0:     {center:[-1.9520,43.3260], zoom:12.9},
+  f1:     {center:[-1.9849,43.3233], zoom:16.2},
+  f2:     {center:[-1.8220,43.3560], zoom:10.3},
+  f3:     {center:[-2.0940,43.3150], zoom:10.8},
+  f4:     {center:[-1.9841,43.3185], zoom:14.6}
 };
 
 var cues = [], T = 0;
@@ -449,7 +487,7 @@ function doCue(c, instant){
 }
 
 function tick(ts){
-  if(!playing) return;
+  if(!playing || filtering) return;
   if(!prev) prev = ts;
   clock += (ts - prev) / 1000 * speed;
   prev = ts;
@@ -488,20 +526,107 @@ function seek(t){
 }
 
 /* ---------- controls ---------- */
-document.getElementById("bPlay").onclick = function(){ playing ? pause() : play(); };
+document.getElementById("bPlay").onclick = function(){
+  if(filtering){ leaveFilter(); seek(clock); play(); return; }
+  playing ? pause() : play();
+};
 
 var panel = document.getElementById("panel"), clean = false;
 function setClean(v){ clean = v; panel.classList.toggle("hide", v); fit(); }
 document.getElementById("bClean").onclick = function(){ setClean(true); };
 document.getElementById("fit").addEventListener("click", function(){ if(clean) setClean(false); });
 
-document.getElementById("bReplay").onclick = function(){ seek(0); play(); };
+document.getElementById("bReplay").onclick = function(){ leaveFilter(); seek(0); play(); };
 document.getElementById("speed").onchange = function(){ speed = parseFloat(this.value); };
+/* ---------- date filter: show one day's places and name them ---------- */
+var DKEY = ["09","10","11","12","13"];
+var DLBL = ["9 OCT","10 OCT","11 OCT","12 OCT","13 OCT"];
+var FCAM = [CAM.f0, CAM.f1, CAM.f2, CAM.f3, CAM.f4];
+var plist = document.getElementById("plist");
+var filtering = false;
+
+function leaveFilter(){
+  if(!filtering) return;
+  filtering = false;
+  plist.classList.remove("on", "sum");
+  el.ticker.style.display = "";
+  el.counter.style.display = "";
+  document.querySelector(".prog").style.display = "";
+  Array.prototype.forEach.call(el.legend.querySelectorAll("span"),
+    function(x){ x.classList.remove("off"); });
+  Array.prototype.forEach.call(document.querySelectorAll("[data-jump]"),
+    function(x){ x.classList.remove("key"); });
+}
+
+function showDate(di){
+  pause();
+  filtering = true;
+  el.ticker.style.display = "none";
+  el.counter.style.display = "none";
+  document.querySelector(".prog").style.display = "none";
+  el.title.classList.remove("on");
+  el.final.classList.remove("on");
+  el.legend.classList.add("on");
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-jump]"), function(x){
+    x.classList.toggle("key", x.getAttribute("data-jump") ===
+      (di === null ? "all" : DKEY[di]));
+  });
+  Array.prototype.forEach.call(el.legend.querySelectorAll("span"), function(x){
+    x.classList.toggle("off", di !== null && +x.getAttribute("data-d") !== di);
+  });
+
+  var ol = plist.querySelector("ol"), ph = plist.querySelector(".ph");
+  ol.innerHTML = "";
+
+  if(di === null){
+    /* All: every pin, plus the per-day tally */
+    Object.keys(markers).forEach(function(u){ markers[u].el.style.display = "block"; });
+    map.easeTo({center:CAM.wide.center, zoom:CAM.wide.zoom, duration:1100});
+    el.chip.classList.add("on");
+    el.chip.childNodes[0].nodeValue = "ALL";
+    el.sub.textContent = "9 to 13 October";
+    ph.innerHTML = "<b>27</b> visits · <b>26</b> places";
+    plist.classList.add("sum");
+    for(var k = 0; k < 5; k++){
+      var cnt = PLACES.filter(function(q){ return q.di === k; }).length;
+      var li = document.createElement("li");
+      li.innerHTML = '<em>' + DLBL[k] + '</em><b style="color:var(--c' + k + ')">' + cnt + '</b>';
+      ol.appendChild(li);
+    }
+  } else {
+    plist.classList.remove("sum");
+    var mine = {}, list = [];
+    PLACES.forEach(function(q){
+      if(q.di !== di) return;
+      if(mine[q.uid]) return;
+      mine[q.uid] = 1; list.push(q);
+    });
+    Object.keys(markers).forEach(function(u){
+      markers[u].el.style.display = mine[u] ? "block" : "none";
+    });
+    map.easeTo({center:FCAM[di].center, zoom:FCAM[di].zoom, duration:1100});
+    el.chip.classList.add("on");
+    el.chip.childNodes[0].nodeValue = DLBL[di];
+    el.sub.textContent = DAYMETA[DKEY[di]].sub;
+    var visits = PLACES.filter(function(q){ return q.di === di; }).length;
+    ph.innerHTML = "<b>" + visits + "</b> " + (visits === 1 ? "visit" : "visits") +
+      (list.length === visits ? "" : " · <b>" + list.length + "</b> places");
+    list.forEach(function(q){
+      var li = document.createElement("li");
+      li.innerHTML = '<i style="background:var(--c' + di + ')"></i><div>' + q.n +
+        (q.note ? '<small>' + q.note + '</small>' : '') + '</div>';
+      ol.appendChild(li);
+    });
+  }
+  plist.classList.add("on");
+}
+
 Array.prototype.forEach.call(document.querySelectorAll("[data-jump]"), function(b){
   b.onclick = function(){
     var d = b.getAttribute("data-jump");
-    for(var i = 0; i < DAYPLAN.length; i++)
-      if(DAYPLAN[i].d === d){ seek(Math.max(0, DAYPLAN[i].start - 0.4)); play(); return; }
+    if(d === "all"){ showDate(null); return; }
+    showDate(DKEY.indexOf(d));
   };
 });
 
