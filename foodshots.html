@@ -49,6 +49,7 @@ button[disabled]{opacity:.45;cursor:default;}
     <button class="go" id="all">↓ All 5</button>
   </div>
   <p id="msg">Loading the map…</p>
+  <p class="lbl" id="bm"></p>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.min.js"></script>
@@ -140,6 +141,7 @@ function boot(style){
         "circle-color":["match",["get","d"],
           0,DCOL[0], 1,DCOL[1], 2,DCOL[2], 3,DCOL[3], 4,DCOL[4], "#888"]}});
     ready = true;
+    document.getElementById("bm").innerHTML = "Basemap: " + BASEMAP + " · build v8";
     paintButtons();
     setFrame(render);
   });
@@ -151,11 +153,88 @@ var STYLES = ["https://tiles.openfreemap.org/styles/dark",
 var BARE = {version:8, sources:{}, glyphs:null,
   layers:[{id:"bg", type:"background", paint:{"background-color":"#0C1216"}}]};
 
+var BASEMAP = "loading…";
+
+/* ---------- repaint the vector style as a lit night city ----------
+   OpenFreeMap serves OpenMapTiles-schema tiles, so we can recolour by
+   source-layer and add a blurred amber under-line to make roads glow.    */
+function widthFor(id){
+  id = (id || "").toLowerCase();
+  if(/motorway|trunk/.test(id))      return [10, 1.4, 14, 5, 18, 16];
+  if(/primary/.test(id))             return [10, 1.0, 14, 4, 18, 13];
+  if(/secondary|tertiary/.test(id))  return [11, 0.8, 14, 3, 18, 10];
+  if(/rail|transit/.test(id))        return [11, 0.5, 14, 1.4, 18, 4];
+  return [12, 0.5, 15, 1.6, 18, 6];
+}
+function ramp(w, k){
+  return ["interpolate", ["linear"], ["zoom"],
+          w[0], w[1] * k, w[2], w[3] * k, w[4], w[5] * k];
+}
+function nightify(j){
+  var L = j.layers || [], out = [];
+  for(var i = 0; i < L.length; i++){
+    var ly = L[i], sl = ly["source-layer"] || "", id = (ly.id || "").toLowerCase();
+
+    if(ly.type === "background"){
+      ly.paint = {"background-color":"#060B12"}; out.push(ly); continue;
+    }
+    if(sl === "water" || sl === "waterway" || /water|ocean|sea|river/.test(id)){
+      if(ly.type === "fill") ly.paint = {"fill-color":"#0A1E31"};
+      else if(ly.type === "line") ly.paint = {"line-color":"#12314A","line-width":1.1};
+      out.push(ly); continue;
+    }
+    if(sl === "landcover" || sl === "park" || sl === "landuse"){
+      if(ly.type === "fill"){
+        var c = "#0A131C";
+        if(/wood|forest|park|grass|scrub|garden|pitch|golf/.test(id)) c = "#102A1E";
+        if(/sand|beach/.test(id)) c = "#2E2A1C";
+        ly.paint = {"fill-color":c, "fill-opacity":0.92};
+      }
+      out.push(ly); continue;
+    }
+    if(sl === "building"){
+      if(ly.type === "fill") ly.paint = {"fill-color":"#131C26","fill-outline-color":"#1C2733"};
+      else if(ly.type === "fill-extrusion"){
+        ly.paint = ly.paint || {};
+        ly.paint["fill-extrusion-color"] = "#141E29";
+      }
+      out.push(ly); continue;
+    }
+    if((sl === "transportation" || /road|bridge|tunnel|rail/.test(id)) && ly.type === "line"){
+      var w = widthFor(id);
+      var glow = JSON.parse(JSON.stringify(ly));
+      glow.id = ly.id + "__glow";
+      glow.paint = {"line-color":"#F3B65C", "line-opacity":0.16,
+                    "line-width": ramp(w, 3.4), "line-blur": 7};
+      delete glow.layout;
+      if(ly.layout) glow.layout = {"line-cap":"round","line-join":"round",
+                                   "visibility": ly.layout.visibility || "visible"};
+      ly.paint = {"line-color":"#FFDCA3", "line-opacity":0.62, "line-width": ramp(w, 0.7)};
+      out.push(glow); out.push(ly); continue;
+    }
+    if(ly.type === "symbol"){
+      ly.paint = ly.paint || {};
+      ly.paint["text-color"] = /place|city|town|suburb/.test(id + sl) ? "#CFDCE4" : "#8FA2AE";
+      ly.paint["text-halo-color"] = "#050A10";
+      ly.paint["text-halo-width"] = 1.6;
+      out.push(ly); continue;
+    }
+    out.push(ly);
+  }
+  j.layers = out;
+  return j;
+}
+
 (function tryStyle(i){
-  if(i >= STYLES.length){ boot(BARE); return; }
+  if(i >= STYLES.length){ BASEMAP = "plain dark — no street map"; boot(BARE); return; }
   fetch(STYLES[i], {mode:"cors"})
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-    .then(function(j){ boot(j); })
+    .then(function(j){
+      var name = STYLES[i].split("/").pop();
+      try { j = nightify(j); BASEMAP = "OpenFreeMap " + name + " — night"; }
+      catch(e){ BASEMAP = "OpenFreeMap " + name; }
+      boot(j);
+    })
     .catch(function(){ tryStyle(i + 1); });
 })(0);
 
