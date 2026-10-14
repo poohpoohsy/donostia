@@ -120,14 +120,7 @@ document.getElementById("fDon").onclick   = function(){ frame = "don";   paintBu
 document.getElementById("fCoast").onclick = function(){ frame = "coast"; paintButtons(); setFrame(render); };
 
 /* ---------- map ---------- */
-var RASTER = {version:8,
-  sources:{c:{type:"raster",tileSize:256,
-    tiles:["https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
-           "https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
-           "https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png"],
-    attribution:"\u00a9 OpenStreetMap contributors \u00b7 \u00a9 CARTO"}},
-  layers:[{id:"bg",type:"background",paint:{"background-color":"#0C1216"}},
-          {id:"c",type:"raster",source:"c"}]};
+
 
 function geo(){
   return {type:"FeatureCollection", features: pick().map(function(f){
@@ -153,7 +146,18 @@ function boot(style){
   map.on("error", function(e){ if(e && e.error) console.warn(e.error.message || e.error); });
 }
 
-boot(RASTER);
+var STYLES = ["https://tiles.openfreemap.org/styles/dark",
+              "https://tiles.openfreemap.org/styles/fiord"];
+var BARE = {version:8, sources:{}, glyphs:null,
+  layers:[{id:"bg", type:"background", paint:{"background-color":"#0C1216"}}]};
+
+(function tryStyle(i){
+  if(i >= STYLES.length){ boot(BARE); return; }
+  fetch(STYLES[i], {mode:"cors"})
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(j){ boot(j); })
+    .catch(function(){ tryStyle(i + 1); });
+})(0);
 
 function setFrame(then){
   if(!ready) return;

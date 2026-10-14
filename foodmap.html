@@ -291,16 +291,7 @@ function fit(){
 window.addEventListener("resize", fit); fit();
 
 /* ---------- map ---------- */
-var RASTER = {
-  version:8,
-  sources:{ carto:{ type:"raster", tileSize:256,
-    tiles:["https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
-           "https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
-           "https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png"],
-    attribution:'© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors · © <a href="https://carto.com/attributions">CARTO</a>' }},
-  layers:[{id:"bg",type:"background",paint:{"background-color":"#0C1216"}},
-          {id:"carto",type:"raster",source:"carto"}]
-};
+
 
 var map, started = false;
 
@@ -314,7 +305,18 @@ function boot(style){
   map.on("error", function(e){ if(e && e.error) console.warn("map:", e.error.message||e.error); });
 }
 
-boot(RASTER);
+var STYLES = ["https://tiles.openfreemap.org/styles/dark",
+              "https://tiles.openfreemap.org/styles/fiord"];
+var BARE = {version:8, sources:{}, glyphs:null,
+  layers:[{id:"bg", type:"background", paint:{"background-color":"#0C1216"}}]};
+
+(function tryStyle(i){
+  if(i >= STYLES.length){ boot(BARE); return; }
+  fetch(STYLES[i], {mode:"cors"})
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(j){ boot(j); })
+    .catch(function(){ tryStyle(i + 1); });
+})(0);
 
 setTimeout(function(){
   var b = document.getElementById("boot");
