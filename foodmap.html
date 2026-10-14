@@ -257,8 +257,8 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
   <button data-jump="all">All</button>
   <div class="sep"></div>
   <select id="speed" aria-label="Speed">
-    <option value="0.5">0.5×</option><option value="1">1×</option>
-    <option value="1.5">1.5×</option><option value="2" selected>2×</option>
+    <option value="1">1×</option><option value="2" selected>2×</option>
+    <option value="3">3×</option><option value="4">4×</option>
   </select>
   <button id="bClean">⛶ Clean</button>
   <button class="rec" id="bRec">● Record</button>
@@ -333,46 +333,46 @@ function nightify(j){
     var ly = L[i], sl = ly["source-layer"] || "", id = (ly.id || "").toLowerCase();
 
     if(ly.type === "background"){
-      ly.paint = {"background-color":"#060B12"}; out.push(ly); continue;
+      ly.paint = {"background-color":"#0A1724"}; out.push(ly); continue;
     }
     if(sl === "water" || sl === "waterway" || /water|ocean|sea|river/.test(id)){
-      if(ly.type === "fill") ly.paint = {"fill-color":"#0A1E31"};
-      else if(ly.type === "line") ly.paint = {"line-color":"#12314A","line-width":1.1};
+      if(ly.type === "fill") ly.paint = {"fill-color":"#17353F"};
+      else if(ly.type === "line") ly.paint = {"line-color":"#1E4651","line-width":1.1};
       out.push(ly); continue;
     }
     if(sl === "landcover" || sl === "park" || sl === "landuse"){
       if(ly.type === "fill"){
-        var c = "#0A131C";
-        if(/wood|forest|park|grass|scrub|garden|pitch|golf/.test(id)) c = "#102A1E";
-        if(/sand|beach/.test(id)) c = "#2E2A1C";
+        var c = "#0C1B28";
+        if(/wood|forest|park|grass|scrub|garden|pitch|golf/.test(id)) c = "#16342C";
+        if(/sand|beach/.test(id)) c = "#2B2A21";
         ly.paint = {"fill-color":c, "fill-opacity":0.92};
       }
       out.push(ly); continue;
     }
     if(sl === "building"){
-      if(ly.type === "fill") ly.paint = {"fill-color":"#131C26","fill-outline-color":"#1C2733"};
+      if(ly.type === "fill") ly.paint = {"fill-color":"#142334","fill-outline-color":"#1B2E42"};
       else if(ly.type === "fill-extrusion"){
         ly.paint = ly.paint || {};
-        ly.paint["fill-extrusion-color"] = "#141E29";
+        ly.paint["fill-extrusion-color"] = "#152436";
       }
       out.push(ly); continue;
     }
     if((sl === "transportation" || /road|bridge|tunnel|rail/.test(id)) && ly.type === "line"){
       var w = widthFor(id);
-      var glow = JSON.parse(JSON.stringify(ly));
-      glow.id = ly.id + "__glow";
-      glow.paint = {"line-color":"#F3B65C", "line-opacity":0.16,
-                    "line-width": ramp(w, 3.4), "line-blur": 7};
-      delete glow.layout;
-      if(ly.layout) glow.layout = {"line-cap":"round","line-join":"round",
-                                   "visibility": ly.layout.visibility || "visible"};
-      ly.paint = {"line-color":"#FFDCA3", "line-opacity":0.62, "line-width": ramp(w, 0.7)};
-      out.push(glow); out.push(ly); continue;
+      var casing = JSON.parse(JSON.stringify(ly));
+      casing.id = ly.id + "__glow";
+      casing.paint = {"line-color":"#9FB6CC", "line-opacity":0.10,
+                      "line-width": ramp(w, 2.6), "line-blur": 5};
+      delete casing.layout;
+      if(ly.layout) casing.layout = {"line-cap":"round","line-join":"round",
+                                     "visibility": ly.layout.visibility || "visible"};
+      ly.paint = {"line-color":"#7E93A8", "line-opacity":0.75, "line-width": ramp(w, 0.8)};
+      out.push(casing); out.push(ly); continue;
     }
     if(ly.type === "symbol"){
       ly.paint = ly.paint || {};
-      ly.paint["text-color"] = /place|city|town|suburb/.test(id + sl) ? "#CFDCE4" : "#8FA2AE";
-      ly.paint["text-halo-color"] = "#050A10";
+      ly.paint["text-color"] = /place|city|town|suburb/.test(id + sl) ? "#B9CAD6" : "#7D909E";
+      ly.paint["text-halo-color"] = "#061320";
       ly.paint["text-halo-width"] = 1.6;
       out.push(ly); continue;
     }
@@ -661,13 +661,13 @@ function showDate(di){
   });
 
   var ol = plist.querySelector("ol"), ph = plist.querySelector(".ph");
-  var pend = null;
+  var bnds = new maplibregl.LngLatBounds();
   ol.innerHTML = "";
 
   if(di === null){
     /* All: every pin, plus the per-day tally */
     Object.keys(markers).forEach(function(u){ markers[u].el.style.display = "block"; });
-    pend = {center:CAM.wide.center, zoom:CAM.wide.zoom};
+    PLACES.forEach(function(q){ bnds.extend([q.lon, q.lat]); });
     el.chip.classList.add("on");
     el.chip.childNodes[0].nodeValue = "ALL";
     el.sub.textContent = "9 to 13 October";
@@ -695,7 +695,7 @@ function showDate(di){
         if(inn){ inn.style.animation = "none"; void inn.offsetWidth; inn.style.animation = ""; }
       }
     });
-    pend = {center:FCAM[di].center, zoom:FCAM[di].zoom};
+    list.forEach(function(q){ bnds.extend([q.lon, q.lat]); });
     el.chip.classList.add("on");
     el.chip.childNodes[0].nodeValue = DLBL[di];
     el.sub.textContent = DAYMETA[DKEY[di]].sub;
@@ -712,13 +712,15 @@ function showDate(di){
   plist.style.borderLeftColor = (di === null) ? "var(--gold)" : DCOL[di];
   plist.classList.add("on");
 
-  /* lift the map so the pins sit in the clear band above the panel */
-  if(pend){
+  /* fit the pins into whatever space the panel leaves free */
+  try {
     var ph2 = plist.offsetHeight || 300;
-    var free = ((334 + ph2 + 40) + 1690) / 2;      /* middle of the open area */
-    map.easeTo({center:pend.center, zoom:pend.zoom, duration:1100,
-                offset:[0, Math.round(960 - free)]});
-  }
+    var cam2 = map.cameraForBounds(bnds, {
+      padding:{top:280, bottom:334 + ph2 + 70, left:110, right:230},
+      maxZoom:17
+    });
+    if(cam2) map.easeTo({center:cam2.center, zoom:cam2.zoom, duration:1100});
+  } catch(e){}
 }
 
 Array.prototype.forEach.call(document.querySelectorAll("[data-jump]"), function(b){
