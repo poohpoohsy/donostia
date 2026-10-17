@@ -274,14 +274,7 @@
     <h1>7 by 1,<br>the park at four.</h1>
     <p class="intro" style="margin:16px 0 0;color:var(--dim);font-size:15.5px;">Cheese, chocolate, then <b style="color:var(--chalk)">two stops for ibérico ham</b> before lunch. <b style="color:var(--chalk)">Hard stop at Manojo at 15:00</b>, up Monte Igueldo for the boat and the cart, then the tortilla at quarter past six. <b style="color:var(--chalk)">Gold ★ means ham. Grey means optional — drop it if you are behind.</b></p>
 
-    <div class="today">
-      <span class="tdot" id="tdot"></span>
-      <div class="tbody">
-        <span class="tlbl" id="tlbl">Live now · San Sebastián</span>
-        <p class="tval" id="tval">Checking the feed…</p>
-        <p class="tnote" id="tnote">Live from San Sebastián. If a temperature shows here, the feed is working — and you know whether to bring a jacket.</p>
-      </div>
-    </div>
+    
     <div class="routebox">
       <p>The food route in Google Maps — all nine stops, walking, in order. Save it before you lose signal. The afternoon leg out to the <b>Monte Igueldo amusement park</b> is the second button.</p>
       <a class="routebtn" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Motx%20Coffee%2C%20Donostia&origin_place_id=ChIJDzdE7EqlUQ0RyXoCIS0CdnA&destination=La%20Cuchara%20de%20San%20Telmo%2C%20Donostia&destination_place_id=ChIJ7WeBrE2lUQ0R8b8U5UpHiQE&waypoints=Elkano%201%20-%20Gaztagune%2C%20Donostia%7CRafa%20Gorrotxategi%2C%20Donostia%7CZapore%20Jai%2C%20Donostia%7CLa%20Cepa%20de%20Bernardo%2C%20Donostia%7CGarrarte%20Donostia%20Gozogintza%20Artisaua%7CBouiboui%20Shop%2C%20Donostia%7CBodega%20Klandestina%2C%20Donostia%7CManojo%2C%20Donostia%7CAntonio%20taberna%2C%20Donostia&waypoint_place_ids=ChIJwSQUAE6lUQ0RI-pk5m8e6VQ%7CChIJZar6yM-lUQ0REfKvZcuEXY8%7CChIJZZzapk2lUQ0RKdE3ppk-2cI%7CChIJMevYsk2lUQ0R7ABFE3h8DBQ%7CChIJrf76CU2lUQ0RwOFhPWGxrV0%7CChIJM87Iwf30XIsR8Ot1wd2iB0I%7CChIJD_K7jNqlUQ0R5hgFyMuzk0M%7CChIJz3U4SRWlUQ0R4SAgDpt0FpQ%7CChIJ6T6eVVClUQ0Rr67NXUZTqSw" target="_blank" rel="noopener">Open the full route ↗</a>
@@ -299,7 +292,6 @@
       <a class="routebtn" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Bar%20Txepetxa%2C%20Donostia&origin_place_id=ChIJfQW8xU2lUQ0RRd5xky_9uBY&destination=La%20Vi%C3%B1a%2C%20Donostia&destination_place_id=ChIJtR9nSkylUQ0Ry9r3f_iwXUQ&waypoints=Irulegi%2C%20Donostia%7CGandarias%2C%20Donostia&waypoint_place_ids=ChIJReGMtBOlUQ0Rmbv2MB0efng%7CChIJtR9nSkylUQ0RqDxIyuEHftw" target="_blank" rel="noopener">Friday’s route · 4 stops ↗</a>
       <a class="routebtn" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Motx%20Coffee%2C%20Donostia&origin_place_id=ChIJDzdE7EqlUQ0RyXoCIS0CdnA&destination=Antonio%20Boulevard%2C%20Donostia&destination_place_id=ChIJ3bfX5Y2lUQ0Rl6uFl_ow-Ow&waypoints=Galparsoro%20Okindegia%2C%20Donostia%7CZapore%20Jai%2C%20Donostia%7CRafa%20Gorrotxategi%2C%20Donostia%7CLa%20Vi%C3%B1a%2C%20Donostia%7CLa%20Cuchara%20de%20San%20Telmo%2C%20Donostia%7CPlaza%20Berri%20Taberna%2C%20Donostia&waypoint_place_ids=ChIJLc6wd02lUQ0RNkzNwSmvx64%7CChIJZZzapk2lUQ0RKdE3ppk-2cI%7CChIJZar6yM-lUQ0REfKvZcuEXY8%7CChIJtR9nSkylUQ0Ry9r3f_iwXUQ%7CChIJ7WeBrE2lUQ0R8b8U5UpHiQE%7CChIJdwaMYQClUQ0RT50hk834TUY" target="_blank" rel="noopener">Saturday’s route · 8 stops ↗</a>
     </div>
-
 
     <div class="ticksheet">
       <h4>Everywhere, both days</h4>
@@ -560,7 +552,6 @@
       <p class="note">The sit-down sister to Antonio Bar, at the top of Calle Mayor. 4.2 from 1,591 — crispy oxtail, smoked butter anchovies, the steak, and a cheesecake people call unique. Booked for seven, which got us the room before it filled.</p>
     </article>
 
-
     <article class="stop is-opt" data-start="20:00" data-end="22:00">
       <p class="clock">Anytime <span class="walk">OLD TOWN</span> <span class="opt">Optional</span> <span class="ham">★ Jamón</span></p>
       <h3>Gorriti Taberna</h3>
@@ -687,44 +678,6 @@
     });
   })();
 </script>
-
-<script>
-/* Today, here. Doubles as a health check on the Open-Meteo feed. */
-(function(){
-  var LAT=43.3183, LON=-1.9812, TZ="Europe/Madrid", PLACE="San Sebasti\u00e1n";
-  var W={0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Overcast',45:'Fog',48:'Freezing fog',
-    51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',56:'Freezing drizzle',57:'Freezing drizzle',
-    61:'Light rain',63:'Rain',65:'Heavy rain',66:'Freezing rain',67:'Freezing rain',
-    71:'Light snow',73:'Snow',75:'Heavy snow',77:'Snow grains',
-    80:'Rain showers',81:'Rain showers',82:'Heavy showers',85:'Snow showers',86:'Snow showers',
-    95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'};
-  var dot=document.getElementById('tdot'), val=document.getElementById('tval'),
-      note=document.getElementById('tnote'), lbl=document.getElementById('tlbl');
-  var u='https://api.open-meteo.com/v1/forecast?latitude='+LAT+'&longitude='+LON
-      +'&current=temperature_2m,precipitation,weather_code,wind_speed_10m'
-      +'&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max'
-      +'&forecast_days=1&timezone='+encodeURIComponent(TZ);
-  fetch(u).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(d){
-    var c=d.current, dy=d.daily, code=c.weather_code;
-    var desc=W[code]||'—';
-    var rain=dy&&dy.precipitation_probability_max?dy.precipitation_probability_max[0]:0;
-    var hi=dy&&dy.temperature_2m_max?Math.round(dy.temperature_2m_max[0]):null;
-    var lo=dy&&dy.temperature_2m_min?Math.round(dy.temperature_2m_min[0]):null;
-    var cls = (code<=2 && rain<=30) ? 'green' : (code<=48 || rain<=60) ? 'amber' : 'red';
-    dot.className='tdot '+cls;
-    lbl.textContent='Live now · '+PLACE+' · '+new Date().toLocaleDateString('en-GB',
-      {weekday:'short',day:'numeric',month:'short'});
-    val.textContent=Math.round(c.temperature_2m)+'°C, '+desc.toLowerCase()
-      +(hi!==null?'  ·  '+lo+'–'+hi+'°C today':'')+'  ·  '+Math.round(rain)+'% rain';
-    note.innerHTML='Feed is live. <b>This is today, not the trip</b> — the day panels below stay grey until we are inside the forecast window.';
-  }).catch(function(){
-    dot.className='tdot amber';
-    val.textContent='Feed not reachable from here';
-    note.innerHTML='This usually means the page is being previewed inside an app that blocks outside requests. <b>Open it at poohpoohsy.github.io and it will fill in.</b> If it still fails there, the forecast service is down — use the links instead.';
-  });
-})();
-</script>
-
 
 </body>
 </html>

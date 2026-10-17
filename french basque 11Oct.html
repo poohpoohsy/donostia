@@ -75,13 +75,20 @@ h2{font-family:'Syne','Archivo',sans-serif;font-weight:800;
 .momentline{margin-top:10px;padding:9px 11px;border-left:2px solid var(--rust);
   background:rgba(210,139,84,.06);font-size:13px;color:var(--dim)}
 .momentline b{color:var(--chalk)}
-.vis{display:inline-block;margin-left:8px;padding:3px 8px;border-radius:2px;vertical-align:1px;
+.vis,.miss{display:inline-block;margin-left:8px;padding:3px 8px;border-radius:2px;vertical-align:2px;
   font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;letter-spacing:.12em;
-  text-transform:uppercase;font-weight:600;background:rgba(127,185,138,.16);color:var(--go);
-  border:1px solid rgba(127,185,138,.42)}
-.stop.done,section.done{border-left:3px solid var(--go);padding-left:14px;margin-left:-17px;
-  background:linear-gradient(90deg,rgba(127,185,138,.08),rgba(127,185,138,0) 70%);
-  border-radius:0 3px 3px 0}
+  text-transform:uppercase;font-weight:600}
+.vis{background:rgba(127,185,138,.16);color:var(--go);border:1px solid rgba(127,185,138,.42)}
+.miss{background:rgba(217,107,90,.14);color:var(--stop);border:1px solid rgba(217,107,90,.4)}
+.stop.done{border-left:3px solid var(--go);padding-left:14px;margin-left:-17px;
+  background:linear-gradient(90deg,rgba(127,185,138,.08),rgba(127,185,138,0) 70%);border-radius:0 3px 3px 0}
+.stop.skipped{opacity:.5}
+.stop.skipped h3{color:var(--dim)}
+.notdone{background:rgba(217,107,90,.08);border:1px solid rgba(217,107,90,.3);
+  border-left:3px solid var(--stop);border-radius:3px;padding:14px 16px;margin:0 0 16px}
+.notdone .lbl{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--stop);margin:0 0 6px}
+.notdone p{margin:0;font-size:14.5px}.notdone p+p{margin-top:6px}
 .switch{background:rgba(210,139,84,.08);border:1px solid rgba(210,139,84,.28);
   border-radius:3px;padding:16px;margin-top:18px}
 .switch .tag{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
@@ -101,11 +108,6 @@ h2{font-family:'Syne','Archivo',sans-serif;font-weight:800;
 .wxv{text-align:right;font-size:14px;color:var(--chalk);font-weight:600}
 .wxv small{display:block;color:var(--dim);font-size:11px;font-weight:500;margin-top:2px}
 
-
-
-
-
-
 footer{margin-top:24px;padding-top:16px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--dim)}
 footer p{margin:0 0 9px}footer b{color:var(--chalk)}footer a{color:var(--sea)}
 .sig{margin-top:22px;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
@@ -120,52 +122,22 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--sea);outline-offset
   <p class="kicker">Sunday 11 October · French beach town</p>
       <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Place%20Camille%20Jullian%20Ciboure&query_place_id=ChIJEze4PfARUQ0RsHjdZvq_3-M" target="_blank" rel="noopener">Market ↗</a>
   <h1>French beach town —<br>Saint-Jean-de-Luz.</h1>
-  <p class="intro">The friends day: <b>a lively Sunday morning in Ciboure + Saint‑Jean‑de‑Luz, one proper French Basque seafood lunch, then Biarritz for the coast and photos.</b> Keep Arcangues festival as a switch — not a third compulsory destination.</p>
+  <p class="intro"><b>What we actually did:</b> the whole morning at the Ciboure market, a two-hour lunch at Pil Pil Enea, then Saint‑Jean‑de‑Luz on foot until coffee at half three. <b>Biarritz did not happen</b> — the plan for it is kept below, unvisited.</p>
 
-  <div class="wxpanel">
-    <div class="wxtabs">
-      <button class="wxbtn active" data-place="sjl">Saint‑Jean‑de‑Luz</button>
-      <button class="wxbtn" data-place="biarritz">Biarritz</button>
-    </div>
-    <div class="wxrow">
-      <div>
-        <div class="wxl" id="wx-label">Live now · Saint‑Jean‑de‑Luz</div>
-        <div id="wx-now-note" style="font-size:11px;color:var(--dim);margin-top:3px">Connecting to Open‑Meteo…</div>
-      </div>
-      <div class="wxv" id="wx-now">—</div>
-    </div>
-    <div class="wxrow">
-      <div>
-        <div class="wxl">11 Oct trip forecast</div>
-        <div style="font-size:11px;color:var(--dim);margin-top:3px">Auto-fills when 11 October enters the forecast horizon.</div>
-      </div>
-      <div class="wxv" id="wx-trip">Not available yet</div>
-    </div>
-    
-    <div class="chips" style="margin-top:12px">
-      <a class="chip" id="wx-api" href="#" target="_blank" rel="noopener">Open live API response ↗</a>
-    </div>
-  </div>
+  
 </header>
 
 <section>
   <p class="sechead">At a glance</p>
   <h2>The whole day</h2>
   <div class="alt">
-    <p><b>~08:15–08:30</b> hotel → Donostia Bus Station · target FlixBus around 09:00</p>
-    <p><b>~09:45</b> Ciboure Sunday regional market</p>
-    <p><b>~11:15</b> Saint‑Jean‑de‑Luz → Place Louis XIV</p>
-      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Place%20Louis%20XIV%20Saint-Jean-de-Luz&query_place_id=ChIJS-4q-vARUQ0Rc6UQcA7LY8c" target="_blank" rel="noopener">Map ↗</a>
-    <p><b>11:30</b> Sunday music at the bandstand</p>
-    <p><b>~12:00</b> harbour + Rue Gambetta + Grande Plage</p>
-    <p><b>12:30–14:15</b> Pil Pil Enea lunch · ✓</p>
-    <p><b>~14:15</b> lunch ends → Gare Saint‑Jean‑de‑Luz–Ciboure → SNCF Biarritz</p>
-    <p><b>~15:15–18:30</b> Grande Plage → Rocher de la Vierge → Côte des Basques</p>
-      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=C%C3%B4te%20des%20Basques%20Biarritz&query_place_id=ChIJEx-rz9IUUQ0Rwg2Locfi94I" target="_blank" rel="noopener">Map ↗</a>
-      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Rocher%20de%20la%20Vierge%20Biarritz&query_place_id=ChIJ71B5RCVrUQ0RBCzamxXeJqM" target="_blank" rel="noopener">Map ↗</a>
-    <p><b>~18:00</b> Côte des Basques → taxi Gare de Biarritz → SNCF Hendaye → Euskotren E2 → Amara</p>
-    <p><b>20:15</b> Bar KBZÓNa, Donostia · dinner · ✓</p>
-    <a class="route" href="https://www.google.com/maps/dir/?api=1&travelmode=driving&origin=Intelier+Victoria+San+Sebastian&destination=Intelier+Victoria+San+Sebastian&waypoints=Place+Camille+Jullian+Ciboure%7CPlace+Louis+XIV+Saint-Jean-de-Luz%7CPil+Pil+Enea+Saint-Jean-de-Luz%7CGrande+Plage+Biarritz%7CRocher+de+la+Vierge+Biarritz%7CCote+des+Basques+Biarritz%7CBar+KBZONa+Donostia" target="_blank" rel="noopener">Open total day route ↗</a>
+    <p><b>Morning</b> · Ciboure Sunday regional market — we stayed, there was a lot to see · <b style="color:var(--go)">✓</b></p>
+    <p><b>12:30–14:30</b> Pil Pil Enea lunch · <b style="color:var(--go)">✓</b></p>
+    <p><b>After lunch</b> · Place Louis XIV · harbour + Rue Gambetta + Grande Plage · Maison de l’Infante · Maison Adam · <b style="color:var(--go)">✓</b></p>
+    <p><b>15:30</b> coffee at EPELA · <b style="color:var(--go)">✓</b></p>
+    <p style="opacity:.55"><b>Biarritz</b> · not reached — lunch ran to 14:30 <b style="color:var(--stop)">✗</b></p>
+    <p><b>20:15</b> Bar KBZÓNa, Donostia · dinner · <b style="color:var(--go)">✓</b></p>
+    <a class="route" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Place+Camille+Jullian+Ciboure&destination=EPELA+Saint-Jean-de-Luz&waypoints=Pil+Pil+Enea+Saint-Jean-de-Luz%7CPlace+Louis+XIV+Saint-Jean-de-Luz%7CPort+de+Saint-Jean-de-Luz%7CMaison+de+l%27Infante+Saint-Jean-de-Luz%7CMaison+Adam+Saint-Jean-de-Luz" target="_blank" rel="noopener">The day we actually walked ↗</a>
   </div>
 </section>
 
@@ -223,10 +195,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--sea);outline-offset
   <p class="sechead">Sunday morning</p>
   <h2>Ciboure → Saint‑Jean‑de‑Luz</h2>
 
-  <div class="stop">
-    <p class="clock">~09:45 → 10:45</p>
+  <div class="stop done">
+    <p class="clock">Morning · the whole of it <span class="vis">✓ Visited</span></p>
     <h3>1 · Ciboure regional-products market</h3>
-    <p>This is <b>date-specific for Sunday 11 October 2026</b>: local producers and creators at <b>Place Camille Jullian / Place Lannes, 08:00–13:00</b>.</p>
+    <p><b>We stayed here all morning</b> — far more to see than the hour the plan allowed. Place Camille Jullian / Place Lannes, 08:00–13:00.</p>
     <div class="orderbox">
       <div class="olbl">Taste / buy</div>
       <p>Look for <b>local cheese, charcuterie, Basque cake, bread, preserves and seasonal produce</b>. Treat this as browsing + tasting, not breakfast #2.</p>
@@ -239,17 +211,17 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--sea);outline-offset
     </div>
   </div>
 
-  <div class="stop">
-    <p class="clock">~10:45 → 11:25</p>
-    <h3>Walk into Saint‑Jean‑de‑Luz</h3>
+  <div class="stop done">
+    <p class="clock">After lunch <span class="vis">✓ Visited</span></p>
+    <h3>Into Saint‑Jean‑de‑Luz · Place Louis XIV</h3>
     <p>Cross toward the harbour and head for <b>Place Louis XIV</b>. The square links directly to the port, pedestrian Rue Gambetta and the route to Grande Plage.</p>
     <a class="route" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Place+Camille+Jullian+Ciboure&destination=Place+Louis+XIV+Saint-Jean-de-Luz" target="_blank" rel="noopener">Ciboure market → Place Louis XIV ↗</a>
   </div>
 
-  <div class="stop">
-    <p class="clock">11:30</p>
+  <div class="stop skipped">
+    <p class="clock">11:30 <span class="miss">✗ Missed</span></p>
     <h3>2 · Sunday music · Place Louis XIV</h3>
-    <p>The tourism office states that <b>every Sunday from Easter to All Saints’ Day</b> there is musical animation at the bandstand at <b>11:30</b>. The exact group for 11 Oct may be published later.</p>
+    <p>Still at the market at 11:30, so this one went by. Musical animation at the bandstand runs every Sunday from Easter to All Saints’ Day.</p>
     <div class="momentline"><b>😄 Friends moment:</b> do not pose immediately. Get a walking / laughing shot with the bandstand and Sunday crowd behind you.</div>
     <div class="chips">
       <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Place+Louis+XIV+Saint-Jean-de-Luz" target="_blank" rel="noopener">Place Louis XIV · map ↗</a>
@@ -258,10 +230,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--sea);outline-offset
     </div>
   </div>
 
-  <div class="stop">
-    <p class="clock">~12:00 → 12:40</p>
+  <div class="stop done">
+    <p class="clock">After lunch <span class="vis">✓ Visited</span></p>
     <h3>3 · Harbour → Rue Gambetta → Grande Plage</h3>
-    <p>Keep this short before lunch: harbour boats, pedestrian centre, then one look at the protected bay.</p>
+    <p>Done after lunch instead of before: harbour boats, the pedestrian centre, then the protected bay.</p>
       <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Port%20de%20Saint-Jean-de-Luz&query_place_id=ChIJs5d0aPARUQ0R1Pwk3HQHHh4" target="_blank" rel="noopener">Harbour ↗</a>
     <a class="route" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Place+Louis+XIV+Saint-Jean-de-Luz&destination=Grande+Plage+Saint-Jean-de-Luz&waypoints=Port+de+Saint-Jean-de-Luz%7CRue+Gambetta+Saint-Jean-de-Luz" target="_blank" rel="noopener">One-click Saint‑Jean walk ↗</a>
     <div class="momentline"><b>📸 Instagram:</b> harbour first — boats + red-roof Basque town. Then one wide group shot at Grande Plage; no need for ten beach photos.
@@ -271,15 +243,43 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--sea);outline-offset
       </div>
     </div>
   </div>
+
+  <div class="stop done">
+    <p class="clock">After lunch <span class="vis">✓ Visited</span></p>
+    <h3>4 · Maison de l’Infante</h3>
+    <p>The pink-brick and stone house on the quay, built around 1640, where the Spanish Infanta Maria Teresa stayed before marrying Louis XIV in 1660. Two Italianate galleries of five arches on the front. <b>Listed since 1925; you look at it from the quayside rather than going in.</b></p>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Maison%20de%20l%27Infante%20Saint-Jean-de-Luz&query_place_id=ChIJ2b-fNG8RUQ0RcLzsQCiCHSk" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+  </div>
+
+  <div class="stop done">
+    <p class="clock">After lunch <span class="vis">✓ Visited</span></p>
+    <h3>5 · Maison Adam · Place Louis XIV</h3>
+    <p>A family pastry house for over 300 years. The thing to buy is the <b>Basque macaron (mouchou)</b> — small, beige, crisp outside and soft in, nothing like a Paris macaron — and the <b>gâteau basque</b>. 4.5 from 762 reviews. One reviewer’s warning: you cannot find these anywhere else, not even at the airport. Buy more than you think.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Maison%20Adam%20Saint-Jean-de-Luz&query_place_id=ChIJZXfTtBIRUQ0RmsJRT_swADc" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+  </div>
+
+  <div class="stop done">
+    <p class="clock">15:30 <span class="vis">✓ Visited</span></p>
+    <h3>6 · Coffee at EPELA</h3>
+    <p>19 Rue Tourasse, on a quiet side street off the centre. <b>4.9 from 85 reviews</b> and the highest-rated thing on this page. A local of twenty years writes that good coffee was the one thing missing from Saint‑Jean‑de‑Luz until this opened. Flat whites, cappuccinos and a proper filter coffee, around €5.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=EPELA%20Saint-Jean-de-Luz&query_place_id=ChIJeTlNxQERUQ0Radm3RLrav_E" target="_blank" rel="noopener">Map ↗</a>
+    </div>
+  </div>
 </section>
 
 <section>
-  <p class="sechead">12:30 · lunch</p>
+  <p class="sechead">12:30 → 14:30 · lunch</p>
   <h2>Pil Pil Enea <span class="vis">✓ Visited</span></h2>
 
   <div class="fixed">
     <p class="lbl">Where we ate · Sunday 11 October</p>
-    <p><b>Lunch at 12:30.</b> 3 rue Sallagoity, Saint‑Jean‑de‑Luz.</p>
+    <p><b>Sat down 12:30, got up 14:30.</b> 3 rue Sallagoity, Saint‑Jean‑de‑Luz.</p>
+    <p>Two hours rather than the ninety minutes planned — which is what cost us Biarritz, and was almost certainly the right trade.</p>
     <div class="chips">
       <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Pil+Pil+Enea+Saint-Jean-de-Luz" target="_blank" rel="noopener">Google Maps ↗</a>
       <a class="chip" href="https://www.saint-jean-de-luz.com/en/sit/restaurant-pil-pil-enea/" target="_blank" rel="noopener">Official tourism listing ↗</a>
@@ -290,8 +290,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--sea);outline-offset
 </section>
 
 <section>
-  <p class="sechead">~14:30</p>
-  <h2>Move to Biarritz</h2>
+  <p class="sechead">Planned · did not happen</p>
+  <h2>Move to Biarritz <span class="miss">✗ Not done</span></h2>
+
+  <div class="notdone">
+    <p class="lbl">Why</p>
+    <p><b>Lunch ran to 14:30</b> and the train plan needed us at the station by then. Rather than rush the afternoon we stayed in Saint‑Jean‑de‑Luz — the Infante house, Maison Adam and coffee at EPELA all happened instead.</p>
+    <p>Everything below is kept as written, unvisited.</p>
+  </div>
 
   <div class="stop" style="border-top:0;padding-top:0">
     <p class="clock">~14:30 → 15:15</p>
@@ -306,8 +312,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--sea);outline-offset
 </section>
 
 <section>
-  <p class="sechead">Biarritz afternoon</p>
-  <h2>Postcard coast → dramatic coast</h2>
+  <p class="sechead">Biarritz afternoon · planned only</p>
+  <h2>Postcard coast → dramatic coast <span class="miss">✗ Not done</span></h2>
 
   <a class="route" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Grande+Plage+Biarritz&destination=Cote+des+Basques+Biarritz&waypoints=Hotel+du+Palais+Biarritz%7CPort+des+Pecheurs+Biarritz%7CRocher+de+la+Vierge+Biarritz" target="_blank" rel="noopener">One-click Biarritz coastal walk ↗</a>
 
@@ -404,8 +410,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--sea);outline-offset
 </section>
 
 <section>
-  <p class="sechead">No-car return · primary plan</p>
-  <h2>Biarritz → Hendaye → Donostia</h2>
+  <p class="sechead">No-car return · planned only</p>
+  <h2>Biarritz → Hendaye → Donostia <span class="miss">✗ Not used</span></h2>
 
   <div class="fixed">
     <p class="lbl">Step 1 · leave the coast</p>
@@ -465,109 +471,32 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--sea);outline-offset
   </div>
 </section>
 
-<section class="done">
+<section>
   <p class="sechead">20:15 · back in Donostia</p>
   <h2>Bar KBZÓNa <span class="vis">✓ Visited</span></h2>
 
-  <div class="stop" style="border-top:0;padding-top:0">
+  <div class="stop done" style="border-top:0;padding-top:0">
     <p class="clock">20:15 · dinner</p>
     <h3>Narrika Kalea, Parte Vieja</h3>
-    <p><b>4.9 from 1,474 reviews</b> — one of the highest-rated pintxos bars in the old town, and a five-minute walk from the hotel once the Euskotren gets in. Open till 23:00 every day.</p>
+    <p><b>4.9 from 1,474 reviews</b> — the highest-rated place on either Basque page, five minutes from the hotel.</p>
     <div class="orderbox">
       <div class="olbl">What reviewers keep naming</div>
-      <p><b>Suckling pig</b> with their guava sauce · <b>duck breast</b> · <b>Spanish red shrimp</b> · <b>razor clams</b> · <b>bonito</b> · the <b>goat’s cheese</b>. Several people mention <b>Josep</b> behind the bar by name.</p>
+      <p><b>Suckling pig</b> with guava sauce · <b>duck breast</b> · <b>Spanish red shrimp</b> · <b>razor clams</b> · <b>bonito</b> · the <b>goat’s cheese</b>. Several thank <b>Josep</b> behind the bar by name.</p>
     </div>
     <div class="chips">
       <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Bar%20KBZ%C3%93Na%2C%20Donostia&query_place_id=ChIJv8gidaylUQ0RmGr3Mjzqm64" target="_blank" rel="noopener">Bar KBZÓNa · map ↗</a>
-      <a class="chip" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Amara+Donostia+Euskotren&destination=Bar+KBZONa+Donostia&destination_place_id=ChIJv8gidaylUQ0RmGr3Mjzqm64" target="_blank" rel="noopener">Amara → dinner ↗</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <p><b>Validated for Sunday 11 Oct 2026:</b> Ciboure regional market is listed 08:00–13:00 on that exact date. Saint‑Jean‑de‑Luz has Sunday bandstand music at 11:30 from Easter to All Saints’ Day. We ate at <b>Pil Pil Enea at 12:30</b> and at <b>Bar KBZÓNa at 20:15</b>. Herri Uzta in Arcangues is listed 11:00–20:00 on 11 Oct 2026.</p>
+  <p><b>What happened on Sunday 11 October:</b> the whole morning at the Ciboure market, lunch at <b>Pil Pil Enea 12:30–14:30</b>, then Place Louis XIV, the harbour and Grande Plage, <b>Maison de l’Infante</b>, <b>Maison Adam</b>, and coffee at <b>EPELA at 15:30</b>. Dinner back in Donostia at <b>Bar KBZÓNa, 20:15</b>.</p>
+<p style="margin-top:8px"><b>Not reached:</b> Biarritz, and the 11:30 bandstand music. The Arcangues festival switch was never taken.</p>
   <p style="margin-top:8px"><a href="index.html">← Back to the trip</a></p>
   <p class="sig">¯\_(ツ)_/¯</p>
 </footer>
 
 </div>
 
-<script>
-(function(){
-  var TARGET='2026-10-11', TZ='Europe/Paris';
-  var places={
-    sjl:{name:'Saint‑Jean‑de‑Luz',lat:43.3887,lon:-1.6627},
-    biarritz:{name:'Biarritz',lat:43.4832,lon:-1.5586}
-  };
-  var codeText={
-    0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Overcast',
-    45:'Fog',48:'Fog',51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',
-    56:'Freezing drizzle',57:'Freezing drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',
-    66:'Freezing rain',67:'Freezing rain',71:'Light snow',73:'Snow',75:'Heavy snow',
-    80:'Showers',81:'Showers',82:'Heavy showers',85:'Snow showers',86:'Heavy snow showers',
-    95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'
-  };
-  var cache={};
-  var nowEl=document.getElementById('wx-now');
-  var noteEl=document.getElementById('wx-now-note');
-  var tripEl=document.getElementById('wx-trip');
-  var weekEl=document.getElementById('wx7'); // strip removed; guarded below
-  var labelEl=document.getElementById('wx-label');
-  var apiEl=document.getElementById('wx-api');
-
-  function urlFor(p){
-    return 'https://api.open-meteo.com/v1/forecast'
-      +'?latitude='+p.lat+'&longitude='+p.lon
-      +'&current=temperature_2m,precipitation,weather_code,wind_speed_10m'
-      +'&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max'
-      +'&forecast_days=16&timezone='+encodeURIComponent(TZ);
-  }
-  function paint(key,d){
-    var p=places[key], c=d.current||{}, days=d.daily||{};
-    labelEl.textContent='Live now · '+p.name;
-    var desc=codeText[c.weather_code]||'Weather';
-    nowEl.innerHTML=Math.round(c.temperature_2m)+'°C'
-      +'<small>'+desc+' · '+Math.round(c.wind_speed_10m||0)+' km/h wind</small>';
-    noteEl.textContent='Feed working · updated '+(c.time?c.time.replace('T',' '):'now')+' local time';
-    apiEl.href=urlFor(p);
-
-    if(weekEl) weekEl.innerHTML='';
-    var n=Math.min(7,(days.time||[]).length);
-    for(var i=0;i<n;i++){
-      var dt=new Date(days.time[i]+'T12:00:00');
-      var day=dt.toLocaleDateString('en-GB',{weekday:'short'});
-      var box=document.createElement('div'); box.className='wxd';
-      box.innerHTML='<b>'+day+'</b><span>'+Math.round(days.temperature_2m_min[i])+'–'+Math.round(days.temperature_2m_max[i])+'°</span>'
-        +'<small>'+Math.round(days.precipitation_probability_max[i]||0)+'% rain</small>';
-      if(weekEl) weekEl.appendChild(box);
-    }
-    var idx=(days.time||[]).indexOf(TARGET);
-    if(idx>=0){
-      var dsc=codeText[(days.weather_code||[])[idx]]||'';
-      tripEl.innerHTML=Math.round(days.temperature_2m_min[idx])+'–'+Math.round(days.temperature_2m_max[idx])+'°C'
-        +'<small>'+dsc+' · '+Math.round(days.precipitation_probability_max[idx]||0)+'% rain</small>';
-    }else{
-      var last=(days.time||[]).length?days.time[days.time.length-1]:null;
-      tripEl.innerHTML='Not available yet<small>Current API horizon ends '+(last||'before 11 Oct')+'</small>';
-    }
-  }
-  function load(key){
-    document.querySelectorAll('.wxbtn').forEach(function(b){b.classList.toggle('active',b.dataset.place===key)});
-    var p=places[key]; apiEl.href=urlFor(p); labelEl.textContent='Live now · '+p.name;
-    nowEl.textContent='—'; noteEl.textContent='Connecting to Open‑Meteo…'; if(weekEl) weekEl.innerHTML='<div class="wxd"><span>Loading…</span></div>';
-    if(cache[key]){paint(key,cache[key]);return}
-    fetch(urlFor(p)).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json()})
-      .then(function(d){cache[key]=d;paint(key,d)})
-      .catch(function(err){
-        nowEl.innerHTML='Feed unavailable<small>'+err.message+'</small>';
-        noteEl.textContent='Tap “Open live API response” below to test directly.';
-        if(weekEl) weekEl.innerHTML='<div class="wxd"><span>Unavailable</span></div>';
-        tripEl.textContent='Not available';
-      });
-  }
-  document.querySelectorAll('.wxbtn').forEach(function(b){b.addEventListener('click',function(){load(b.dataset.place)})});
-  load('sjl');
-})();
-</script>
 </body>
 </html>

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wednesday 14 October — Bilbao</title>
+<meta name="description" content="San Sebastián to Bilbao: Mercado de la Ribera, Casco Viejo pintxos, riverside walk and Guggenheim Museum.">
+<meta property="og:title" content="Wednesday 14 October — Bilbao">
+<meta property="og:description" content="Market first. Old Town pintxos. Guggenheim in the afternoon. Back to San Sebastián.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#0F1113; --raise:#181B1F; --raise2:#20252A;
+  --chalk:#E8E6E2; --dim:#8A8F94;
+  --titanium:#AFC4CF; --rust:#D28B54; --go:#7FB98A; --stop:#D96B5A;
+  --rule:rgba(232,230,226,.13);
+  --pad:clamp(18px,5.5vw,40px);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ground);color:var(--chalk);
+  font-family:'Archivo',system-ui,-apple-system,sans-serif;font-size:16.5px;
+  line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:0 var(--pad) 72px}
+.top{padding:clamp(32px,9vw,58px) 0 0}
+.kicker{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;font-weight:600;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--rust);margin:0 0 14px}
+h1{font-family:'Syne','Archivo',sans-serif;font-weight:800;
+  font-size:clamp(24px,6.2vw,32px);line-height:.97;letter-spacing:-.025em;margin:0 0 16px}
+.intro{margin:0;color:var(--dim);font-size:15.5px;max-width:50ch}
+.intro b{color:var(--chalk);font-weight:600}
+section{margin-top:22px;padding-top:16px;border-top:1px solid var(--rule)}
+.sechead{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10.5px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:0 0 14px}
+h2{font-family:'Syne','Archivo',sans-serif;font-weight:800;
+  font-size:clamp(22px,5.6vw,29px);letter-spacing:-.02em;line-height:1.1;margin:0 0 8px}
+.lede{margin:0 0 20px;color:var(--dim);font-size:15px}
+.fixed{background:rgba(210,139,84,.08);border:1px solid rgba(210,139,84,.28);
+  border-left:3px solid var(--rust);border-radius:3px;padding:14px 16px;margin:0 0 18px}
+.fixed .lbl{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin:0 0 6px}
+.fixed p{margin:0;font-size:14.5px}.fixed p+p{margin-top:6px}
+.stop{padding:17px 0;border-top:1px solid var(--rule)}
+.stop:first-child{border-top:0;padding-top:0}
+.clock{font-family:'IBM Plex Mono',ui-monospace,monospace;font-weight:600;
+  font-size:13.5px;color:var(--titanium);letter-spacing:.03em;margin:0 0 4px}
+.stop h3{font-family:'Syne','Archivo',sans-serif;font-weight:700;font-size:19px;
+  letter-spacing:-.01em;line-height:1.2;margin:0 0 6px}
+.stop p{margin:0;font-size:14.5px;color:var(--dim)}
+.stop p+p{margin-top:7px}
+.stop b{color:var(--chalk);font-weight:600}
+.route{display:block;text-align:center;text-decoration:none;
+  background:rgba(175,196,207,.08);border:1px solid rgba(175,196,207,.3);
+  border-radius:3px;padding:11px 14px;margin:14px 0 0;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--titanium)}
+.maplink,.chip{display:inline-block;margin-top:9px;padding:4px 9px;border-radius:2px;
+  font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--titanium);text-decoration:none;
+  border:1px solid rgba(175,196,207,.30)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.chip{margin-top:0}
+.check{background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+  padding:14px 16px;margin:0 0 20px}
+.checktop{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.dot{display:inline-block;width:11px;height:11px;border-radius:50%;flex:0 0 auto}
+.dot.green{background:var(--go);box-shadow:0 0 0 3px rgba(127,185,138,.16)}
+.dot.amber{background:#D9A441;box-shadow:0 0 0 3px rgba(217,164,65,.16)}
+.st{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.check p{margin:0;font-size:14px;color:var(--dim)}
+.check p+p{margin-top:8px}
+.check b{color:var(--chalk)}
+.alt{background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+  padding:15px 16px;margin-top:16px}
+.alt h4{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:0 0 7px}
+.alt p{margin:0 0 8px;font-size:14.5px;color:var(--dim)}
+.alt p:last-child{margin:0}.alt b{color:var(--chalk)}
+footer{margin-top:24px;padding-top:16px;border-top:1px solid var(--rule);
+  font-size:13.5px;color:var(--dim)}
+footer p{margin:0 0 9px} footer b{color:var(--chalk)}
+footer a{color:var(--titanium)}
+.sig{margin-top:22px;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
+  font-size:13px;color:var(--dim);opacity:.35;letter-spacing:.04em}
+a:focus-visible{outline:2px solid var(--titanium);outline-offset:3px}
+
+.today{background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+  padding:15px 17px;margin:24px 0 0;display:flex;align-items:center;gap:14px}
+.tdot{flex:0 0 auto;width:10px;height:10px;border-radius:50%;background:#5E7484}
+.tdot.green{background:#6FCF97;box-shadow:0 0 0 3px rgba(111,207,151,.15)}
+.tdot.amber{background:#E0A93B;box-shadow:0 0 0 3px rgba(224,169,59,.15)}
+.tdot.red{background:#D9634E;box-shadow:0 0 0 3px rgba(217,99,78,.15)}
+.tbody{flex:1;min-width:0}
+.tlbl{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.tval{margin:0;font-weight:600;font-size:15.5px;color:var(--chalk);line-height:1.35}
+.tnote{margin:4px 0 0;font-size:12.5px;color:var(--dim);line-height:1.45}
+
+.moment{background:var(--raise);border:1px solid var(--rule);border-radius:3px;
+  padding:15px 16px;margin:12px 0}
+.moment .tag{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--rust);margin-bottom:5px}
+.moment h3{font-family:'Syne','Archivo',sans-serif;font-size:18px;margin:0 0 6px}
+.moment p{margin:0;color:var(--dim);font-size:14.5px}
+
+.wxpanel{background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:15px 16px;margin-top:24px}
+.wxrow{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--rule)}
+.wxrow:last-child{border-bottom:0}
+.wxl{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.wxv{text-align:right;font-size:14px;color:var(--chalk);font-weight:600}
+.wxv small{display:block;color:var(--dim);font-size:11px;font-weight:500;margin-top:2px}
+
+.momentline{margin-top:10px;padding:9px 11px;border-left:2px solid var(--rust);background:rgba(210,139,84,.06);font-size:13px;color:var(--dim)}
+.momentline b{color:var(--chalk)}
+.orderbox{margin-top:10px;padding:10px 12px;background:rgba(175,196,207,.06);border:1px solid rgba(175,196,207,.18);border-radius:3px}
+.orderbox .olbl{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--titanium);margin-bottom:5px}
+.orderbox p{margin:0;font-size:13.5px;color:var(--dim)}
+.orderbox b{color:var(--chalk)}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <p class="kicker">Wednesday 14 October · Bilbao day trip</p>
+  <h1>Market.<br>Old Town.<br>Guggenheim.</h1>
+  <div class="fixed" style="margin-top:18px">
+    <p class="lbl">What we ate · Wednesday 14 October</p>
+    <p><b>Old Town Coffee</b> — breakfast in Donostia before the bus.
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&amp;query=Old%20Town%20Coffee%20Donostia&amp;query_place_id=ChIJ9W9t4lOlUQ0RDTuz-8vutR4" target="_blank" rel="noopener">Map ↗</a></p>
+    <p><b>La Olla de la Plaza Nueva</b> — lunch on Plaza Nueva.
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&amp;query=La%20Olla%20de%20la%20Plaza%20Nueva%20Bilbao&amp;query_place_id=ChIJh1WEsM5PTg0RTARK_rreVA0" target="_blank" rel="noopener">Map ↗</a></p>
+    <p><b>Borda Berri</b> — dinner back in the Old Town, Fermin Calbeton 12.
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&amp;query=Borda%20Berri%20Donostia&amp;query_place_id=ChIJaxqh3E2lUQ0R9x--5PL9Erg" target="_blank" rel="noopener">Map ↗</a></p>
+  </div>
+  
+</header>
+
+<section>
+  <p class="sechead">At a glance</p>
+  <h2>The whole day</h2>
+  <div class="alt">
+    <p><b>~08:30–09:00</b> San Sebastián → Bilbao</p>
+    <p><b>~10:15</b> Mercado de la Ribera</p>
+    <p><b>~11:15</b> Casco Viejo → Bacaicoa → Plaza Nueva pintxos</p>
+    <p><b>~14:15</b> Zubizuri / riverside walk</p>
+    <p><b>~15:00–17:30</b> Guggenheim Museum</p>
+    <p><b>~18:00</b> Bilbao Intermodal → San Sebastián</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Bilbao%20Intermodal&query_place_id=ChIJRdkAVSZRTg0RERzMaWTuDkw" target="_blank" rel="noopener">Coach station ↗</a>
+    <a class="route" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Bilbao+Intermodal&destination=Bilbao+Intermodal&waypoints=Mercado+de+la+Ribera+Bilbao%7CBar+Bacaicoa+Bilbao%7CLa+Olla+de+la+Plaza+Nueva+Bilbao%7CGure+Toki+Plaza+Nueva+Bilbao%7CSorginzulo+Plaza+Nueva+Bilbao%7CZubizuri+Bilbao%7CGuggenheim+Museum+Bilbao" target="_blank" rel="noopener">Open total Bilbao town route ↗</a>
+  </div>
+</section>
+
+<section>
+  <p class="sechead">The fixed pieces</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Sorg%C3%ADnzulo%20Bilbao&query_place_id=ChIJkTo_pdBPTg0Rx8JD5DRGBR0" target="_blank" rel="noopener">Map ↗</a>
+  <h2>Transport</h2>
+<div class="fixed">
+    <p class="lbl">Transport</p>
+    <p><b>Use the direct PESA / Lurraldebus service between Donostia-San Sebastián and Bilbao.</b></p>
+    <p>The exact departure should be selected from PESA's official timetable when that date is available. Do not hard-code a bus time months ahead.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.pesa.net/pesa/horariosBD/ctrl_horarios.php?lang=en" target="_blank" rel="noopener">Official PESA timetable ↗</a>
+      <a class="chip" href="https://online.pesa.net/index0.asp?id=en" target="_blank" rel="noopener">PESA tickets ↗</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="sechead">Morning</p>
+  <h2>Market first</h2>
+
+  <div class="stop">
+    <p class="clock">~08:30–09:00</p>
+    <h3>San Sebastián → Bilbao</h3>
+    <p>Take a direct coach to Bilbao. Target an arrival around <b>10:00–10:15</b>. The exact departure stays flexible until the official timetable for 13 October is published.</p>
+      <p><b>Tickets online.</b> Reviewers recommend booking ahead, repeatedly and unprompted. We're deciding the night before — so buy then, rather than turning up cold. Open 10:00–20:00 every day.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=San%20Sebasti%C3%A1n%20Bus%20Station&query_place_id=ChIJ599IHFqlUQ0Ra-q6lchvTmM" target="_blank" rel="noopener">Donostia station ↗</a>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Donostia+San+Sebastian+Bus+Station" target="_blank" rel="noopener">San Sebastián bus station ↗</a>
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Bilbao+Intermodal" target="_blank" rel="noopener">Bilbao Intermodal ↗</a>
+    </div>
+  </div>
+
+  <div class="stop">
+    <p class="clock">~10:15 → 11:00</p>
+    <h3>Mercado de la Ribera</h3>
+    <p>Do this <b>before lunch</b>. On Tuesdays, several official market listings show fish and seafood stalls operating roughly <b>08:00–14:00 / 14:30</b>. Walk the food floors while they are actually trading.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Erriberako%20Merkatua%20Bilbao&query_place_id=ChIJ329u8cxPTg0RX7XirbQve-0" target="_blank" rel="noopener">Market ↗</a>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Mercado+de+la+Ribera+Bilbao" target="_blank" rel="noopener">Mercado · Google Maps ↗</a>
+      <a class="chip" href="https://mercadodelaribera.biz/puestos-3/" target="_blank" rel="noopener">Official stalls & hours ↗</a>
+    </div>
+    <div class="momentline"><b>📸 Instagram moment:</b> take the exterior shot from the river side with Mercado de la Ribera and San Antón behind you.
+      <div class="chips"><a class="chip" href="https://www.google.com/search?tbm=isch&q=Mercado+de+la+Ribera+Bilbao+river" target="_blank" rel="noopener">Photo examples ↗</a></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="sechead">11:00 · Casco Viejo</p>
+  <h2>Old Town + pintxos</h2>
+
+  <a class="route" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Mercado+de+la+Ribera+Bilbao&destination=Plaza+Nueva+Bilbao&waypoints=Bar+Bacaicoa+Bilbao%7CLa+Olla+de+la+Plaza+Nueva+Bilbao%7CGure+Toki+Plaza+Nueva+Bilbao%7CSorginzulo+Plaza+Nueva+Bilbao" target="_blank" rel="noopener">One-click Old Town food route ↗</a>
+
+  <div class="stop">
+    <p class="clock">~11:50</p>
+    <h3>La Olla de la Plaza Nueva</h3>
+    <p>A modern pintxo bar on Plaza Nueva with a large rotating counter plus hot pintxos made to order.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=La%20Olla%20de%20la%20Plaza%20Nueva%20Bilbao&query_place_id=ChIJh1WEsM5PTg0RTARK_rreVA0" target="_blank" rel="noopener">Map ↗</a>
+    <div class="orderbox">
+      <div class="olbl">Top tasty food</div>
+      <p>From its current official pintxo list: <b>taco de chuletón</b>, <b>Alcachofa XL</b>, <b>taco de atún rojo</b>, <b>bacalao al pil-pil</b>. For the most photogenic bite, look for the <b>tomato-shaped cream-cheese pintxo</b>. Availability can change by season.</p>
+    </div>
+    <div class="momentline"><b>📸 Instagram moment:</b> photograph the colourful pintxo bar first, then one “tomato” pintxo against the Plaza Nueva arcades.
+      <div class="chips">
+        <a class="chip" href="https://www.google.com/maps/search/?api=1&query=La+Olla+de+la+Plaza+Nueva+Bilbao" target="_blank" rel="noopener">Google Maps ↗</a>
+        <a class="chip" href="https://www.laolladelaplazanueva.es/en/pintxos/" target="_blank" rel="noopener">Official pintxo photos ↗</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section>
+  <p class="sechead">Afternoon</p>
+  <h2>River → Guggenheim</h2>
+
+  <a class="route" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=Plaza+Nueva+Bilbao&destination=Guggenheim+Museum+Bilbao&waypoints=Zubizuri+Bilbao" target="_blank" rel="noopener">One-click river walk ↗</a>
+
+  <div class="stop">
+    <p class="clock">~14:15 → 15:00</p>
+    <h3>Walk toward the museum</h3>
+    <p>Leave Casco Viejo and follow the river toward Abandoibarra. The point is the change from the medieval Old Town to modern Bilbao before you arrive at Gehry's building.</p>
+    <div class="momentline"><b>📸 Zubizuri moment:</b> cross Calatrava's white footbridge and shoot back along its curved arch.
+      <div class="chips">
+        <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Zubizuri+Bilbao" target="_blank" rel="noopener">Zubizuri · Google Maps ↗</a>
+        <a class="chip" href="https://www.google.com/search?tbm=isch&q=Zubizuri+Bilbao+bridge" target="_blank" rel="noopener">Photo examples ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="stop">
+    <p class="clock">~15:00 → 17:30</p>
+    <h3>Guggenheim Museum Bilbao</h3>
+    <p>The museum is officially open Tuesday to Sunday, <b>10:00 to 19:00</b>. Two to two-and-a-half hours is a sensible visit for this itinerary.</p>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Guggenheim%20Museum%20Bilbao&query_place_id=ChIJtTFg3t5PTg0RrW2vzbeTiFA" target="_blank" rel="noopener">Museum ↗</a>
+    <p>The official essentials include Richard Serra's <b>The Matter of Time</b>, Jeff Koons' <b>Puppy</b> and Louise Bourgeois' <b>Maman</b>.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Guggenheim+Museum+Bilbao" target="_blank" rel="noopener">Guggenheim · Google Maps ↗</a>
+      <a class="chip" href="https://www.guggenheim-bilbao.eus/en/hours-and-admission" target="_blank" rel="noopener">Official hours / tickets ↗</a>
+    </div>
+    <div class="momentline"><b>📸 Instagram moment:</b> do three exterior shots only — <b>Puppy</b> at the entrance, <b>Maman</b> on the river side, then the titanium curves from across the water.
+      <div class="chips">
+        <a class="chip" href="https://www.google.com/search?tbm=isch&q=Guggenheim+Bilbao+Puppy+Maman+titanium" target="_blank" rel="noopener">Photo examples ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="stop">
+    <p class="clock">~17:30 → 18:00</p>
+    <h3>Outside the museum</h3>
+    <p>Finish with <b>Puppy, Maman and the riverfront</b>. No second attraction is needed.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Puppy+Guggenheim+Bilbao" target="_blank" rel="noopener">Puppy · Google Maps ↗</a>
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Maman+Guggenheim+Bilbao" target="_blank" rel="noopener">Maman · Google Maps ↗</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="sechead">Evening</p>
+  <h2>Back to San Sebastián</h2>
+
+  <div class="stop" style="border-top:0;padding-top:0">
+    <p class="clock">~18:00 → 18:30</p>
+    <h3>Go to Bilbao Intermodal</h3>
+    <p><b>Bus station:</b> Bilbao Intermodal, <b>Gurtubay Kalea 1, 48013 Bilbao</b>, beside San Mamés. The station's official site confirms access from Gurtubay, Luis Briñas and Pérez Galdós.</p>
+    <div class="chips">
+      <a class="chip" href="https://www.google.com/maps/search/?api=1&query=Bilbao+Intermodal+Gurtubay+1+Bilbao" target="_blank" rel="noopener">Bilbao Intermodal · Google Maps ↗</a>
+      <a class="chip" href="https://www.bilbaointermodal.eus/en/contact.html" target="_blank" rel="noopener">Official station page ↗</a>
+      <a class="chip" href="https://www.google.com/maps/dir/?api=1&origin=Guggenheim+Museum+Bilbao&destination=Bilbao+Intermodal&travelmode=transit" target="_blank" rel="noopener">Guggenheim → station ↗</a>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <p class="sig">¯\_(ツ)_/¯</p>
+</footer>
+
+</div>
+
+</body>
+</html>

@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-title" content="Food Journey">
 <meta name="theme-color" content="#070C0F">
 <title>Our Food Journey</title>
-<meta name="description" content="San Sebastián, Getaria, Pasaia and the French Basque Country — 27 food visits across five days, appearing on the map one at a time.">
+<meta name="description" content="San Sebastián, Getaria, Pasaia, Bilbao and the French Basque Country — 34 food visits across seven days, appearing on the map one at a time.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -21,6 +21,7 @@
   --ocean:#2E7D9A; --terra:#D2663F; --gold:#D9A441;
   --sand:#E0A96D; --deli:#B4544A; --slate:#8CA0AC;
   --c0:#D2663F; --c1:#D9A441; --c2:#2E7D9A; --c3:#5FA37A; --c4:#A8578E;
+  --c5:#7B6CC4; --c6:#58C0B4;
   --rule:rgba(246,239,227,.16);
 }
 *{box-sizing:border-box;}
@@ -113,7 +114,7 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
 
 /* legend */
 .legend{position:absolute;right:136px;bottom:510px;display:flex;flex-direction:column;
-  align-items:flex-end;gap:13px;opacity:0;transition:opacity .6s;}
+  align-items:flex-end;gap:10px;opacity:0;transition:opacity .6s;}
 .legend.on{opacity:.92;}
 .legend span.off{opacity:.22;}
 .legend span{display:flex;align-items:center;gap:11px;transition:opacity .25s;
@@ -132,11 +133,11 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
   letter-spacing:-.03em;line-height:1;margin:0 0 30px;}
 #final .flist{list-style:none;margin:0;padding:0;width:600px;max-width:84%;}
 #final .flist li{display:flex;align-items:baseline;justify-content:space-between;gap:20px;
-  padding:15px 0;border-bottom:1px solid var(--rule);}
+  padding:11px 0;border-bottom:1px solid var(--rule);}
 #final .flist li:last-child{border-bottom:0;}
 #final .flist span{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:25px;
   letter-spacing:.18em;text-transform:uppercase;color:var(--cream-dim);}
-#final .flist b{font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:46px;
+#final .flist b{font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:40px;
   letter-spacing:-.02em;color:var(--gold);line-height:1;}
 #final .ftot{width:600px;max-width:84%;margin-top:26px;padding-top:24px;
   border-top:2px solid rgba(246,239,227,.34);
@@ -165,6 +166,8 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
 .c-d2 .pinin{color:var(--c2);} .c-d2 b{background:var(--c2);}
 .c-d3 .pinin{color:var(--c3);} .c-d3 b{background:var(--c3);}
 .c-d4 .pinin{color:var(--c4);} .c-d4 b{background:var(--c4);}
+.c-d5 .pinin{color:var(--c5);} .c-d5 b{background:var(--c5);}
+.c-d6 .pinin{color:var(--c6);} .c-d6 b{background:var(--c6);}
 
 /* ---------- controls (outside the recording frame) ---------- */
 #panel{position:fixed;left:0;right:0;bottom:0;z-index:100;padding:11px 14px;
@@ -215,6 +218,8 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
         <span data-d="2"><i style="background:var(--c2)"></i>11 Oct</span>
         <span data-d="3"><i style="background:var(--c3)"></i>12 Oct</span>
         <span data-d="4"><i style="background:var(--c4)"></i>13 Oct</span>
+        <span data-d="5"><i style="background:var(--c5)"></i>14 Oct</span>
+        <span data-d="6"><i style="background:var(--c6)"></i>15 Oct</span>
       </div>
 
       <div class="plist" id="plist"><p class="ph"></p><ol></ol></div>
@@ -222,10 +227,10 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
       <div class="prog"><i id="pbar"></i></div>
 
       <div id="title">
-        <div class="pre">Nine to thirteen October</div>
+        <div class="pre">Nine to fifteen October</div>
         <h1>SAN<br>SEBASTIÁN</h1>
         <h2>Our food journey</h2>
-        <div class="dates">2026 · Six of us · 30 visits</div>
+        <div class="dates">2026 · Six of us · 34 visits</div>
       </div>
 
       <div id="final">
@@ -236,8 +241,10 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
           <li><span>11 Oct</span><b style="color:var(--c2)">4</b></li>
           <li><span>12 Oct</span><b style="color:var(--c3)">4</b></li>
           <li><span>13 Oct</span><b style="color:var(--c4)">5</b></li>
+          <li><span>14 Oct</span><b style="color:var(--c5)">3</b></li>
+          <li><span>15 Oct</span><b style="color:var(--c6)">4</b></li>
         </ul>
-        <p class="ftot">27 visits · 26 places</p>
+        <p class="ftot">34 visits · 32 places</p>
         <div class="sig">So many delicious memories.</div>
       </div>
     </div>
@@ -254,6 +261,8 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
   <button data-jump="11">11</button>
   <button data-jump="12">12</button>
   <button data-jump="13">13</button>
+  <button data-jump="14">14</button>
+  <button data-jump="15">15</button>
   <button data-jump="all">All</button>
   <div class="sep"></div>
   <select id="speed" aria-label="Speed">
@@ -269,14 +278,16 @@ html,body{margin:0;height:100%;background:#070C0F;overflow:hidden;
 <script>
 (function(){
 "use strict";
-var PLACES = [{"d":"09","di":0,"n":"Casa Cámara","a":"Pasai Donibane","lat":43.326594,"lon":-1.919811,"c":"rest","note":"Lunch across the water by boat","uid":"u0"},{"d":"09","di":0,"n":"Bar Txepetxa","a":"Arrandegi Kalea 5","lat":43.3237381,"lon":-1.9840577,"c":"bar","note":"Anchovies","uid":"u1"},{"d":"09","di":0,"n":"Irulegi","a":"31 de Agosto 28","lat":43.3243534,"lon":-1.9851132,"c":"bar","note":"","uid":"u2"},{"d":"09","di":0,"n":"Gandarias","a":"31 de Agosto 23","lat":43.3240228,"lon":-1.9857835,"c":"bar","note":"Best pick of the night — the jamón","uid":"u3"},{"d":"09","di":0,"n":"La Viña","a":"31 de Agosto 3","lat":43.3243861,"lon":-1.9847944,"c":"bar","note":"First visit · the cheesecake","uid":"u4"},{"d":"10","di":1,"n":"Motx Coffee","a":"San Jerónimo 14","lat":43.3229969,"lon":-1.9852295,"c":"cafe","note":"Coffee to start","uid":"u5"},{"d":"10","di":1,"n":"Galparsoro Okindegia","a":"C. Mayor 6","lat":43.322728,"lon":-1.9857891,"c":"bake","note":"","uid":"u6"},{"d":"10","di":1,"n":"Zapore Jai","a":"San Jerónimo 21","lat":43.3234772,"lon":-1.9855479,"c":"deli","note":"Hand-carved bellota jamón","uid":"u7"},{"d":"10","di":1,"n":"Rafa Gorrotxategi","a":"Narrika Kalea 6","lat":43.3230272,"lon":-1.9840703,"c":"bake","note":"","uid":"u8"},{"d":"10","di":1,"n":"La Viña","a":"31 de Agosto 3","lat":43.3243861,"lon":-1.9847944,"c":"bar","note":"Back again — second visit","uid":"u4"},{"d":"10","di":1,"n":"La Cuchara de San Telmo","a":"Santa Korda 4","lat":43.3245016,"lon":-1.9853227,"c":"bar","note":"Off the wish list at last","uid":"u9"},{"d":"10","di":1,"n":"Plaza Berri Taberna","a":"Constitución Plaza 5","lat":43.3238692,"lon":-1.9848618,"c":"bar","note":"Coffee in the square","uid":"u10"},{"d":"10","di":1,"n":"Antonio Boulevard","a":"C. Mayor 2","lat":43.3222357,"lon":-1.9854447,"c":"rest","note":"Dinner","uid":"u11"},{"d":"10","di":1,"n":"Gelatería Boulevard","a":"Alameda del Blvd. 10","lat":43.3225619,"lon":-1.9838896,"c":"bake","note":"","uid":"u12"},{"d":"11","di":2,"n":"Pil Pil Enea","a":"Rue Salagoity 3","lat":43.387405,"lon":-1.658988,"c":"rest","note":"Lunch, 12:30 to 14:30","uid":"u13"},{"d":"11","di":2,"n":"Maison Adam","a":"Place Louis XIV","lat":43.3879957,"lon":-1.6638807,"c":"bake","note":"Macarons · branch unconfirmed","uid":"u14"},{"d":"11","di":2,"n":"EPELA","a":"Rue Tourasse 19","lat":43.3881861,"lon":-1.6635214,"c":"cafe","note":"Coffee at half three","uid":"u15"},{"d":"11","di":2,"n":"Bar KBZÓNa","a":"Narrika Kalea","lat":43.3240469,"lon":-1.9843733,"c":"bar","note":"Carabinero and razor clams","uid":"u16"},{"d":"12","di":3,"n":"Old Town Coffee","a":"Reyes Católicos 9","lat":43.3153205,"lon":-1.980453,"c":"cafe","note":"Breakfast, 08:30","uid":"u17"},{"d":"12","di":3,"n":"Kaia Kaipe","a":"General Arnao 4, Getaria","lat":43.3047282,"lon":-2.2034138,"c":"rest","note":"Grilled turbot, clams, oysters","uid":"u18"},{"d":"12","di":3,"n":"La Cepa de Bernardo","a":"31 de Agosto 7","lat":43.3243034,"lon":-1.9850321,"c":"rest","note":"","uid":"u19"},{"d":"12","di":3,"n":"La Issla","a":"Manterola Kalea 11","lat":43.3163643,"lon":-1.9843653,"c":"cafe","note":"","uid":"u20"},{"d":"13","di":4,"n":"Chez Croissant","a":"Easo Kalea","lat":43.3178089,"lon":-1.984437,"c":"cafe","note":"","uid":"u21"},{"d":"13","di":4,"n":"Nüda Café","a":"Urbieta Kalea 66","lat":43.3135252,"lon":-1.9805106,"c":"cafe","note":"","uid":"u22"},{"d":"13","di":4,"n":"Ganbara","a":"San Jerónimo 21","lat":43.3234339,"lon":-1.9855011,"c":"bar","note":"The last great lunch","uid":"u23"},{"d":"13","di":4,"n":"Oiartzun","a":"Ijentea Kalea 2","lat":43.3221239,"lon":-1.9854938,"c":"bake","note":"","uid":"u24"},{"d":"13","di":4,"n":"Aitana Donostia","a":"Easo Kalea 6","lat":43.317584,"lon":-1.9844706,"c":"rest","note":"Final dinner","uid":"u25"}];
+var PLACES = [{"d":"09","di":0,"n":"Casa Cámara","a":"Pasai Donibane","lat":43.326594,"lon":-1.919811,"c":"rest","note":"Lunch across the water by boat","uid":"u0"},{"d":"09","di":0,"n":"Bar Txepetxa","a":"Arrandegi Kalea 5","lat":43.3237381,"lon":-1.9840577,"c":"bar","note":"Anchovies","uid":"u1"},{"d":"09","di":0,"n":"Irulegi","a":"31 de Agosto 28","lat":43.3243534,"lon":-1.9851132,"c":"bar","note":"","uid":"u2"},{"d":"09","di":0,"n":"Gandarias","a":"31 de Agosto 23","lat":43.3240228,"lon":-1.9857835,"c":"bar","note":"Best pick of the night — the jamón","uid":"u3"},{"d":"09","di":0,"n":"La Viña","a":"31 de Agosto 3","lat":43.3243861,"lon":-1.9847944,"c":"bar","note":"First visit · the cheesecake","uid":"u4"},{"d":"10","di":1,"n":"Motx Coffee","a":"San Jerónimo 14","lat":43.3229969,"lon":-1.9852295,"c":"cafe","note":"Coffee to start","uid":"u5"},{"d":"10","di":1,"n":"Galparsoro Okindegia","a":"C. Mayor 6","lat":43.322728,"lon":-1.9857891,"c":"bake","note":"","uid":"u6"},{"d":"10","di":1,"n":"Zapore Jai","a":"San Jerónimo 21","lat":43.3234772,"lon":-1.9855479,"c":"deli","note":"Hand-carved bellota jamón","uid":"u7"},{"d":"10","di":1,"n":"Rafa Gorrotxategi","a":"Narrika Kalea 6","lat":43.3230272,"lon":-1.9840703,"c":"bake","note":"","uid":"u8"},{"d":"10","di":1,"n":"La Viña","a":"31 de Agosto 3","lat":43.3243861,"lon":-1.9847944,"c":"bar","note":"Back again — second visit","uid":"u4"},{"d":"10","di":1,"n":"La Cuchara de San Telmo","a":"Santa Korda 4","lat":43.3245016,"lon":-1.9853227,"c":"bar","note":"Off the wish list at last","uid":"u9"},{"d":"10","di":1,"n":"Plaza Berri Taberna","a":"Constitución Plaza 5","lat":43.3238692,"lon":-1.9848618,"c":"bar","note":"Coffee in the square","uid":"u10"},{"d":"10","di":1,"n":"Antonio Boulevard","a":"C. Mayor 2","lat":43.3222357,"lon":-1.9854447,"c":"rest","note":"Dinner","uid":"u11"},{"d":"10","di":1,"n":"Gelatería Boulevard","a":"Alameda del Blvd. 10","lat":43.3225619,"lon":-1.9838896,"c":"bake","note":"","uid":"u12"},{"d":"11","di":2,"n":"Pil Pil Enea","a":"Rue Salagoity 3","lat":43.387405,"lon":-1.658988,"c":"rest","note":"Lunch, 12:30 to 14:30","uid":"u13"},{"d":"11","di":2,"n":"Maison Adam","a":"Place Louis XIV","lat":43.3879957,"lon":-1.6638807,"c":"bake","note":"Macarons · branch unconfirmed","uid":"u14"},{"d":"11","di":2,"n":"EPELA","a":"Rue Tourasse 19","lat":43.3881861,"lon":-1.6635214,"c":"cafe","note":"Coffee at half three","uid":"u15"},{"d":"11","di":2,"n":"Bar KBZÓNa","a":"Narrika Kalea","lat":43.3240469,"lon":-1.9843733,"c":"bar","note":"Carabinero and razor clams","uid":"u16"},{"d":"12","di":3,"n":"Old Town Coffee","a":"Reyes Católicos 9","lat":43.3153205,"lon":-1.980453,"c":"cafe","note":"Breakfast, 08:30","uid":"u17"},{"d":"12","di":3,"n":"Kaia Kaipe","a":"General Arnao 4, Getaria","lat":43.3047282,"lon":-2.2034138,"c":"rest","note":"Grilled turbot, clams, oysters","uid":"u18"},{"d":"12","di":3,"n":"La Cepa de Bernardo","a":"31 de Agosto 7","lat":43.3243034,"lon":-1.9850321,"c":"rest","note":"","uid":"u19"},{"d":"12","di":3,"n":"La Issla","a":"Manterola Kalea 11","lat":43.3163643,"lon":-1.9843653,"c":"cafe","note":"","uid":"u20"},{"d":"13","di":4,"n":"Chez Croissant","a":"Easo Kalea","lat":43.3178089,"lon":-1.984437,"c":"cafe","note":"","uid":"u21"},{"d":"13","di":4,"n":"Nüda Café","a":"Urbieta Kalea 66","lat":43.3135252,"lon":-1.9805106,"c":"cafe","note":"","uid":"u22"},{"d":"13","di":4,"n":"Ganbara","a":"San Jerónimo 21","lat":43.3234339,"lon":-1.9855011,"c":"bar","note":"The last great lunch","uid":"u23"},{"d":"13","di":4,"n":"Oiartzun","a":"Ijentea Kalea 2","lat":43.3221239,"lon":-1.9854938,"c":"bake","note":"","uid":"u24"},{"d":"13","di":4,"n":"Aitana Donostia","a":"Easo Kalea 6","lat":43.317584,"lon":-1.9844706,"c":"rest","note":"Final dinner","uid":"u25"},{"d":"14","di":5,"n":"Old Town Coffee","a":"Reyes Católicos 9","lat":43.3153205,"lon":-1.980453,"c":"cafe","note":"Breakfast again, before the Bilbao bus","uid":"u17"},{"d":"14","di":5,"n":"La Olla de la Plaza Nueva","a":"Pl. Berria 2, Bilbao","lat":43.2592555,"lon":-2.9230211,"c":"rest","note":"Lunch on Plaza Nueva","uid":"u26"},{"d":"14","di":5,"n":"Borda Berri","a":"Fermin Calbeton 12","lat":43.3234901,"lon":-1.9838915,"c":"bar","note":"Dinner back in the Old Town","uid":"u27"},{"d":"15","di":6,"n":"El Café De Donosti","a":"San Martin Kalea 48","lat":43.3167236,"lon":-1.9842272,"c":"cafe","note":"The last breakfast","uid":"u28"},{"d":"15","di":6,"n":"Bombonería Maitiana","a":"Peñaflorida Kalea 6","lat":43.3213302,"lon":-1.983349,"c":"bake","note":"Chocolates and churros after breakfast","uid":"u30"},{"d":"15","di":6,"n":"Vinos Ezeiza","a":"Prim Kalea 16","lat":43.3166984,"lon":-1.9799571,"c":"deli","note":"Txakoli and patxaran to carry home","uid":"u31"},{"d":"15","di":6,"n":"Villano Bistró","a":"Urdaneta Kalea 10","lat":43.3166051,"lon":-1.9807861,"c":"rest","note":"Last lunch, then the airport","uid":"u29"}];
 
 var DAYMETA = {
   "09":{label:"9 OCT",  sub:"Pasaia & the first pintxos"},
   "10":{label:"10 OCT", sub:"Old Town, all day"},
   "11":{label:"11 OCT", sub:"Saint-Jean-de-Luz"},
   "12":{label:"12 OCT", sub:"Getaria & the turbot"},
-  "13":{label:"13 OCT", sub:"The last full day"}
+  "13":{label:"13 OCT", sub:"The last full day"},
+  "14":{label:"14 OCT", sub:"Bilbao for the day"},
+  "15":{label:"15 OCT", sub:"Last morning, then home"}
 };
 
 /* ---------- fit the 1080x1920 stage into the viewport ---------- */
@@ -430,6 +441,10 @@ var CAM = {
   d12b:   {center:[-2.2034,43.3047], zoom:15.6},
   d12c:   {center:[-1.9825,43.3200], zoom:14.4},
   d13:    {center:[-1.9830,43.3195], zoom:14.2},
+  d14:    {center:[-1.9810,43.3160], zoom:14.8},
+  d14b:   {center:[-2.9230,43.2593], zoom:15.2},
+  d14c:   {center:[-1.9839,43.3235], zoom:16.0},
+  d15:    {center:[-1.9821,43.3190], zoom:15.0},
   wide:   {center:[-1.93,43.345], zoom:9.6},
   f0:     {center:[-1.9520,43.3260], zoom:12.9},
   f1:     {center:[-1.9849,43.3233], zoom:16.2},
@@ -442,8 +457,8 @@ var cues = [], T = 0;
 function at(t, o){ o.t = t; cues.push(o); }
 
 /* order of reveal = PLACES order; build day blocks */
-var byDay = {"09":[],"10":[],"11":[],"12":[],"13":[]};
-PLACES.forEach(function(p,i){ p.i = i; byDay[p.d].push(p); });
+var byDay = {};
+PLACES.forEach(function(p,i){ p.i = i; (byDay[p.d] = byDay[p.d] || []).push(p); });
 
 var seenUid = {};
 PLACES.forEach(function(p){
@@ -462,7 +477,9 @@ var DAYPLAN = [
   {d:"10", start:13.0, end:24.0, cams:[[13.0,CAM.d10,1800]]},
   {d:"11", start:24.0, end:36.5, cams:[[26.0,CAM.d11,3400],[32.6,CAM.d11b,3000]]},
   {d:"12", start:36.5, end:45.5, cams:[[36.5,CAM.d12,2200],[38.1,CAM.d12b,2500],[41.6,CAM.d12c,2600]]},
-  {d:"13", start:45.5, end:54.0, cams:[[45.5,CAM.d13,2200]]}
+  {d:"13", start:45.5, end:54.0, cams:[[45.5,CAM.d13,2200]]},
+  {d:"14", start:54.0, end:62.0, cams:[[54.0,CAM.d14,1800],[56.3,CAM.d14b,2800],[59.8,CAM.d14c,2400]]},
+  {d:"15", start:62.0, end:68.0, cams:[[62.0,CAM.d15,2200]]}
 ];
 
 DAYPLAN.forEach(function(dp){
@@ -476,15 +493,17 @@ DAYPLAN.forEach(function(dp){
   list.forEach(function(p, j){
     var t = dp.start + head + (n === 1 ? 0 : step * j);
     if(dp.d === "11" && p.n === "Bar KBZÓNa") t = 35.9;   // after flying back
+    if(dp.d === "14" && p.n === "La Olla de la Plaza Nueva") t = 58.9;
+    if(dp.d === "14" && p.n === "Borda Berri") t = 61.4;    // after flying back
     at(t, {k:"pin", p:p});
   });
 });
 at(5.0, {k:"legend", on:true});
 
 /* final */
-at(54.0, {k:"cam", c:CAM.wide, dur:4200});
-at(55.2, {k:"final", on:true});
-var END = 60.0;
+at(68.0, {k:"cam", c:CAM.wide, dur:4200});
+at(69.2, {k:"final", on:true});
+var END = 74.0;
 
 cues.sort(function(a,b){ return a.t - b.t; });
 
@@ -622,9 +641,9 @@ document.getElementById("fit").addEventListener("click", function(){ if(clean) s
 document.getElementById("bReplay").onclick = function(){ stopShow(); leaveFilter(); seek(0); play(); };
 document.getElementById("speed").onchange = function(){ speed = parseFloat(this.value); };
 /* ---------- date filter: show one day's places and name them ---------- */
-var DKEY = ["09","10","11","12","13"];
-var DLBL = ["9 OCT","10 OCT","11 OCT","12 OCT","13 OCT"];
-var DCOL = ["#D2663F","#D9A441","#2E7D9A","#5FA37A","#A8578E"];
+var DKEY = ["09","10","11","12","13","14","15"];
+var DLBL = ["9 OCT","10 OCT","11 OCT","12 OCT","13 OCT","14 OCT","15 OCT"];
+var DCOL = ["#D2663F","#D9A441","#2E7D9A","#5FA37A","#A8578E","#7B6CC4","#58C0B4"];
 var FCAM = [CAM.f0, CAM.f1, CAM.f2, CAM.f3, CAM.f4];
 var plist = document.getElementById("plist");
 var filtering = false, inShow = false;
@@ -670,10 +689,10 @@ function showDate(di){
     PLACES.forEach(function(q){ bnds.extend([q.lon, q.lat]); });
     el.chip.classList.add("on");
     el.chip.childNodes[0].nodeValue = "ALL";
-    el.sub.textContent = "9 to 13 October";
-    ph.innerHTML = "<b>27</b> visits · <b>26</b> places";
+    el.sub.textContent = "9 to 15 October";
+    ph.innerHTML = "<b>34</b> visits · <b>32</b> places";
     plist.classList.add("sum");
-    for(var k = 0; k < 5; k++){
+    for(var k = 0; k < DKEY.length; k++){
       var cnt = PLACES.filter(function(q){ return q.di === k; }).length;
       var li = document.createElement("li");
       li.innerHTML = '<em>' + DLBL[k] + '</em><b style="color:var(--c' + k + ')">' + cnt + '</b>';
@@ -733,8 +752,8 @@ Array.prototype.forEach.call(document.querySelectorAll("[data-jump]"), function(
 });
 
 /* ---------- 15-second reel: each date, then all of them ---------- */
-var SHOW = [[0,2.2],[1,2.9],[2,2.1],[3,2.1],[4,2.3],[null,2.8]];
-var LEAD = 0.6;                                  /* 15.0s in total */
+var SHOW = [[0,1.7],[1,2.3],[2,1.6],[3,1.6],[4,1.7],[5,1.6],[6,1.5],[null,2.1]];
+var LEAD = 0.5;                                  /* 14.6s in total */
 var showBtn = document.getElementById("bShow");
 var showTimer = null, showRAF = null, showEnd = null;
 
@@ -828,8 +847,8 @@ function ready(){
   makeMarkers();
   document.getElementById("boot").style.display = "none";
   document.getElementById("hint").innerHTML =
-    'Basemap: <b>' + BASEMAP + '</b> · build v8 · '
-    + 'start Screen Recording, then tap <b>15s reel</b>.';
+    'Basemap: <b>' + BASEMAP + '</b> · '
+    + 'build v11 · start Screen Recording, then tap <b>15s reel</b>.';
   fit();
   seek(0);
   setTimeout(play, 500);

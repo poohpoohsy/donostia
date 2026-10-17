@@ -90,7 +90,6 @@ h2{font-family:'Syne','Archivo',sans-serif;font-weight:800;
   letter-spacing:.1em;text-transform:uppercase;color:var(--sea)}
 .route:hover{background:rgba(135,199,196,.15)}
 
-
 .food{background:rgba(135,199,196,.07);border:1px solid rgba(135,199,196,.24);
   border-left:3px solid var(--sea);border-radius:3px;padding:18px;margin:18px 0}
 .food h3{font-family:'Syne','Archivo',sans-serif;font-size:20px;margin:0 0 7px}
@@ -147,14 +146,7 @@ a:focus-visible{outline:2px solid var(--sea);outline-offset:3px}
   <h1>Fly in.<br>Eat by the harbour.</h1>
   <p class="intro">The first San Sebastián day is deliberately simple: <b>get there without stress, have one excellent seafood lunch, walk Pasai Donibane slowly, then go home.</b> No ambitious sightseeing after a 01:30 alarm.</p>
 
-  <div class="today">
-    <span class="tdot" id="tdot"></span>
-    <div class="tbody">
-      <span class="tlbl" id="tlbl">Live now · San Sebastián</span>
-      <p class="tval" id="tval">Checking the feed…</p>
-      <p class="tnote" id="tnote">This becomes useful inside the forecast window. Rain changes the harbour walk, not the lunch.</p>
-    </div>
-  </div>
+  
 </header>
 
 <section>
@@ -348,9 +340,6 @@ a:focus-visible{outline:2px solid var(--sea);outline-offset:3px}
   </div>
 </section>
 
-
-
-
 <section>
   <p class="sechead">Transport links</p>
   <h2>Save these before Friday</h2>
@@ -383,38 +372,5 @@ a:focus-visible{outline:2px solid var(--sea);outline-offset:3px}
 
 </div>
 
-<script>
-(function(){
-  var LAT=43.3183, LON=-1.9812, TZ="Europe/Madrid", PLACE="San Sebastián";
-  var dot=document.getElementById('tdot'), val=document.getElementById('tval'),
-      note=document.getElementById('tnote'), lbl=document.getElementById('tlbl');
-
-  var tripDate = new Date('2026-10-09T12:00:00+02:00');
-  var diff = (tripDate - new Date())/86400000;
-  if(diff > 15){
-    lbl.textContent='Weather · Friday 9 October';
-    val.textContent='Too far out to forecast';
-    note.innerHTML='This will fill automatically once the trip is inside the useful forecast window.';
-    return;
-  }
-
-  var u='https://api.open-meteo.com/v1/forecast?latitude='+LAT+'&longitude='+LON
-      +'&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max'
-      +'&forecast_days=16&timezone='+encodeURIComponent(TZ);
-  fetch(u).then(function(r){return r.json()}).then(function(d){
-    var i=d.daily.time.indexOf('2026-10-09');
-    if(i<0) throw 0;
-    var hi=Math.round(d.daily.temperature_2m_max[i]), lo=Math.round(d.daily.temperature_2m_min[i]);
-    var rain=d.daily.precipitation_probability_max[i]||0;
-    dot.className='tdot '+(rain<=30?'green':rain<=60?'amber':'red');
-    lbl.textContent='Forecast · Friday 9 October · '+PLACE;
-    val.textContent=lo+'–'+hi+'°C · '+rain+'% rain';
-    note.textContent=rain>60?'Wet harbour day — keep the walk short and use the ferry/taxi.':'The fishing-village walk looks workable.';
-  }).catch(function(){
-    val.textContent='Forecast unavailable';
-    note.textContent='The itinerary still works — check again a few days before.';
-  });
-})();
-</script>
 </body>
 </html>

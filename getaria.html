@@ -151,14 +151,7 @@
     <h1>Climb the mouse,<br>eat the turbot.</h1>
     <p class="intro">A fishing town of two thousand people, forty minutes down the coast. <b>One long lunch is the whole point of the day</b> — everything else is arranged around a 13:00 table.</p>
 
-    <div class="today">
-      <span class="tdot" id="tdot"></span>
-      <div class="tbody">
-        <span class="tlbl" id="tlbl">Live now · Getaria</span>
-        <p class="tval" id="tval">Checking the feed…</p>
-        <p class="tnote" id="tnote">Live from Getaria. It's a coastal walk and an exposed viewpoint, so this one matters more than usual.</p>
-      </div>
-    </div>
+    
   </header>
 
   <!-- ============ THE MOUSE ============ -->
@@ -201,7 +194,6 @@
     <a class="route" href="https://www.google.com/maps/dir/?api=1&travelmode=walking&origin=43.3044984,-2.2035772&destination=43.3018844,-2.2049474&waypoints=43.3057106,-2.2024680%7C43.3085693,-2.2024472%7C43.3047282,-2.2034138" target="_blank" rel="noopener">Open the Getaria route ↗</a>
   </section>
 
-
   <!-- ============ THE DAY ============ -->
   <section>
     <p class="sechead">The day</p>
@@ -231,7 +223,6 @@
       <a class="maplink" href="https://www.lurraldebus.eus" target="_blank" rel="noopener">Lurraldebus ↗</a>
       <span class="warn">Confirm October times — this is the one thing I can't verify</span>
     </div>
-
 
     <div class="stop">
       <p class="clock">10:20 <span class="walk">ARRIVE</span></p>
@@ -284,7 +275,6 @@
       <p class="note">If anyone wants sand, there's a small sheltered beach on the town side of the isthmus.</p>
     </div>
 
-
     <div class="stop">
       <p class="clock">~16:45 <span class="walk">UK09 / UK10 / UK11 · ~45 MIN</span></p>
       <h3>Getaria → Donostia</h3>
@@ -299,7 +289,6 @@
       <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Zarautz%20Beach&query_place_id=ChIJK8sMUV3IUQ0RcXIZ5vlnb-A" target="_blank" rel="noopener">Zarautz ↗</a>
       <span class="warn">Check the last return the night before</span>
     </div>
-
 
     <div class="stop">
       <p class="clock">18:30 → 20:00 <span class="walk">SUNSET ~19:40</span></p>
@@ -403,38 +392,5 @@
 
 </div>
 
-<script>
-(function(){
-  var LAT=43.3047, LON=-2.2034, TZ="Europe/Madrid", PLACE="Getaria";
-  var W={0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Overcast',45:'Fog',48:'Freezing fog',
-    51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',56:'Freezing drizzle',57:'Freezing drizzle',
-    61:'Light rain',63:'Rain',65:'Heavy rain',66:'Freezing rain',67:'Freezing rain',
-    71:'Light snow',73:'Snow',75:'Heavy snow',77:'Snow grains',
-    80:'Rain showers',81:'Rain showers',82:'Heavy showers',85:'Snow showers',86:'Snow showers',
-    95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'};
-  var dot=document.getElementById('tdot'), val=document.getElementById('tval'),
-      note=document.getElementById('tnote'), lbl=document.getElementById('tlbl');
-  var u='https://api.open-meteo.com/v1/forecast?latitude='+LAT+'&longitude='+LON
-      +'&current=temperature_2m,precipitation,weather_code,wind_speed_10m'
-      +'&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max'
-      +'&forecast_days=1&timezone='+encodeURIComponent(TZ);
-  fetch(u).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(d){
-    var c=d.current, dy=d.daily, code=c.weather_code, desc=W[code]||'—';
-    var rain=dy&&dy.precipitation_probability_max?dy.precipitation_probability_max[0]:0;
-    var hi=dy&&dy.temperature_2m_max?Math.round(dy.temperature_2m_max[0]):null;
-    var lo=dy&&dy.temperature_2m_min?Math.round(dy.temperature_2m_min[0]):null;
-    var cls=(code<=2&&rain<=30)?'green':(code<=48||rain<=60)?'amber':'red';
-    dot.className='tdot '+cls;
-    lbl.textContent='Live now · '+PLACE+' · '+new Date().toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'});
-    val.textContent=Math.round(c.temperature_2m)+'°C, '+desc.toLowerCase()
-      +(hi!==null?'  ·  '+lo+'–'+hi+'°C today':'')+'  ·  '+Math.round(rain)+'% rain';
-    note.innerHTML='Feed is live. <b>This is today, not the trip.</b> Worth a look the night before — the lookout is exposed and the walk is the first thing to drop in rain.';
-  }).catch(function(){
-    dot.className='tdot amber';
-    val.textContent='Feed not reachable from here';
-    note.innerHTML='This usually means the page is being previewed inside an app that blocks outside requests. <b>Open it at poohpoohsy.github.io and it will fill in.</b>';
-  });
-})();
-</script>
 </body>
 </html>

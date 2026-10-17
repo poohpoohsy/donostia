@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Our trip — 1–16 October</title>
-<meta name="description" content="Sixteen days. Switzerland, Chamonix, the Basque country.">
-<meta property="og:title" content="Our trip — 1–16 October">
-<meta property="og:description" content="Every day in one place. Save this link.">
+<title>Our trip — 1–16 October 2026</title>
+<meta name="description" content="Sixteen days. Switzerland, Chamonix, the Basque country. Every day, and every place we ate.">
+<meta property="og:title" content="Our trip — 1–16 October 2026">
+<meta property="og:description" content="Sixteen days, three countries, thirty-two places we ate. Open any day.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -30,31 +30,12 @@
     letter-spacing:.24em;text-transform:uppercase;color:var(--dim);margin:0 0 12px;}
   h1{font-family:'Syne','Archivo',sans-serif;font-weight:800;
     font-size:clamp(25px,6.4vw,34px);line-height:1.02;letter-spacing:-.03em;margin:0 0 10px;}
-  .intro{margin:0;color:var(--dim);font-size:13.5px;max-width:46ch;line-height:1.45;}
+  .intro{margin:0;color:var(--dim);font-size:13.5px;max-width:48ch;line-height:1.5;}
   .intro b{color:var(--chalk);font-weight:600;}
-
-  .wxstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:14px;}
-  .wxc{background:var(--raise);border:1px solid var(--rule);border-radius:3px;
-    padding:7px 3px 8px;text-align:center;overflow:hidden;}
-  .wxc .p{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:7.5px;letter-spacing:.03em;
-    text-transform:uppercase;color:var(--dim);margin:0 0 3px;white-space:nowrap;}
-  .wxc .t{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;margin:0;
-    color:var(--chalk);line-height:1.1;}
-  .wxc .d{font-size:8px;color:var(--dim);margin:2px 0 0;white-space:nowrap;
-    overflow:hidden;text-overflow:ellipsis;}
-  a.wxc{display:flex;flex-direction:column;justify-content:center;text-decoration:none;
-    background:var(--raise2);border-color:rgba(142,205,236,.3);}
-  a.wxc:hover{background:#243036;}
-  a.wxc .big{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;margin:0;
-    color:var(--alp);line-height:1.15;}
-  a.wxc .sub{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:7.5px;letter-spacing:.06em;
-    text-transform:uppercase;color:var(--dim);margin:5px 0 0;white-space:nowrap;}
 
   section{margin-top:20px;padding-top:16px;border-top:1px solid var(--rule);}
   .sechead{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
     letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin:0 0 10px;}
-  h2{font-family:'Syne','Archivo',sans-serif;font-weight:800;font-size:20px;
-    letter-spacing:-.02em;margin:0 0 6px;}
 
   .leg{display:flex;align-items:center;flex-wrap:wrap;gap:7px;margin:16px 0 8px;}
   .leg:first-of-type{margin-top:0;}
@@ -66,59 +47,29 @@
     font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9px;
     letter-spacing:.1em;text-transform:uppercase;color:#E8547C;
     border:1px solid rgba(232,84,124,.42);border-radius:2px;padding:3px 7px;}
+  .leg a.fmap:hover{background:rgba(232,84,124,.12);}
 
   .day{display:block;text-decoration:none;color:inherit;background:var(--raise);
     border:1px solid var(--rule);border-left:3px solid var(--dim);border-radius:3px;
     padding:10px 13px;margin-bottom:6px;}
-  .day:hover{background:var(--raise2);}
+  a.day:hover{background:var(--raise2);}
   .day.alp{border-left-color:var(--alp);}
   .day.cham{border-left-color:var(--cham);}
   .day.bask{border-left-color:var(--bask);}
-  .day.none{opacity:.55;cursor:default;}
+  .day.none{opacity:.5;cursor:default;}
   .dtop{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:2px;}
   .dwhen{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;
     letter-spacing:.1em;text-transform:uppercase;color:var(--dim);}
   .dtag{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8px;letter-spacing:.1em;
     text-transform:uppercase;padding:2px 7px;border-radius:2px;white-space:nowrap;}
-  .dtag.ok{background:rgba(127,185,138,.14);color:#9BC9A4;border:1px solid rgba(127,185,138,.3);}
-  .dtag.todo{background:rgba(224,169,59,.14);color:#EBC078;border:1px solid rgba(224,169,59,.32);}
+  .dtag.ate{background:rgba(232,84,124,.13);color:#F08BA8;border:1px solid rgba(232,84,124,.32);}
   .dtag.na{background:transparent;color:var(--dim);border:1px solid var(--rule);}
   .day h3{font-family:'Syne','Archivo',sans-serif;font-weight:700;font-size:15px;
     letter-spacing:-.01em;margin:0;}
   .day p{display:none;}
 
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-  .grid .tool{margin-bottom:0;}
-  .grid .stack{display:grid;gap:8px;}
-  .tool.tall{display:flex;flex-direction:column;justify-content:space-between;height:100%;}
-  .tool{display:block;text-decoration:none;color:inherit;background:var(--raise);
-    border:1px solid var(--rule);border-radius:3px;padding:13px 15px;margin-bottom:8px;}
-  .tool:hover{background:var(--raise2);}
-  .tool h3{font-family:'Syne','Archivo',sans-serif;font-weight:700;font-size:17px;margin:0 0 4px;}
-  .tool p{margin:0;font-size:13.5px;color:var(--dim);}
-  .tool .go{color:var(--alp);font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;
-    letter-spacing:.1em;text-transform:uppercase;display:block;margin-top:8px;}
-
-  .lead{margin:14px 0 0;display:flex;align-items:baseline;justify-content:space-between;gap:12px;
-    font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:10px;letter-spacing:.1em;}
-  .lead a{color:var(--dim);text-decoration:none;opacity:.55;}
-  .lead a:hover{color:var(--chalk);opacity:1;}
-  .lead a.mapl{color:var(--alp);opacity:.85;}
-  .lead a.mapl:hover{opacity:1;}
-
-  .note{background:var(--raise);border:1px solid var(--rule);border-radius:3px;padding:15px 17px;margin-top:10px;}
-  .note p{margin:0;font-size:14px;color:var(--dim);}
-  .note b{color:var(--chalk);font-weight:600;}
-
-  .wxc .clk{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:9.5px;color:var(--chalk);
-    margin:0 0 4px;letter-spacing:.02em;}
-  .wxc .mm{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:8.5px;margin:4px 0 0;
-    color:var(--dim);white-space:nowrap;}
-  .wxc .mm b{color:var(--chalk);font-weight:600;}
-  .wxc .lo{color:var(--alp);}
-  .wxc .hi{color:var(--cham);}
-
-  footer{margin-top:22px;padding-top:16px;border-top:1px solid var(--rule);font-size:13.5px;color:var(--dim);}
+  footer{margin-top:22px;padding-top:16px;border-top:1px solid var(--rule);
+    font-size:13.5px;color:var(--dim);}
   .sig{margin-top:20px;text-align:center;font-family:'IBM Plex Mono',ui-monospace,monospace;
     font-size:13px;color:var(--dim);opacity:.35;user-select:none;}
 </style>
@@ -127,16 +78,10 @@
 <div class="wrap">
 
   <header class="top">
-    <p class="kicker">1–16 October 2026</p>
+    <p class="kicker">1–16 October 2026 · done</p>
     <h1>Sixteen days.<br>Three countries.</h1>
-    <p class="intro"><b>Save this link.</b> Every day below opens its own page with times, maps and one-tap directions.</p>
-
-    <div class="wxstrip">
-      <div class="wxc"><p class="p">Grindelwald</p><p class="clk" id="c1">--:--</p><p class="t" id="w1">—</p><p class="d" id="d1">checking</p><p class="mm" id="m1">—</p></div>
-      <div class="wxc"><p class="p">Chamonix</p><p class="clk" id="c2">--:--</p><p class="t" id="w2">—</p><p class="d" id="d2">checking</p><p class="mm" id="m2">—</p></div>
-      <div class="wxc"><p class="p">Donostia</p><p class="clk" id="c3">--:--</p><p class="t" id="w3">—</p><p class="d" id="d3">checking</p><p class="mm" id="m3">—</p></div>
-      <a class="wxc" href="weather.html"><p class="p">Forecast</p><p class="big">16<br>days</p><p class="sub">Open →</p></a>
-    </div>
+    <p class="intro"><b>34 meals at 32 places.</b> Every day below opens its own page — where we
+      went and what we ate. For when the photos come up and nobody can remember the name of the place.</p>
   </header>
 
   <section>
@@ -144,93 +89,68 @@
 
     <div class="leg"><i style="background:#8ECDEC"></i><span>1–5 Oct · Bernese Oberland</span></div>
     <a class="day alp" href="switzerland.html">
-      <div class="dtop"><span class="dwhen">Thu 1 – Mon 5</span><span class="dtag todo">Weather dependent</span></div>
+      <div class="dtop"><span class="dwhen">Thu 1 – Mon 5</span><span class="dtag na">5 days</span></div>
       <h3>Switzerland · Jungfrau</h3>
-      <p>Waterfalls, Mürren, First and Männlichen, then Jungfraujoch at 3,454m. Every day climbs higher.</p>
+      <p>Waterfalls, Mürren, First and Männlichen, then Jungfraujoch at 3,454m.</p>
     </a>
 
     <div class="leg"><i style="background:#D9A441"></i><span>5–9 Oct · Mont Blanc</span></div>
     <a class="day cham" href="chamonix.html">
-      <div class="dtop"><span class="dwhen">Mon 5 – Fri 9</span><span class="dtag todo">Planning</span></div>
+      <div class="dtop"><span class="dwhen">Mon 5 – Fri 9</span><span class="dtag na">4 days</span></div>
       <h3>Chamonix · Mont Blanc</h3>
       <p>Aiguille du Midi at 3,842m, the Grand Balcon Nord, then Brévent from the other side of the valley.</p>
     </a>
 
-    <div class="leg"><i style="background:#E8547C"></i><span>9–16 Oct · Basque country</span><span class="fmaps"><a class="fmap" href="foodmap.html">🥐 Food map</a><a class="fmap" href="saveplaces.html">★ Save list</a></span></div>
+    <div class="leg"><i style="background:#E8547C"></i><span>9–16 Oct · Basque country</span><span class="fmaps"><a class="fmap" href="foodmap.html">🥐 Food map</a><a class="fmap" href="saveplaces.html">★ Where we ate</a></span></div>
 
     <a class="day bask" href="san_sebastian_9Oct.html">
-      <div class="dtop"><span class="dwhen">Fri 9</span><span class="dtag ok">Set</span></div>
+      <div class="dtop"><span class="dwhen">Fri 9</span><span class="dtag ate">5 stops</span></div>
       <h3>Arrive · Pasaia</h3>
-      <p>01:30 alarm, Geneva to Bilbao, then the harbour at Pasai Donibane.</p>
+      <p>01:30 alarm, Geneva to Bilbao, then Casa Cámara across the water at Pasai Donibane.</p>
     </a>
 
     <a class="day bask" href="blacksheep.html">
-      <div class="dtop"><span class="dwhen">Sat 10</span><span class="dtag todo">Ring the park</span></div>
+      <div class="dtop"><span class="dwhen">Sat 10</span><span class="dtag ate">9 stops</span></div>
       <h3>Pintxos · Igueldo Park</h3>
-      <p>Seven stops by lunch, the little boat and the little train on Monte Igueldo at four, then the tortilla at Antonio at six.</p>
+      <p>Nine stops across the Old Town, the little boat and the little train on Monte Igueldo, then Antonio at six.</p>
     </a>
 
     <a class="day bask" href="french_basque_11Oct.html">
-      <div class="dtop"><span class="dwhen">Sun 11</span><span class="dtag ok">Set</span></div>
-      <h3>French beach town</h3>
-      <p>Ciboure market, Saint-Jean-de-Luz, then Biarritz and the Côte des Basques.</p>
+      <div class="dtop"><span class="dwhen">Sun 11</span><span class="dtag ate">4 stops</span></div>
+      <h3>Saint-Jean-de-Luz</h3>
+      <p>The whole morning at the Ciboure market, two hours at Pil Pil Enea, coffee at EPELA. Biarritz never happened.</p>
     </a>
 
     <a class="day bask" href="getaria.html">
-      <div class="dtop"><span class="dwhen">Mon 12</span><span class="dtag ok">Booked</span></div>
-      <h3>Getaria</h3>
-      <p>Climb the mouse, then two hours at Kaia Kaipe. Sunset drink on Urgull back in town.</p>
+      <div class="dtop"><span class="dwhen">Mon 12</span><span class="dtag ate">4 stops</span></div>
+      <h3>Getaria · the turbot</h3>
+      <p>Climbed the mouse, then two and a half hours at Kaia Kaipe. The grilled turbot was the dish of the trip.</p>
     </a>
 
-    <a class="day bask" href="bilbao_13Oct.html">
-      <div class="dtop"><span class="dwhen">Tue 13</span><span class="dtag todo">Timetable later</span></div>
+    <a class="day bask" href="san_sebastian_13Oct.html">
+      <div class="dtop"><span class="dwhen">Tue 13</span><span class="dtag ate">5 stops</span></div>
+      <h3>Donostia · Ganbara</h3>
+      <p>Chez Croissant, Nüda, Ganbara for the last great lunch, Oiartzun, then dinner at Aitana.</p>
+    </a>
+
+    <a class="day bask" href="bilbao_14Oct.html">
+      <div class="dtop"><span class="dwhen">Wed 14</span><span class="dtag ate">3 stops</span></div>
       <h3>Bilbao</h3>
-      <p>La Ribera market, four bars in the Casco Viejo, then the Guggenheim. Coach back in the evening.</p>
+      <p>Breakfast at Old Town Coffee, the bus over, lunch at La Olla on Plaza Nueva, Borda Berri back home.</p>
     </a>
 
-    <a class="day bask" href="san_sebastian_14Oct.html">
-      <div class="dtop"><span class="dwhen">Wed 14</span><span class="dtag ok">Open</span></div>
-      <h3>Last full day · Donostia</h3>
-      <p>Beach, Ganbara, and every bar we didn't get to. Buy what you're taking home. Backup day for Igueldo if Saturday is shut.</p>
+    <a class="day bask" href="saveplaces.html">
+      <div class="dtop"><span class="dwhen">Thu 15</span><span class="dtag ate">4 stops</span></div>
+      <h3>Last morning · Bilbao → Zürich</h3>
+      <p>El Café De Donosti, chocolates at Bombonería Maitiana, wine from Vinos Ezeiza, lunch at Villano Bistró, then LX8227 at 20:45.</p>
     </a>
 
-    <a class="day bask" href="daycard.html#day15">
-      <div class="dtop"><span class="dwhen">Thu 15</span><span class="dtag na">LX8227 · 20:45</span></div>
-      <h3>Bilbao → Zürich</h3>
-      <p style="display:block;font-size:12px;margin-top:2px">20:45 BIO → 22:40 ZRH · direct, 1h55. Night at the airport hotel.</p>
-    </a>
-
-    <a class="day" href="daycard.html#day16">
+    <div class="day none">
       <div class="dtop"><span class="dwhen">Fri 16</span><span class="dtag na">CX382 · 13:30</span></div>
       <h3>Zürich → Hong Kong</h3>
-      <p style="display:block;font-size:12px;margin-top:2px">13:30 ZRH → HKG. Home.</p>
-    </a>
-  </section>
-
-  <section>
-    <p class="sechead">Useful on the trip</p>
-    <div class="grid">
-      <a class="tool tall" href="daycard.html">
-        <div>
-          <h3>Day cards</h3>
-          <p style="display:block">One card per day with a copy button — plain text, straight into WhatsApp.</p>
-        </div>
-        <span class="go">Open →</span>
-      </a>
-      <div class="stack">
-        <a class="tool" href="kit.html">
-          <h3>Hiking kit</h3>
-          <span class="go">Open →</span>
-        </a>
-        <a class="tool" href="briefing.html">
-          <h3>Briefing</h3>
-          <span class="go">Open →</span>
-        </a>
-      </div>
+      <p>Home.</p>
     </div>
-    <p class="lead"><a class="mapl" href="offlinemap.html">Offline Google Maps ↗</a><a href="checklist.html">團長 checklist ↗</a></p>
   </section>
-
 
   <footer>
     <p style="text-align:center;font-size:14.5px;color:var(--chalk);">每星期做一件無效率但有感覺嘅事</p>
@@ -238,41 +158,5 @@
   </footer>
 
 </div>
-
-<script>
-(function(){
-  var W={0:'clear',1:'mostly clear',2:'partly cloudy',3:'overcast',45:'fog',48:'freezing fog',
-    51:'light drizzle',53:'drizzle',55:'heavy drizzle',61:'light rain',63:'rain',65:'heavy rain',
-    71:'light snow',73:'snow',75:'heavy snow',80:'showers',81:'showers',82:'heavy showers',
-    85:'snow showers',86:'snow showers',95:'thunderstorm',96:'thunderstorm',99:'thunderstorm'};
-  var P=[{id:1,lat:46.6242,lon:8.0341,tz:'Europe/Zurich'},
-         {id:2,lat:45.9237,lon:6.8694,tz:'Europe/Paris'},
-         {id:3,lat:43.3183,lon:-1.9812,tz:'Europe/Madrid'}];
-
-  function ticks(){
-    P.forEach(function(p){
-      try{document.getElementById('c'+p.id).textContent=
-        new Intl.DateTimeFormat('en-GB',{timeZone:p.tz,hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());}catch(e){}
-    });
-  }
-  ticks(); setInterval(ticks,20000);
-
-  P.forEach(function(p){
-    var u='https://api.open-meteo.com/v1/forecast?latitude='+p.lat+'&longitude='+p.lon
-      +'&current=temperature_2m,weather_code'
-      +'&daily=temperature_2m_max,temperature_2m_min&forecast_days=1&timezone='+encodeURIComponent(p.tz);
-    fetch(u).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){
-      document.getElementById('w'+p.id).textContent=Math.round(d.current.temperature_2m)+'\u00b0';
-      document.getElementById('d'+p.id).textContent=W[d.current.weather_code]||'\u2014';
-      document.getElementById('m'+p.id).innerHTML='today <b class="lo">'+Math.round(d.daily.temperature_2m_min[0])
-        +'\u00b0</b> / <b class="hi">'+Math.round(d.daily.temperature_2m_max[0])+'\u00b0</b>';
-    }).catch(function(){
-      document.getElementById('w'+p.id).textContent='\u2014';
-      document.getElementById('d'+p.id).textContent='no feed';
-      document.getElementById('m'+p.id).textContent='no feed';
-    });
-  });
-})();
-</script>
 </body>
 </html>
